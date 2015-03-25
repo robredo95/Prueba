@@ -1,0 +1,125 @@
+borrar partida
+CREATE PROCEDURE BORRAR_PARTIDA @cod_partida VARCHAR(25) AS
+    delete from det_partidas where cod_partida=@cod_partida
+    delete from partidas where cod_partida=@cod_partida
+
+cerrar_cheques
+CREATE PROCEDURE dbo.CERRAR_CHEQUES @cod_cheque VARCHAR(20) AS
+	DECLARE @concepto VARCHAR(255)
+	DECLARE @fecha DATETIME
+	DECLARE @Tdebe MONEY
+	DECLARE @Thaber MONEY
+	DECLARE @cod_partida VARCHAR(20)
+	DECLARE @nombre_cuenta VARCHAR (255)
+	DECLARE @cod_cuenta VARCHAR (20)
+	DECLARE @debe MONEY
+	DECLARE @haber MONEY
+	DECLARE @msg VARCHAR(255)
+	DECLARE @correl INT
+	DECLARE @estado VARCHAR(50)
+
+	SELECT @cod_partida = "PC" + @cod_cheque
+	SELECT @concepto = concepto,
+		 @fecha = fecha,
+		 @estado = estado
+	FROM CHEQUES
+	WHERE cod_cheque = @cod_cheque
+	
+	SELECT @Tdebe = sum(debe),
+		 @Thaber = sum(haber)
+	FROM DETALLE_CHEQUES
+	WHERE cod_cheque = @cod_cheque
+	IF (@estado !="ANULADO")	
+	BEGIN
+		BEGIN TRANSACTION
+			EXEC BORRAR_PARTIDA @cod_partida
+			INSERT INTO partidas     VALUES(@cod_partida,
+			               4,
+			               @concepto,
+			               @fecha,
+			               @Tdebe,
+			               @Thaber,
+			               0,0,0)
+			IF (@@error != 0)
+			BEGIN
+			   SELECT @msg='No se pudo insertar en partidas'
+			   GOTO _error
+			END
+	
+			DECLARE hcursor1 CURSOR FOR 
+			SELECT a.cod_cuenta, a.debe, a.haber, b.descripcion
+			FROM DETALLE_CHEQUES a, CUENTAS b
+			WHERE a.cod_cuenta = b.cod_cuenta AND a.cod_cheque = @cod_cheque
+	 		
+			OPEN hcursor1
+			FETCH hcursor1 INTO @cod_cuenta, @debe, @haber, @nombre_cuenta
+			
+			WHILE(@@sqlstatus != 2)
+			BEGIN
+				EXEC mi_identity  2, @correl OUTPUT
+				INSERT INTO det_partidas(cod_partida,
+				    cod_cuenta,
+				    nombre,
+				    credito,
+				    cargo,
+				    concepto,
+				    correlativo)
+				VALUES (@cod_partida,
+				    @cod_cuenta,
+				    @nombre_cuenta,
+				    @haber,
+				    @debe,
+				    @concepto,
+				    @correl)
+				IF (@@error != 0)
+				BEGIN
+				  SELECT @msg='No se pudo insertar en detalle de partidas'
+				  GOTO _error
+				END
+				FETCH hcursor1 INTO @cod_cuenta, @debe, @haber, @nombre_cuenta
+			END
+			CLOSE hcursor1
+			DEALLOCATE CURSOR hcursor1
+			UPDATE CHEQUES set cod_partida=@cod_partida
+			WHERE cod_cheque=@cod_cheque
+			IF (@@error != 0)
+			BEGIN
+			  SELECT @msg='No se pudo actualizar el cheque'
+			  GOTO _error
+			END
+	
+		COMMIT TRANSACTION
+	END	
+        RETURN
+    select @cod_partida
+RETURN
+_error:
+    ROLLBACK TRANSACTION
+    SELECT @msg
+RETURN
+
+copiar producto
+CREATE PROCEDURE dbo.copiar_producto
+AS
+    declare @cod_medicamento varchar(10)
+    declare @nombre varchar(100)     	  
+    DECLARE hCursor  CURSOR
+    FOR select cod_medicamento,nombre from inventario_med
+    OPEN hCursor
+    FETCH hCursor INTO  @cod_medicamento,@nombre  
+    			 	    
+    BEGIN 
+    WHILE (@@sqlstatus != 2)
+    BEGIN
+    	 insert into productos values (@cod_medicamento,@nombre)
+	  FETCH hCursor INTO  @cod_medicamento,@nombre  
+    END         
+END
+
+hacer backup local
+CREATE PROCEDURE HACER_BACKUP_LOCAL AS
+    DECLARE @vcPath VARCHAR(255), @vcDate VARCHAR(12)
+    SELECT @vcDate=CONVERT(VARCHAR(12), getdate(), 105)
+    SELECT @vcPath='/opt/sybase/backup/BSPS_' + @vcDate + '.dat'
+    DUMP DATABASE hbetesda TO @vcPath at SYB_BACKUP
+    WITH INIT
