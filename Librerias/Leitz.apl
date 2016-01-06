@@ -8,19 +8,18 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000004000000 FFFF01000D004347 5458566965775374 6174650400020000
-0020: 0000000000D60000 002C000000020000 0003000000FFFFFF FFFFFFFFFFFCFFFF
-0040: FFE2FFFFFF160000 0016000000200200 000D010000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D0400000007436C 61737365730F6C63
-0080: 436F6E6669677572 6174696F6E094675 6E6374696F6E7311 4C6F6164436F6E66
-00A0: 696775726174696F 6E000001800200FF FFFFFF0000000000 0000002C00000000
-00C0: 00000001000000FF FFFFFFFFFFFFFFFC FFFFFFE9FFFFFF2C 0000002C00000036
-00E0: 0200002301000000 0000000000000003 0000000F4170706C 69636174696F6E49
-0100: 74656D07436C6173 73657307636C734C 6F6E670000000001 8004000100000000
-0120: 000000680000002C 0000000000000001 000000FFFFFFFFFF FFFFFFFCFFFFFFE9
-0140: FFFFFF4200000042 0000004C02000039 0100000000000000 000000040000000F
-0160: 4170706C69636174 696F6E4974656D07 436C617373657307 636C734C6F6E6709
-0180: 46756E6374696F6E 7300000000
+0000: 6F00000004000000 FFFF01000D004347 5458566965775374 6174650400010000
+0020: 0000000000D60000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
+0040: FFE1FFFFFF160000 0016000000200200 000D010000010000 0000000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D0200000007436C 61737365730C4D79
+0080: 4368696C64546162 6C65000001800200 FFFFFFFF00000000 000000002C000000
+00A0: 0000000001000000 FFFFFFFFFFFFFFFF FCFFFFFFE9FFFFFF 2C0000002C000000
+00C0: 3602000023010000 0000000000000000 030000000F417070 6C69636174696F6E
+00E0: 4974656D07436C61 7373657307636C73 4C6F6E6700000000 0180040001000000
+0100: 0000000068000000 2C00000000000000 01000000FFFFFFFF FFFFFFFFFCFFFFFF
+0120: E9FFFFFF42000000 420000004C020000 3901000000000000 0000000004000000
+0140: 0F4170706C696361 74696F6E4974656D 07436C6173736573 07636C734C6F6E67
+0160: 0946756E6374696F 6E7300000000
 .enddata
 .head 2 -  Outline Window State: Maximized
 .head 2 +  Outline Window Location and Size
@@ -34,7 +33,7 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .data VIEWSIZE
 0000: 8800
 .enddata
-.head 3 -  Left: -0.013"
+.head 3 -  Left:   -0.013"
 .head 3 -  Top:    0.0"
 .head 3 -  Width:  8.013"
 .head 3 -  Height: 4.969"
@@ -46,19 +45,19 @@ en table window,des/ha bilitar pantallas, manejo de errores
 0000: 0800
 .enddata
 .head 3 -  Visible? Yes
-.head 3 -  Left: 4.15"
+.head 3 -  Left:   4.15"
 .head 3 -  Top:    1.885"
 .head 3 -  Width:  3.8"
 .head 3 -  Height: 2.073"
 .head 2 +  Class Editor Location
 .head 3 -  Visible? No
-.head 3 -  Left: 0.3"
+.head 3 -  Left:   0.3"
 .head 3 -  Top:    0.042"
 .head 3 -  Width:  5.063"
 .head 3 -  Height: 2.719"
 .head 2 +  Tool Palette Location
 .head 3 -  Visible? No
-.head 3 -  Left: 5.9"
+.head 3 -  Left:   5.9"
 .head 3 -  Top:    1.031"
 .head 2 -  Fully Qualified External References? No
 .head 2 -  Reject Multiple Window Instances? No
@@ -187,6 +186,338 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .head 3 -  Date/Time: MMM d, yyyy hh:mm AMPM
 .head 3 -  Date/Time: MMMM d, yyyy hh:mm AMPM
 .head 2 +  External Functions
+.head 3 +  Library name: user32.dll
+.head 4 +  Function: OpenClipboard
+.head 5 -  Description: The OpenClipboard function opens the clipboard for examination and prevents other applications from modifying the clipboard content.
+
+Parameters:
+	hWndNewOwner 		Identifies the window to be associated with the open clipboard. If this parameter is NULL,
+				the open clipboard is associated with the current task.
+
+Return Values:
+	If the function succeeds, the return value is nonzero.
+	If the function fails, the return value is zero. To get extended error information, call GetLastError.
+
+Remarks
+OpenClipboard fails if another window has the clipboard open.
+An application should call the CloseClipboard function after every successful call to OpenClipboard.
+The window identified by the hWndNewOwner parameter does not become the clipboard owner unless the EmptyClipboard function is called.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Window Handle: HWND
+.head 4 +  Function: CloseClipboard
+.head 5 -  Description: The CloseClipboard function closes the clipboard.
+
+Parameters:
+	This function has no parameters.
+
+Return Values:
+	If the function succeeds, the return value is nonzero.
+	If the function fails, the return value is zero. To get extended error information, call GetLastError.
+
+Remarks:
+When the window has finished examining or changing the clipboard, close the clipboard by calling CloseClipboard.
+This enables other windows to access the clipboard.
+
+Do not place an object on the clipboard after calling CloseClipboard.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 -  Parameters
+.head 4 +  Function: EmptyClipboard
+.head 5 -  Description: The EmptyClipboard function empties the clipboard and frees handles to data in the clipboard. The function then assigns ownership of the clipboard to the window that currently has the clipboard open.
+
+Parameters:
+	This function has no parameters.
+
+Return Values:
+	If the function succeeds, the return value is nonzero.
+	If the function fails, the return value is zero. To get extended error information, call GetLastError.
+
+Remarks:
+Before calling EmptyClipboard, an application must open the clipboard by using the OpenClipboard function.
+If the application specifies a NULL window handle when opening the clipboard, EmptyClipboard succeeds but sets the clipboard owner to NULL.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 -  Parameters
+.head 4 +  Function: SetClipboardData
+.head 5 -  Description: The SetClipboardData function places data on the clipboard in a specified clipboard format. The window must be the current clipboard owner,
+and the application must have called the OpenClipboard function. (When responding to the WM_RENDERFORMAT and
+WM_RENDERALLFORMATS messages, the clipboard owner must not call OpenClipboard before calling SetClipboardData.)
+
+Parameters:
+	uFormat 		Specifies a clipboard format. This parameter can be a registered format or any of the standard clipboard formats
+			listed in the following Remarks section. For information about registered clipboard formats,
+			see the RegisterClipboardFormat function.
+	hMem 		Identifies the data in the specified format. This parameter can be NULL, indicating that the window provides data
+			in the specified clipboard format (renders the format) upon request. If a window delays rendering,
+			it must process the WM_RENDERFORMAT and WM_RENDERALLFORMATS messages.
+
+	Once SetClipboardData is called, the system owns the object identified by the hMem parameter. The application can read the data,
+	but must not free the handle or leave it locked. If the hMem parameter identifies a memory object, the object must have been allocated
+	using the GlobalAlloc function with the GMEM_MOVEABLE and GMEM_DDESHARE flags.
+
+Return Values:
+	If the function succeeds, the return value is the handle of the data.
+	If the function fails, the return value is NULL. To get extended error information, call GetLastError.
+
+Remarks:
+The uFormat parameter can identify a registered clipboard format, or it can be one of the following values:
+Value 			Meaning
+CF_BITMAP 		A handle to a bitmap (HBITMAP).
+CF_DIB 			A memory object containing a BITMAPINFO structure followed by the bitmap bits.
+CF_DIF 			Software Arts’ Data Interchange Format.
+CF_DSPBITMAP 		Bitmap display format associated with a private format. The hMem parameter must be a handle of data that can be
+			displayed in bitmap format in lieu of the privately formatted data.
+CF_DSPENHMETAFILE 	Enhanced metafile display format associated with a private format. The hMem parameter must be a handle of data
+			that can be displayed in enhanced metafile format in lieu of the privately formatted data.
+CF_DSPMETAFILEPICT 	Metafile-picture display format associated with a private format. The hMem parameter must be a handle of data
+			that can be displayed in metafile-picture format in lieu of the privately formatted data.
+CF_DSPTEXT 		Text display format associated with a private format. The hMem parameter must be a handle of data that can be
+			displayed in text format in lieu of the privately formatted data.
+CF_ENHMETAFILE 	A handle of an enhanced metafile (HENHMETAFILE).
+CF_GDIOBJFIRST through  	Range of integer values for application-defined GDI object clipboard formats. Handles associated with clipboard
+CF_GDIOBJLAST		formats in this range are not automatically deleted using the GlobalFree function when the
+			clipboard is emptied. Also, when using values in this range, the hMem parameter is not a handle to a GDI object,
+			but is a handle allocated by the GlobalAlloc function with the GMEM_DDESHARE and GMEM_MOVEABLE flags.
+CF_HDROP 		A handle of type HDROP that identifies a list of files. An application can retrieve information about the files by
+			passing the handle to the DragQueryFile functions.
+CF_LOCALE 		The data is a handle to the locale identifier associated with text in the clipboard. When you close the clipboard,
+			if it contains CF_TEXT data but no CF_LOCALE data, the system automatically sets the CF_LOCALE format to the
+			current input locale. You can use the CF_LOCALE format to associate a different locale with the clipboard text.
+
+			An application that pastes text from the clipboard can retrieve this format to determine which character set was
+			used to generate the text.
+
+			Note that the clipboard does not support plain text in multiple character sets. To achieve this, use a fomatted text
+			data type such as RTF instead.
+
+			Windows NT: The system uses the code page associated with CF_LOCALE to implicitly convert from CF_TEXT
+			to CF_UNICODETEXT. Therefore, the correct code page table is used for the conversion.
+CF_METAFILEPICT 	Handle of a metafile picture format as defined by the METAFILEPICT structure. When passing a
+			CF_METAFILEPICT handle by means of dynamic data exchange (DDE), the application responsible for deleting
+			hMem should also free the metafile referred to by the CF_METAFILEPICT handle.
+CF_OEMTEXT 		Text format containing characters in the OEM character set. Each line ends with a carriage return/linefeed (CR-LF)
+			combination. A null character signals the end of the data.
+CF_OWNERDISPLAY 	Owner-display format. The clipboard owner must display and update the clipboard viewer window, and receive the
+			WM_ASKCBFORMATNAME, WM_HSCROLLCLIPBOARD, WM_PAINTCLIPBOARD, WM_SIZECLIPBOARD, and
+			WM_VSCROLLCLIPBOARD messages. The hMem parameter must be NULL.
+CF_PALETTE 		Handle of a color palette. Whenever an application places data in the clipboard that depends on or assumes a
+			color palette, it should place the palette on the clipboard as well.
+ 
+			If the clipboard contains data in the CF_PALETTE (logical color palette) format, the application should use the
+			SelectPalette and RealizePalette functions to realize (compare) any other data in the clipboard against that logical palette.
+
+			When displaying clipboard data, Windows clipboard always uses as its current palette any object on the clipboard
+			that is in the CF_PALETTE format.
+CF_PENDATA 		Data for the pen extensions to the Microsoft Windows for Pen Computing.
+CF_PRIVATEFIRST through	Range of integer values for private clipboard formats. Handles associated with private clipboard formats are not
+CF_PRIVATELAST 		freed automatically; the clipboard owner must free such handles, typically in response to the
+			WM_DESTROYCLIPBOARD message.
+CF_RIFF 			Represents audio data more complex than can be represented in a CF_WAVE standard wave format.
+CF_SYLK			Microsoft Symbolic Link (SYLK) format.
+CF_TEXT 		Text format. Each line ends with a carriage return/linefeed (CR-LF) combination. A null character signals the
+			end of the data. Use this format for ANSI text.
+CF_WAVE 		Represents audio data in one of the standard wave formats, such as 11 kHz or 22 kHz pulse code modulation (PCM).
+CF_TIFF 			Tagged-image file format.
+CF_UNICODETEXT 	Windows NT only: Unicode text format. Each line ends with a carriage return/linefeed (CR-LF) combination.
+			A null character signals the end of the data.
+ 
+The operating system performs implicit data format conversions between certain clipboard formats when an application calls the GetClipboardData
+function. For example, if the CF_OEMTEXT format is on the clipboard, a window can retrieve data in the CF_TEXT format.
+The format on the clipboard is converted to the requested format on demand. The following table shows the clipboard data type conversions
+that are available. Note that some of these automatic type conversions are not available on all platforms.
+Clipboard Format 		Conversion Format 		Platform Support
+CF_BITMAP 		CF_DIB 			Windows NT, Windows 95
+CF_DIB 			CF_BITMAP 		Windows NT, Windows 95
+CF_DIB 			CF_PALETTE 		Windows NT, Windows 95
+CF_ENHMETAFILE 	CF_METAFILEPICT 	Windows NT, Windows 95
+CF_METAFILEPICT 	CF_ENHMETAFILE 	Windows NT, Windows 95
+CF_OEMTEXT 		CF_TEXT 		Windows NT, Windows 95
+CF_OEMTEXT 		CF_UNICODETEXT 	Windows NT
+CF_TEXT 		CF_OEMTEXT 		Windows NT, Windows 95
+CF_TEXT 		CF_UNICODETEXT 	Windows NT
+CF_UNICODETEXT 	CF_OEMTEXT 		Windows NT
+CF_UNICODETEXT 	CF_TEXT 		Windows NT
+ 
+If the operating system provides an automatic type conversion for a particular clipboard format, there is no advantage to placing the
+conversion format(s) on the clipboard.
+
+When copying bitmaps, it is best to place only the CF_DIB format on the clipboard. This is because the colors in a device-dependent bitmap
+(CF_BITMAP) are relative to the system palette, which may change before the bitmap is pasted. If only the CF_DIB format is on the clipboard
+and a window requests the CF_BITMAP format, the system renders the device-dependent bitmap using the current palette at that time.
+
+If you place the CF_BITMAP format on the clipboard (and not CF_DIB), the system renders the CF_DIB clipboard format as soon as the
+clipboard is closed. This ensures that the correct palette is used to generate the device-independent bitmap
+(DIB). Conversions between other clipboard formats occur upon demand.
+
+Windows platforms support two clipboard formats for metafiles: CF_ENHMETAFILE and CF_METAFILEPICT.
+Specify CF_ENHMETAFILE for enhanced metafiles and CF_METAFILEPICT for Windows metafiles.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: HANDLE
+.head 5 +  Parameters
+.head 6 -  Number: UINT
+.head 6 -  Number: HANDLE
+.head 4 +  Function: SendMessageTimeoutA
+.head 5 -  Description: Retrieve a string pointer in lParam
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: LONG
+.head 5 +  Parameters
+.head 6 -  Window Handle: HWND
+.head 6 -  Number: UINT
+.head 6 -  Number: WPARAM
+.head 6 -  Receive String: LPVOID
+.head 6 -  Number: UINT
+.head 6 -  Number: UINT
+.head 6 -  Receive Number: LPLONG
+.head 4 +  ! Function: SetWindowPos
+.head 5 -  Description:
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Window Handle: HWND
+.head 6 -  Window Handle: HWND
+.head 6 -  Number: INT
+.head 6 -  Number: INT
+.head 6 -  Number: INT
+.head 6 -  Number: INT
+.head 6 -  Number: UINT
+.head 3 +  Library name: KERNEL32.DLL
+.head 4 +  Function: GetEnvironmentVariableA
+.head 5 -  Description:
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: DWORD
+.head 5 +  Parameters
+.head 6 -  String: LPCSTR
+.head 6 -  Receive String: LPSTR
+.head 6 -  Number: DWORD
+.head 4 +  Function: GlobalAlloc
+.head 5 -  Description: The GlobalAlloc function allocates the specified number of bytes from the heap. In the linear Win32 API environment,
+there is no difference between the local heap and the global heap.
+
+Parameters:
+	uFlags 		Specifies how to allocate memory. If zero is specified, the default is GMEM_FIXED. Except for the incompatible combinations that are specifically noted, any combination of the following flags can be used.
+			To indicate whether the function allocates fixed or movable memory, specify one of the first four flags:
+			Flag  Meaning
+ 			GMEM_FIXED 		Allocates fixed memory. This flag cannot be combined with the GMEM_MOVEABLE or GMEM_DISCARDABLE flag.
+						The return value is a pointer to the memory block. To access the memory, the calling process simply casts the return value to a pointer.
+			GMEM_MOVEABLE 	Allocates movable memory. This flag cannot be combined with the GMEM_FIXED flag. The return value is the handle of the memory object.
+						The handle is a 32-bit quantity that is private to the calling process. To translate the handle into a pointer, use the GlobalLock function.
+			GPTR 			Combines the GMEM_FIXED and GMEM_ZEROINIT flags.
+ 			GHND 			Combines the GMEM_MOVEABLE and GMEM_ZEROINIT flags.
+ 			GMEM_DDESHARE 	Allocates memory to be used by the dynamic data exchange (DDE) functions for a DDE conversation. Unlike Windows version 3. x, this memory is not shared globally.
+						However, this flag is available for compatibility purposes. It may be used by some applications to enhance the performance of DDE operations and should, therefore,
+						be specified if the memory is to be used for DDE. Only processes that use DDE or the clipboard for interprocess communications should specify this flag.
+			GMEM_DISCARDABLE 	Allocates discardable memory. This flag cannot be combined with the GMEM_FIXED flag. Some Win32-based applications may ignore this flag.
+			GMEM_LOWER 		Ignored. This flag is provided only for compatibility with Windows version 3. x.
+			GMEM_NOCOMPACT 	Does not compact or discard memory to satisfy the allocation request.
+			GMEM_NODISCARD 	Does not discard memory to satisfy the allocation request.
+			GMEM_NOT_BANKED 	Ignored. This flag is provided only for compatibility with Windows version 3. x.
+			GMEM_NOTIFY 		Ignored. This flag is provided only for compatibility with Windows version 3. x.
+			GMEM_SHARE 		Same as the GMEM_DDESHARE flag.
+			GMEM_ZEROINIT 		Initializes memory contents to zero.
+	dwBytes 		Specifies the number of bytes to allocate. If this parameter is zero and the uFlags parameter specifies the GMEM_MOVEABLE flag, the function returns a handle to a memory object that is marked as discarded.
+
+Return Values:
+	If the function succeeds, the return value is the handle of the newly allocated memory object.
+	If the function fails, the return value is NULL.
+
+Remarks:
+If the heap does not contain sufficient free space to satisfy the request, GlobalAlloc returns NULL.
+
+Because NULL is used to indicate an error, virtual address zero is never allocated. It is, therefore, easy to detect the use of a NULL pointer.
+
+All memory is created with execute access; no special function is required to execute dynamically generated code.
+
+Memory allocated with this function is guaranteed to be aligned on an 8-byte boundary.
+
+The GlobalAlloc and LocalAlloc functions are limited to a combined total of 65,536 handles for GMEM_MOVEABLE and LMEM_MOVEABLE memory per process. This limitation does not apply to GMEM_FIXED or LMEM_FIXED memory.
+
+If this function succeeds, it allocates at least the amount of memory requested. If the actual amount allocated is greater than the amount requested, the process can use the entire amount.
+To determine the actual number of bytes allocated, use the GlobalSize function.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: HANDLE
+.head 5 +  Parameters
+.head 6 -  Number: UINT
+.head 6 -  Number: DWORD
+.head 4 +  Function: GlobalLock
+.head 5 -  Description: The GlobalLock function locks a global memory object and returns a pointer to the first byte of the object’s memory block.
+The memory block associated with a locked memory object cannot be moved or discarded. For memory objects allocated with the
+GMEM_MOVEABLE flag, the function increments the lock count associated with the memory object.
+
+Parameters:
+	hMem 		Identifies the global memory object. This handle is returned by either the GlobalAlloc or GlobalReAlloc function.
+
+Return Values:
+	If the function succeeds, the return value is a pointer to the first byte of the memory block.
+	If the function fails, the return value is NULL. To get extended error information, call GetLastError.
+
+Remarks:
+The internal data structures for each memory object include a lock count that is initially zero. For movable memory objects,
+GlobalLock increments the count by one, and the GlobalUnlock function decrements the count by one. For each call that a process
+makes to GlobalLock for an object, it must eventually call GlobalUnlock. Locked memory will not be moved or discarded, unless the
+memory object is reallocated by using the GlobalReAlloc function. The memory block of a locked memory object remains locked until its
+lock count is decremented to zero, at which time it can be moved or discarded.
+
+Memory objects allocated with the GMEM_FIXED flag always have a lock count of zero. For these objects, the value of the returned pointer
+is equal to the value of the specified handle.
+
+If the specified memory block has been discarded or if the memory block has a zero-byte size, this function returns NULL.
+
+Discarded objects always have a lock count of zero.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: LPVOID
+.head 5 +  Parameters
+.head 6 -  Number: HANDLE
+.head 4 +  Function: GlobalUnlock
+.head 5 -  Description: The GlobalUnlock function decrements the lock count associated with a memory object that was allocated with the GMEM_MOVEABLE flag.
+This function has no effect on memory objects allocated with the GMEM_FIXED flag.
+
+Parameters:
+	hMem 		Identifies the global memory object. This handle is returned by either the GlobalAlloc or GlobalReAlloc function.
+
+Return Values:
+	If the memory object is still locked after decrementing the lock count, the return value is a nonzero value.
+	If the function fails, the return value is zero. To get extended error information, call GetLastError. If GetLastError returns
+	NO_ERROR, the memory object is unlocked.
+
+Remarks:
+The internal data structures for each memory object include a lock count that is initially zero. For movable memory objects, the GlobalLock
+function increments the count by one, and GlobalUnlock decrements the count by one. For each call that a process makes to GlobalLock
+for an object, it must eventually call GlobalUnlock. Locked memory will not be moved or discarded, unless the memory object is reallocated
+by using the GlobalReAlloc function. The memory block of a locked memory object remains locked until its lock count is decremented to zero,
+at which time it can be moved or discarded.
+
+Memory objects allocated with the GMEM_FIXED flag always have a lock count of zero. If the specified memory block is fixed memory,
+this function returns TRUE.
+
+If the memory object is already unlocked, GlobalUnlock returns FALSE and GetLastError reports ERROR_NOT_LOCKED.
+Memory objects allocated with the LMEM_FIXED flag always have a lock count of zero and cause the ERROR_NOT_LOCKED error.
+
+A process should not rely on the return value to determine the number of times it must subsequently call GlobalUnlock for a memory object.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: INT
+.head 5 +  Parameters
+.head 6 -  Number: HANDLE
+.head 3 +  Library name: msvcrt
+.head 4 +  Function: memcpy
+.head 5 -  Description: void *memcpy( void *dest, const void *src, size_t count );
+.head 5 -  Export Ordinal: 0
+.head 5 -  Returns
+.head 5 +  Parameters
+.head 6 -  Number: LPVOID
+.head 6 -  String: LPVOID
+.head 6 -  Number: DWORD
 .head 2 +  Constants
 .data CCDATA
 0000: 3000000000000000 0000000000000000 00000000
@@ -195,6 +526,9 @@ en table window,des/ha bilitar pantallas, manejo de errores
 0000: 1400
 .enddata
 .head 3 +  System
+.head 4 -  ! ! ! Constantes para el manejo del ClipBoard
+.head 4 -  Number: GMEM_MOVEABLE    	= 0x0002
+.head 4 -  Number: CF_TEXT    = 1
 .head 3 +  User
 .head 4 -  Number: MU_BORRAR        = SAM_User+100001
 .head 4 -  Number: MU_GRABAR        = SAM_User+100002
@@ -1252,7 +1586,456 @@ values(:nUsuario,:dtHoy,:sHizo,:sOperacion)")
 .head 5 -  Set xsFecha = xsFecha || " de "
 .head 5 -  Set xsFecha = xsFecha || SalNumberToStrX(xnAnio,0)
 .head 5 -  Return xsFecha
-.head 2 -  Named Menus
+.head 3 +  Function: CopiarTabla
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  Window Handle: hWndTablaCopiar
+.head 5 -  Number: nTipo
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Long String: lsBufer
+.head 5 -  Long String: lsLinea
+.head 5 -  String: lsTexto
+.head 5 -  Window Handle: hWndHijo
+.head 5 -  Window Handle: hWndColumna
+.head 5 -  Number: nFilaCopiar
+.head 4 +  Actions
+.head 5 -  !
+.head 5 -  Set lsBufer=''
+.head 5 -  Set lsLinea=''
+.head 5 +  If nTipo = 1
+.head 6 -  Set hWndColumna=SalGetFirstChild( hWndTablaCopiar, TYPE_TableColumn)
+.head 6 +  While hWndColumna != hWndNULL
+.head 7 +  If SalIsWindowVisible(  hWndColumna )
+.head 8 -  Set lsTexto=''
+.head 8 -  Call SalTblGetColumnTitle( hWndColumna,lsTexto,1000)
+.head 8 -  Set lsTexto = StrReplace(lsTexto, SalNumberToChar( 10 ),' ')
+.head 8 -  Set lsTexto = StrReplace(lsTexto, SalNumberToChar( 13 ),' ')
+.head 8 -  Set lsTexto= SalStrTrimX( lsTexto ) || SalNumberToChar( 9 )
+.head 8 -  Set lsLinea=lsLinea || lsTexto
+.head 7 -  Set hWndColumna=SalGetNextChild( hWndColumna, TYPE_TableColumn)
+.head 6 -  Set lsLinea = SalStrReplaceX( lsLinea, SalStrLength( lsLinea )-1, 1, SalNumberToChar( 13 ) )
+.head 6 -  Set lsBufer = lsLinea
+.head 5 -  !
+.head 5 -  ! ahora saquemos los datos
+.head 5 -  Set nFilaCopiar=-1
+.head 5 +  While SalTblFindNextRow(hWndTablaCopiar,nFilaCopiar,0,0)
+.head 6 -  Call SalTblSetContext(hWndTablaCopiar,nFilaCopiar)
+.head 6 +  If SalTblQueryRowFlags( hWndTablaCopiar, nFilaCopiar,ROW_Selected)
+.head 7 -  Set lsLinea=''
+.head 7 -  Set hWndColumna=SalGetFirstChild( hWndTablaCopiar, TYPE_TableColumn)
+.head 7 +  While hWndColumna != hWndNULL
+.head 8 +  If SalIsWindowVisible(  hWndColumna )
+.head 9 -  Set lsTexto=''
+.head 9 -  Call SalGetWindowText( hWndColumna,lsTexto,1000)
+.head 9 -  Set lsTexto = StrReplace(lsTexto, SalNumberToChar( 10 ),' ')
+.head 9 -  Set lsTexto = StrReplace(lsTexto, SalNumberToChar( 13 ),' ')
+.head 9 -  Set lsLinea=lsLinea || lsTexto || SalNumberToChar( 9 )
+.head 8 -  Set hWndColumna=SalGetNextChild( hWndColumna, TYPE_TableColumn)
+.head 7 -  Set lsLinea = SalStrReplaceX( lsLinea, SalStrLength( lsLinea )-1, 1, SalNumberToChar( 13 ) )
+.head 7 -  Set lsBufer = lsBufer || lsLinea
+.head 5 -  !
+.head 5 -  Call Copy2Clipboard(lsBufer)
+.head 3 +  Function: StrReplace
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  String:
+.head 4 +  Parameters
+.head 5 -  String: strSource
+.head 5 -  String: strOldPattern
+.head 5 -  String: strNewPattern
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: nPos
+.head 5 -  String: strNewString
+.head 5 -  String: strStringOld
+.head 4 +  Actions
+.head 5 -  Set strStringOld = strSource
+.head 5 -  Set nPos = SalStrScan( strStringOld, strOldPattern )
+.head 5 +  While nPos != -1
+.head 6 -  Set strNewString = strNewString || SalStrMidX( strStringOld, 0, nPos )  || strNewPattern
+.head 6 -  Set strStringOld = SalStrMidX( strStringOld, nPos+SalStrLength(strOldPattern), SalStrLength( strStringOld ) )
+.head 6 -  Set nPos = SalStrScan( strStringOld, strOldPattern )
+.head 5 -  Return strNewString || strStringOld
+.head 3 +  Function: Copy2Clipboard
+.head 4 -  Description: Kopiert den übergebenen String in die Zwischenablage. Der String darf > 64kB sein.
+.head 4 +  Returns
+.head 5 -  Boolean:
+.head 4 +  Parameters
+.head 5 -  String: p_sText
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: hAlloc
+.head 5 -  Number: nhText
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 5 -  Number: nLengthOfText
+.head 5 -  Number: nSizeOfText
+.head 4 +  Actions
+.head 5 -  ! Open clipboard
+.head 5 -  Call SalWaitCursor( TRUE )
+.head 5 +  If OpenClipboard( hWndForm )
+.head 6 -  !
+.head 6 -  ! Empty clipboard
+.head 6 -  Call EmptyClipboard( )
+.head 6 -  !
+.head 6 -  ! Allocate a buffer
+.head 6 -  Set nLengthOfText = SalStrLength( p_sText )
+.head 6 -  Set nSizeOfText = nLengthOfText + 1
+.head 6 -  Set hAlloc = GlobalAlloc( GMEM_MOVEABLE, nSizeOfText )
+.head 6 +  If hAlloc = NUMBER_Null
+.head 7 -  Call CloseClipboard()
+.head 7 -  Call SalWaitCursor( FALSE )
+.head 7 -  Return FALSE
+.head 6 -  !
+.head 6 -  ! Copy string to the buffer
+.head 6 -  Set nhText = GlobalLock( hAlloc )
+.head 6 -  Call memcpy( nhText, p_sText, nLengthOfText )
+.head 6 -  !
+.head 6 -  ! Release buffer
+.head 6 -  Call GlobalUnlock( hAlloc )
+.head 6 -  !
+.head 6 -  ! Copy buffer to clipboard
+.head 6 -  Call SetClipboardData( CF_TEXT, hAlloc )
+.head 6 -  !
+.head 6 -  ! Close clipboard
+.head 6 -  Call CloseClipboard()
+.head 6 -  !
+.head 6 -  Call SalWaitCursor( FALSE )
+.head 6 -  Return TRUE
+.head 5 +  Else
+.head 6 -  Call SalWaitCursor( FALSE )
+.head 6 -  Return FALSE
+.head 3 +  Function: AutosizeColumns
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  Window Handle: hWndTbl
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Window Handle: hWndCol
+.head 4 +  Actions
+.head 5 -  ! ! Agregado el 15/Aug/2006 by Elvin Deras
+.head 5 -  Set hWndCol = SalGetFirstChild( hWndTbl, TYPE_TableColumn )
+.head 5 +  While hWndCol != hWndNULL
+.head 6 +  If SalIsWindowVisible(  hWndCol)
+.head 7 -  Call MTblAutoSizeColumn( hWndTbl, hWndCol, MTASC_ALLROWS | MTASC_SPLITROWS )
+.head 6 -  Set hWndCol = SalGetNextChild( hWndCol, TYPE_TableColumn)
+.head 3 +  Function: ExportToExcel
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  Window Handle: hWndTablaCopiar
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: nFilaCopiar
+.head 5 -  Number: nComa
+.head 5 -  !
+.head 5 -  Window Handle: hWndHijo
+.head 5 -  Window Handle: hWndTabla
+.head 5 -  Window Handle: hWndColumna
+.head 5 -  Long String: lsLinea
+.head 5 -  Long String: lsTexto
+.head 5 -  Long String: sPath
+.head 5 -  Long String: sArchivo
+.head 5 -  Number: nIndice
+.head 5 -  String: sFiltros[2]
+.head 5 -  File Handle: fhArchivo
+.head 5 -  !
+.head 5 -  Number: nOpcionClipboardArchivo
+.head 5 -  Number: nSize
+.head 4 +  Actions
+.head 5 -  !
+.head 5 -  Set nSize = 255
+.head 5 -  Call SalStrSetBufferLength( sPath, nSize )
+.head 5 -  Call GetEnvironmentVariableA( 'TEMP', sPath, nSize )
+.head 5 -  Set sPath = sPath || '\\temp' || SalFmtFormatDateTime( SalDateCurrent(), 'ddMMyyyyhhmmss' ) || ".xls"
+.head 5 +  ! If SalDlgSaveFile(  hWndNULL , "Introduzca el nombre del Archivo a Guardar", sFiltros, 2, nIndice, sArchivo,sPath)
+.head 6 -  !
+.head 6 +  If SalFileOpen( fhArchivo, sPath, OF_Create | OF_ReadWrite)
+.head 7 -  ! primero saquemos los titulos de las columnas
+.head 7 -  !
+.head 7 -  Set lsLinea=''
+.head 7 -  Set hWndColumna=SalGetFirstChild( hWndTablaCopiar, TYPE_TableColumn)
+.head 7 +  While hWndColumna != hWndNULL
+.head 8 +  If SalIsWindowVisible(  hWndColumna )
+.head 9 -  Set lsTexto=''
+.head 9 -  Call SalTblGetColumnTitle( hWndColumna,lsTexto,1000)
+.head 9 -  Set lsTexto=SalStrTrimX( lsTexto )
+.head 9 -  Set nComa=SalStrScan( lsTexto, "," )
+.head 9 +  If nComa != -1
+.head 10 -  Set lsTexto=SalStrReplaceX( lsTexto, nComa,1,"")
+.head 9 -  Call Elimina_TABSENTER_y_Demas_GLOBAL(lsTexto,lsTexto)
+.head 9 -  Set lsLinea=lsLinea || lsTexto || ","
+.head 8 -  Set hWndColumna=SalGetNextChild( hWndColumna, TYPE_TableColumn)
+.head 7 +  If not SalFilePutStr( fhArchivo, lsLinea )
+.head 8 -  Call SalMessageBox("No se pudo escribir la fila en dicho Archivo","ERROR",MB_Ok)
+.head 7 -  !
+.head 7 -  !
+.head 7 -  ! ahora saquemos los datos
+.head 7 -  Set nFilaCopiar=-1
+.head 7 +  While SalTblFindNextRow(hWndTablaCopiar,nFilaCopiar,0,0)
+.head 8 -  Call SalTblSetContext(hWndTablaCopiar,nFilaCopiar)
+.head 8 -  !
+.head 8 +  If (nCasoEstatusFila=ROW_Selected	and	SalTblQueryRowFlags( hWndTablaCopiar, nFilaCopiar,ROW_Selected ))
+or	nCasoEstatusFila=NUMBER_Null
+.head 9 -  Set lsLinea=''
+.head 9 -  Set hWndColumna=SalGetFirstChild( hWndTablaCopiar, TYPE_TableColumn)
+.head 9 +  While hWndColumna != hWndNULL
+.head 10 +  If SalIsWindowVisible(  hWndColumna )
+.head 11 -  Set lsTexto=''
+.head 11 -  Call SalGetWindowText( hWndColumna,lsTexto,1000)
+.head 11 -  Set nComa=SalStrScan( lsTexto, "," )
+.head 11 +  If nComa != -1
+.head 12 -  Set lsTexto=SalStrReplaceX( lsTexto, nComa,1,"")
+.head 11 -  Set lsLinea=lsLinea || lsTexto || ","
+.head 11 -  ! Set lsLinea=lsLinea || lsTexto || ","
+.head 10 -  Set hWndColumna=SalGetNextChild( hWndColumna, TYPE_TableColumn)
+.head 9 -  !
+.head 9 +  If not SalFilePutStr( fhArchivo, lsLinea )
+.head 10 -  Call SalMessageBox("No se pudo escribir la fila en dicho Archivo","ERROR",MB_Ok)
+.head 7 -  !
+.head 7 -  Call SalFileClose( fhArchivo )
+.head 7 -  Call ShellExecuteA( hWndNULL, '', sPath, '', '', 1 )
+.head 6 +  Else
+.head 7 -  Call SalMessageBox("Archivo no pudo ser creado en dicho Path","ERROR",MB_Ok)
+.head 6 -  !
+.head 5 -  !
+.head 5 +  If Not SalFileOpen( fhArchivo, sPath, OF_Create | OF_ReadWrite)
+.head 6 +  If Not SalDlgSaveFile(  hWndNULL , "Introduzca el nombre del Archivo a Guardar", sFiltros, 2, nIndice, sArchivo,sPath)
+.head 7 -  Call SalMessageBox("Archivo no pudo ser creado en dicho Path","ERROR",MB_Ok)
+.head 5 -  ! primero saquemos los titulos de las columnas
+.head 5 -  !
+.head 5 -  Set lsLinea = "	<HTML xmlns:o='urn:schemas-microsoft-com:office:office'
+		      xmlns:x='urn:schemas-microsoft-com:office:excel'
+		      xmlns='http://www.w3.org/TR/REC-html40'>
+		<HEAD>
+		  <meta http-equiv='Content-Type' content='application/vnd.ms-excel; charset=windows-1252'>
+		  <meta name=ProgId content=Excel.Sheet>
+		  <meta name=Generator content='Microsoft Excel 10'>
+		  <!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>QCS</x:Name>
+    <x:WorksheetOptions>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  <x:WindowHeight>8580</x:WindowHeight>
+  <x:WindowWidth>11340</x:WindowWidth>
+  <x:WindowTopX>480</x:WindowTopX>
+  <x:WindowTopY>45</x:WindowTopY>
+  <x:ProtectStructure>False</x:ProtectStructure>
+  <x:ProtectWindows>False</x:ProtectWindows>
+ </x:ExcelWorkbook>
+</xml><![endif]-->
+		</HEAD>
+		<BODY>
+		  <TABLE border='1'>
+		    <TR>"
+.head 5 +  If not SalFilePutStr( fhArchivo, lsLinea )
+.head 6 -  Call SalMessageBox("No se pudo escribir la fila en dicho Archivo","ERROR",MB_Ok)
+.head 5 -  Set lsLinea=''
+.head 5 -  Set hWndColumna=SalGetFirstChild( hWndTablaCopiar, TYPE_TableColumn)
+.head 5 +  While hWndColumna != hWndNULL
+.head 6 +  If SalIsWindowVisible(  hWndColumna )
+.head 7 -  Set lsTexto=''
+.head 7 -  Call SalTblGetColumnTitle( hWndColumna,lsTexto,1000)
+.head 7 -  Set lsTexto= "<TH bgcolor='silver'>" || SalStrTrimX( lsTexto ) || "</TH>"
+.head 7 -  ! Set nComa=SalStrScan( lsTexto, "," )
+.head 7 +  ! If nComa != -1
+.head 8 -  Set lsTexto=SalStrReplaceX( lsTexto, nComa,1,"")
+.head 7 -  Call Elimina_TABSENTER_y_Demas_GLOBAL(lsTexto,lsTexto)
+.head 7 -  Set lsLinea=lsLinea || lsTexto
+.head 6 -  Set hWndColumna=SalGetNextChild( hWndColumna, TYPE_TableColumn)
+.head 5 -  Set lsLinea = lsLinea || "</TR>"
+.head 5 +  If not SalFilePutStr( fhArchivo, lsLinea )
+.head 6 -  Call SalMessageBox("No se pudo escribir la fila en dicho Archivo","ERROR",MB_Ok)
+.head 5 -  !
+.head 5 -  !
+.head 5 -  ! ahora saquemos los datos
+.head 5 -  Set nFilaCopiar=-1
+.head 5 +  While SalTblFindNextRow(hWndTablaCopiar,nFilaCopiar,0,0)
+.head 6 -  Call SalTblSetContext(hWndTablaCopiar,nFilaCopiar)
+.head 6 -  !
+.head 6 +  If SalTblQueryRowFlags( hWndTablaCopiar, nFilaCopiar,ROW_Selected)
+.head 7 -  Set lsLinea='<TR>'
+.head 7 -  Set hWndColumna=SalGetFirstChild( hWndTablaCopiar, TYPE_TableColumn)
+.head 7 +  While hWndColumna != hWndNULL
+.head 8 +  If SalIsWindowVisible(  hWndColumna )
+.head 9 -  Set lsTexto=''
+.head 9 -  Call SalGetWindowText( hWndColumna,lsTexto,1000)
+.head 9 -  Set lsTexto = "<TD>" || lsTexto || "</TD>"
+.head 9 -  ! Set nComa=SalStrScan( lsTexto, "," )
+.head 9 +  ! If nComa != -1
+.head 10 -  Set lsTexto=SalStrReplaceX( lsTexto, nComa,1,"")
+.head 9 -  Set lsLinea=lsLinea || lsTexto
+.head 9 -  ! Set lsLinea=lsLinea || lsTexto || ","
+.head 8 -  Set hWndColumna=SalGetNextChild( hWndColumna, TYPE_TableColumn)
+.head 7 -  !
+.head 7 -  Set lsLinea = lsLinea || '</TR>'
+.head 7 +  If not SalFilePutStr( fhArchivo, lsLinea )
+.head 8 -  Call SalMessageBox("No se pudo escribir la fila en dicho Archivo","ERROR",MB_Ok)
+.head 5 -  !
+.head 5 -  Set lsLinea = "</TABLE> </BODY> </HTML>"
+.head 5 +  If not SalFilePutStr( fhArchivo, lsLinea )
+.head 6 -  Call SalMessageBox("No se pudo escribir la fila en dicho Archivo","ERROR",MB_Ok)
+.head 5 -  Call SalFileClose( fhArchivo )
+.head 5 -  Call ShellExecuteA( hWndNULL, '', sPath, '', '', 1 )
+.head 5 -  !
+.head 3 +  Function: Elimina_TABSENTER_y_Demas_GLOBAL
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  String:
+.head 4 +  Parameters
+.head 5 -  String: sCadena
+.head 5 -  Receive String: sCadenaDevuelve
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: n1
+.head 5 -  Number: nTamano
+.head 5 -  Number: nCaracter
+.head 5 -  String: sCaracter
+.head 5 -  String: sCaracter2
+.head 4 +  Actions
+.head 5 -  Set sCadenaDevuelve=''
+.head 5 -  Set nTamano = SalStrLength( sCadena )
+.head 5 -  Set n1 = 0
+.head 5 +  While n1 < nTamano
+.head 6 -  Set sCaracter = SalStrMidX( sCadena, n1,1 )
+.head 6 -  Set sCaracter2 = sCaracter
+.head 6 -  Set nCaracter = SalStrLop( sCaracter2 )
+.head 6 +  If nCaracter = 0 or nCaracter = 13 or nCaracter = 9 or nCaracter = 10
+.head 7 -  Set sCadenaDevuelve = sCadenaDevuelve || ' '
+.head 6 +  Else
+.head 7 -  Set sCadenaDevuelve = sCadenaDevuelve || sCaracter
+.head 6 -  Set n1 = n1 + 1
+.head 5 -  Return sCadenaDevuelve
+.head 2 +  Named Menus
+.head 3 +  Menu: TableMenu
+.head 4 -  Resource Id: 37730
+.head 4 -  Title: MenuTable
+.head 4 -  Description:
+.head 4 -  Enabled when:
+.head 4 -  Status Text:
+.head 4 -  Menu Item Name:
+.head 4 +  Menu Item: Copiar
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Resource Id: 37731
+.head 5 -  Keyboard Accelerator: (none)
+.head 5 -  Status Text:
+.head 5 +  Menu Settings
+.head 6 -  Enabled when:
+.head 6 -  Checked when:
+.head 5 +  Menu Actions
+.head 6 -  Call CopiarTabla( hWndForm, 0)
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Menu Item Name:
+.head 4 +  Menu Item: Copiar Todo
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Resource Id: 37732
+.head 5 -  Keyboard Accelerator: (none)
+.head 5 -  Status Text:
+.head 5 +  Menu Settings
+.head 6 -  Enabled when:
+.head 6 -  Checked when:
+.head 5 +  Menu Actions
+.head 6 -  Call CopiarTabla( hWndForm, 1)
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Menu Item Name:
+.head 4 +  Menu Item: Exportar a Excel
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Resource Id: 37733
+.head 5 -  Keyboard Accelerator: (none)
+.head 5 -  Status Text:
+.head 5 +  Menu Settings
+.head 6 -  Enabled when:
+.head 6 -  Checked when:
+.head 5 +  Menu Actions
+.head 6 -  ! Call ExportToExcel( hWndForm)
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 6 -  Call MTblExportToExcel(hWndForm, MTE_LNG_ENGLISH, "A1",  MTE_EXCEL_NEW_INSTANCE,  MTE_COL_HEADERS | MTE_COLORS | MTE_FONTS | MTE_GRID | MTE_SPLIT_ROWS | MTE_SHOW_STATUS, ROW_Selected,
+ROW_Hidden, COL_Visible, 0 )
+.head 5 -  Menu Item Name:
+.head 4 +  Menu Item: Seleccionar Todo
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Resource Id: 37734
+.head 5 -  Keyboard Accelerator: (none)
+.head 5 -  Status Text:
+.head 5 +  Menu Settings
+.head 6 -  Enabled when:
+.head 6 -  Checked when:
+.head 5 +  Menu Actions
+.head 6 -  Call SalSendMsg( hWndForm, SAM_CornerClick, 0,0 )
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Menu Item Name:
+.head 4 +  Menu Item: Ajustar Tamaño de columnas
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Resource Id: 37735
+.head 5 -  Keyboard Accelerator: (none)
+.head 5 -  Status Text:
+.head 5 +  Menu Settings
+.head 6 -  Enabled when:
+.head 6 -  Checked when:
+.head 5 +  Menu Actions
+.head 6 -  Call AutosizeColumns(hWndForm)
+.data CLASSPROPSSIZE
+0000: 1600
+.enddata
+.data CLASSPROPS
+0000: 4F4C455F4D454E55 5F47524F55500004 000000000000
+.enddata
+.head 5 -  Menu Item Name:
 .head 2 +  Class Definitions
 .data RESOURCE 0 0 1 3963532588
 0000: 0703000088010000 0000000000000000 0200000800FFFF01 00160000436C6173
@@ -1274,7 +2057,7 @@ values(:nUsuario,:dtHoy,:sHizo,:sOperacion)")
 .head 3 +  Pushbutton Class: pbMas
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -1317,7 +2100,7 @@ values(:nUsuario,:dtHoy,:sHizo,:sOperacion)")
 .head 3 +  Pushbutton Class: pbLimpia
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -1350,7 +2133,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbImprimir
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -1379,7 +2162,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbBusqueda
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -1408,7 +2191,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbMenos
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -1458,7 +2241,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbGrabar
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -1521,7 +2304,7 @@ validar los datos, estos son:
 .head 3 +  Pushbutton Class: pbSalir
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -1560,7 +2343,7 @@ validar los datos, estos son:
 .winattr
 .head 4 -  Title: &Grabar
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -1599,7 +2382,7 @@ validar los datos, estos son:
 .head 3 -  ! este es para los combos de los FORM's
 .head 3 +  Combo Box Class: cmbBaseCodigoFiltrado
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -1731,7 +2514,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 6 -  Call SalSendMsg(hWndItem,SAM_Validate,0,0)
 .head 3 +  Combo Box Class: cmbBaseCodigoFiltradoChar
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -1869,7 +2652,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  2.271"
 .head 6 -  Width Editable? Class Default
@@ -1907,7 +2690,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Word Wrap? Class Default
 .head 5 -  Vertical Scroll? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  5.686"
 .head 6 -  Width Editable? Class Default
@@ -1937,7 +2720,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  0.788"
 .head 6 -  Width Editable? Class Default
@@ -1971,7 +2754,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  0.943"
 .head 6 -  Width Editable? Class Default
@@ -2239,7 +3022,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBaseChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.629"
 .head 5 -  Width Editable? Class Default
@@ -2268,7 +3051,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChAgregarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -2303,7 +3086,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBorrarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -2346,7 +3129,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBuscarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -2375,7 +3158,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbBase
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -2417,7 +3200,7 @@ parte de combo box
 .head 5 -  System Menu? Class Default
 .head 5 -  Resizable? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  6.825"
 .head 6 -  Width Editable? Class Default
@@ -2487,7 +3270,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 4.088"
+.head 8 -  Left:   4.088"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  0.8"
 .head 8 -  Width Editable? Yes
@@ -2524,7 +3307,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 0.188"
+.head 8 -  Left:   0.188"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -2556,7 +3339,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 1.388"
+.head 8 -  Left:   1.388"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -2584,7 +3367,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 2.588"
+.head 8 -  Left:   2.588"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -2618,7 +3401,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 6.588"
+.head 8 -  Left:   6.588"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -2644,7 +3427,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 6 -  Class DLL Name:
 .head 6 -  Display Settings
 .head 7 -  Window Location and Size
-.head 8 -  Left: 0.488"
+.head 8 -  Left:   0.488"
 .head 8 -  Top:    0.156"
 .head 8 -  Width:  6.9"
 .head 8 -  Width Editable? Class Default
@@ -2806,7 +3589,7 @@ order by NOMBRE",TBL_FillAll)
 .head 6 -  Call SalBringWindowToTop( hWndForm)
 .head 3 +  List Box Class: clsList
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  3.288"
 .head 5 -  Width Editable? Class Default
@@ -3045,7 +3828,7 @@ order by NOMBRE",TBL_FillAll)
 .head 6 -  Call SalWaitCursor(FALSE)
 .head 3 +  Combo Box Class: cmbBaseCodigo
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -3296,6 +4079,55 @@ parte de combo box
 .head 7 +  If SalGetProfileString( "DataSource", "Name", "", sGlobalDB, strIniPath ) = 0
 .head 8 -  Call SalMessageBox( "Error al cargar la opcion de DataSource en el archivo " || strIniPath, "Advertencia", MB_Ok )
 .head 8 -  Call SalQuit()
+.head 3 +  Child Table Class: MyChildTable
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left:  
+.head 6 -  Top:   
+.head 6 -  Width:  6.388"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: 2.281"
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
+.head 4 -  Memory Settings
+.head 5 -  Maximum Rows in Memory: 10000
+.head 5 -  Discardable? Class Default
+.head 4 -  Next Class Child Key: 0
+.head 4 -  List in Tool Palette? Yes
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Description: Cambio hecho por Elvin Joel Deras Tábora
+Tabla Generica que agrega la siguiente funcionalidad
+	- Copiar al Clipboard
+	- Exportar a Excel
+	- Seleccionar todas las lineas(menu, CornerClick)
+Utiliza el PopopMenu TableMenu
+.head 4 -  Derived From
+.head 4 -  Contents
+.head 4 -  Class Variables
+.head 4 -  Instance Variables
+.head 4 -  Functions
+.head 4 +  Message Actions
+.head 5 +  On SAM_ContextMenu
+.head 6 -  Call SalContextMenuSetPopup( hWndForm, 'TableMenu', 0 )
+.head 5 +  On SAM_CornerClick
+.head 6 -  Call SalTblSetFlagsAnyRows( hWndForm, ROW_Selected, TRUE ,0, 0)
+.head 5 +  On SAM_Create
+.head 6 -  ! ! Agregado el 14/Aug/2006 by Elvin Deras
+.head 6 -  Call MTblSubClass ( hWndForm )
+.head 6 -  Call MTblEnableMWheelScroll( hWndForm, TRUE )
+.head 6 -  Call MTblEnableExtMsgs( hWndForm, TRUE )
+.head 5 +  On MTM_ColHdrSepLBtnDblClk
+.head 6 -  ! ! Agregado el 14/Aug/2006 by Elvin Deras
+.head 6 -  Call MTblAutoSizeColumn( hWndForm, SalNumberToWindowHandle( wParam ), MTASC_ALLROWS | MTASC_SPLITROWS )
 .head 2 +  Default Classes
 .head 3 -  MDI Window: cBaseMDI
 .head 3 -  Form Window:
@@ -3337,7 +4169,7 @@ parte de combo box
 .head 3 -  Visible at Design time? No
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left: 1.525"
+.head 4 -  Left:   1.525"
 .head 4 -  Top:    0.917"
 .head 4 -  Width:  4.563"
 .head 4 -  Width Editable? Yes
@@ -3370,7 +4202,7 @@ parte de combo box
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.525"
+.head 5 -  Left:   0.525"
 .head 5 -  Top:    1.0"
 .head 5 -  Width:  1.363"
 .head 5 -  Width Editable? Yes
@@ -3395,7 +4227,7 @@ parte de combo box
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.975"
+.head 6 -  Left:   1.975"
 .head 6 -  Top:    0.979"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -3419,7 +4251,7 @@ parte de combo box
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.5"
+.head 5 -  Left:   0.5"
 .head 5 -  Top:    1.271"
 .head 5 -  Width:  1.388"
 .head 5 -  Width Editable? Yes
@@ -3444,7 +4276,7 @@ parte de combo box
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.975"
+.head 6 -  Left:   1.975"
 .head 6 -  Top:    1.25"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -3472,7 +4304,7 @@ parte de combo box
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Aceptar
 .head 4 -  Window Location and Size
-.head 5 -  Left: 1.488"
+.head 5 -  Left:   1.488"
 .head 5 -  Top:    1.656"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Class Default
@@ -3527,7 +4359,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Cancelar
 .head 4 -  Window Location and Size
-.head 5 -  Left: 2.388"
+.head 5 -  Left:   2.388"
 .head 5 -  Top:    1.656"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Class Default
@@ -3552,7 +4384,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.829"
+.head 5 -  Left:   0.829"
 .head 5 -  Top:    0.512"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -3577,7 +4409,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.986"
+.head 6 -  Left:   1.986"
 .head 6 -  Top:    0.488"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Yes
@@ -3603,7 +4435,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.073"
 .head 5 -  Width:  4.3"
 .head 5 -  Width Editable? Yes
@@ -3636,7 +4468,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 1.388"
+.head 5 -  Left:   1.388"
 .head 5 -  Top:    0.24"
 .head 5 -  Width:  2.3"
 .head 5 -  Width Editable? Yes
@@ -3689,7 +4521,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? No
 .head 3 -  Window Location and Size
-.head 4 -  Left: 0.0"
+.head 4 -  Left:   0.0"
 .head 4 -  Top:    0.75"
 .head 4 -  Width:  7.125"
 .head 4 -  Width Editable? Yes
@@ -3826,7 +4658,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 7.188"
+.head 6 -  Left:   7.188"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -4055,7 +4887,7 @@ cualquier variable que envio al reporte
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left: Default
+.head 4 -  Left:   Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  8.1"
 .head 4 -  Width Editable? Yes
@@ -4120,7 +4952,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.688"
+.head 6 -  Left:   0.688"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Yes
@@ -4153,7 +4985,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.488"
+.head 6 -  Left:   1.488"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Yes
@@ -4181,7 +5013,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.088"
+.head 6 -  Left:   0.088"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -4209,7 +5041,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 6.988"
+.head 6 -  Left:   6.988"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -4235,7 +5067,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.688"
+.head 6 -  Left:   0.688"
 .head 6 -  Top:    0.406"
 .head 6 -  Width:  6.8"
 .head 6 -  Width Editable? Yes
@@ -4409,7 +5241,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.396"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -4442,7 +5274,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.729"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -4552,7 +5384,7 @@ cualquier variable que envio al reporte
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left: 0.0"
+.head 4 -  Left:   0.0"
 .head 4 -  Top:    0.031"
 .head 4 -  Width:  7.963"
 .head 4 -  Width Editable? Yes
@@ -4595,7 +5427,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title: &Copiar a Archivo
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.283"
+.head 6 -  Left:   0.283"
 .head 6 -  Top:    0.155"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -4629,7 +5461,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Copiar a &Portapapeles
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.983"
+.head 6 -  Left:   1.983"
 .head 6 -  Top:    0.155"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Yes
@@ -4654,7 +5486,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 6.488"
+.head 6 -  Left:   6.488"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -4678,7 +5510,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.288"
+.head 5 -  Left:   0.288"
 .head 5 -  Top:    0.345"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -4703,7 +5535,7 @@ cualquier variable que envio al reporte
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.588"
+.head 6 -  Left:   1.588"
 .head 6 -  Top:    0.321"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -4727,7 +5559,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.288"
+.head 5 -  Left:   0.288"
 .head 5 -  Top:    0.762"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -4746,7 +5578,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.073"
 .head 5 -  Width:  7.8"
 .head 5 -  Width Editable? Yes
@@ -4773,7 +5605,7 @@ cualquier variable que envio al reporte
 .head 5 -  Word Wrap? Yes
 .head 5 -  Vertical Scroll? Yes
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.588"
+.head 6 -  Left:   1.588"
 .head 6 -  Top:    0.823"
 .head 6 -  Width:  6.2"
 .head 6 -  Width Editable? Yes
@@ -4792,7 +5624,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.45"
+.head 5 -  Left:   0.45"
 .head 5 -  Top:    1.952"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -4820,7 +5652,7 @@ cualquier variable que envio al reporte
 .head 5 -  Word Wrap? No
 .head 5 -  Vertical Scroll? Yes
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.75"
+.head 6 -  Left:   1.75"
 .head 6 -  Top:    1.929"
 .head 6 -  Width:  7.233"
 .head 6 -  Width Editable? Yes
@@ -4839,7 +5671,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.188"
+.head 5 -  Left:   0.188"
 .head 5 -  Top:    2.677"
 .head 5 -  Width:  7.7"
 .head 5 -  Width Editable? Yes
