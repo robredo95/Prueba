@@ -2,12 +2,11 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
 0020: 0000000000470100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F7773166672
-0080: 6D4E6F7461734372 656469746F526570 6F7274650D436869 6C642057696E646F
-00A0: 777303706233
+0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773156672
+0080: 6D456E7472616461 73496E76656E7461 72696F
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000033433A5C 43656E747572615C 4249544D4150535C 4D7949636F6E735C
@@ -1937,6 +1936,37 @@ bOK = CStructCopyFromFarMem( nFarPointer, strData, nMaxLen )
 .head 6 -  Set sValue = 'Set nOutputValue = ' || sInputValue
 .head 6 -  Call SalCompileAndEvaluate( sValue, nError, nErrorPos, nReturn, sReturn, dReturn, hWndReturn, FALSE, SalContextCurrent(  ) )
 .head 6 -  Return nOutputValue
+.head 3 +  Function: GetParameterNValue
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  Number:
+.head 4 +  Parameters
+.head 5 -  String: pIdParameter
+.head 5 -  Number: pValueNumber
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  String: sValues[3]
+.head 5 -  Number: nReturnValue
+.head 4 +  Actions
+.head 5 -  Call GetParameteValues( pIdParameter, sValues[0], sValues[1], sValues[2] )
+.head 5 +  If pValueNumber > 3 Or pValueNumber < 1
+.head 6 -  Set pValueNumber = 1
+.head 5 -  Set nReturnValue = SalStrToNumber( sValues[pValueNumber-1] )
+.head 5 -  Return nReturnValue
+.head 5 -  ! !
+.head 3 +  Function: GetParameteValues
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  String: pIdParameter
+.head 5 -  Receive String: pReturnValue1
+.head 5 -  Receive String: pReturnValue2
+.head 5 -  Receive String: pReturnValue3
+.head 4 -  Static Variables
+.head 4 -  Local variables
+.head 4 +  Actions
+.head 5 -  Call SqlImmediate( "SELECT VALOR1, VALOR2, VALOR3 FROM SYS_PARAMETROS INTO :pReturnValue1, :pReturnValue2, :pReturnValue3 WHERE SID_PARAMETRO = :pIdParameter" ) 
+.head 5 -  Call SqlClearImmediate(  )
 .head 2 +  Named Menus
 .head 2 +  Class Definitions
 .data RESOURCE 0 0 1 2462196729
@@ -85813,7 +85843,7 @@ where	COD_ENTRADA=:dfCodigo into :CERRADA",bExists)
 .head 5 -  Background Color: Class Default
 .head 5 -  Input Mask: Class Default
 .head 4 -  Message Actions
-.head 3 -  Background Text: Descuento
+.head 3 -  Background Text: Descuento:
 .head 4 -  Resource Id: 20401
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -85821,9 +85851,9 @@ where	COD_ENTRADA=:dfCodigo into :CERRADA",bExists)
 .head 4 -  Window Location and Size
 .head 5 -  Left: 10.783"
 .head 5 -  Top:    5.345"
-.head 5 -  Width:  1.0"
+.head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.25"
+.head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
 .head 4 -  Visible? Yes
 .head 4 -  Justify: Left
@@ -85986,7 +86016,7 @@ where	COD_ENTRADA=:dfCodigo into :CERRADA",bExists)
 .head 5 -  Background Color: Class Default
 .head 5 -  Input Mask: Class Default
 .head 4 -  Message Actions
-.head 3 -  Background Text: Total
+.head 3 -  Background Text: Total:
 .head 4 -  Resource Id: 20402
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -85994,7 +86024,7 @@ where	COD_ENTRADA=:dfCodigo into :CERRADA",bExists)
 .head 4 -  Window Location and Size
 .head 5 -  Left: 10.783"
 .head 5 -  Top:    5.762"
-.head 5 -  Width:  0.6"
+.head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
@@ -86648,11 +86678,11 @@ verifica que exista el codigo de servicio.
 .head 4 -  Class:
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
-.head 4 -  Title: 12%
+.head 4 -  Title:
 .head 4 -  Window Location and Size
 .head 5 -  Left: 10.783"
 .head 5 -  Top:    5.488"
-.head 5 -  Width:  0.8"
+.head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.25"
 .head 5 -  Height Editable? Yes
@@ -87016,7 +87046,7 @@ order by
 .head 5 -  !
 .head 5 +  If SalIsButtonChecked(cbImpto)
 .head 6 -  !
-.head 6 -  Set dfImpuesto = nSubTotal*0.12
+.head 6 -  Set dfImpuesto = nSubTotal * (nISV / 100)
 .head 5 +  Else
 .head 6 -  Set dfImpuesto = 0
 .head 5 -  !
@@ -87368,12 +87398,15 @@ INSERT INTO
 .head 3 -  !
 .head 3 -  String: sRegresaCateg
 .head 3 -  String: sRegresaServ
+.head 3 -  Number: nISV
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
 .head 4 -  ! Set dfFechaIngreso=FechaHoy(2)
 .head 4 -  Set bNuevaEntrada=FALSE
 .head 4 -  Call SalSetFocus(pbNuevaEntrada)
 .head 4 -  Call SalCenterWindow( hWndForm )
+.head 4 -  Set nISV = GetParameterNValue( 'ISV', 1 )
+.head 4 -  Call SalSetWindowText( cbImpto, SalNumberToStrX( nISV, 1 ) || '%')
 .head 3 +  On MU_BORRAR
 .head 4 -  !
 .head 4 +  If SalStrLowerX(sNombreUsuario) = SalStrLowerX(dfCreadoPor)
