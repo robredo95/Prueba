@@ -2,17 +2,19 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400010000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
 0020: 0000000000470100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D00000000
+0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0000000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F7773166672
+0080: 6D4E6F7461734372 656469746F526570 6F7274650946756E 6374696F6E730A41
+00A0: 726D617251756572 79
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000033433A5C 43656E747572615C 4249544D4150535C 4D7949636F6E735C
-0020: 4F5349636F6E735C 69636F5C486F7370 6974616C2E69636F 2E453A5C50726F79
+0020: 4F5349636F6E735C 69636F5C486F7370 6974616C2E69636F 2E433A5C50726F79
 0040: 6563746F735C5347 485C62696E5C486F 73706974616C4265 7465736461537973
-0060: 74656D2E65786527 453A5C50726F7965 63746F735C534748 5C62696E5C636F6E
-0080: 74726F6C5F6D6564 69636F2E646C6C27 453A5C50726F7965 63746F735C534748
+0060: 74656D2E65786527 433A5C50726F7965 63746F735C534748 5C62696E5C636F6E
+0080: 74726F6C5F6D6564 69636F2E646C6C27 433A5C50726F7965 63746F735C534748
 00A0: 5C62696E5C636F6E 74726F6C5F6D6564 69636F2E61706300 0001010131433A5C
 00C0: 43656E747572615C 696E63656873615F 6D656469636F5C61 7070735C636F6E74
 00E0: 726F6C5F6D656469 636F2E72756E3143 3A5C43656E747572 615C696E63656873
@@ -250,6 +252,11 @@
 .head 3 -  Number: #0
 .head 3 -  Number: ###000
 .head 3 -  Number: #####000
+.head 3 -  Number: ###000
+.head 3 -  Number: ###000
+.head 3 -  Number: ###000
+.head 3 -  Number: ###000
+.head 3 -  Number: ###000
 .head 2 +  External Functions
 .head 3 +  Library name: STRCI15.DLL
 .head 4 +  Function: CStructGetByte
@@ -3326,6 +3333,8 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 6 -  Local variables
 .head 6 +  Actions
 .head 7 -  !
+.head 7 -  ! ! Se agrega esto antes para tener disponible el codigo de partida al momento de salvar el pago
+.head 7 -  Set CodigoPartida = GetCodigoPartida()
 .head 7 +  If IsHonorarioMedico 
 .head 8 -  Return SalvarNCHM()
 .head 7 +  Else
@@ -3415,6 +3424,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 7 -  Number: P_Monto
 .head 7 -  Number: P_Debe
 .head 7 -  Number: P_CorrelativoHonorario
+.head 7 -  Date/Time: P_Fecha
 .head 7 -  Boolean: P_IsHonorarioMedico
 .head 6 -  Static Variables
 .head 6 +  Local variables
@@ -3427,7 +3437,9 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 7 -  Set Monto = P_Monto
 .head 7 -  Set Debe = P_Debe
 .head 7 -  Set TIPO_PAGO = 4
-.head 7 -  Set Fecha = FechaHoy(2)
+.head 7 -  Set Fecha = P_Fecha
+.head 7 +  If P_Fecha = DATETIME_Null 
+.head 8 -  Set Fecha = FechaHoy(2)
 .head 7 -  Set Error = FALSE
 .head 7 -  ! Obtener el Codigo de la Nota de Credito
 .head 7 -  Set CodigoNC = GetCodigoNC( )
@@ -3868,7 +3880,7 @@ values(
 .head 3 -  Dialog Box:
 .head 3 -  Table Window:
 .head 3 -  Quest Window:
-.head 3 -  Data Field: dfBase
+.head 3 -  Data Field: dfNumero
 .head 3 -  Spin Field:
 .head 3 -  Multiline Field: cFlatMultilineField
 .head 3 -  Pushbutton: cFlatPushbutton
@@ -3883,7 +3895,7 @@ values(
 .head 3 -  Picture:
 .head 3 -  Vertical Scroll Bar:
 .head 3 -  Horizontal Scroll Bar:
-.head 3 -  Column: clsNumero
+.head 3 -  Column: clsDatos
 .head 3 -  Background Text:
 .head 3 -  Group Box:
 .head 3 -  Line:
@@ -24223,14 +24235,14 @@ order by
 .head 5 +  If tbl1.colHon = 'N'
 .head 6 -  Call RegistrarPagoFactInd()
 .head 6 +  If tbl1.colNC > 0 
-.head 7 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colMontoDebe - tbl1.colAbono, 0,  FALSE)
+.head 7 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colMontoDebe - tbl1.colAbono, 0,  DATETIME_Null, FALSE)
 .head 7 -  Set oNotaCredito.Descripcion = "NOTA DE CREDITO F-" || SalNumberToStrX(tbl1.colFactura, 0) || ", NO PAGADO POR SEGURO"
 .head 7 +  If oNotaCredito.Salvar() = FALSE
 .head 8 -  Call SalMessageBox(oNotaCredito.ErrorMessage, 'Notas Crédito', MB_Ok)
 .head 5 +  Else
 .head 6 -  Call RegistrarPagoHonInd()
 .head 6 +  If tbl1.colNC > 0 
-.head 7 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colDebeHon - tbl1.colAbono, tbl1.colCorrel, TRUE)
+.head 7 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colDebeHon - tbl1.colAbono, tbl1.colCorrel, DATETIME_Null,TRUE)
 .head 7 -  Set oNotaCredito.Descripcion = "NOTA DE CREDITO F-" || SalNumberToStrX(tbl1.colFactura, 0) || ", NO PAGADO POR SEGURO"
 .head 7 +  If oNotaCredito.Salvar() = FALSE
 .head 8 -  Call SalMessageBox(oNotaCredito.ErrorMessage, 'Notas Crédito', MB_Ok)
@@ -24240,14 +24252,14 @@ order by
 .head 7 -  Call RegistrarPagoFactInd()
 .head 7 -  Set dfFacturasAfectadas=dfFacturasAfectadas+1
 .head 7 +  If tbl1.colNC > 0 
-.head 8 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colMontoDebe - tbl1.colAbono, 0,  FALSE)
+.head 8 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colMontoDebe - tbl1.colAbono, 0,  DATETIME_Null, FALSE)
 .head 8 -  Set oNotaCredito.Descripcion = "NOTA DE CREDITO F-" || SalNumberToStrX(tbl1.colFactura, 0) || ", NO PAGADO POR SEGURO"
 .head 8 +  If oNotaCredito.Salvar() = FALSE
 .head 9 -  Call SalMessageBox(oNotaCredito.ErrorMessage, 'Notas Crédito', MB_Ok)
 .head 6 +  Else
 .head 7 -  Call RegistrarPagoHonInd()
 .head 7 +  If tbl1.colNC > 0 
-.head 8 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colDebeHon - tbl1.colAbono, tbl1.colCorrel, TRUE)
+.head 8 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colDebeHon - tbl1.colAbono, tbl1.colCorrel, DATETIME_Null, TRUE)
 .head 8 -  Set oNotaCredito.Descripcion = "NOTA DE CREDITO F-" || SalNumberToStrX(tbl1.colFactura, 0) || ", NO PAGADO POR SEGURO"
 .head 8 +  If oNotaCredito.Salvar() = FALSE
 .head 9 -  Call SalMessageBox(oNotaCredito.ErrorMessage, 'Notas Crédito', MB_Ok)
@@ -83585,7 +83597,7 @@ codigo de tabla para correlativo 515
 .head 7 -  !
 .head 7 -  ! Call SalDisableWindow(dfCheque)
 .head 7 -  Call dpFecha.SetSystemTime( 0, SalDateCurrent(  ) )
-.head 7 -  Call notaCredito1.Create(NUMBER_Null, NUMBER_Null, NUMBER_Null, NUMBER_Null, rbClinica )
+.head 7 -  Call notaCredito1.Create(NUMBER_Null, NUMBER_Null, NUMBER_Null, NUMBER_Null, DATETIME_Null, rbClinica )
 .head 7 -  Set dfCodigoNC = notaCredito1.CodigoNC
 .head 7 -  Call SalSetFocus(dfFactura)
 .head 4 +  Pushbutton: pbImprimir
@@ -122128,7 +122140,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 2 -  Title: Módulo de Notas de Crédito
 .head 2 -  Icon File:
 .head 2 -  Accesories Enabled? Yes
-.head 2 -  Visible? Yes
+.head 2 -  Visible? No
 .head 2 -  Display Settings
 .head 3 -  Display Style? Default
 .head 3 -  Visible at Design time? Yes
@@ -122141,9 +122153,9 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 3 -  Window Location and Size
 .head 4 -  Left: Default
 .head 4 -  Top:    Default
-.head 4 -  Width:  14.3"
+.head 4 -  Width:  17.083"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 8.036"
+.head 4 -  Height: 9.012"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -122462,9 +122474,9 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 5 -  Window Location and Size
 .head 6 -  Left: 1.883"
 .head 6 -  Top:    0.905"
-.head 6 -  Width:  8.0"
+.head 6 -  Width:  11.5"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.917"
+.head 6 -  Height: 0.583"
 .head 6 -  Height Editable? Class Default
 .head 5 -  Visible? Class Default
 .head 5 -  Font Name: Class Default
@@ -122490,8 +122502,8 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 2.567"
-.head 5 -  Top:    2.024"
+.head 5 -  Left: 2.583"
+.head 5 -  Top:    1.655"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: Class Default
@@ -122530,8 +122542,8 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 3.167"
-.head 5 -  Top:    2.024"
+.head 5 -  Left: 3.183"
+.head 5 -  Top:    1.655"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: Class Default
@@ -122559,11 +122571,11 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.167"
-.head 6 -  Top:    2.405"
-.head 6 -  Width:  13.217"
+.head 6 -  Left: 0.183"
+.head 6 -  Top:    2.071"
+.head 6 -  Width:  15.8"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Height: 1.708"
+.head 6 -  Height: 3.0"
 .head 6 -  Height Editable? Class Default
 .head 5 -  Visible? Class Default
 .head 5 -  Font Name: Class Default
@@ -122612,6 +122624,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 7 +  On SAM_Validate
 .head 8 -  !
 .head 8 -  Call CargarDatosFact()
+.head 8 -  Call SetTotalNC(  )
 .head 5 +  Column: colCodigoNC
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 0
@@ -122624,7 +122637,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.633"
+.head 6 -  Width:  1.8"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -122841,7 +122854,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  Class Default
+.head 6 -  Width:  1.433"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: #####000
 .head 6 -  Country: Class Default
@@ -122860,15 +122873,16 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 8 -  Ignore Case? Class Default
 .head 6 -  List Values
 .head 6 +  Message Actions
-.head 7 +  ! On SAM_Validate
-.head 8 +  ! If tbl1.colHon = 'N'
-.head 9 +  If tbl1.colNC > ( tbl1.colMontoDebe - tbl1.colAbono ) 
-.head 10 -  Set tbl1.colNC = tbl1.colMontoDebe - tbl1.colAbono 
-.head 10 -  Call SalMessageBox( 'El valor de la nota de crédito debe ser menor que ' || SalNumberToStrX(( tbl1.colMontoDebe - tbl1.colAbono ),2) , 'Hospital BETESDA', 0 )
-.head 8 +  Else 
-.head 9 +  If tbl1.colNC > ( tbl1.colDebeHon - tbl1.colAbono ) 
-.head 10 -  Set tbl1.colNC = tbl1.colDebeHon - tbl1.colAbono 
-.head 10 -  Call SalMessageBox( 'El valor de la nota de crédito debe ser menor que ' || SalNumberToStrX(( tbl1.colDebeHon - tbl1.colAbono ),2) , 'Hospital BETESDA', 0 )
+.head 7 +  On SAM_Validate
+.head 8 +  If tbl1.colHon = 'N'
+.head 9 +  If tbl1.colNC > tbl1.colMontoDebe 
+.head 10 -  Set tbl1.colNC = tbl1.colMontoDebe
+.head 10 -  Call SalMessageBox( 'El valor de la nota de crédito debe ser menor que ' || SalNumberToStrX( tbl1.colMontoDebe,2) , 'Hospital BETESDA', 0 )
+.head 8 +  Else
+.head 9 +  If tbl1.colNC > tbl1.colDebeHon
+.head 10 -  Set tbl1.colNC = tbl1.colDebeHon 
+.head 10 -  Call SalMessageBox( 'El valor de la nota de crédito debe ser menor que ' || SalNumberToStrX( tbl1.colDebeHon,2) , 'Hospital BETESDA', 0 )
+.head 8 -  Call SetTotalNC()
 .head 5 +  Column: colPago
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 0
@@ -122943,7 +122957,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  2.3"
+.head 6 -  Width:  3.55"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -123040,9 +123054,9 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.167"
-.head 6 -  Top:    4.786"
-.head 6 -  Width:  13.217"
+.head 6 -  Left: 0.183"
+.head 6 -  Top:    5.738"
+.head 6 -  Width:  15.8"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.619"
 .head 6 -  Height Editable? Class Default
@@ -123133,7 +123147,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  3.314"
+.head 6 -  Width:  4.233"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -123226,7 +123240,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  4.643"
+.head 6 -  Width:  5.617"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -123316,7 +123330,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Title: Adicionar todos los honorarios de esta factura
 .head 4 -  Window Location and Size
 .head 5 -  Left: 1.483"
-.head 5 -  Top:    4.405"
+.head 5 -  Top:    5.321"
 .head 5 -  Width:  4.0"
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.302"
@@ -123335,12 +123349,16 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 5 +  On SAM_Click
 .head 6 -  Call SalTblSetContext(tbl2,0)
 .head 6 -  Set xvar =0
-.head 6 -  Call SalTblSetFocusCell( tbl1, SalTblInsertRow( tbl1, TBL_MaxRow ), xfilas, 0, 1 )
-.head 6 -  Call PasarHon()
-.head 6 +  While SalTblFindNextRow(tbl2,xvar,0,0)
-.head 7 -  Call SalTblSetContext(tbl2,xvar)
+.head 6 +  If tbl2.colMontoDebe > 0
 .head 7 -  Call SalTblSetFocusCell( tbl1, SalTblInsertRow( tbl1, TBL_MaxRow ), xfilas, 0, 1 )
 .head 7 -  Call PasarHon()
+.head 6 +  While SalTblFindNextRow(tbl2,xvar,0,0)
+.head 7 -  Call SalTblSetContext(tbl2,xvar)
+.head 7 +  If tbl2.colMontoDebe > 0
+.head 8 -  Call SalTblSetFocusCell( tbl1, SalTblInsertRow( tbl1, TBL_MaxRow ), xfilas, 0, 1 )
+.head 8 -  Call PasarHon()
+.head 6 -  ! !
+.head 6 -  Call SetTotalNC(  )
 .head 3 -  Background Text: Monto
 .head 4 -  Resource Id: 40229
 .head 4 -  Class Child Ref Key: 0
@@ -123366,8 +123384,8 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.167"
-.head 5 -  Top:    4.464"
+.head 5 -  Left: 0.083"
+.head 5 -  Top:    5.345"
 .head 5 -  Width:  1.414"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.229"
@@ -123386,7 +123404,7 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class:
 .head 4 -  Window Location and Size
 .head 5 -  Left: 0.133"
-.head 5 -  Top:    2.071"
+.head 5 -  Top:    1.738"
 .head 5 -  Width:  2.35"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.229"
@@ -123406,9 +123424,9 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Window Location and Size
 .head 5 -  Left: 0.083"
 .head 5 -  Top:    0.071"
-.head 5 -  Width:  9.9"
+.head 5 -  Width:  13.4"
 .head 5 -  Width Editable? Yes
-.head 5 -  Height: 1.833"
+.head 5 -  Height: 1.5"
 .head 5 -  Height Editable? Yes
 .head 4 -  Visible? Yes
 .head 4 -  Font Name: Default
@@ -123441,11 +123459,11 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.05"
-.head 5 -  Top:    2.345"
-.head 5 -  Width:  13.433"
+.head 5 -  Left: 0.083"
+.head 5 -  Top:    1.988"
+.head 5 -  Width:  16.0"
 .head 5 -  Width Editable? Yes
-.head 5 -  Height: 1.81"
+.head 5 -  Height: 3.167"
 .head 5 -  Height Editable? Yes
 .head 4 -  Visible? Yes
 .head 4 -  Corners: Square
@@ -123459,9 +123477,9 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.117"
-.head 5 -  Top:    4.702"
-.head 5 -  Width:  13.367"
+.head 5 -  Left: 0.083"
+.head 5 -  Top:    5.655"
+.head 5 -  Width:  16.0"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 1.786"
 .head 5 -  Height Editable? Yes
@@ -123471,15 +123489,15 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Border Thickness: 1
 .head 4 -  Border Color: Default
 .head 4 -  Background Color: 3D Shadow Color
-.head 3 -  Background Text: *** Las Notas de crédito salvadas, no pueden ser modificadas *
+.head 3 -  Background Text: * Las Notas de crédito salvadas, no pueden ser modificadas *
 .head 4 -  Resource Id: 20984
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 7.383"
-.head 5 -  Top:    2.179"
-.head 5 -  Width:  6.1"
+.head 5 -  Left: 10.083"
+.head 5 -  Top:    1.821"
+.head 5 -  Width:  6.0"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
@@ -123490,6 +123508,55 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 4 -  Font Enhancement: Bold
 .head 4 -  Text Color: Default
 .head 4 -  Background Color: Maize
+.head 3 -  Background Text: Total:
+.head 4 -  Resource Id: 1324
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 13.683"
+.head 5 -  Top:    5.179"
+.head 5 -  Width:  0.6"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.167"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Data Field: dfTotalNC
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: dfNumero
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Data
+.head 5 -  Maximum Data Length: Class Default
+.head 5 -  Data Type: Class Default
+.head 5 -  Editable? No
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left: 14.283"
+.head 6 -  Top:    5.155"
+.head 6 -  Width:  1.8"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Border? Class Default
+.head 5 -  Justify: Class Default
+.head 5 -  Format: ###000
+.head 5 -  Country: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Input Mask: Class Default
+.head 4 -  Message Actions
 .head 2 +  Functions
 .head 3 +  Function: LimpiarCampos
 .head 4 -  Description:
@@ -123502,6 +123569,8 @@ where RECIBO=:dfRecibo and COD_FACTURA=:-999 into :Total_Recibo_Previo",bExists)
 .head 5 -  Set dfFecha = DATETIME_Null
 .head 5 -  Set cmbBanco = ''
 .head 5 -  Set dfTransferencia = ''
+.head 5 -  Set mlDescripcion = ''
+.head 5 -  Set dfTotalNC = 0
 .head 3 +  Function: CargarDatos
 .head 4 -  Description:
 .head 4 -  Returns
@@ -123549,19 +123618,33 @@ order by
 .head 5 -  Call SalTblSetContext(tbl1,0)
 .head 5 -  Set i =0
 .head 5 +  If tbl1.colCodigoNC = STRING_Null
-.head 6 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colNC, tbl1.colCorrel,  (tbl1.colHon = 'S') )
-.head 6 -  Set oNotaCredito.Descripcion = tbl1.colDescripcion
-.head 6 +  If oNotaCredito.Salvar() = FALSE
-.head 7 -  Call SalMessageBox(oNotaCredito.ErrorMessage, 'Notas Crédito', MB_Ok)
-.head 6 -  Set tbl1.colCodigoNC = oNotaCredito.CodigoNC
-.head 5 +  While SalTblFindNextRow(tbl1,i,0,0)
-.head 6 -  Call SalTblSetContext(tbl1,i)
-.head 6 +  If tbl1.colCodigoNC = STRING_Null
-.head 7 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colNC, tbl1.colCorrel,  (tbl1.colHon = 'S') )
+.head 6 +  If tbl1.colNC <= 0
+.head 7 -  Call SalMessageBox('No se pueden generar notas de crédito por un valor <= 0' , 'Notas Crédito', MB_Ok)
+.head 7 -  Call SalTblDeleteRow( tbl1, i, TBL_Adjust )
+.head 6 +  Else
+.head 7 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colNC, tbl1.colCorrel,  dfFecha, (tbl1.colHon = 'S') )
 .head 7 -  Set oNotaCredito.Descripcion = tbl1.colDescripcion
 .head 7 +  If oNotaCredito.Salvar() = FALSE
 .head 8 -  Call SalMessageBox(oNotaCredito.ErrorMessage, 'Notas Crédito', MB_Ok)
-.head 7 -  Set tbl1.colCodigoNC = oNotaCredito.CodigoNC
+.head 8 -  ! Call SalTblSetRowFlags( tbl1, i, ROW_MarkDeleted, TRUE )
+.head 8 -  Call SalTblDeleteRow( tbl1, i, TBL_Adjust )
+.head 7 +  Else
+.head 8 -  Set tbl1.colCodigoNC = oNotaCredito.CodigoNC
+.head 5 +  While SalTblFindNextRow(tbl1,i,0,0)
+.head 6 -  Call SalTblSetContext(tbl1,i)
+.head 6 +  If tbl1.colNC <= 0
+.head 7 -  Call SalMessageBox('No se pueden generar notas de crédito por un valor <= 0' , 'Notas Crédito', MB_Ok)
+.head 7 -  Call SalTblDeleteRow( tbl1, i, TBL_Adjust )
+.head 6 +  Else
+.head 7 +  If tbl1.colCodigoNC = STRING_Null
+.head 8 -  Call oNotaCredito.Create(tbl1.colFactura, tbl1.colNC, tbl1.colNC, tbl1.colCorrel, dfFecha,  (tbl1.colHon = 'S') )
+.head 8 -  Set oNotaCredito.Descripcion = tbl1.colDescripcion
+.head 8 +  If oNotaCredito.Salvar() = FALSE
+.head 9 -  Call SalMessageBox(oNotaCredito.ErrorMessage, 'Notas Crédito', MB_Ok)
+.head 9 -  ! Call SalTblDeleteRow( Window_Handle, Number, Number )
+.head 9 -  Call SalTblDeleteRow( tbl1, i, TBL_Adjust )
+.head 8 +  Else
+.head 9 -  Set tbl1.colCodigoNC = oNotaCredito.CodigoNC
 .head 3 +  Function: ActualizarMontoDebeFact
 .head 4 -  Description:
 .head 4 -  Returns
@@ -123751,6 +123834,14 @@ where	COD_FACTURA=:tbl1.colFactura into :xno_pago",bExists)
 .head 5 -  ! Call CargarDatos()
 .head 5 -  ! Set tbl1.colDebeHon=SalTblColumnSum(tbl2,5 ,0,0)
 .head 5 -  Set tbl1.colHon = 'N'
+.head 3 +  Function: SetTotalNC
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 -  Parameters
+.head 4 -  Static Variables
+.head 4 -  Local variables
+.head 4 +  Actions
+.head 5 -  Set dfTotalNC = SalTblColumnSum( tbl1, 9, 0, ROW_MarkDeleted )
 .head 2 -  Window Parameters
 .head 2 +  Window Variables
 .head 3 -  String: FECHA_PAGO
@@ -123815,13 +123906,12 @@ values(
 .head 5 -  Call RegistrarNC()
 .head 5 -  !
 .head 5 -  !
-.head 5 -  ! Call SalTblSetFlagsAnyRows( tbl1, ROW_New, TRUE, 0, 0 )
 .head 5 -  Call SalSetFocus(tbl1)
 .head 5 -  Call SqlPrepare(hSql1,"insert into TRANSFERENCIA_NC (CODIGO_NC,COD_TRANSFERENCIA)
 		values(:tbl1.colCodigoNC,:dfTransferencia)")
 .head 5 +  If SalTblDoInserts( tbl1,hSql1,TRUE)
 .head 6 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 5 -  Call SalMessageBox( 'Notas de Crédito', 'Notas de crédito generadas con éxito', 0 )
+.head 5 -  Call SalMessageBox('Notas de crédito generadas con éxito',  'Notas de Crédito', 0 )
 .head 3 +  On MU_ACTUALIZAR
 .head 4 -  !
 .head 4 -  Call SalWaitCursor( TRUE )
@@ -123893,6 +123983,7 @@ into
 			    order by 	
 				f.COD_FACTURA"
 				, TBL_FillAll )
+.head 4 -  Call SetTotalNC()
 .head 4 -  Call SalWaitCursor( FALSE )
 .head 1 +  Dialog Box: dlgConsultaTransferencias
 .head 2 -  Class:
@@ -124741,7 +124832,7 @@ into
 .head 6 -  Justify: Class Default
 .head 6 -  Width:  1.217"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Format: Class Default
+.head 6 -  Format: ###000
 .head 6 -  Country: Class Default
 .head 6 -  Input Mask: Class Default
 .head 6 -  Cell Options
@@ -124771,6 +124862,37 @@ into
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
 .head 6 -  Width:  0.783"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colPartida
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsDatos
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Cod. Partida
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? Class Default
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.65"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -124896,7 +125018,7 @@ into
 .head 6 -  Justify: Class Default
 .head 6 -  Width:  1.133"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Format: Class Default
+.head 6 -  Format: ###000
 .head 6 -  Country: Class Default
 .head 6 -  Input Mask: Class Default
 .head 6 -  Cell Options
@@ -124958,7 +125080,7 @@ into
 .head 6 -  Justify: Class Default
 .head 6 -  Width:  1.35"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Format: Class Default
+.head 6 -  Format: ###000
 .head 6 -  Country: Class Default
 .head 6 -  Input Mask: Class Default
 .head 6 -  Cell Options
@@ -124989,7 +125111,7 @@ into
 .head 6 -  Justify: Class Default
 .head 6 -  Width:  1.55"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Format: Class Default
+.head 6 -  Format: ###000
 .head 6 -  Country: Class Default
 .head 6 -  Input Mask: Class Default
 .head 6 -  Cell Options
@@ -125618,6 +125740,7 @@ into
 	p.FECHA,
 	p.MONTO,
 	'N', 
+	p.COD_PARTIDA,
 	t.COD_TRANSFERENCIA,
 	t.FECHA,
 	b.NOMBRE,
@@ -125642,6 +125765,7 @@ where
 	p.FECHA,
 	p.MONTO,
 	'S', 
+	p.COD_PARTIDA,
 	t.COD_TRANSFERENCIA,
 	t.FECHA,
 	b.NOMBRE,
