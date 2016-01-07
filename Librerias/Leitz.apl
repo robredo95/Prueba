@@ -10,16 +10,16 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .data VIEWINFO
 0000: 6F00000004000000 FFFF01000D004347 5458566965775374 6174650400010000
 0020: 0000000000D60000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE1FFFFFF160000 0016000000200200 000D010000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D0200000007436C 61737365730C4D79
-0080: 4368696C64546162 6C65000001800200 FFFFFFFF00000000 000000002C000000
-00A0: 0000000001000000 FFFFFFFFFFFFFFFF FCFFFFFFE9FFFFFF 2C0000002C000000
-00C0: 3602000023010000 0000000000000000 030000000F417070 6C69636174696F6E
-00E0: 4974656D07436C61 7373657307636C73 4C6F6E6700000000 0180040001000000
-0100: 0000000068000000 2C00000000000000 01000000FFFFFFFF FFFFFFFFFCFFFFFF
-0120: E9FFFFFF42000000 420000004C020000 3901000000000000 0000000004000000
-0140: 0F4170706C696361 74696F6E4974656D 07436C6173736573 07636C734C6F6E67
-0160: 0946756E6374696F 6E7300000000
+0040: FFE2FFFFFF160000 0016000000200200 000D010000010000 0001000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D0100000012496E 7465726E616C2046
+0080: 756E6374696F6E73 000001800200FFFF FFFF000000000000 00002C0000000000
+00A0: 000001000000FFFF FFFFFFFFFFFFFCFF FFFFE9FFFFFF2C00 00002C0000003602
+00C0: 0000230100000000 0000000000000300 00000F4170706C69 636174696F6E4974
+00E0: 656D07436C617373 657307636C734C6F 6E67000000000180 0400010000000000
+0100: 0000680000002C00 0000000000000100 0000FFFFFFFFFFFF FFFFFCFFFFFFE9FF
+0120: FFFF420000004200 00004C0200003901 0000000000000000 0000040000000F41
+0140: 70706C6963617469 6F6E4974656D0743 6C61737365730763 6C734C6F6E670946
+0160: 756E6374696F6E73 00000000
 .enddata
 .head 2 -  Outline Window State: Maximized
 .head 2 +  Outline Window Location and Size
@@ -33,7 +33,7 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .data VIEWSIZE
 0000: 8800
 .enddata
-.head 3 -  Left:   -0.013"
+.head 3 -  Left: -0.013"
 .head 3 -  Top:    0.0"
 .head 3 -  Width:  8.013"
 .head 3 -  Height: 4.969"
@@ -45,19 +45,19 @@ en table window,des/ha bilitar pantallas, manejo de errores
 0000: 0800
 .enddata
 .head 3 -  Visible? Yes
-.head 3 -  Left:   4.15"
+.head 3 -  Left: 4.15"
 .head 3 -  Top:    1.885"
 .head 3 -  Width:  3.8"
 .head 3 -  Height: 2.073"
 .head 2 +  Class Editor Location
 .head 3 -  Visible? No
-.head 3 -  Left:   0.3"
+.head 3 -  Left: 0.3"
 .head 3 -  Top:    0.042"
 .head 3 -  Width:  5.063"
 .head 3 -  Height: 2.719"
 .head 2 +  Tool Palette Location
 .head 3 -  Visible? No
-.head 3 -  Left:   5.9"
+.head 3 -  Left: 5.9"
 .head 3 -  Top:    1.031"
 .head 2 -  Fully Qualified External References? No
 .head 2 -  Reject Multiple Window Instances? No
@@ -1916,6 +1916,37 @@ or	nCasoEstatusFila=NUMBER_Null
 .head 7 -  Set sCadenaDevuelve = sCadenaDevuelve || sCaracter
 .head 6 -  Set n1 = n1 + 1
 .head 5 -  Return sCadenaDevuelve
+.head 3 +  Function: GetParameterNValue
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  Number:
+.head 4 +  Parameters
+.head 5 -  String: pIdParameter
+.head 5 -  Number: pValueNumber
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  String: sValues[3]
+.head 5 -  Number: nReturnValue
+.head 4 +  Actions
+.head 5 -  Call GetParameteValues( pIdParameter, sValues[0], sValues[1], sValues[2] )
+.head 5 +  If pValueNumber > 3 Or pValueNumber < 1
+.head 6 -  Set pValueNumber = 1
+.head 5 -  Set nReturnValue = SalStrToNumber( sValues[pValueNumber-1] )
+.head 5 -  Return nReturnValue
+.head 5 -  ! !
+.head 3 +  Function: GetParameteValues
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  String: pIdParameter
+.head 5 -  Receive String: pReturnValue1
+.head 5 -  Receive String: pReturnValue2
+.head 5 -  Receive String: pReturnValue3
+.head 4 -  Static Variables
+.head 4 -  Local variables
+.head 4 +  Actions
+.head 5 -  Call SqlImmediate( "SELECT VALOR1, VALOR2, VALOR3 FROM SYS_PARAMETROS INTO :pReturnValue1, :pReturnValue2, :pReturnValue3 WHERE SID_PARAMETRO = :pIdParameter" )
+.head 5 -  Call SqlClearImmediate(  )
 .head 2 +  Named Menus
 .head 3 +  Menu: TableMenu
 .head 4 -  Resource Id: 37730
@@ -2057,7 +2088,7 @@ ROW_Hidden, COL_Visible, 0 )
 .head 3 +  Pushbutton Class: pbMas
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -2100,7 +2131,7 @@ ROW_Hidden, COL_Visible, 0 )
 .head 3 +  Pushbutton Class: pbLimpia
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -2133,7 +2164,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbImprimir
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -2162,7 +2193,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbBusqueda
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -2191,7 +2222,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbMenos
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -2241,7 +2272,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbGrabar
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -2304,7 +2335,7 @@ validar los datos, estos son:
 .head 3 +  Pushbutton Class: pbSalir
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -2343,7 +2374,7 @@ validar los datos, estos son:
 .winattr
 .head 4 -  Title: &Grabar
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -2382,7 +2413,7 @@ validar los datos, estos son:
 .head 3 -  ! este es para los combos de los FORM's
 .head 3 +  Combo Box Class: cmbBaseCodigoFiltrado
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -2514,7 +2545,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 6 -  Call SalSendMsg(hWndItem,SAM_Validate,0,0)
 .head 3 +  Combo Box Class: cmbBaseCodigoFiltradoChar
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -2652,7 +2683,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:  
+.head 6 -  Left:
 .head 6 -  Top:   
 .head 6 -  Width:  2.271"
 .head 6 -  Width Editable? Class Default
@@ -2690,7 +2721,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Word Wrap? Class Default
 .head 5 -  Vertical Scroll? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:  
+.head 6 -  Left:
 .head 6 -  Top:   
 .head 6 -  Width:  5.686"
 .head 6 -  Width Editable? Class Default
@@ -2720,7 +2751,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:  
+.head 6 -  Left:
 .head 6 -  Top:   
 .head 6 -  Width:  0.788"
 .head 6 -  Width Editable? Class Default
@@ -2754,7 +2785,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:  
+.head 6 -  Left:
 .head 6 -  Top:   
 .head 6 -  Width:  0.943"
 .head 6 -  Width Editable? Class Default
@@ -3022,7 +3053,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBaseChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.629"
 .head 5 -  Width Editable? Class Default
@@ -3051,7 +3082,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChAgregarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -3086,7 +3117,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBorrarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -3129,7 +3160,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBuscarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -3158,7 +3189,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbBase
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -3200,7 +3231,7 @@ parte de combo box
 .head 5 -  System Menu? Class Default
 .head 5 -  Resizable? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:  
+.head 6 -  Left:
 .head 6 -  Top:   
 .head 6 -  Width:  6.825"
 .head 6 -  Width Editable? Class Default
@@ -3270,7 +3301,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left:   4.088"
+.head 8 -  Left: 4.088"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  0.8"
 .head 8 -  Width Editable? Yes
@@ -3307,7 +3338,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left:   0.188"
+.head 8 -  Left: 0.188"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3339,7 +3370,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left:   1.388"
+.head 8 -  Left: 1.388"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3367,7 +3398,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left:   2.588"
+.head 8 -  Left: 2.588"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3401,7 +3432,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left:   6.588"
+.head 8 -  Left: 6.588"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3427,7 +3458,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 6 -  Class DLL Name:
 .head 6 -  Display Settings
 .head 7 -  Window Location and Size
-.head 8 -  Left:   0.488"
+.head 8 -  Left: 0.488"
 .head 8 -  Top:    0.156"
 .head 8 -  Width:  6.9"
 .head 8 -  Width Editable? Class Default
@@ -3589,7 +3620,7 @@ order by NOMBRE",TBL_FillAll)
 .head 6 -  Call SalBringWindowToTop( hWndForm)
 .head 3 +  List Box Class: clsList
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  3.288"
 .head 5 -  Width Editable? Class Default
@@ -3828,7 +3859,7 @@ order by NOMBRE",TBL_FillAll)
 .head 6 -  Call SalWaitCursor(FALSE)
 .head 3 +  Combo Box Class: cmbBaseCodigo
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -4082,7 +4113,7 @@ parte de combo box
 .head 3 +  Child Table Class: MyChildTable
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:  
+.head 6 -  Left:
 .head 6 -  Top:   
 .head 6 -  Width:  6.388"
 .head 6 -  Width Editable? Class Default
@@ -4169,7 +4200,7 @@ Utiliza el PopopMenu TableMenu
 .head 3 -  Visible at Design time? No
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.525"
+.head 4 -  Left: 1.525"
 .head 4 -  Top:    0.917"
 .head 4 -  Width:  4.563"
 .head 4 -  Width Editable? Yes
@@ -4202,7 +4233,7 @@ Utiliza el PopopMenu TableMenu
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.525"
+.head 5 -  Left: 0.525"
 .head 5 -  Top:    1.0"
 .head 5 -  Width:  1.363"
 .head 5 -  Width Editable? Yes
@@ -4227,7 +4258,7 @@ Utiliza el PopopMenu TableMenu
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.975"
+.head 6 -  Left: 1.975"
 .head 6 -  Top:    0.979"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -4251,7 +4282,7 @@ Utiliza el PopopMenu TableMenu
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.5"
+.head 5 -  Left: 0.5"
 .head 5 -  Top:    1.271"
 .head 5 -  Width:  1.388"
 .head 5 -  Width Editable? Yes
@@ -4276,7 +4307,7 @@ Utiliza el PopopMenu TableMenu
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.975"
+.head 6 -  Left: 1.975"
 .head 6 -  Top:    1.25"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -4304,7 +4335,7 @@ Utiliza el PopopMenu TableMenu
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Aceptar
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.488"
+.head 5 -  Left: 1.488"
 .head 5 -  Top:    1.656"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Class Default
@@ -4359,7 +4390,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Cancelar
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.388"
+.head 5 -  Left: 2.388"
 .head 5 -  Top:    1.656"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Class Default
@@ -4384,7 +4415,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.829"
+.head 5 -  Left: 0.829"
 .head 5 -  Top:    0.512"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -4409,7 +4440,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.986"
+.head 6 -  Left: 1.986"
 .head 6 -  Top:    0.488"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Yes
@@ -4435,7 +4466,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.088"
+.head 5 -  Left: 0.088"
 .head 5 -  Top:    0.073"
 .head 5 -  Width:  4.3"
 .head 5 -  Width Editable? Yes
@@ -4468,7 +4499,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.388"
+.head 5 -  Left: 1.388"
 .head 5 -  Top:    0.24"
 .head 5 -  Width:  2.3"
 .head 5 -  Width Editable? Yes
@@ -4521,7 +4552,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? No
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.0"
+.head 4 -  Left: 0.0"
 .head 4 -  Top:    0.75"
 .head 4 -  Width:  7.125"
 .head 4 -  Width Editable? Yes
@@ -4658,7 +4689,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.188"
+.head 6 -  Left: 7.188"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -4887,7 +4918,7 @@ cualquier variable que envio al reporte
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   Default
+.head 4 -  Left: Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  8.1"
 .head 4 -  Width Editable? Yes
@@ -4952,7 +4983,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.688"
+.head 6 -  Left: 0.688"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Yes
@@ -4985,7 +5016,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.488"
+.head 6 -  Left: 1.488"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Yes
@@ -5013,7 +5044,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.088"
+.head 6 -  Left: 0.088"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5041,7 +5072,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   6.988"
+.head 6 -  Left: 6.988"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5067,7 +5098,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.688"
+.head 6 -  Left: 0.688"
 .head 6 -  Top:    0.406"
 .head 6 -  Width:  6.8"
 .head 6 -  Width Editable? Yes
@@ -5241,7 +5272,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.088"
+.head 5 -  Left: 0.088"
 .head 5 -  Top:    0.396"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -5274,7 +5305,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.088"
+.head 5 -  Left: 0.088"
 .head 5 -  Top:    0.729"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -5384,7 +5415,7 @@ cualquier variable que envio al reporte
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.0"
+.head 4 -  Left: 0.0"
 .head 4 -  Top:    0.031"
 .head 4 -  Width:  7.963"
 .head 4 -  Width Editable? Yes
@@ -5427,7 +5458,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title: &Copiar a Archivo
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.283"
+.head 6 -  Left: 0.283"
 .head 6 -  Top:    0.155"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -5461,7 +5492,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Copiar a &Portapapeles
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.983"
+.head 6 -  Left: 1.983"
 .head 6 -  Top:    0.155"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Yes
@@ -5486,7 +5517,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   6.488"
+.head 6 -  Left: 6.488"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -5510,7 +5541,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.288"
+.head 5 -  Left: 0.288"
 .head 5 -  Top:    0.345"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -5535,7 +5566,7 @@ cualquier variable que envio al reporte
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.588"
+.head 6 -  Left: 1.588"
 .head 6 -  Top:    0.321"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -5559,7 +5590,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.288"
+.head 5 -  Left: 0.288"
 .head 5 -  Top:    0.762"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -5578,7 +5609,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.088"
+.head 5 -  Left: 0.088"
 .head 5 -  Top:    0.073"
 .head 5 -  Width:  7.8"
 .head 5 -  Width Editable? Yes
@@ -5605,7 +5636,7 @@ cualquier variable que envio al reporte
 .head 5 -  Word Wrap? Yes
 .head 5 -  Vertical Scroll? Yes
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.588"
+.head 6 -  Left: 1.588"
 .head 6 -  Top:    0.823"
 .head 6 -  Width:  6.2"
 .head 6 -  Width Editable? Yes
@@ -5624,7 +5655,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.45"
+.head 5 -  Left: 0.45"
 .head 5 -  Top:    1.952"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -5652,7 +5683,7 @@ cualquier variable que envio al reporte
 .head 5 -  Word Wrap? No
 .head 5 -  Vertical Scroll? Yes
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.75"
+.head 6 -  Left: 1.75"
 .head 6 -  Top:    1.929"
 .head 6 -  Width:  7.233"
 .head 6 -  Width Editable? Yes
@@ -5671,7 +5702,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.188"
+.head 5 -  Left: 0.188"
 .head 5 -  Top:    2.677"
 .head 5 -  Width:  7.7"
 .head 5 -  Width Editable? Yes

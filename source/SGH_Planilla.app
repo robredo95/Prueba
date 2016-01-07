@@ -4,9 +4,8 @@
 .data VIEWINFO
 0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400010000
 0020: 0000000000E20000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000008C0200 00E0010000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D03000000075769 6E646F77730C6672
-0080: 6D5072696E636970 616C0B57696E646F 77204D656E75
+0040: FFE2FFFFFF000000 00000000008C0200 00E0010000010000 0001000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D00000000
 .enddata
 .data DT_MAKERUNDLG
 0000: 000000000027433A 5C43656E74757261 5C42455445534441 5C42494E5C534748
@@ -250,19 +249,21 @@
 .head 5 -  Number: pSueldo
 .head 5 -  String: pFormaPago
 .head 5 -  Boolean: pEsQuincena
+.head 5 -  Number: pTecho
+.head 5 -  Number: pPorcentaje
 .head 4 -  Static Variables
 .head 4 +  Local variables
 .head 5 -  Number: nIHSS
 .head 5 -  Number: nSueldo
 .head 4 +  Actions
 .head 5 -  Set nSueldo = pSueldo
-.head 5 +  If pSueldo >= 7000
-.head 6 -  Set nSueldo = 7000
+.head 5 +  If pSueldo >= pTecho
+.head 6 -  Set nSueldo = pTecho
 .head 5 +  If pFormaPago='MENSUAL'
-.head 6 -  Set nIHSS = nSueldo * 0.035
+.head 6 -  Set nIHSS = nSueldo * pPorcentaje
 .head 5 +  Else
 .head 6 +  If pEsQuincena = TRUE
-.head 7 -  Set nIHSS = nSueldo * 0.035
+.head 7 -  Set nIHSS = nSueldo * pPorcentaje
 .head 6 +  Else
 .head 7 -  Set nIHSS = 0
 .head 5 -  Return nIHSS
@@ -9816,7 +9817,7 @@ into :colcmbIngDed  " ,bExists)
 .head 11 -  Break
 .head 10 +  Case 7
 .head 11 -  ! SEGURO (IHSS)
-.head 11 -  Set tbl4.monto = GetIHSS( tbl1.sueldo_mensual , cmbFormaPago, cbQuincena )
+.head 11 -  Set tbl4.monto = GetIHSS( tbl1.sueldo_mensual , cmbFormaPago, cbQuincena, nIHSS_TECHO, nIHSS_PORCENTAJE )
 .head 11 -  Break
 .head 10 +  Case 8
 .head 11 -  ! PRESTAMO
@@ -9944,7 +9945,7 @@ A.COD_INGDED = :tbl4.cod_ingded  into :tbl4.tipo,:factor " )
 .head 10 -  Break
 .head 9 +  Case 7
 .head 10 -  ! SEGURO (IHSS)
-.head 10 -  Set tbl4.monto = GetIHSS( tbl1.sueldo_mensual , cmbFormaPago, cbQuincena )
+.head 10 -  Set tbl4.monto = GetIHSS( tbl1.sueldo_mensual , cmbFormaPago, cbQuincena, nIHSS_TECHO, nIHSS_PORCENTAJE )
 .head 10 -  Break
 .head 9 +  Case 8
 .head 10 -  ! PRESTAMO
@@ -11205,7 +11206,7 @@ descripcion,subtotal) values
 .head 8 -  Call SqlPrepareAndExecute(hSql3,"commit")
 .head 8 -  Break
 .head 7 +  Case 7 ! SEGURO (IHSS)
-.head 8 -  Set SEGURO = GetIHSS( sueldo, cmbFormaPago, cbQuincena )
+.head 8 -  Set SEGURO = GetIHSS( sueldo, cmbFormaPago, cbQuincena, nIHSS_TECHO, nIHSS_PORCENTAJE )
 .head 8 +  If SEGURO > 0
 .head 9 -  Call SqlPrepareAndExecute(hSql3,"insert into det_planilla_det 
 (correlativo,cod_ingded,cod_planilla,cod_empleado,cantidad,monto,fecha,
@@ -11681,6 +11682,9 @@ into
 .head 3 -  Number: nInicio
 .head 3 -  Boolean: bBlanco
 .head 3 -  Window Handle: nFila
+.head 3 -  String: sValues[3]
+.head 3 -  Number: nIHSS_TECHO
+.head 3 -  Number: nIHSS_PORCENTAJE
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
 .head 4 -  Call SalListAdd( cmbFormaPago, 'QUINCENAL' )
@@ -11693,6 +11697,9 @@ into
 .head 4 -  Call SalDisableWindow( pbBIngDed2)
 .head 4 -  Call SalTblInsertRow( tbl3, linea )
 .head 4 -  Call SalTblSetLockedColumns( tbl1, 3 )
+.head 4 -  Call GetParameteValues( 'IHSS', sValues[0], sValues[1], sValues[2] )
+.head 4 -  Set nIHSS_TECHO = SalStrToNumber( sValues[0] )
+.head 4 -  Set nIHSS_PORCENTAJE = SalStrToNumber( sValues[1] ) / 100
 .head 3 +  On MU_GRABAR
 .head 4 -  Call SqlExists("Select	COD_PLANILLA
 from	PLANILLA

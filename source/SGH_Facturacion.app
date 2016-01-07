@@ -2,11 +2,10 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400010000
 0020: 0000000000470100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
 0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773156672
-0080: 6D456E7472616461 73496E76656E7461 72696F
+0060: 000F4170706C6963 6174696F6E497465 6D00000000
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000033433A5C 43656E747572615C 4249544D4150535C 4D7949636F6E735C
@@ -1936,37 +1935,6 @@ bOK = CStructCopyFromFarMem( nFarPointer, strData, nMaxLen )
 .head 6 -  Set sValue = 'Set nOutputValue = ' || sInputValue
 .head 6 -  Call SalCompileAndEvaluate( sValue, nError, nErrorPos, nReturn, sReturn, dReturn, hWndReturn, FALSE, SalContextCurrent(  ) )
 .head 6 -  Return nOutputValue
-.head 3 +  Function: GetParameterNValue
-.head 4 -  Description:
-.head 4 +  Returns
-.head 5 -  Number:
-.head 4 +  Parameters
-.head 5 -  String: pIdParameter
-.head 5 -  Number: pValueNumber
-.head 4 -  Static Variables
-.head 4 +  Local variables
-.head 5 -  String: sValues[3]
-.head 5 -  Number: nReturnValue
-.head 4 +  Actions
-.head 5 -  Call GetParameteValues( pIdParameter, sValues[0], sValues[1], sValues[2] )
-.head 5 +  If pValueNumber > 3 Or pValueNumber < 1
-.head 6 -  Set pValueNumber = 1
-.head 5 -  Set nReturnValue = SalStrToNumber( sValues[pValueNumber-1] )
-.head 5 -  Return nReturnValue
-.head 5 -  ! !
-.head 3 +  Function: GetParameteValues
-.head 4 -  Description:
-.head 4 -  Returns
-.head 4 +  Parameters
-.head 5 -  String: pIdParameter
-.head 5 -  Receive String: pReturnValue1
-.head 5 -  Receive String: pReturnValue2
-.head 5 -  Receive String: pReturnValue3
-.head 4 -  Static Variables
-.head 4 -  Local variables
-.head 4 +  Actions
-.head 5 -  Call SqlImmediate( "SELECT VALOR1, VALOR2, VALOR3 FROM SYS_PARAMETROS INTO :pReturnValue1, :pReturnValue2, :pReturnValue3 WHERE SID_PARAMETRO = :pIdParameter" ) 
-.head 5 -  Call SqlClearImmediate(  )
 .head 2 +  Named Menus
 .head 2 +  Class Definitions
 .data RESOURCE 0 0 1 2462196729
@@ -104573,7 +104541,7 @@ los datos de la ventana
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: Class Default
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -104616,7 +104584,7 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: Class Default
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -104653,7 +104621,7 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 2.833"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Font Name: Default
 .head 5 -  Font Size: Default
 .head 5 -  Font Enhancement: Default
@@ -105494,20 +105462,20 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 4 -  Message Actions
 .head 3 +  Picture: Tabs
 .data CLASSPROPS
-0000: 5461624C6566744D 617267696E000200 3000005461624375 7272656E74000D00
-0020: 7461625365727669 63696F7300005461 62426F74746F6D4D 617267696E000200
-0040: 3000005461625061 6765436F756E7400 0200310000546162 4C6162656C730041
-0060: 0020202020536572 766963696F732020 2020092020202048 6F6E6F726172696F
-0080: 7320202020092020 2020436C69656E74 6520202020095265 73706F6E7361626C
-00A0: 6500005461624E61 6D65730032007461 6253657276696369 6F7309746162486F
-00C0: 6E6172696F730974 6162436C69656E74 6509746162526573 706F6E73616C6500
-00E0: 0054616252696768 744D617267696E00 0200300000546162 447261775374796C
-0100: 65000B0057696E39 355374796C650000 546162466F726D50 6167657300040009
-0120: 0909000054616254 6F704D617267696E 0002003000005461 624F7269656E7461
-0140: 74696F6E00010000 0000000000000000 0000000000000000 00000000000000
+0000: 5461624F7269656E 746174696F6E0001 000000546162546F 704D617267696E00
+0020: 0200300000546162 466F726D50616765 7300040009090900 0054616244726177
+0040: 5374796C65000B00 57696E3935537479 6C65000054616252 696768744D617267
+0060: 696E000200300000 5461624E616D6573 0032007461625365 72766963696F7309
+0080: 746162486F6E6172 696F730974616243 6C69656E74650974 6162526573706F6E
+00A0: 73616C6500005461 624C6162656C7300 4100202020205365 72766963696F7320
+00C0: 2020200920202020 486F6E6F72617269 6F73202020200920 202020436C69656E
+00E0: 7465202020200952 6573706F6E736162 6C65000054616250 616765436F756E74
+0100: 0002003100005461 62426F74746F6D4D 617267696E000200 3000005461624375
+0120: 7272656E74000E00 746162526573706F 6E73616C65000054 61624C6566744D61
+0140: 7267696E00020030 0000000000000000 0000000000000000 0000000000000000
 .enddata
 .data CLASSPROPSSIZE
-0000: 5F01
+0000: 6001
 .enddata
 .data INHERITPROPS
 0000: 0100
@@ -105563,7 +105531,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.5"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Keyboard Accelerator: F5
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -105612,7 +105580,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.583"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Font Name: Default
 .head 5 -  Font Size: Default
 .head 5 -  Font Enhancement: Default
@@ -106820,7 +106788,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.25"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
@@ -106854,7 +106822,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -106895,7 +106863,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Uppercase
@@ -106930,7 +106898,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.226"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -106964,7 +106932,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -106999,7 +106967,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107033,7 +107001,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: dd/MM/yyyy
@@ -107068,7 +107036,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.226"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107102,7 +107070,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107137,7 +107105,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.226"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107171,7 +107139,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107206,7 +107174,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.321"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107240,7 +107208,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107275,7 +107243,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.25"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107309,7 +107277,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -107344,7 +107312,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107372,7 +107340,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107406,7 +107374,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107450,7 +107418,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 1.012"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Font Name: Arial
 .head 5 -  Font Size: 9
 .head 5 -  Font Enhancement: None
@@ -107481,7 +107449,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107510,7 +107478,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107545,7 +107513,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -107582,7 +107550,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.452"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -107624,7 +107592,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107653,7 +107621,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.893"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Editable? Class Default
 .head 4 -  String Type: Class Default
 .head 4 -  Maximum Data Length: Class Default
@@ -107728,7 +107696,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.45"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
