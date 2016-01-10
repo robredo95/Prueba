@@ -2,10 +2,12 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400010000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
 0020: 0000000000E20000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000008C0200 00E0010000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D00000000
+0040: FFE2FFFFFF000000 00000000008C0200 00E0010000010000 0000000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D06000000075769 6E646F77730B6672
+0080: 6D506C616E696C6C 610D4368696C6420 57696E646F777304 74626C3407436F6C
+00A0: 756D6E730A636F6C 46616374757261
 .enddata
 .data DT_MAKERUNDLG
 0000: 000000000027433A 5C43656E74757261 5C42455445534441 5C42494E5C534748
@@ -267,6 +269,226 @@
 .head 6 +  Else
 .head 7 -  Set nIHSS = 0
 .head 5 -  Return nIHSS
+.head 3 +  Function: NumToLetras
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  String:
+.head 4 +  Parameters
+.head 5 -  Number: nNum
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  String: sNumero
+.head 5 -  String: sBillones
+.head 5 -  String: sMilesMillones
+.head 5 -  String: sMillones
+.head 5 -  String: sMiles
+.head 5 -  String: sCienes
+.head 5 -  String: sCentavos
+.head 5 -  String: sTemporal
+.head 4 +  Actions
+.head 5 -  Set sNumero=SalFmtFormatNumber( nNum, "000000000000000.00")
+.head 5 -  Set sBillones=SalStrMidX( sNumero, 0, 3 )
+.head 5 -  Set sMilesMillones=SalStrMidX( sNumero, 3, 3 )
+.head 5 -  Set sMillones=SalStrMidX( sNumero, 6, 3 )
+.head 5 -  Set sMiles=SalStrMidX( sNumero, 9, 3 )
+.head 5 -  Set sCienes=SalStrMidX( sNumero, 12, 3 )
+.head 5 -  Set sCentavos=SalStrMidX( sNumero, 16, 2 )
+.head 5 -  Set sNumero=''
+.head 5 -  ! Billones
+.head 5 -  Set sTemporal=NumToLetras999( sBillones )
+.head 5 +  If sTemporal!=""
+.head 6 +  If sTemporal="UN"
+.head 7 -  Set sNumero = sTemporal || " BILLON "
+.head 6 +  Else
+.head 7 -  Set sNumero = sTemporal || " BILLONES "
+.head 5 -  ! Miles de Millones
+.head 5 -  Set sTemporal=NumToLetras999( sMilesMillones )
+.head 5 +  If sTemporal!=''
+.head 6 +  If sTemporal="UN"
+.head 7 -  Set sNumero = sNumero || " MIL "
+.head 6 +  Else
+.head 7 -  Set sNumero = sNumero || sTemporal || " MIL "
+.head 6 +  If sMillones="000"
+.head 7 -  Set sNumero = sNumero || " MILLONES "
+.head 5 -  ! Millones
+.head 5 -  Set sTemporal=NumToLetras999( sMillones )
+.head 5 +  If sTemporal!=''
+.head 6 +  If sTemporal="UN"
+.head 7 -  Set sNumero = sNumero || sTemporal || " MILLON "
+.head 6 +  Else
+.head 7 -  Set sNumero = sNumero || sTemporal || " MILLONES "
+.head 5 -  ! Miles
+.head 5 -  Set sTemporal=NumToLetras999( sMiles )
+.head 5 +  If sTemporal!=''
+.head 6 +  If sTemporal="UN"
+.head 7 -  Set sNumero = sNumero ||  " MIL "
+.head 6 +  Else
+.head 7 -  Set sNumero = sNumero || sTemporal || " MIL "
+.head 5 -  ! Cienes
+.head 5 -  Set sTemporal=NumToLetras999( sCienes )
+.head 5 +  If sTemporal!=''
+.head 6 -  Set sNumero = sNumero ||  sTemporal
+.head 5 +  If sNumero = "UN"
+.head 6 -  Set sNumero = sNumero || " LEMPIRA"
+.head 5 +  Else
+.head 6 -  Set sNumero = sNumero || " LEMPIRAS"
+.head 5 +  If sCentavos="00"
+.head 6 -  Set sNumero= sNumero || " EXACTOS"
+.head 5 +  Else
+.head 6 -  Set sTemporal=NumToLetras999( '0' || sCentavos )
+.head 6 +  If sTemporal="UN"
+.head 7 -  Set sNumero= sNumero || " CON " || sTemporal || " CENTAVO"
+.head 6 +  Else
+.head 7 -  Set sNumero= sNumero || " CON " || sTemporal || " CENTAVOS"
+.head 5 -  Return sNumero
+.head 3 +  Function: NumToLetras999
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  String:
+.head 4 +  Parameters
+.head 5 -  String: sNum
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: nNumero
+.head 5 -  String: sTemporal
+.head 4 +  Actions
+.head 5 -  Set sTemporal=''
+.head 5 +  If sNum="000"
+.head 6 -  Return ""
+.head 5 +  Else
+.head 6 +  If SalStrLength( sNum )=1
+.head 7 -  Set nNumero=SalStrToNumber(sNum)
+.head 7 +  Select Case nNumero
+.head 8 -  Case 0
+.head 8 +  Case 1
+.head 9 -  Return "UN"
+.head 8 +  Case 2
+.head 9 -  Return "DOS"
+.head 8 +  Case 3
+.head 9 -  Return "TRES"
+.head 8 +  Case 4
+.head 9 -  Return "CUATRO"
+.head 8 +  Case 5
+.head 9 -  Return "CINCO"
+.head 8 +  Case 6
+.head 9 -  Return "SEIS"
+.head 8 +  Case 7
+.head 9 -  Return "SIETE"
+.head 8 +  Case 8
+.head 9 -  Return "OCHO"
+.head 8 +  Case 9
+.head 9 -  Return "NUEVE"
+.head 5 -  Set nNumero=SalStrToNumber( SalStrMidX( sNum, 0, 1 ))
+.head 5 +  Select Case nNumero
+.head 6 +  Case 0
+.head 7 -  Set sTemporal=sTemporal
+.head 7 -  Break
+.head 6 +  Case 1
+.head 7 +  If SalStrMidX( sNum, 1, 2 )="00"
+.head 8 -  Set sTemporal="CIEN"
+.head 7 +  Else
+.head 8 -  Set sTemporal="CIENTO "
+.head 7 -  Break
+.head 6 +  Case 2
+.head 7 -  Set sTemporal="DOSCIENTOS "
+.head 7 -  Break
+.head 6 +  Case 3
+.head 7 -  Set sTemporal="TRESCIENTOS "
+.head 7 -  Break
+.head 6 +  Case 4
+.head 7 -  Set sTemporal="CUATROCIENTOS "
+.head 7 -  Break
+.head 6 +  Case 5
+.head 7 -  Set sTemporal="QUINIENTOS "
+.head 7 -  Break
+.head 6 +  Case 6
+.head 7 -  Set sTemporal="SEISCIENTOS "
+.head 7 -  Break
+.head 6 +  Case 7
+.head 7 -  Set sTemporal="SETECIENTOS "
+.head 7 -  Break
+.head 6 +  Case 8
+.head 7 -  Set sTemporal="OCHOCIENTOS "
+.head 7 -  Break
+.head 6 +  Case 9
+.head 7 -  Set sTemporal="NOVECIENTOS "
+.head 7 -  Break
+.head 5 +  If SalStrMidX( sNum, 1, 2 ) ="00"
+.head 6 -  Return sTemporal
+.head 5 -  Set nNumero=SalStrToNumber( SalStrMidX( sNum, 1, 2 ))
+.head 5 +  Select Case nNumero
+.head 6 -  Case 0
+.head 6 -  Case 1
+.head 6 -  Case 2
+.head 6 -  Case 3
+.head 6 -  Case 4
+.head 6 -  Case 5
+.head 6 -  Case 6
+.head 6 -  Case 7
+.head 6 -  Case 8
+.head 6 +  Case 9
+.head 7 -  Set sTemporal=sTemporal  || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 10
+.head 7 -  Return (sTemporal || " DIEZ")
+.head 6 +  Case 11
+.head 7 -  Return (sTemporal || " ONCE")
+.head 6 +  Case 12
+.head 7 -  Return (sTemporal || " DOCE")
+.head 6 +  Case 13
+.head 7 -  Return (sTemporal || " TRECE")
+.head 6 +  Case 14
+.head 7 -  Return (sTemporal || " CATORCE")
+.head 6 +  Case 15
+.head 7 -  Return (sTemporal || " QUINCE")
+.head 6 -  Case 16
+.head 6 -  Case 17
+.head 6 -  Case 18
+.head 6 +  Case 19
+.head 7 -  Set sTemporal=sTemporal || " DIECI" || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 20
+.head 7 -  Return (sTemporal || "  VEINTE" )
+.head 6 +  Case 30
+.head 7 -  Return (sTemporal || "  TREINTA" )
+.head 6 +  Case 40
+.head 7 -  Return (sTemporal || "  CUARENTA" )
+.head 6 +  Case 50
+.head 7 -  Return (sTemporal || "  CINCUENTA" )
+.head 6 +  Case 60
+.head 7 -  Return (sTemporal || "  SESENTA" )
+.head 6 +  Case 70
+.head 7 -  Return (sTemporal || "  SETENTA" )
+.head 6 +  Case 80
+.head 7 -  Return (sTemporal || "  OCHENTA" )
+.head 6 +  Case 90
+.head 7 -  Return (sTemporal || "  NOVENTA" )
+.head 5 -  Set nNumero=SalStrToNumber( SalStrMidX( sNum, 1, 1 ))
+.head 5 +  Select Case nNumero
+.head 6 +  Case 2
+.head 7 -  Set sTemporal=sTemporal || " VEINTI" || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 3
+.head 7 -  Set sTemporal=sTemporal || " TREINTA Y " || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 4
+.head 7 -  Set sTemporal=sTemporal || " CUARENTA Y " || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 5
+.head 7 -  Set sTemporal=sTemporal || " CINCUENTA Y " || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 6
+.head 7 -  Set sTemporal=sTemporal || " SESENTA Y " || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 7
+.head 7 -  Set sTemporal=sTemporal || " SETENTA Y " || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 8
+.head 7 -  Set sTemporal=sTemporal || " OCHENTA Y " || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
+.head 6 +  Case 9
+.head 7 -  Set sTemporal=sTemporal || " NOVENTA Y " || NumToLetras999( SalStrMidX( sNum, 2, 2 ) )
+.head 7 -  Return sTemporal
 .head 2 +  Named Menus
 .head 2 +  Class Definitions
 .data RESOURCE 0 0 1 2801688929
@@ -414,7 +636,7 @@ sCodigo2||" from "||sTabla)
 .head 3 -  Picture:
 .head 3 -  Vertical Scroll Bar:
 .head 3 -  Horizontal Scroll Bar:
-.head 3 -  Column: clsNumero
+.head 3 -  Column: clsDatos
 .head 3 -  Background Text:
 .head 3 -  Group Box:
 .head 3 -  Line:
@@ -7718,9 +7940,9 @@ into
 .head 3 -  Window Location and Size
 .head 4 -  Left: 0.825"
 .head 4 -  Top:    0.688"
-.head 4 -  Width:  13.533"
+.head 4 -  Width:  15.9"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 7.286"
+.head 4 -  Height: 7.75"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -9182,13 +9404,25 @@ A.cod_empleado = :tbl1.cod_empleado	and	B.TIPO='INGRESO'
 .head 6 -  ! ahora carguemos las deducciones
 .head 6 -  Call SalEnableWindow( tbl4 )
 .head 6 -  Call SalTblPopulate( tbl4, hSql1, "
-select A.correlativo,A.cod_ingded,B.nombre,B.tipo,A.cantidad,A.monto,A.subtotal,
-convert(varchar(10),A.fecha,103),A.descripcion
-
-
-from det_planilla_det A, ING_DED B
-where A.cod_ingded=B.cod_ingded and A.cod_planilla=:dfCod_Planilla and 
-A.cod_empleado = :tbl1.cod_empleado	and	B.TIPO='DEDUCCION'
+select 
+	A.correlativo,
+	A.cod_ingded,
+	B.nombre,
+	B.tipo,
+	dpp.COD_FACTURA,
+	A.cantidad,
+	A.monto,
+	A.subtotal,
+	convert(varchar(10),
+	A.fecha,103),
+	A.descripcion
+from 
+	det_planilla_det A
+	  inner join ING_DED B ON A.cod_ingded=B.cod_ingded
+	    left outer join DET_PLANILLA_DET_PE dpp ON A.CORRELATIVO = dpp.CORRELATIVO
+where 
+	A.cod_planilla=:dfCod_Planilla and 
+	A.cod_empleado = :tbl1.cod_empleado	and	B.TIPO='DEDUCCION'
 
 ", TBL_FillAll )
 .head 6 -  Call SqlPrepareAndExecute(hSql1,"commit")
@@ -9206,9 +9440,9 @@ A.cod_empleado = :tbl1.cod_empleado	and	B.TIPO='DEDUCCION'
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.886"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    2.99"
-.head 6 -  Width:  11.0"
+.head 6 -  Width:  11.1"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.083"
 .head 6 -  Height Editable? Class Default
@@ -9698,9 +9932,9 @@ WHERE TIPO='INGRESO'")
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.957"
+.head 6 -  Left: 0.95"
 .head 6 -  Top:    4.405"
-.head 6 -  Width:  11.0"
+.head 6 -  Width:  12.033"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.357"
 .head 6 -  Height Editable? Class Default
@@ -9821,6 +10055,7 @@ into :colcmbIngDed  " ,bExists)
 .head 11 -  Break
 .head 10 +  Case 8
 .head 11 -  ! PRESTAMO
+.head 11 -  Call PopulateFactEmpleado(tbl1.cod_empleado)
 .head 11 -  Break
 .head 10 +  Case 9
 .head 11 -  ! COOPERATIVA
@@ -9949,6 +10184,7 @@ A.COD_INGDED = :tbl4.cod_ingded  into :tbl4.tipo,:factor " )
 .head 10 -  Break
 .head 9 +  Case 8
 .head 10 -  ! PRESTAMO
+.head 10 -  Call PopulateFactEmpleado(tbl1.cod_empleado)
 .head 10 -  Break
 .head 9 +  Case 9
 .head 10 -  ! COOPERATIVA
@@ -10041,19 +10277,55 @@ WHERE TIPO='DEDUCCION'")
 .head 8 -  Ignore Case? Class Default
 .head 6 -  List Values
 .head 6 -  Message Actions
+.head 5 +  Column: colFactura
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsDatos
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: # Factura
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? Class Default
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.267"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Drop Down List
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? No
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? No
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 +  Message Actions
+.head 7 +  On SAM_Validate
+.head 8 +  If tbl4.colFactura != ''
+.head 9 -  Set nFactura = SalStrToNumber( tbl4.colFactura )
+.head 9 -  Call SqlImmediate( "SELECT MONTO_DEBE FROM FACTURAS INTO :tbl4.monto WHERE COD_FACTURA = :nFactura" )
+.head 9 -  Call SqlClearImmediate(  )
 .head 5 +  Column: cantidad
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 0
 .head 6 -  Class: clsNumero
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
-.head 6 -  Title: Cantidad
+.head 6 -  Title: Cant.
 .head 6 -  Visible? Class Default
 .head 6 -  Editable? Class Default
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.05"
+.head 6 -  Width:  0.717"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -10290,11 +10562,11 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title: &Actualizar
 .head 4 -  Window Location and Size
-.head 5 -  Left: 11.983"
-.head 5 -  Top:    3.738"
-.head 5 -  Width:  1.0"
+.head 5 -  Left: 12.183"
+.head 5 -  Top:    2.988"
+.head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Yes
-.head 5 -  Height: 1.5"
+.head 5 -  Height: 1.333"
 .head 5 -  Height Editable? Yes
 .head 4 -  Visible? Yes
 .head 4 -  Keyboard Accelerator: (none)
@@ -11451,6 +11723,7 @@ cod_empleado= :cod_empleado into :fecha_ingreso_empleado " )
 .head 5 -  Number: RAP
 .head 5 -  Number: CANTIDAD
 .head 5 -  Number: MONTO
+.head 5 -  Number: i
 .head 5 -  String: TIPO
 .head 4 +  Actions
 .head 5 -  Call SqlSetParameter( hSql3, DBP_AUTOCOMMIT, FALSE, STRING_Null )
@@ -11501,7 +11774,16 @@ descripcion,subtotal) values
 where correlativo = :tbl4.colUnico")
 .head 5 -  Call SalTblDoDeletes( tbl4, hSql1, ROW_MarkDeleted )
 .head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 5 -  ! !Registrar los pagos a Facturas
 .head 5 -  !
+.head 5 -  Call SalTblSetContext(tbl4,0)
+.head 5 -  Set i =0
+.head 5 +  If tbl4.cod_ingded = 8
+.head 6 -  Call RegistrarPago( tbl4.colUnico,dfCod_Planilla, tbl1.cod_empleado, tbl1.nombres, SalStrToNumber( tbl4.colFactura ), tbl4.subtotal, dfFin )
+.head 5 +  While SalTblFindNextRow(tbl4,i,0,0)
+.head 6 -  Call SalTblSetContext(tbl4,i)
+.head 6 +  If tbl4.cod_ingded = 8
+.head 7 -  Call RegistrarPago( tbl4.colUnico, dfCod_Planilla, tbl1.cod_empleado, tbl1.nombres, SalStrToNumber( tbl4.colFactura ), tbl4.subtotal, dfFin )
 .head 5 -  ! calculamos los datos de la planilla en los totales
 .head 5 -  Call SqlPrepareAndExecute(hSql1,"update det_planilla  set HORAS_EXTRAS=0,
 TURNOS=0,OTROS_INGRESOS=0,ALIMENTACION=0,PRESTAMO=0, LABORATORIO=0, MEDICAMENTOS=0,
@@ -11664,6 +11946,206 @@ into
 .head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
 .head 5 -  Call Actualizar_Totales(  )
 .head 5 -  Call SqlSetParameter( hSql3, DBP_AUTOCOMMIT, TRUE, STRING_Null )
+.head 3 +  Function: PopulateFactEmpleado
+.head 4 -  Description: Fucion creda para obtener las Facturas Pendientes de pago de un Empleado
+By Elvin Deras 08/Ene/2016
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  Number: P_COD_EMPLEADO
+.head 4 -  Static Variables
+.head 4 -  Local variables
+.head 4 +  Actions
+.head 5 -  Call SalListPopulate( tbl4.colFactura, hSql1, "select 
+	f.COD_FACTURA
+from 
+	facturas f 
+	  inner join autorizacion_pago ap on f.COD_AUTORIZACION = ap.COD_AUTORIZACION
+where 
+	ap.COD_EMPLEADO = :P_COD_EMPLEADO
+	AND f.MONTO_DEBE > 0" )
+.head 3 +  Function: RegistrarPago
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  Number: P_Correlativo
+.head 5 -  Number: P_Planilla
+.head 5 -  Number: P_Empleado
+.head 5 -  String: P_NombreEmpleado
+.head 5 -  Number: P_Factura
+.head 5 -  Number: P_Monto
+.head 5 -  Date/Time: P_Fecha
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  String: sMonto
+.head 5 -  String: sDescripcion
+.head 5 -  String: sRecibo
+.head 5 -  String: sDocumento
+.head 5 -  String: sCodPartida
+.head 5 -  Number: nNumeroPago
+.head 5 -  Boolean: bExists
+.head 4 +  Actions
+.head 5 -  Set sMonto = "*" || NumToLetras( P_Monto ) || "********"
+.head 5 -  Call SqlExists( "SELECT
+	CORRELATIVO,
+	COD_FACTURA
+FROM
+	DET_PLANILLA_DET_PE WHERE CORRELATIVO = :P_Correlativo ", bExists )
+.head 5 +  If Not bExists AND P_Factura > 0
+.head 6 -  Set nNumeroPago = GetNumeroPago(P_Factura)
+.head 6 -  Set sDescripcion = 'PAGO POR DEDUCCION DE PLANILLA, FECHA: '|| SalFmtFormatDateTime( P_Fecha, 'dd/MM/yyyy' ) || ' Factura ' || SalNumberToStrX( P_Factura, 0 ) || ', Planilla: ' || SalNumberToStrX( P_Planilla, 0 ) || ', Empleado: ' || SalNumberToStrX( 
+P_Empleado, 0 )
+.head 6 -  Set sRecibo = 'F- ' || SalNumberToStrX( P_Factura, 0 )
+.head 6 -  Set sDocumento = SalNumberToStrX( P_Planilla, 0 )
+.head 6 -  Set sCodPartida = 'PPAGO' || SalNumberToStrX( P_Factura, 0 ) || '-' || SalNumberToStrX( nNumeroPago, 0 )
+.head 6 -  Call SqlPrepareAndExecute(hSql3,"BEGIN TRANSACTION")
+.head 6 +  If SqlPrepareAndExecute(hSql3, "INSERT INTO DET_PLANILLA_DET_PE
+	(CORRELATIVO, COD_FACTURA)
+VALUES 
+	(:P_Correlativo, :P_Factura)")
+AND
+SqlPrepareAndExecute(hSql3,"
+insert 	PAGOS  ( NUMERO_PAGO,
+	COD_FACTURA,
+	FECHA,
+	DESCRIPCION,
+	MONTO,
+	RECIBO,
+	DOCUMENTO,
+	COD_PAGO,RECIBIDE,COD_PARTIDA )
+values(
+	:nNumeroPago,
+	:P_Factura,
+	:P_Fecha,
+	:sDescripcion,
+	:P_Monto,
+	:sRecibo,
+	:sDocumento,
+	8,:P_NombreEmpleado,
+               :sCodPartida )")
+AND SqlPrepareAndExecute(hSql3,"
+update 	FACTURAS set 
+	MONTO_DEBE= MONTO_DEBE -  :P_Monto, 
+	MONTO_PAGADO= MONTO_PAGADO + :P_Monto 
+where
+	cod_factura=:P_Factura")
+AND 
+GenerarPartida(sCodPartida, sDescripcion, P_Fecha, P_Monto)
+.head 7 -  Call SqlPrepareAndExecute(hSql3,"COMMIT TRANSACTION")
+.head 6 +  Else
+.head 7 -  Call SqlPrepareAndExecute(hSql3,"ROLLBACK TRANSACTION")
+.head 7 -  Call SalMessageBox( 'Hubo un error al registrar el Pago', 'Error', MB_Ok )
+.head 3 +  Function: GetNumeroPago
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  Number:
+.head 4 +  Parameters
+.head 5 -  Number: P_Factura
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: nNumeroPago
+.head 4 +  Actions
+.head 5 -  Call SqlExists("Select
+		max(NUMERO_PAGO)
+	from
+		PAGOS
+	where
+		COD_FACTURA=:P_Factura
+	into
+		:nNumeroPago",bExists)
+.head 5 -  Call SqlClearImmediate( )
+.head 5 +  If bExists
+.head 6 -  Set nNumeroPago = nNumeroPago + 1
+.head 5 +  Else
+.head 6 -  Set nNumeroPago = 1
+.head 5 -  Return nNumeroPago
+.head 3 +  Function: GenerarPartida
+.head 4 -  Description:
+.head 4 +  Returns
+.head 5 -  Boolean:
+.head 4 +  Parameters
+.head 5 -  String: P_CodPartida
+.head 5 -  String: P_Descripcion
+.head 5 -  Date/Time: P_Fecha
+.head 5 -  Number: P_Monto
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  String: sCuentaDebe
+.head 5 -  String: sNombreCuentaDebe
+.head 5 -  String: sCuentaHaber
+.head 5 -  String: sNombreCuentaHaber
+.head 5 -  Number: nCorrelativo
+.head 5 -  Number: nCorrelativo2
+.head 4 +  Actions
+.head 5 -  ! CAJA GENERAL
+.head 5 -  Set sCuentaDebe = '111-01'
+.head 5 -  Set sNombreCuentaDebe = 'CAJA GENERAL'
+.head 5 -  ! !
+.head 5 -  ! FACTURACION - Pendiente Confirmar si e usara una cuenta por empleado
+.head 5 -  ! Set sCuentaHaber = '113-04-' || SalNumberToStrX(nCodEmpleado, 0) || '-01'
+.head 5 -  ! Set sNombreCuentaHaber = 'FACTURACION'
+.head 5 -  ! !Se usa la cuenta de Cliente
+.head 5 -  ! !
+.head 5 -  ! CLENTES
+.head 5 -  Set sCuentaHaber = '113-10'
+.head 5 -  Set sNombreCuentaHaber = 'CLIENTES'
+.head 5 -  ! !
+.head 5 -  Set nCorrelativo =  Identity(2)
+.head 5 -  Set nCorrelativo2 =  Identity(2)
+.head 5 +  If SqlPrepareAndExecute(hSql3,"
+insert INTO PARTIDAS (
+	COD_PARTIDA,
+	DESCRIPCION,
+	FECHA,
+	COD_TIPO,
+	TOTAL_CARGO,
+	TOTAL_DEBITO,
+	ESTADO, SUMARIZADA,CERRADA
+)
+values(
+	:P_CodPartida,
+	:P_Descripcion ,
+	:P_Fecha,
+	10 ,
+	:P_Monto,
+	:P_Monto,
+	0,0,0)") 
+AND
+SqlPrepareAndExecute(hSql3,"
+insert into
+DET_PARTIDAS (
+	COD_PARTIDA ,
+	COD_CUENTA,
+	NOMBRE,
+	CARGO,
+	CONCEPTO,
+	CORRELATIVO)
+values(
+	:P_CodPartida,
+	:sCuentaDebe,
+	:sNombreCuentaDebe,
+	:P_Monto,
+	:P_Descripcion,
+	:nCorrelativo)") 
+AND 
+SqlPrepareAndExecute(hSql3,"
+	insert into
+	DET_PARTIDAS (
+		COD_PARTIDA ,
+		COD_CUENTA,
+		NOMBRE,
+		CREDITO,
+		CONCEPTO,
+		CORRELATIVO)
+	values(
+		:P_CodPartida,
+		:sCuentaHaber,
+		:sNombreCuentaHaber,
+		:P_Monto,
+		:P_Descripcion,
+		:nCorrelativo2)")  
+.head 6 -  Return TRUE
+.head 5 +  Else
+.head 6 -  Return FALSE
 .head 2 -  Window Parameters
 .head 2 +  Window Variables
 .head 3 -  Number: COD_EMPLEADO
@@ -11685,6 +12167,7 @@ into
 .head 3 -  String: sValues[3]
 .head 3 -  Number: nIHSS_TECHO
 .head 3 -  Number: nIHSS_PORCENTAJE
+.head 3 -  Number: nFactura
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
 .head 4 -  Call SalListAdd( cmbFormaPago, 'QUINCENAL' )

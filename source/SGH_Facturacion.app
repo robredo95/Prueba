@@ -5,9 +5,9 @@
 0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
 0020: 0000000000470100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
 0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F7773166672
-0080: 6D4E6F7461734372 656469746F526570 6F7274650946756E 6374696F6E730A41
-00A0: 726D617251756572 79
+0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F77730E6672
+0080: 6D4E6F7461437265 6469746F0946756E 6374696F6E730B52 6567697374726172
+00A0: 4E43
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000033433A5C 43656E747572615C 4249544D4150535C 4D7949636F6E735C
@@ -83438,1253 +83438,6 @@ into
 .head 3 +  On SAM_CreateComplete
 .head 4 -  !
 .head 4 -  Call SalCenterWindow( hWndForm )
-.head 1 +  Form Window: frmNotaCredito2
-.head 2 -  Class:
-.head 2 -  Property Template:
-.head 2 -  Class DLL Name:
-.head 2 -  Title: Nota de Crédito
-.head 2 -  Icon File:
-.head 2 -  Accesories Enabled? Yes
-.head 2 -  Visible? Yes
-.head 2 -  Display Settings
-.head 3 -  Display Style? Default
-.head 3 -  Visible at Design time? Yes
-.head 3 -  Automatically Created at Runtime? No
-.head 3 -  Initial State: Normal
-.head 3 -  Maximizable? Yes
-.head 3 -  Minimizable? Yes
-.head 3 -  System Menu? Yes
-.head 3 -  Resizable? Yes
-.head 3 -  Window Location and Size
-.head 4 -  Left: 0.825"
-.head 4 -  Top:    0.906"
-.head 4 -  Width:  9.883"
-.head 4 -  Width Editable? Yes
-.head 4 -  Height: 5.583"
-.head 4 -  Height Editable? Yes
-.head 3 -  Form Size
-.head 4 -  Width:  Default
-.head 4 -  Height: Default
-.head 4 -  Number of Pages: Dynamic
-.head 3 -  Font Name: Default
-.head 3 -  Font Size: Default
-.head 3 -  Font Enhancement: Default
-.head 3 -  Text Color: Default
-.head 3 -  Background Color: Default
-.head 2 -  Description: Elaboracion de notas de credito
-codigo de tabla para correlativo 515
-.head 2 -  Named Menus
-.head 2 -  Menu
-.head 2 +  Tool Bar
-.head 3 -  Display Settings
-.head 4 -  Display Style? Default
-.head 4 -  Location? Top
-.head 4 -  Visible? Yes
-.head 4 -  Size: 0.619"
-.head 4 -  Size Editable? Yes
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Contents
-.head 4 +  Pushbutton: pbGrabar
-.head 5 -  Class Child Ref Key: 0
-.head 5 -  Class ChildKey: 0
-.head 5 -  Class: pbGrabar
-.head 5 -  Property Template:
-.head 5 -  Class DLL Name:
-.head 5 -  Title:
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.083"
-.head 6 -  Top:    0.071"
-.head 6 -  Width:  Class Default
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: Class Default
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Keyboard Accelerator: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Picture File Name:
-.head 5 -  Picture Transparent Color: Class Default
-.head 5 -  Image Style: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 +  Message Actions
-.head 6 +  On SAM_Click
-.head 7 -  !
-.head 7 +  If not RevisarFormaLlena()
-.head 8 -  !
-.head 8 -  Return FALSE
-.head 7 +  If dfDebe <= 0
-.head 8 -  !
-.head 8 -  Call SalMessageBox ("La Factura No. " || SalNumberToStrX(dfFactura,0) || " no tiene saldo.", "ERROR", MB_Ok)
-.head 8 -  Return FALSE
-.head 7 +  ! If SalIsButtonChecked(cbCheque) and SalIsNull(dfCheque)
-.head 8 -  !
-.head 8 -  Call SalMessageBox ("Especifique el No. de Cheque!", "ERROR", MB_Ok)
-.head 8 -  Call SalSetFocus(dfCheque)
-.head 8 -  Return FALSE
-.head 8 -  !
-.head 7 -  !
-.head 7 +  ! If SalIsButtonChecked(cbCheque)
-.head 8 -  !
-.head 8 -  Set nTipoPago = 6
-.head 8 -  Call SqlExists("SELECT
-		NUMERO_PAGO
-	FROM
-		PAGOS
-	WHERE
-		COD_FACTURA 	= :dfFactura AND
-		COD_PAGO 	= :nTipoPago AND
-		DOCUMENTO	= :dfCheque
-", bExistsNotaCredito)
-.head 8 +  If bExistsNotaCredito
-.head 9 -  !
-.head 9 -  Call SalMessageBox ("Ya existe una nota de credito con Cheque No." || dfCheque || "  para F-" || SalNumberToStrX(dfFactura,0), "ERROR", MB_Ok)
-.head 9 -  Return FALSE
-.head 7 +  ! Else
-.head 8 -  !
-.head 8 -  Set nTipoPago = 4
-.head 8 -  Call SqlExists("SELECT
-		NUMERO_PAGO
-	FROM
-		PAGOS
-	WHERE
-		COD_FACTURA 	= :dfFactura AND
-		COD_PAGO 	= :nTipoPago
-", bExistsNotaCredito)
-.head 8 +  If bExistsNotaCredito
-.head 9 -  !
-.head 9 -  Call SalMessageBox ("Ya existe una nota de credito de este tipo para F-" || SalNumberToStrX(dfFactura,0), "ERROR", MB_Ok)
-.head 9 -  Return FALSE
-.head 7 -  !
-.head 7 -  !
-.head 7 -  ! Call Grabar()
-.head 7 -  Set notaCredito1.NumeroFactura = dfFactura
-.head 7 -  Set notaCredito1.Monto = dfMonto
-.head 7 -  Set notaCredito1.Debe = dfDebe
-.head 4 +  Pushbutton: pbNuevo
-.head 5 -  Class Child Ref Key: 0
-.head 5 -  Class ChildKey: 0
-.head 5 -  Class: cFlatPushbutton
-.head 5 -  Property Template:
-.head 5 -  Class DLL Name:
-.head 5 -  Title:
-.head 5 -  Window Location and Size
-.head 6 -  Left: 0.283"
-.head 6 -  Top:    0.071"
-.head 6 -  Width:  0.8"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.5"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Keyboard Accelerator: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\filenew.bmp
-.head 5 -  Picture Transparent Color: Black
-.head 5 -  Image Style: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 +  Message Actions
-.head 6 +  On SAM_Click
-.head 7 -  !
-.head 7 -  Call Limpiar()
-.head 7 -  !
-.head 7 -  ! Call SalDisableWindow(dfCheque)
-.head 7 -  Call dpFecha.SetSystemTime( 0, SalDateCurrent(  ) )
-.head 7 -  Call notaCredito1.Create(NUMBER_Null, NUMBER_Null, NUMBER_Null, NUMBER_Null, DATETIME_Null, rbClinica )
-.head 7 -  Set dfCodigoNC = notaCredito1.CodigoNC
-.head 7 -  Call SalSetFocus(dfFactura)
-.head 4 +  Pushbutton: pbImprimir
-.head 5 -  Class Child Ref Key: 0
-.head 5 -  Class ChildKey: 0
-.head 5 -  Class: pbImprimir
-.head 5 -  Property Template:
-.head 5 -  Class DLL Name:
-.head 5 -  Title:
-.head 5 -  Window Location and Size
-.head 6 -  Left: 2.683"
-.head 6 -  Top:    0.071"
-.head 6 -  Width:  Class Default
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: Class Default
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Keyboard Accelerator: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Picture File Name:
-.head 5 -  Picture Transparent Color: Class Default
-.head 5 -  Image Style: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 +  Message Actions
-.head 6 +  On SAM_Click
-.head 7 -  Set params[0] = dfCodigoNC
-.head 7 -  Set params[1] = '0'
-.head 7 +  If rbClinica
-.head 8 -  Set params[1] = '1'
-.head 7 -  Set strRepTitle = "Informe de Notas de Crédito"
-.head 7 -  Set strReportName = strRepPath || "\\NotaCredito.rpt"
-.head 7 -  Call SalCreateWindow( frmCrystalReport, hWndForm, strRepTitle, strReportName, PARAM_ARRAY_Null, params )
-.head 2 +  Contents
-.head 3 -  Background Text: Factura No:
-.head 4 -  Resource Id: 58907
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.583"
-.head 5 -  Top:    0.952"
-.head 5 -  Width:  1.1"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.202"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Left
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Data Field: dfFactura
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfNumero
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? Class Default
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.783"
-.head 6 -  Top:    0.905"
-.head 6 -  Width:  1.7"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: Class Default
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 +  Message Actions
-.head 5 +  On SAM_Validate
-.head 6 -  !
-.head 6 -  Call SqlImmediate("
-select
-        A.DESCRIPCION,
-        A.COD_PACIENTE,
-        B.PRIMER_NOM + ' ' + B.SEGUNDO_NOM + ' ' +  B.PRIMER_APE + ' ' + B.SEGUNDO_APE AS NOMBRE,
-        A.TOTAL,
-        A.MONTO_DEBE
-from
-        FACTURAS  A,
-        PACIENTES B
-where
-        A.COD_FACTURA = :dfFactura AND
-        A.COD_PACIENTE = B.COD_PACIENTE  and
-        A.CORREL_PACIENTE= B.CORREL_PACIENTE
-into
-	:dfDescripcionFactura,
-	:dfCodPaciente,
-	:dfNombrePaciente,
-	:dfTotal,
-	:dfDebe
-	
-        ")
-.head 6 -  Call SqlClearImmediate()
-.head 6 -  !
-.head 6 -  Call GenerarDetalle()
-.head 3 -  Background Text: Paciente
-.head 4 -  Resource Id: 58908
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.783"
-.head 5 -  Top:    1.762"
-.head 5 -  Width:  0.9"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Left
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 -  Background Text: Descripcion
-.head 4 -  Resource Id: 58909
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.583"
-.head 5 -  Top:    1.536"
-.head 5 -  Width:  1.0"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Left
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Data Field: dfCodPaciente
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatDataField
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? No
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.783"
-.head 6 -  Top:    1.738"
-.head 6 -  Width:  1.5"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.25"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 -  Message Actions
-.head 3 +  Data Field: dfNombrePaciente
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatDataField
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? No
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 3.283"
-.head 6 -  Top:    1.738"
-.head 6 -  Width:  5.4"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.25"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 -  Message Actions
-.head 3 -  Background Text: Monto:
-.head 4 -  Resource Id: 58910
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 1.183"
-.head 5 -  Top:    2.917"
-.head 5 -  Width:  0.6"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Right
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Data Field: dfMonto
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfNumero
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? Class Default
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.783"
-.head 6 -  Top:    2.905"
-.head 6 -  Width:  2.7"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: Class Default
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: #####000
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 -  Message Actions
-.head 3 +  Data Field: dfDescripcion
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatDataField
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: String
-.head 5 -  Editable? Class Default
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.783"
-.head 6 -  Top:    3.155"
-.head 6 -  Width:  6.8"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.25"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 -  Message Actions
-.head 3 +  Data Field: dfDescripcionFactura
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatDataField
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? No
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.783"
-.head 6 -  Top:    1.488"
-.head 6 -  Width:  6.9"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.25"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 -  Message Actions
-.head 3 -  Group Box: Datos de la Factura
-.head 4 -  Resource Id: 58911
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.283"
-.head 5 -  Top:    0.655"
-.head 5 -  Width:  8.6"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 1.5"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Bold
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 -  Group Box: Tipo Nota de Crédito
-.head 4 -  Resource Id: 20077
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.283"
-.head 5 -  Top:    -0.012"
-.head 5 -  Width:  8.6"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.56"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Bold
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Data Field: dfTotal
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfNumero
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? No
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.783"
-.head 6 -  Top:    1.238"
-.head 6 -  Width:  1.7"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: Class Default
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: ###000
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 -  Message Actions
-.head 3 +  Data Field: dfDebe
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfNumero
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? No
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 4.883"
-.head 6 -  Top:    1.238"
-.head 6 -  Width:  1.7"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: Class Default
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: ###000
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Red
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 -  Message Actions
-.head 3 -  Background Text: Total:
-.head 4 -  Resource Id: 58912
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 1.083"
-.head 5 -  Top:    1.262"
-.head 5 -  Width:  0.6"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Left
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 -  Background Text: Debe:
-.head 4 -  Resource Id: 58913
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 4.183"
-.head 5 -  Top:    1.262"
-.head 5 -  Width:  0.6"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Left
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 -  Background Text: Descripcion:
-.head 4 -  Resource Id: 58914
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.683"
-.head 5 -  Top:    3.179"
-.head 5 -  Width:  1.1"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Right
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 -  Group Box: Datos de la Nota de Credito
-.head 4 -  Resource Id: 58915
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.283"
-.head 5 -  Top:    2.405"
-.head 5 -  Width:  8.6"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 1.083"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Bold
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Data Field: dfCodigoNC
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfBase
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? No
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 5.483"
-.head 6 -  Top:    0.155"
-.head 6 -  Width:  3.2"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.333"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: 11
-.head 5 -  Font Enhancement: Bold
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 +  Message Actions
-.head 5 +  On MU_REVISAR
-.head 6 -  Return TRUE
-.head 3 -  Background Text: Código NC:
-.head 4 -  Resource Id: 58916
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 3.983"
-.head 5 -  Top:    0.179"
-.head 5 -  Width:  1.5"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.208"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Right
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: 10
-.head 4 -  Font Enhancement: Bold
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Data Field: dfCodPartida
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfBase
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
-.head 5 -  Editable? No
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 1.783"
-.head 6 -  Top:    2.655"
-.head 6 -  Width:  2.7"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: Class Default
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Bold
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 +  Message Actions
-.head 5 +  On MU_REVISAR
-.head 6 -  Return TRUE
-.head 3 -  Background Text: Partida:
-.head 4 -  Resource Id: 58917
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.75"
-.head 5 -  Top:    2.679"
-.head 5 -  Width:  1.029"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.208"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Right
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 -  Background Text: Fecha:
-.head 4 -  Resource Id: 58918
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 5.283"
-.head 5 -  Top:    2.929"
-.head 5 -  Width:  0.6"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Justify: Right
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Check Box: cbCheque
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Title: Nota de Credito por Cheque No.
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.383"
-.head 5 -  Top:    0.571"
-.head 5 -  Width:  3.0"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.25"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Bold
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 4 +  Message Actions
-.head 5 +  On SAM_Click
-.head 6 -  !
-.head 6 +  If SalIsButtonChecked(cbCheque)
-.head 7 -  !
-.head 7 -  Call SalEnableWindow(dfCheque)
-.head 7 -  Call SalSetFocus(dfCheque)
-.head 6 +  Else
-.head 7 -  Call SalClearField(dfCheque)
-.head 7 -  Call SalDisableWindow(dfCheque)
-.head 7 -  Call SalSetFocus(dfFactura)
-.head 3 +  Data Field: dfCheque
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatDataField
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: String
-.head 5 -  Editable? Class Default
-.head 4 -  Display Settings
-.head 5 -  Window Location and Size
-.head 6 -  Left: 0.383"
-.head 6 -  Top:    0.405"
-.head 6 -  Width:  2.4"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.25"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? No
-.head 5 -  Border? Class Default
-.head 5 -  Justify: Class Default
-.head 5 -  Format: Class Default
-.head 5 -  Country: Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  Input Mask: Class Default
-.head 4 +  Message Actions
-.head 5 +  On MU_REVISAR
-.head 6 -  Return TRUE
-.head 3 +  Radio Button: rbClinica
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Title: Clinica
-.head 4 -  Window Location and Size
-.head 5 -  Left: 0.483"
-.head 5 -  Top:    0.155"
-.head 5 -  Width:  1.4"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.25"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 4 +  Message Actions
-.head 5 +  On SAM_Click
-.head 6 -  Call HideControls()
-.head 3 +  Radio Button: rbHM
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Title: Honorario Médico
-.head 4 -  Window Location and Size
-.head 5 -  Left: 1.983"
-.head 5 -  Top:    0.155"
-.head 5 -  Width:  1.9"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.25"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 4 +  Message Actions
-.head 5 +  On SAM_Click
-.head 6 -  Call HideControls()
-.head 3 -  Background Text: Medico:
-.head 4 -  Resource Id: 20079
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 4.083"
-.head 5 -  Top:    0.929"
-.head 5 -  Width:  0.733"
-.head 5 -  Width Editable? Yes
-.head 5 -  Height: 0.167"
-.head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
-.head 4 -  Justify: Left
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 +  Combo Box: cmbMedicos
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cCombo2Cols
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 4.883"
-.head 5 -  Top:    0.905"
-.head 5 -  Width:  3.7"
-.head 5 -  Width Editable? Class Default
-.head 5 -  Height: 3.833"
-.head 5 -  Height Editable? Class Default
-.head 4 -  Visible? No
-.head 4 -  Editable? No
-.head 4 -  String Type: Class Default
-.head 4 -  Maximum Data Length: Class Default
-.head 4 -  Sorted? No
-.head 4 -  Always Show List? Class Default
-.head 4 -  Vertical Scroll? Class Default
-.head 4 -  Font Name: Class Default
-.head 4 -  Font Size: Class Default
-.head 4 -  Font Enhancement: Class Default
-.head 4 -  Text Color: Class Default
-.head 4 -  Background Color: Class Default
-.head 4 -  Input Mask: Class Default
-.head 4 -  List Initialization
-.head 4 +  Message Actions
-.head 5 +  On SAM_CreateComplete
-.head 6 -  Set cmbMedicos.nCaso  = 1
-.head 6 -  Set cmbMedicos.sOrder = ' ORDER BY NOMBRE'
-.head 3 +  Custom Control: dpFecha
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cDateTimePicker
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Display Settings
-.head 5 -  DLL Name:
-.head 5 -  MS Windows Class Name:
-.head 5 -  Style:  Class Default
-.head 5 -  ExStyle:  Class Default
-.head 5 -  Title:
-.head 5 -  Window Location and Size
-.head 6 -  Left: 5.983"
-.head 6 -  Top:    2.905"
-.head 6 -  Width:  2.6"
-.head 6 -  Width Editable? Class Default
-.head 6 -  Height: 0.25"
-.head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
-.head 5 -  Border? Class Default
-.head 5 -  Etched Border? Class Default
-.head 5 -  Hollow? Class Default
-.head 5 -  Vertical Scroll? Class Default
-.head 5 -  Horizontal Scroll? Class Default
-.head 5 -  Tab Stop? Class Default
-.head 5 -  Tile To Parent? Class Default
-.head 5 -  Font Name: Class Default
-.head 5 -  Font Size: Class Default
-.head 5 -  Font Enhancement: Class Default
-.head 5 -  Text Color: Class Default
-.head 5 -  Background Color: Class Default
-.head 5 -  DLL Settings
-.head 4 -  Message Actions
-.head 3 +  Pushbutton: pb1
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: pbBusqueda
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Title:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 3.483"
-.head 5 -  Top:    0.905"
-.head 5 -  Width:  0.5"
-.head 5 -  Width Editable? Class Default
-.head 5 -  Height: 0.25"
-.head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Class Default
-.head 4 -  Keyboard Accelerator: Class Default
-.head 4 -  Font Name: Class Default
-.head 4 -  Font Size: Class Default
-.head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\v2\find.bmp
-.head 4 -  Picture Transparent Color: White
-.head 4 -  Image Style: Single
-.head 4 -  Text Color: Class Default
-.head 4 -  Background Color: Class Default
-.head 4 +  Message Actions
-.head 5 +  On SAM_Click
-.head 6 -  Set nRegresa=0
-.head 6 -  ! Llama a la Ventana de Dialogo para consulta de Facturas
-si el valor que refresa en la variable nRegresa es diferente de 0 significa
-que se ha escogido una factura valida y por lo tanto se procede a Actualizar
-la ventana con la factura seleccionada
-.head 6 -  Call SalModalDialog( dlgConsultaFacturas, hWndForm,2,nRegresa )
-.head 6 +  If nRegresa!=0
-.head 7 -  Set dfFactura =nRegresa
-.head 7 -  Call SalSendMsg(dfFactura, SAM_Validate, 0, 0)
-.head 2 +  Functions
-.head 3 +  Function: Grabar
-.head 4 -  Description:
-.head 4 -  Returns
-.head 4 -  Parameters
-.head 4 -  Static Variables
-.head 4 +  Local variables
-.head 5 -  Number: no_pago
-.head 5 -  Boolean: bExistsPago
-.head 5 -  Number: nEstadoPago
-.head 5 -  String: sRecibo
-.head 4 +  Actions
-.head 5 -  !
-.head 5 -  Set nResp = SalMessageBox("Esta seguro de generar la Nota de Credito " || dfCodPartida,"Atencion",MB_YesNo)
-.head 5 +  If nResp=IDYES
-.head 6 -  !
-.head 6 -  ! -----------Obtener el numero de pago correspondiente
-.head 6 -  !
-.head 6 -  Call SqlExists("Select
-		max(NUMERO_PAGO)
-	from
-		PAGOS
-	where
-		COD_FACTURA=:dfFactura
-	into
-		:no_pago",bExistsPago)
-.head 6 -  Call SqlClearImmediate( )
-.head 6 +  If bExistsPago
-.head 7 -  Set no_pago = no_pago + 1
-.head 6 +  Else
-.head 7 -  Set no_pago = 1
-.head 6 -  !
-.head 6 -  ! ---------Guardar el pago
-.head 6 -  !
-.head 6 -  Set sRecibo = SalNumberToStrX(dfFactura,0)
-.head 6 -  !
-.head 6 +  If SqlPrepareAndExecute(hSql1,"
-insert 	PAGOS  (
-	NUMERO_PAGO,
-	COD_FACTURA,
-	FECHA,
-	DESCRIPCION,
-	MONTO,
-	RECIBO,
-	DOCUMENTO,
-	COD_PAGO,
-	COD_PARTIDA
-	 )
-values(
-	:no_pago,
-	:dfFactura,
-	:dfFecha,
-	:dfDescripcion,
-	:dfMonto,
-	:sRecibo,
-	:dfDocumento,
-	:nTipoPago,
-               :dfCodPartida
-               )")
-.head 7 -  !
-.head 7 +  If (dfDebe - dfMonto) > 0
-.head 8 -  Set nEstadoPago = 0
-.head 7 +  Else
-.head 8 -  Set nEstadoPago = 1
-.head 7 -  !
-.head 7 -  ! ---------------------Actualizar el debe de la facturas
-.head 7 -  !
-.head 7 +  If SqlPrepareAndExecute(hSql1,"
-				update
-					FACTURAS
-				set
-					MONTO_DEBE	=	MONTO_DEBE - :dfMonto,
-					ESTADO_PAGO	=	:nEstadoPago,
-					MONTO_PAGADO	=	MONTO_PAGADO + :dfMonto
-				where
-					cod_factura	=	:dfFactura")
-.head 8 -  !
-.head 8 -  ! -------------------------Generar partida
-.head 8 -  Call GenerarPartida()
-.head 8 -  !
-.head 8 -  Call SalMessageBox("Se ha efectuado el pago No. " ||  SalNumberToStrX(no_pago, 0),'Aviso',MB_Ok)
-.head 3 +  Function: GenerarPartida
-.head 4 -  Description:
-.head 4 -  Returns
-.head 4 -  Parameters
-.head 4 -  Static Variables
-.head 4 +  Local variables
-.head 5 -  Number: nCorrelativo
-.head 5 -  Number: nCuenta
-.head 5 -  String: sCuenta
-.head 4 +  Actions
-.head 5 -  !
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"
-		insert INTO
-			PARTIDAS (
-				COD_PARTIDA,
-				DESCRIPCION,
-				FECHA,
-				COD_TIPO,
-				TOTAL_CARGO,
-				TOTAL_DEBITO,
-				ESTADO,
-				SUMARIZADA,
-				CERRADA)
-			values(
-				:dfCodPartida,
-				:dfDescripcion ,
-				:dfFecha,
-				14,
-				:dfMonto,
-				:dfMonto,
-				0,0,0)")
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 5 -  !
-.head 5 -  ! --------------Detalle de la partida
-.head 5 -  !
-.head 5 -  Set nCorrelativo =  Identity(2)
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"insert into
-			DET_PARTIDAS (
-				COD_PARTIDA ,
-				COD_CUENTA,
-				NOMBRE,
-				CARGO,
-				CONCEPTO,
-				CORRELATIVO)
-			values(
-				:dfCodPartida,
-				'421',
-				'DESCUENTO DE PACIENTES',
-				:dfMonto,
-				:dfDescripcion,
-				:nCorrelativo
-)")
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 5 -  !
-.head 5 -  Set nCorrelativo =  Identity(2)
-.head 5 -  !
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"insert into
-			DET_PARTIDAS (
-				COD_PARTIDA ,
-				COD_CUENTA,
-				NOMBRE,
-				CREDITO,
-				CONCEPTO,
-				CORRELATIVO)
-			values(
-				:dfCodPartida,
-				'113-10',
-				'CLIENTES',
-				:dfMonto,
-				:dfDescripcion,
-				:nCorrelativo
-)")
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 5 -  Return TRUE
-.head 3 +  Function: HideControls
-.head 4 -  Description:
-.head 4 -  Returns
-.head 4 -  Parameters
-.head 4 -  Static Variables
-.head 4 -  Local variables
-.head 4 +  Actions
-.head 5 +  If rbClinica 
-.head 6 -  Call SalHideWindowAndLabel( cmbMedicos )
-.head 5 +  Else
-.head 6 -  Call SalShowWindowAndLabel( cmbMedicos )
-.head 3 +  Function: GenerarDetalle
-.head 4 -  Description:
-.head 4 -  Returns
-.head 4 -  Parameters
-.head 4 -  Static Variables
-.head 4 -  Local variables
-.head 4 +  Actions
-.head 5 -  ! -----Generar el detalle
-.head 5 -  Call SalListClear( cmbMedicos )
-.head 5 +  If SalIsNull(dfFactura)
-.head 6 -  !
-.head 6 -  Call SalMessageBox ("Ingrese el no. de factura", "ERROR", MB_Ok)
-.head 6 -  Call SalSetFocus(dfFactura)
-.head 6 -  Return FALSE
-.head 5 +  Else
-.head 6 -  !
-.head 6 +  If dfDebe <= 0
-.head 7 -  !
-.head 7 -  Call SalMessageBox ("La Factura No. " || SalNumberToStrX(dfFactura,0) || " no tiene saldo.", "ERROR", MB_Ok)
-.head 7 -  Return FALSE
-.head 5 -  ! !
-.head 5 +  If rbHM 
-.head 6 -  Call cmbMedicos.Populate(sSqlHM)
-.head 6 +  If SalListQueryCount( cmbMedicos ) > 0
-.head 7 -  Call SalListSetSelect( cmbMedicos, 0 )
-.head 7 -  Call SqlImmediate ("
-SELECT
-    DH.MONTO_DEBE + DH.MONTO_PAGADO,
-    DH.MONTO_DEBE
-FROM 
-    DET_HONORARIOS DH
-WHERE
-    DH.CORREL = :cmbMedicos.nKey
-INTO
-  :dfTotal,
-  :dfDebe")
-.head 7 -  Call SqlClearImmediate(  )
-.head 5 -  !
-.head 5 -  Set sComment = ", NO PAGADO POR SEGURO"
-.head 5 -  Set dfCodPartida = "PNC" || SalNumberToStrX(dfFactura, 0)
-.head 5 -  Set dfMonto = dfDebe
-.head 5 -  Set dfDescripcion = "NOTA DE CREDITO F-" || SalNumberToStrX(dfFactura, 0) ||	", PAC. " || dfNombrePaciente || sComment
-.head 5 -  Call dpFecha.SetSystemTime( 0, FechaHoy(2) )
-.head 2 +  Window Parameters
-.head 3 -  String: sChequeParam
-.head 2 +  Window Variables
-.head 3 -  Number: nRegresa
-.head 3 -  Number: nResp
-.head 3 -  Number: nCodigo
-.head 3 -  String: sMes
-.head 3 -  Number: nTempFact
-.head 3 -  Boolean: bExistsNotaCredito
-.head 3 -  String: params[*]
-.head 3 -  String: strReportName
-.head 3 -  String: strRepTitle
-.head 3 -  String: sComment
-.head 3 -  Number: nTipoPago
-.head 3 -  : notaCredito1
-.head 4 -  Class: lcNotaCredito
-.head 3 -  String: sSqlHM
-.head 2 +  Message Actions
-.head 3 +  On SAM_CreateComplete
-.head 4 -  ! Comentado dado que la opcion de NC de Cheque no se usa
-.head 4 -  ! Call SalCenterWindow( hWndForm )
-.head 4 +  ! If sChequeParam != STRING_Null
-.head 5 -  !
-.head 5 -  Set cbCheque = TRUE
-.head 5 -  Set dfCheque = sChequeParam
-.head 4 +  ! Else
-.head 5 -  Call SalDisableWindow(dfCheque)
-.head 4 -  ! !
-.head 4 -  Set rbClinica = TRUE
-.head 4 -  Set sSqlHM = "SELECT 
-    DH.CORREL,
-    M.NOMBRE || ' (' || LTRIM(STR(DH.MONTO_DEBE)) || ')' AS NOMBRE
-FROM 
-    DET_HONORARIOS DH,
-    MEDICOS M
-WHERE
-    DH.COD_MEDICO = M.COD_MEDICO
-    AND DH.MONTO_DEBE > 0 
-    AND DH.COD_FACTURA = :frmNotaCredito.dfFactura"
 .head 1 +  Form Window: frmEntradasInventario
 .head 2 -  Class:
 .head 2 -  Property Template:
@@ -104553,7 +103306,7 @@ los datos de la ventana
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: Class Default
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -104596,7 +103349,7 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: Class Default
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -104633,7 +103386,7 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 2.833"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Font Name: Default
 .head 5 -  Font Size: Default
 .head 5 -  Font Enhancement: Default
@@ -105474,20 +104227,20 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 4 -  Message Actions
 .head 3 +  Picture: Tabs
 .data CLASSPROPS
-0000: 5461624F7269656E 746174696F6E0001 000000546162546F 704D617267696E00
-0020: 0200300000546162 466F726D50616765 7300040009090900 0054616244726177
-0040: 5374796C65000B00 57696E3935537479 6C65000054616252 696768744D617267
-0060: 696E000200300000 5461624E616D6573 0032007461625365 72766963696F7309
-0080: 746162486F6E6172 696F730974616243 6C69656E74650974 6162526573706F6E
-00A0: 73616C6500005461 624C6162656C7300 4100202020205365 72766963696F7320
-00C0: 2020200920202020 486F6E6F72617269 6F73202020200920 202020436C69656E
-00E0: 7465202020200952 6573706F6E736162 6C65000054616250 616765436F756E74
-0100: 0002003100005461 62426F74746F6D4D 617267696E000200 3000005461624375
-0120: 7272656E74000E00 746162526573706F 6E73616C65000054 61624C6566744D61
-0140: 7267696E00020030 0000000000000000 0000000000000000 0000000000000000
+0000: 5461624C6566744D 617267696E000200 3000005461624375 7272656E74000D00
+0020: 7461625365727669 63696F7300005461 62426F74746F6D4D 617267696E000200
+0040: 3000005461625061 6765436F756E7400 0200310000546162 4C6162656C730041
+0060: 0020202020536572 766963696F732020 2020092020202048 6F6E6F726172696F
+0080: 7320202020092020 2020436C69656E74 6520202020095265 73706F6E7361626C
+00A0: 6500005461624E61 6D65730032007461 6253657276696369 6F7309746162486F
+00C0: 6E6172696F730974 6162436C69656E74 6509746162526573 706F6E73616C6500
+00E0: 0054616252696768 744D617267696E00 0200300000546162 447261775374796C
+0100: 65000B0057696E39 355374796C650000 546162466F726D50 6167657300040009
+0120: 0909000054616254 6F704D617267696E 0002003000005461 624F7269656E7461
+0140: 74696F6E00010000 0000000000000000 0000000000000000 00000000000000
 .enddata
 .data CLASSPROPSSIZE
-0000: 6001
+0000: 5F01
 .enddata
 .data INHERITPROPS
 0000: 0100
@@ -105543,7 +104296,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.5"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Keyboard Accelerator: F5
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -105592,7 +104345,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.583"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? No
+.head 5 -  Visible? Yes
 .head 5 -  Font Name: Default
 .head 5 -  Font Size: Default
 .head 5 -  Font Enhancement: Default
@@ -106800,7 +105553,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.25"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
@@ -106834,7 +105587,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -106875,7 +105628,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Uppercase
@@ -106910,7 +105663,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.226"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -106944,7 +105697,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -106979,7 +105732,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107013,7 +105766,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: dd/MM/yyyy
@@ -107048,7 +105801,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.226"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107082,7 +105835,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107117,7 +105870,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.226"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107151,7 +105904,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107186,7 +105939,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.321"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107220,7 +105973,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107255,7 +106008,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.25"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107289,7 +106042,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -107324,7 +106077,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107352,7 +106105,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107386,7 +106139,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 0.25"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Yes
 .head 5 -  Justify: Left
 .head 5 -  Format: Unformatted
@@ -107430,7 +106183,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 1.012"
 .head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Font Name: Arial
 .head 5 -  Font Size: 9
 .head 5 -  Font Enhancement: None
@@ -107461,7 +106214,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107490,7 +106243,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Right
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107525,7 +106278,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -107562,7 +106315,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.452"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -107604,7 +106357,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -107633,7 +106386,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.893"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Editable? Class Default
 .head 4 -  String Type: Class Default
 .head 4 -  Maximum Data Length: Class Default
@@ -107708,7 +106461,7 @@ el SQL Server entiende las fechas como que fueran Strings
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.45"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? No
+.head 4 -  Visible? Yes
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -125830,58 +124583,3 @@ where
 .head 4 -  Call SalListAdd( cmbTipo, 'Clinica' )
 .head 4 -  Call SalListAdd( cmbTipo, 'Honorarios' )
 .head 4 -  Call SalListSetSelect( cmbTipo, 0 )
-.head 1 +  Table Window: frmTableTest
-.head 2 -  Class:
-.head 2 -  Property Template:
-.head 2 -  Class DLL Name:
-.head 2 -  Title:
-.head 2 -  Icon File:
-.head 2 -  Accesories Enabled? Yes
-.head 2 -  Visible? Yes
-.head 2 -  Display Settings
-.head 3 -  Visible at Design time? Yes
-.head 3 -  Automatically Created at Runtime? No
-.head 3 -  Initial State: Normal
-.head 3 -  Maximizable? Yes
-.head 3 -  Minimizable? Yes
-.head 3 -  System Menu? Yes
-.head 3 -  Resizable? Yes
-.head 3 -  Window Location and Size
-.head 4 -  Left: Default
-.head 4 -  Top:    Default
-.head 4 -  Width:  17.083"
-.head 4 -  Width Editable? Yes
-.head 4 -  Height: 6.25"
-.head 4 -  Height Editable? Yes
-.head 3 -  Font Name: Default
-.head 3 -  Font Size: Default
-.head 3 -  Font Enhancement: Default
-.head 3 -  Text Color: Default
-.head 3 -  Background Color: Default
-.head 3 -  View: Table
-.head 3 -  Allow Row Sizing? No
-.head 3 -  Lines Per Row: Default
-.head 2 -  Memory Settings
-.head 3 -  Maximum Rows in Memory: Default
-.head 3 -  Discardable? Yes
-.head 2 -  Description:
-.head 2 -  Named Menus
-.head 2 -  Menu
-.head 2 +  Tool Bar
-.head 3 -  Display Settings
-.head 4 -  Display Style? Default
-.head 4 -  Location? Top
-.head 4 -  Visible? Yes
-.head 4 -  Size: 1.393"
-.head 4 -  Size Editable? Yes
-.head 4 -  Font Name: Default
-.head 4 -  Font Size: Default
-.head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: Default
-.head 4 -  Background Color: Default
-.head 3 -  Contents
-.head 2 -  Contents
-.head 2 -  Functions
-.head 2 -  Window Parameters
-.head 2 -  Window Variables
-.head 2 -  Message Actions
