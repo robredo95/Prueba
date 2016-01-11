@@ -2,11 +2,12 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400200000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
 0020: 0000000000140100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFFFFFFFF FF000000008B0200 00B6010000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F77730A6672
-0080: 6D43686571756573
+0040: FFE2FFFFFFFFFFFF FF000000008B0200 00B6010000010000 0000000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F77730A6672
+0080: 6D43686571756573 0D4368696C642057 696E646F77730A70 62456E7472616461
+00A0: 73
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000031433A5C 43656E747572615C 4249544D4150535C 4D7949636F6E735C
@@ -1006,7 +1007,7 @@ where cod_cuenta=:SUBCUENTA_DE " )
 .head 3 -  Picture:
 .head 3 -  Vertical Scroll Bar:
 .head 3 -  Horizontal Scroll Bar:
-.head 3 -  Column: clsNumero
+.head 3 -  Column: clsFecha
 .head 3 -  Background Text:
 .head 3 -  Group Box:
 .head 3 -  Line:
@@ -6468,14 +6469,14 @@ A.COD_CUENTA  = :tbl1.colCuenta  into :tbl1.colNombre" )
 .head 4 -  Background Color: Default
 .head 4 +  Message Actions
 .head 5 +  On SAM_Click
-.head 6 +  If cmbTipo.nCodigo = 1
-.head 7 -  Set nProveedor = GetProveedor(dfCod_Cheque)
-.head 7 +  If nProveedor = NUMBER_Null
+.head 6 +  If cmbTipo.nCodigo = 1 AND dfEstado != 'ANULADO'
+.head 7 -  Call GetProveedor(dfCod_Cheque, nCodProveedor, sNombreProveedor)
+.head 7 +  If nCodProveedor = NUMBER_Null
 .head 8 -  Call SalMessageBox( 'Asegurese de salvar antes el Cheque y además el detalle del Cheque debe tener una cuenta de Proveedor', '.:: Sistema de Gestion Hospitalaria', 0 )
 .head 7 +  Else
-.head 8 -  Call SalModalDialog( dlgChequesEntradas, hWndForm, dfCod_Cheque, dfMonto, nProveedor)
+.head 8 -  Call SalModalDialog( dlgChequesEntradas, hWndForm, dfCod_Cheque, dfMonto, nCodProveedor, sNombreProveedor)
 .head 6 +  Else
-.head 7 -  Call SalMessageBox( 'El Cheque debe ser de tipo: PROVEEDORES, para poder asociarle Entradas (Facturas de proveedores)', '.:: Sistema de Gestion Hospitalaria', 0 )
+.head 7 -  Call SalMessageBox( 'El Cheque debe ser de tipo: PROVEEDORES y no debe estar anulado, para poder asociarle Entradas (Facturas de proveedores)', '.:: Sistema de Gestion Hospitalaria', 0 )
 .head 3 -  Background Text: F1
 .head 4 -  Resource Id: 17709
 .head 4 -  Class Child Ref Key: 0
@@ -6569,9 +6570,6 @@ A.COD_CUENTA  = :tbl1.colCuenta  into :tbl1.colNombre" )
 .head 5 -  Number: nCerrada
 .head 5 -  Number: nSumarizada
 .head 4 +  Actions
-.head 5 -  Call SqlPrepareAndExecute( hSql1, "update cheques set estado='ANULADO' where
-cod_cheque = :dfCod_Cheque " )
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
 .head 5 -  Call SqlPrepareAndExecute( hSql1, "select sumarizada,cerrada   from partidas  where cod_partida=:dfCod_Partida 
 into :nSumarizada, :nCerrada " )
 .head 5 -  Call SqlFetchNext( hSql1, nSiguiente )
@@ -6579,12 +6577,18 @@ into :nSumarizada, :nCerrada " )
 .head 5 +  If nCerrada=1 or nSumarizada=1
 .head 6 -  Call SalMessageBox( 'Cheque no puede ser Anulado', 'Cheque no puede ser Anulado', MB_Ok )
 .head 5 +  Else
-.head 6 -  Call SqlPrepareAndExecute( hSql1, "delete from det_partidas  where cod_partida=:dfCod_Partida " )
-.head 6 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 6 -  Call SqlPrepareAndExecute( hSql1, "delete from partidas  where cod_partida=:dfCod_Partida " )
-.head 6 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 6 -  Call SalMessageBox( 'Cheque ANULADO', 'Cheque ANULADO', MB_Ok )
-.head 6 -  Call SalSendMsg(hWndForm,MU_ACTUALIZAR,0,0)
+.head 6 +  If SqlPrepareAndExecute( hSql1, "update cheques set estado='ANULADO' where cod_cheque = :dfCod_Cheque " )
+AND 
+SqlPrepareAndExecute( hSql1, "delete from det_partidas  where cod_partida=:dfCod_Partida " )
+AND
+SqlPrepareAndExecute( hSql1, "delete from partidas  where cod_partida=:dfCod_Partida " )
+AND
+SqlPrepareAndExecute( hSql1, "DELETE FROM ENTRADAS_CHEQUES WHERE COD_CHEQUE = :dfCod_Cheque" )
+.head 7 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 7 -  Call SalMessageBox( 'Cheque ANULADO', 'Cheque ANULADO', MB_Ok )
+.head 7 -  Call SalSendMsg(hWndForm,MU_ACTUALIZAR,0,0)
+.head 6 +  Else
+.head 7 -  Call SqlPrepareAndExecute(hSql1,"rollback")
 .head 3 +  Function: GenerarPartida
 .head 4 -  Description:
 .head 4 +  Returns
@@ -6663,22 +6667,24 @@ values(:sRegresa,
 .head 5 -  Number:
 .head 4 +  Parameters
 .head 5 -  String: P_Cheque
+.head 5 -  Receive Number: P_CodProveedor
+.head 5 -  Receive String: P_NombreProveedor
 .head 4 -  Static Variables
-.head 4 +  Local variables
-.head 5 -  Number: nCodProveedor
+.head 4 -  Local variables
 .head 4 +  Actions
 .head 5 -  Call SqlImmediate( "
 SELECT
-	gm.CODIGO
+	gm.CODIGO,
+	gm.NOMBRE
 FROM
 	GRUPOS_MED gm 
 	  INNER JOIN DETALLE_CHEQUES dc ON gm.COD_CUENTA = dc.cod_cuenta
 WHERE
 	dc.COD_CHEQUE = :P_Cheque
 INTO
-	:nCodProveedor" )
+	:P_CodProveedor,
+	:P_NombreProveedor" )
 .head 5 -  Call SqlClearImmediate(  )
-.head 5 -  Return nCodProveedor
 .head 2 -  Window Parameters
 .head 2 +  Window Variables
 .head 3 -  Number: nFila
@@ -6693,7 +6699,8 @@ INTO
 .head 3 -  String: sSufijo
 .head 3 -  Number: nTempCtaBanco
 .head 3 -  Number: nTempBanco
-.head 3 -  Number: nProveedor
+.head 3 -  Number: nCodProveedor
+.head 3 -  String: sNombreProveedor
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
 .head 4 -  Call Limpiar(  )
@@ -35283,7 +35290,7 @@ order by
 .head 3 -  Window Location and Size
 .head 4 -  Left: Default
 .head 4 -  Top:    Default
-.head 4 -  Width:  9.6"
+.head 4 -  Width:  12.433"
 .head 4 -  Width Editable? Yes
 .head 4 -  Height: 4.905"
 .head 4 -  Height Editable? Yes
@@ -35318,7 +35325,7 @@ order by
 .head 5 -  Window Location and Size
 .head 6 -  Left: 0.983"
 .head 6 -  Top:    0.905"
-.head 6 -  Width:  8.1"
+.head 6 -  Width:  10.4"
 .head 6 -  Width Editable? Yes
 .head 6 -  Height: 2.583"
 .head 6 -  Height Editable? Yes
@@ -35371,6 +35378,8 @@ order by
 SELECT
 	p.NOMBRE,
 	p.COD_GRUPO,
+	e.FACTURA,
+	e.FECHA,
 	e.TOTAL_FACTURA - ISNULL(ec.MONTO, 0)  AS MONTO_PEND,
 	e.TOTAL_FACTURA - ISNULL(ec.MONTO, 0) AS MONTO,
 	0 AS SALDO 
@@ -35382,21 +35391,86 @@ WHERE
 	e.COD_TIPO_ENTRADA = 1 AND
 	e.PAGADA = 'NO' AND
 	e.COD_ENTRADA = :tbl1.colEntrada AND
-	e.COD_GRUPO = :cmbGrupo.nCodigo
+	e.COD_GRUPO = :P_CodProveedor
 INTO
 	:tbl1.colProveedor,
 	:tbl1.colCodProveedor,
+	:tbl1.colFactura,
+	:tbl1.colFecha,
 	:tbl1.colMontoEnt,
 	:tbl1.colAbono,
 	:tbl1.colSaldo" )
 .head 8 -  Call SqlClearImmediate(  )
+.head 8 -  Call SalTblFindNextRow( tbl1, nCurrentRow, ROW_Selected, 0 )											
+.head 8 -  Call SalTblQueryFocus(  tbl1,nCurrentRow , hCurrentColumn)
 .head 8 +  If tbl1.colMontoEnt = NUMBER_Null
-.head 9 -  Call SalMessageBox( 'La entrada ' || tbl1.colEntrada || ' no existe, ya fue pagada o no pertenece al proveedor: ' || cmbGrupo, '.:: Sistema de Gestion Hospitalaria ::.', 0 )
-.head 9 -  Call SalTblFindNextRow( tbl1, nCurrentRow, ROW_Selected, 0 )											
-.head 9 -  Call SalTblQueryFocus(  tbl1,nCurrentRow , hCurrentColumn)
+.head 9 -  Call SalMessageBox( 'La entrada ' || tbl1.colEntrada || ' no existe, ya fue pagada o no pertenece al proveedor: ' || P_NombreProveedor, '.:: Sistema de Gestion Hospitalaria ::.', 0 )
 .head 9 -  Call SalTblDeleteRow( tbl1, nCurrentRow, TBL_Adjust )
 .head 8 +  Else
 .head 9 -  Call SetTotalAbono()
+.head 9 -  Call SalTblSetFocusCell( tbl1, nCurrentRow, tbl1.colAbono, 0, 0 )
+.head 5 +  Column: colFactura
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsDatos
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: # Factura
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.367"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colFecha
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsFecha
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Fecha Ent.
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.4"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
 .head 5 +  Column: colCodProveedor
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 0
@@ -35433,21 +35507,21 @@ INTO
 .head 9 -  Call SalMessageBox( 'El abono no puede ser mayor al monto de la entrada', '.:: Sistema de Gestion Hopitalaria ::.', 0 )
 .head 9 -  Set tbl1.colAbono = tbl1.colMontoEnt
 .head 8 -  Call SetTotalAbono ()
-.head 5 +  Column: colProveedor
+.head 5 +  Column: colMontoEnt
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 0
-.head 6 -  Class: clsDatos
+.head 6 -  Class: clsNumero
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
-.head 6 -  Title: Proveedor
+.head 6 -  Title: Monto Pend.
 .head 6 -  Visible? Class Default
-.head 6 -  Editable? Class Default
+.head 6 -  Editable? No
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  2.083"
+.head 6 -  Width:  1.2"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Format: Class Default
+.head 6 -  Format: ###000
 .head 6 -  Country: Class Default
 .head 6 -  Input Mask: Class Default
 .head 6 -  Cell Options
@@ -35464,21 +35538,21 @@ INTO
 .head 8 -  Ignore Case? Class Default
 .head 6 -  List Values
 .head 6 -  Message Actions
-.head 5 +  Column: colMontoEnt
+.head 5 +  Column: colProveedor
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 0
-.head 6 -  Class: clsNumero
+.head 6 -  Class: clsDatos
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
-.head 6 -  Title: Monto Pend.
+.head 6 -  Title: Proveedor
 .head 6 -  Visible? Class Default
 .head 6 -  Editable? No
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.2"
+.head 6 -  Width:  1.75"
 .head 6 -  Width Editable? Class Default
-.head 6 -  Format: ###000
+.head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
 .head 6 -  Input Mask: Class Default
 .head 6 -  Cell Options
@@ -35615,6 +35689,36 @@ INTO
 .head 5 -  Background Color: Class Default
 .head 5 -  Input Mask: Class Default
 .head 4 -  Message Actions
+.head 3 +  Data Field: dfProveedor
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: dfBase
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Data
+.head 5 -  Maximum Data Length: Class Default
+.head 5 -  Data Type: Class Default
+.head 5 -  Editable? No
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left: 0.983"
+.head 6 -  Top:    0.405"
+.head 6 -  Width:  5.133"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Border? Class Default
+.head 5 -  Justify: Class Default
+.head 5 -  Format: Class Default
+.head 5 -  Country: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Input Mask: Class Default
+.head 4 -  Message Actions
 .head 3 +  Data Field: dfMontoCheque
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -35651,7 +35755,7 @@ INTO
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 6.05"
+.head 5 -  Left: 7.55"
 .head 5 -  Top:    3.536"
 .head 5 -  Width:  0.633"
 .head 5 -  Width Editable? Yes
@@ -35676,7 +35780,7 @@ INTO
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 6.75"
+.head 6 -  Left: 8.25"
 .head 6 -  Top:    3.512"
 .head 6 -  Width:  2.3"
 .head 6 -  Width Editable? Class Default
@@ -35750,6 +35854,9 @@ INTO
 .head 5 +  On SAM_Create
 .head 6 -  Set pbBorrarCuenta.hWndFila=tbl1.colEntrada
 .head 6 -  Set pbBorrarCuenta.hWndTabla=tbl1
+.head 5 +  On SAM_Click
+.head 6 -  Call SalSendClassMessage( SAM_Click, 0, 0 )
+.head 6 -  Call SetTotalAbono()
 .head 3 +  Pushbutton: pbSalvar
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -35758,7 +35865,7 @@ INTO
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Salvar
 .head 4 -  Window Location and Size
-.head 5 -  Left: 2.683"
+.head 5 -  Left: 4.383"
 .head 5 -  Top:    3.988"
 .head 5 -  Width:  2.4"
 .head 5 -  Width Editable? Class Default
@@ -35777,14 +35884,17 @@ INTO
 .head 4 +  Message Actions
 .head 5 +  On SAM_Click 
 .head 6 -  ! ! Deletes
-.head 6 -  Call SqlPrepare( hSql1, "
+.head 6 +  If dfTotalAbono > dfMontoCheque
+.head 7 -  Call SalMessageBox( 'El total de los Abonos no puede ser mayor que el total del Cheque', '.:: Sistema de Gestion Hospitalaria ::.', 0 )
+.head 6 +  Else
+.head 7 -  Call SqlPrepare( hSql1, "
 DELETE FROM ENTRADAS_CHEQUES
 WHERE 
 	COD_ENTRADA = :tbl1.colEntrada AND 
 	COD_CHEQUE = :dfCheque")
-.head 6 -  Call SalTblDoDeletes( tbl1, hSql1, ROW_MarkDeleted )
-.head 6 -  ! ! Updates
-.head 6 -  Call SqlPrepare( hSql1, "
+.head 7 -  Call SalTblDoDeletes( tbl1, hSql1, ROW_MarkDeleted )
+.head 7 -  ! ! Updates
+.head 7 -  Call SqlPrepare( hSql1, "
 UPDATE ENTRADAS_CHEQUES
 SET
 	MONTO = :tbl1.colMontoEnt,
@@ -35792,15 +35902,15 @@ SET
 WHERE 
 	COD_ENTRADA = :tbl1.colEntrada AND 
 	COD_CHEQUE = :dfCheque")
-.head 6 -  Call SalTblDoUpdates( tbl1, hSql1, TRUE )
-.head 6 -  ! ! Inserts
-.head 6 -  Call SqlPrepare( hSql1, "
+.head 7 -  Call SalTblDoUpdates( tbl1, hSql1, TRUE )
+.head 7 -  ! ! Inserts
+.head 7 -  Call SqlPrepare( hSql1, "
 INSERT INTO ENTRADAS_CHEQUES
 	(COD_ENTRADA, COD_CHEQUE, MONTO, SALDO)
 VALUES 
 	(:tbl1.colEntrada, :dfCheque, :tbl1.colAbono, :tbl1.colSaldo)")
-.head 6 -  Call SalTblDoInserts( tbl1, hSql1, TRUE )
-.head 6 -  Call SalMessageBox( 'Los datos fueron salvados con éxito', '.:: Sistema de Gestion Hospitalaria ::.', 0 )
+.head 7 -  Call SalTblDoInserts( tbl1, hSql1, TRUE )
+.head 7 -  Call SalMessageBox( 'Los datos fueron salvados con éxito', '.:: Sistema de Gestion Hospitalaria ::.', 0 )
 .head 3 +  Pushbutton: pbCancelar
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -35809,7 +35919,7 @@ VALUES
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Cancelar
 .head 4 -  Window Location and Size
-.head 5 -  Left: 5.283"
+.head 5 -  Left: 6.983"
 .head 5 -  Top:    3.988"
 .head 5 -  Width:  2.4"
 .head 5 -  Width Editable? Class Default
@@ -35825,7 +35935,9 @@ VALUES
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
 .head 4 -  Background Color: Class Default
-.head 4 -  Message Actions
+.head 4 +  Message Actions
+.head 5 +  On SAM_Click
+.head 6 -  Call SalDestroyWindow( dlgChequesEntradas )
 .head 3 -  Background Text: Proveedor:
 .head 4 -  Resource Id: 11418
 .head 4 -  Class Child Ref Key: 0
@@ -35833,7 +35945,7 @@ VALUES
 .head 4 -  Class:
 .head 4 -  Window Location and Size
 .head 5 -  Left: 0.083"
-.head 5 -  Top:    0.536"
+.head 5 -  Top:    0.429"
 .head 5 -  Width:  0.867"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
@@ -35845,50 +35957,6 @@ VALUES
 .head 4 -  Font Enhancement: Default
 .head 4 -  Text Color: Default
 .head 4 -  Background Color: Default
-.head 3 +  Combo Box: cmbGrupo
-.head 4 -  Class Child Ref Key: 0
-.head 4 -  Class ChildKey: 0
-.head 4 -  Class: cmbBaseCodigo
-.head 4 -  Property Template:
-.head 4 -  Class DLL Name:
-.head 4 -  Window Location and Size
-.head 5 -  Left: 1.017"
-.head 5 -  Top:    0.5"
-.head 5 -  Width:  5.1"
-.head 5 -  Width Editable? Class Default
-.head 5 -  Height: 3.988"
-.head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Class Default
-.head 4 -  Editable? No
-.head 4 -  String Type: Class Default
-.head 4 -  Maximum Data Length: Class Default
-.head 4 -  Sorted? Class Default
-.head 4 -  Always Show List? Class Default
-.head 4 -  Vertical Scroll? Class Default
-.head 4 -  Font Name: Class Default
-.head 4 -  Font Size: Class Default
-.head 4 -  Font Enhancement: Class Default
-.head 4 -  Text Color: Class Default
-.head 4 -  Background Color: Class Default
-.head 4 -  Input Mask: Class Default
-.head 4 -  List Initialization
-.head 4 +  Message Actions
-.head 5 +  On SAM_Create
-.head 6 -  Set cmbGrupo.nCaso=1
-.head 6 -  Set cmbGrupo.sTabla='GRUPOS_MED'
-.head 6 -  Set cmbGrupo.sNombre='NOMBRE'
-.head 6 -  Set cmbGrupo.sCodigo='COD_GRUPO'
-.head 5 +  On SAM_Validate
-.head 6 +  If nBProveedor != NUMBER_Null 
-.head 7 +  If SalMessageBox( 'Si cambia de proveedor todas las entradas asociadas al cheque seran eliminadas, Desea continuar ?', '.:: Sistema de Gestion Hospitalaria ::.', MB_YesNo ) = IDYES
-.head 8 -  Call SqlPrepareAndExecute( hSql1, "DELETE FROM ENTRADAS_CHEQUES WHERE COD_CHEQUE = :dfCheque" )
-.head 8 -  Call SalTblReset( tbl1 )
-.head 8 -  Set nBProveedor = cmbGrupo.nCodigo
-.head 7 +  Else
-.head 8 -  Set cmbGrupo.nCodigo = nBProveedor
-.head 8 -  Call cmbGrupo.Actualizar()
-.head 6 +  Else
-.head 7 -  Set nBProveedor = cmbGrupo.nCodigo
 .head 2 +  Functions
 .head 3 +  Function: SetTotalAbono
 .head 4 -  Description:
@@ -35903,18 +35971,15 @@ VALUES
 .head 2 +  Window Parameters
 .head 3 -  String: P_CodCheque
 .head 3 -  Number: P_Monto
-.head 3 -  Number: P_Proveedor
+.head 3 -  Number: P_CodProveedor
+.head 3 -  String: P_NombreProveedor
 .head 2 +  Window Variables
 .head 3 -  Number: nCurrentRow
-.head 3 -  Number: nBProveedor
 .head 3 -  Window Handle: hCurrentColumn
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
 .head 4 -  Set dfCheque = P_CodCheque
 .head 4 -  Set dfMontoCheque = P_Monto
-.head 4 -  Set cmbGrupo.nCodigo = P_Proveedor
-.head 4 -  Call cmbGrupo.Actualizar()
-.head 4 -  Set nBProveedor = cmbGrupo.nCodigo
 .head 4 -  Call SalSendMsg( hWndForm, MU_ACTUALIZAR, 0, 0 )
 .head 3 +  On MU_ACTUALIZAR
 .head 4 -  Call SalTblPopulate( tbl1, hSql1, "
@@ -35922,6 +35987,8 @@ SELECT
 	ec.COD_ENTRADA,
 	p.COD_GRUPO,
 	p.NOMBRE,
+	e.FACTURA,
+	e.FECHA,
 	e.TOTAL_FACTURA,
 	ec.MONTO,
 	ec.SALDO
@@ -35935,7 +36002,10 @@ INTO
 	:tbl1.colEntrada,
 	:tbl1.colCodProveedor,
 	:tbl1.colProveedor,
+	:tbl1.colFactura,
+	:tbl1.colFecha,
 	:tbl1.colMontoEnt,
 	:tbl1.colAbono,
 	:tbl1.colSaldo", TBL_FillAll )
+.head 4 -  Set dfProveedor = SalNumberToStrX( P_CodProveedor, 0 ) || ' - ' || P_NombreProveedor
 .head 4 -  Call SetTotalAbono()
