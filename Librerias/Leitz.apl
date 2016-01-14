@@ -8,18 +8,19 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000004000000 FFFF01000D004347 5458566965775374 6174650400010000
+0000: 6F00000004000000 FFFF01000D004347 5458566965775374 6174650400020000
 0020: 0000000000D60000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF160000 0016000000200200 000D010000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D0100000012496E 7465726E616C2046
-0080: 756E6374696F6E73 000001800200FFFF FFFF000000000000 00002C0000000000
-00A0: 000001000000FFFF FFFFFFFFFFFFFCFF FFFFE9FFFFFF2C00 00002C0000003602
-00C0: 0000230100000000 0000000000000300 00000F4170706C69 636174696F6E4974
-00E0: 656D07436C617373 657307636C734C6F 6E67000000000180 0400010000000000
-0100: 0000680000002C00 0000000000000100 0000FFFFFFFFFFFF FFFFFCFFFFFFE9FF
-0120: FFFF420000004200 00004C0200003901 0000000000000000 0000040000000F41
-0140: 70706C6963617469 6F6E4974656D0743 6C61737365730763 6C734C6F6E670946
-0160: 756E6374696F6E73 00000000
+0040: FFE1FFFFFF160000 0016000000200200 000D010000010000 0000000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F777308646C
+0080: 674572726F720854 6F6F6C204261720F 7062477261626172 4172636869766F00
+00A0: 0001800200FFFFFF FF00000000000000 002C000000000000 0001000000FFFFFF
+00C0: FFFFFFFFFFFCFFFF FFE9FFFFFF2C0000 002C000000360200 0023010000000000
+00E0: 0000000000030000 000F4170706C6963 6174696F6E497465 6D07436C61737365
+0100: 7307636C734C6F6E 6700000000018004 0001000000000000 00680000002C0000
+0120: 0000000000010000 00FFFFFFFFFFFFFF FFFCFFFFFFE9FFFF FF42000000420000
+0140: 004C020000390100 0000000000000000 00040000000F4170 706C69636174696F
+0160: 6E4974656D07436C 617373657307636C 734C6F6E67094675 6E6374696F6E7300
+0180: 000000
 .enddata
 .head 2 -  Outline Window State: Maximized
 .head 2 +  Outline Window Location and Size
@@ -33,7 +34,7 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .data VIEWSIZE
 0000: 8800
 .enddata
-.head 3 -  Left: -0.013"
+.head 3 -  Left:   -0.013"
 .head 3 -  Top:    0.0"
 .head 3 -  Width:  8.013"
 .head 3 -  Height: 4.969"
@@ -45,19 +46,19 @@ en table window,des/ha bilitar pantallas, manejo de errores
 0000: 0800
 .enddata
 .head 3 -  Visible? Yes
-.head 3 -  Left: 4.15"
+.head 3 -  Left:   4.15"
 .head 3 -  Top:    1.885"
 .head 3 -  Width:  3.8"
 .head 3 -  Height: 2.073"
 .head 2 +  Class Editor Location
 .head 3 -  Visible? No
-.head 3 -  Left: 0.3"
+.head 3 -  Left:   0.3"
 .head 3 -  Top:    0.042"
 .head 3 -  Width:  5.063"
 .head 3 -  Height: 2.719"
 .head 2 +  Tool Palette Location
 .head 3 -  Visible? No
-.head 3 -  Left: 5.9"
+.head 3 -  Left:   5.9"
 .head 3 -  Top:    1.031"
 .head 2 -  Fully Qualified External References? No
 .head 2 -  Reject Multiple Window Instances? No
@@ -518,6 +519,2402 @@ A process should not rely on the return value to determine the number of times i
 .head 6 -  Number: LPVOID
 .head 6 -  String: LPVOID
 .head 6 -  Number: DWORD
+.head 3 +  Library name: CRPE32.DLL
+.head 4 +  Function: PECheckFormula
+.head 5 -  Description: The PECheckFormula function checks the text of a named formula for validity. Use this function to check a named formula for errors. This function works like the Check button in the Formula Editor. If the named formula contains an error, the
+function returns False.
+
+BOOL CRPE_API PECheckFormula (
+	short printJob, 			//handle to print job
+	char FAR *formulaName		//formula to be checked
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 4 +  Function: PECheckGroupSelectionFormula
+.head 5 -  Description: The PECheckGroupSelectionFormula function checks the text of the report's group selection formula for errors. Use this function when the group selection formula in a report has changed and you need to check the new group selection formula. If
+there is an error in the formula, this function returns a False value.
+
+BOOL CRPE_API PECheckGroupSelectionFormula (
+	short printJob		//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PECheckSelectionFormula
+.head 5 -  Description: Checks the text of the report's record selection formula for errors. Use this function whenever the record selection formula has been changed and you wish to check the formula for syntax errors. If the record selection formula contains an error, this
+function returns a False value.
+
+BOOL CRPE_API PECheckSelectionFormula (
+	short printJob		//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PECanCloseEngine
+.head 5 -  Description: PRO Function
+The PECanCloseEngine function determines whether or not the Report Engine can be closed. Use this function before calling PECloseEngine to verify that the engine is no longer processing print jobs.  If the Report Engine closes while a print job
+is still running, an error can occur in your application or on the users system.
+
+BOOL CRPE_API PECanCloseEngine (void);
+
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 -  Parameters
+.head 4 +  Function: PECloseEngine
+.head 5 -  Description: PECloseEngine terminates the Report Engine. All printing is stopped and all windows are closed.
+
+NOTE:  This will only happen if the calling application is the last one using CRPE.
+
+This function stops the Report Engine from sending output, but the report may continue to print from data remaining in the spooler.
+
+This function is a necessary part of any customprint link. It is also required for any printonly link in which you want the report to print to a window that is to remain visible after the report is printed. It is not necessary to use this function with a printonly
+link where you are directing the report to a printer.
+
+void CRPE_API PECloseEngine();
+.head 5 -  Export Ordinal: 0
+.head 5 -  Returns
+.head 5 -  Parameters
+.head 4 +  Function: PEClosePrintJob
+.head 5 -  Description: PEClosePrintJob closes the print job. If printing has not yet finished, it continues; if the print window is open, it stays open. This function is used as a mandatory part of each customprint link to shut down the print job once it has finished printing to
+screen or to window.
+
+BOOL CRPE_API PEClosePrintJob (
+	short printJob		//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PECloseWindow
+.head 5 -  Description: PECloseWindow closes the print window. Use this function as part of a customprint link to enable the user to review the report in the print window and then to close the window (in response to a user event).
+
+Use PECloseWindow to replace the Close button when PEShowPrintControls disables the Print Control buttons.
+
+void CRPE_API PECloseWindow (
+	short printJob		//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 -  Returns
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEDeleteNthSortField
+.head 5 -  Description: The PEDeleteNthSortField function removes the specified sort field from the sort order. This function is used as part of a customprint link whenever you want to delete sort fields that were established for the report at design time. When you give the
+user the ability to delete sort field(s) at print time, your link must include code to replace sortFieldN with usergenerated values.
+
+This function can be used by itself to delete an existing sort field when the sort field number is already known.
+
+The function can also be used as one of a series of functions: PEGetNSortFields (called once), PEGetNthSortField/ PEGetHandleString (called together as many times as needed to identify the correct sort field), and PEDeleteNthSortField (called
+once, when the correct sort field is identified). The series can be used in a customprint link to identify and then delete an existing sort field and/or sort order at print time in response to a user selection.
+
+BOOL CRPE_API PEDeleteNthSortField (
+	short printJob, 		//handle to print job
+	short sortFieldN		//number of sort field to delete
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetErrorCode
+.head 5 -  Description: Returns a number that indicates the status of the most recent Report Engine function called. When a call to another function fails, this call gets the error code that was generated so you can take some action based on that error code.
+
+short CRPE_API PEGetErrorCode (
+	short printJob		//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetErrorText
+.head 5 -  Description: Returns a string handle describing the status of the most recent Report Engine function called. This function is typically used together with PEGetHandleString
+. These functions can be used in a customprint link to display the error string to the user as part of an error message.
+
+BOOL CRPE_API PEGetErrorText (
+	short printJob, 		//handle to print job
+	HANDLE FAR *textHandle,	//pointer to error string handle
+	short Far *textLength	//pointer to error string length
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetFormula
+.head 5 -  Description: Returns the text of the named formula as a string handle. This function is typically used as one of a series of functions (PEGetFormula/PEGetHandleString, PESetFormula). The series can be used in a customprint link to identify and then change
+an existing formula at print time in response to a user selection.
+
+BOOL CRPE_API PEGetFormula (
+	short printJob, 		//handle to print job
+	char *formulaName, 	//pointer to formula name string
+	HANDLE FAR *textHandle, //pointer to formula string handle
+	short FAR *textLength	//pointer to formula string length
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetGroupSelectionFormula
+.head 5 -  Description: Returns the string handle for the group selection formula used in the specified report. This function is typically used as one of a series of functions (PEGetGroupSelectionFormula, PEGetHandleString, PESetGroupSelectionFormula). This series can
+be used in a customprint link to identify and then change an existing group selection formula at print time in response to a user selection.
+
+BOOL CRPE_API PEGetGroupSelectionFormula (
+	short printJob, 		//handle to print job
+	HANDLE FAR *textHandle,	//handle to formula string
+	short FAR *textLength	//handle to formula string length
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetHandleString
+.head 5 -  Description: This function will return the text that the string handle is pointing to.  The buffer will obtain the actual text.  This function is used in conjunction with functions that return variable length strings. After your program allocates a buffer of sufficient size,
+this function moves the string from the string handle to the buffer.
+
+BOOL CRPE_API PEGetHandleString (
+	HANDLE textHandle, 	// string handle
+	char FAR *buffer, 	// pointer to receiving array
+	short bufferLength	// length of buffer
+	);
+NOTE:  When you call the function that produces the string, it returns a length that includes a provision for the null byte at the end of the string. A buffer set to that length will hold the entire string including the terminating null byte.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: HANDLE
+.head 6 -  Receive String: LPSTR
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNthSortField
+.head 5 -  Description: Returns information about one of the sort fields in the specified report: that is, it returns the name of the field and the direction (ascending or descending) of the sort. The name of the sort field is returned as a string handle. This function is typically
+used as one of a series of functions: PEGetNSortFields (called once), PEGetNthSortField/, PEGetHandleString (called together as many times as needed to identify the correct sort field), and PESetNthSortField (called once when the correct sort
+field is identified). The series can be used in a customprint link to identify and then change an existing sort field and/or sort order at print time in response to a user selection.
+
+BOOL CRPE_API PEGetNthSortField (
+	short printJob,		//handle to print job
+	short sortFieldN,		//number of sort field
+	HANDLE FAR *nameHandle,	//field name string handle pointer
+	short FAR *nameLength,	//field name string length pointer
+	short FAR *direction	//pointer to sort direction setting
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetNthTableLocation
+.head 5 -  Description: The PEGetNthTableLocation function determines the location of a selected table used in the specified print job. This function is typically combined with PESetNthTableLocation to identify the location of a table and then to change it.
+
+BOOL CRPE_API PEGetNthTableLocation (
+	short printJob,		//handle to print job
+	short tableN,		//number of table
+	struct PETableLocation FAR *location
+					//structure pointer
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Receive String: LPSTR
+.head 4 +  Function: PEGetNthTableLogOnInfo
+.head 5 -  Description: The PEGetNthTableLogOnInfo function retrieves into the PELogOnInfo structure the log on information required by a report.
+
+BOOL CRPE_API PEGetNthTableLogOnInfo (
+	short printJob,	//handle to print job
+	short tableN,	//number of table
+	struct PELogOnInfo FAR *logOnInfo	//structure pointer
+	);
+
+struct PELogOnInfo
+{
+	WORD structSize;
+	char ServerName [128];
+	char DatabaseName [128];
+	char UserID [128];
+	char Password [128];
+};
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 4 +  Function: PEGetNthTableType
+.head 5 -  Description: The PEGetNthTableType function allows the application to determine the type of each table.
+
+This function is one of a series of functions that enable you to retrieve and update database information in an opened report so that the report can be printed using different server, database, user, and/or table location settings.
+
+BOOL CRPE_API PEGetNthTableType (
+	short printJob,		//handle to print job
+	short tableN,		//number of table
+	struct PETableType FAR *tableType	//structure pointer
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Receive String: char[64]
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive Number: WORD
+.head 4 +  Function: PEGetNSortFields
+.head 5 -  Description: Returns the number of sort fields in the specified report. This function is typically used as one of a series of functions: PEGetNSortFields (called once), PEGetNthSortField/ PEGetHandleString (called together as many times as needed to identify
+the correct sort field), PESetNthSortField (called once when the correct sort field is identified). The series can be used in a customprint link to identify and then change an existing sort field and/or sort order at print time in response to a user
+selection.
+
+short CRPE_API PEGetNSortFields (
+	short printJob	//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNTables
+.head 5 -  Description: The PEGetNTables function retrieves the number of tables in the open report.  It counts both PC and SQL databases.
+
+This function is one of a series of functions that enable you to retrieve and update database information in an opened report so that the report can be printed using different server, database, user, and/or table location settings.
+
+short CRPE_API PEGetNTables (
+	short printJob	//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetSelectionFormula
+.head 5 -  Description: Returns the string handle for the selection formula used in the specified report. This function is typically used as one of a series of functions (PEGetSelectionFormula, PEGetHandleString, PESetSelectionFormula). The series can be used in a
+customprint link to identify and then change an existing record selection formula at print time in response to a user selection.
+
+BOOL CRPE_API PEGetSelectionFormula (
+	short printJob,	//handle to print job
+	HANDLE FAR *textHandle,	//pointer to formula string handle
+	short FAR *textLength	//pointer to formula string length
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetSQLQuery
+.head 5 -  Description: PRO Function
+The PEGetSQLQuery function returns the same query that appears in the Show SQL Query dialog box in Crystal Reports, in a syntax that is specific to the database driver you are using.
+
+You can use this function to retrieve the SQL query that will be generated to print the report, and you can update the query using PESetSQLQuery.
+
+BOOL CRPE_API PEGetSQLQuery (
+	short printJob,		//handle to print job
+	HANDLE FAR *textHandle,	//pointer to query string handle
+	short FAR *textLength	//pointer to query string length
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetNParameterFields
+.head 5 -  Description: The PEGetNParameterFields function determines the number of parameter (prompting) fields used in the report.
+
+short CRPE_API PEGetNParameterFields (
+	short printJob		//handle to print job
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNthParameterField
+.head 5 -  Description: Returns information about one of the parameter fields in the specified report: that is, it returns the name of the field, the
+data type, and information about the value set for the field. The name of the parameter field is returned as a string handle.
+This function is typically used as one of a series of functions: PEGetNParameterFields (called once), PEGetNthParameterField/,
+PEGetHandleString (called together as many times as needed to identify the correct parameter field), and PESetNthParameterField
+ (called once when the correct parameter field is identified). The series can be used in a customprint link to identify and then
+change an existing parameter field value at print time in response to a user selection.
+
+BOOL CRPE_API PEGetNthParameterField (
+	short printJob,		//handle to print job
+	short parameterN,		//parameter field number
+	struct PEParameterFieldInfo FAR *parameterInfo //structure 									     //pointer
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive String: char[254]
+.head 7 -  Receive String: char[2]
+.head 7 -  Receive String: char[254]
+.head 7 -  Receive String: char[2]
+.head 7 -  Receive String: char[254]
+.head 7 -  Receive String: char[2]
+.head 7 -  Receive String: char[254]
+.head 7 -  Receive String: char[2]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive String: char[254]
+.head 7 -  Receive String: char[2]
+.head 7 -  Receive Number: WORD
+.head 4 +  Function: PELogOnServer
+.head 5 -  Description: The PELogOnServer function logs on to the specified server.
+
+BOOL CRPE_API PELogOnServer (
+	char FAR *dllName,	//pointer to name of data source DLL
+	struct PELogOnInfo FAR *logOnInfo	//structure pointer
+	);
+struct PELogOnInfo
+{
+	WORD structSize;
+	char ServerName [128];
+	char DatabaseName [128];
+	char UserID [128];
+	char Password [128];
+};
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  String: LPSTR
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 4 +  Function: PELogOffServer
+.head 5 -  Description: Logs off the specified server. Use any time you have to log off a specified server.
+
+BOOL CRPE_API PELogOffServer (
+	char FAR *dllName,	//pointer to name of data source DLL
+	struct PELogOnInfo FAR *logOnInfo	//structure pointer
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  String: LPSTR
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 4 +  Function: PEPrintReport
+.head 5 -  Description: Prints the specified report to either the printer or to a print window.  This function establishes a printonly link where changes are made during runtime by other PE calls are ignored. Use any time you simply want to print a report from an application
+without giving the user the ability to customize the report.
+
+short CRPE_API PEPrintReport (
+	char FAR *reportFilePath,
+				//pointer to path string
+	BOOL toDefaultPrinter,
+				//send to default printer setting
+	BOOL toWindow,
+				//send to window setting
+	char FAR *title,
+				//pointer to title string
+	int left,		//x coordinate of window top left corner
+	int top,		//y coordinate of window top left corner
+	int width,		//width of window
+	int height,		//height of window
+	DWORD style,	//window style
+	HWND parentWindow	//parent window handle
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  ! Report File and Path
+.head 6 -  String: LPSTR
+.head 6 -  ! ToDefaultPrinter
+.head 6 -  Boolean: BOOL
+.head 6 -  ! To Window
+.head 6 -  Boolean: BOOL
+.head 6 -  ! Title
+.head 6 -  String: LPSTR
+.head 6 -  ! Left
+.head 6 -  Number: INT
+.head 6 -  ! Top
+.head 6 -  Number: INT
+.head 6 -  ! Width
+.head 6 -  Number: INT
+.head 6 -  ! Height
+.head 6 -  Number: INT
+.head 6 -  ! Style
+.head 6 -  Number: DWORD
+.head 6 -  ! ParentWindow
+.head 6 -  Window Handle: HWND
+.head 4 +  Function: PEOpenEngine
+.head 5 -  Description: Prepares the Report Engine for requests. This function is a necessary part of any customprint link. It is also required for any printonly link in which you want the report to print to a window that is to remain visible after the report is printed. It is not
+necessary to use this function with a printonly link where you are directing the report to a printer.
+
+BOOL CRPE_API PEOpenEngine ();
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 -  Parameters
+.head 4 +  Function: PEOpenPrintJob
+.head 5 -  Description: Prepares to print a report and returns a number which identifies the particular print job. The number returned is called a print job handle, and must be used in all subsequent calls related to the new print job (where a print job handle is required). This
+function is used as a mandatory part of a customprint link to generate the return of a print job handle. The handle is then used as the printJob parameter in each additional customprint link function call (where a printJob parameter is required).
+
+short PEOpenPrintJob (
+	char *reportFilePath	//pointer to filename and path
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  String: LPSTR
+.head 4 +  Function: PEOutputToWindow
+.head 5 -  Description: Prepares to direct printed output to a print window . This function is used as part of a customprint link to whenever you want the report printed to the print window instead of to the printer.
+
+BOOL CRPE_API PEOutputToWindow (
+	short printJob,	//handle to print job
+	char FAR *title,	//pointer to title string
+	short left,		//x coordinate, top left of print window
+	short top,		//y coordinate, top left of print window
+	short width,	//width of print window
+	short height,	//height of print window
+	long style,		//window style setting
+	HWND parentWindow	//handle to parent window (if any)
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: LONG
+.head 6 -  Window Handle: HWND
+.head 4 +  Function: PEOutputToPrinter
+.head 5 -  Description: The PEOutputToPrinter function prepares to direct printed output to a printer.
+
+  If a printer has been specified via the PESelectPrinter function, output will be sent to that printer.
+
+  If there is no PESelectPrinter selection but there is a printer specified in the report via the Print|Select Printer menu command, output will be sent to that printer.
+
+  If there is no PESelectPrinter selection, and there is no printer specified in the report, output will be to the Windows default printer.
+
+  PEOpenPrintJob opens the print job with the printer specified in the report (if there is one) or with the Windows default printer (if no printer is specified in the report).
+BOOL CRPE_API PEOutputToPrinter (
+	short printJob,		//handle to print job
+	short nCopies		//number of copies to be printed
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetFormula
+.head 5 -  Description: Changes the specified formula to the formula string you supply as a parameter. This function will only change the text of a formula which already exists in the report; you can not use it to add a formula. This function can be used by itself to replace
+the formula string for a known formula.
+
+This function can also be used as one of a series of functions (PEGetFormula, PEGetHandleString, PESetFormula). The series can be used in a customprint link to identify and then change an existing formula at print time in response to a user
+selection.
+
+When you give the user the ability to change the formula at print time, your link must include code to replace formulaString with a usergenerated value.
+
+BOOL CRPE_API PESetFormula (
+	short printJob,		//handle to print job
+	char *formulaName,	//pointer to formula name string
+	char FAR *formulaString	//pointer to new formula string
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 6 -  String: LPSTR
+.head 4 +  Function: PESetGroupSelectionFormula
+.head 5 -  Description: Changes the group selection formula to the formula string you supply as a parameter. This function can be used by itself to replace a known group selection formula.
+
+This function can also be used as one of a series of functions (PEGetGroupSelectionFormula, PEGetHandleString, PESetGroupSelectionFormula). The series can be used in a customprint link to identify and then change an existing group selection
+formula at print time in response to a user selection.
+
+When you give the user the ability to change the group selection formula at print time, your link must include code to replace formulaString with a user
+generated value.
+
+BOOL CRPE_API PESetGroupSelectionFormula (
+	short printJob,		//handle to print job
+	char FAR *formulaString
+					//pointer to new formula string
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 4 +  Function: PESetNthParameterField
+.head 5 -  Description:
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Number: WORD
+.head 7 -  Number: WORD
+.head 7 -  Number: WORD
+.head 7 -  String: char[254]
+.head 7 -  String: char[2]
+.head 7 -  String: char[254]
+.head 7 -  String: char[2]
+.head 7 -  String: char[254]
+.head 7 -  String: char[2]
+.head 7 -  String: char[254]
+.head 7 -  String: char[2]
+.head 7 -  String: char[128]
+.head 7 -  Number: WORD
+.head 7 -  Number: WORD
+.head 7 -  Number: DOUBLE
+.head 7 -  Number: DOUBLE
+.head 7 -  String: char[254]
+.head 7 -  String: char[2]
+.head 7 -  Number: WORD
+.head 4 +  Function: PESetNthSortField
+.head 5 -  Description: Sets one of the sort fields in the specified report. This function can be used by itself to set a sort field/direction when there is not one already set, or to change a sort field/direction when the number and name of the sort field are known.
+
+The function can also be used as one of a series of functions: PEGetNSortFields (called once), PEGetNthSortField/PEGetHandleString (called together as many times as needed to identify the correct sort field), and PESetNthSortField (called once
+when the correct sort field is identified). The series can be used in a customprint link to identify and then change an existing sort field and/or sort order at print time in response to a user selection.
+
+When you give the user the ability to specify sort field(s) and/or direction at print time, your link must include code to replace name, and/or direction with user
+generated values.
+
+BOOL CRPE_API PESetNthSortField (
+	short printJob,	//handle to print job
+	short sortFieldN,	//number of sort field
+	char FAR *name,	//pointer to sort field name
+	short direction	//sort direction setting
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetNthTableLocation
+.head 5 -  Description: The PESetNthTableLocation function sets the location for a selected table in the specified print job. This function is typically combined with PEGetNthTableLocation to identify the location of a table and then to change it.
+
+BOOL CRPE_API PESetNthTableLocation (
+	short printJob,	//handle to print job
+	short tableN,	//table number
+	struct PETableLocation FAR *location //structure pointer
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  String: LPSTR
+.head 4 +  Function: PESetNthTableLogOnInfo
+.head 5 -  Description: The PESetNthTableLogOnInfo function sets the log on information for the specified print job to the values in the PELogOnInfo structure.
+
+BOOL CRPE_API PESetNthTableLogOnInfo (
+	short printJob,	//handle to print job
+	short tableN,	//table number
+	struct PELogOnInfo FAR *logOnInfo,
+				//structure pointer
+	BOOL propagateAcrossTables
+				//apply to other tables setting
+	);
+struct PELogOnInfo
+{
+	WORD structSize;
+	char ServerName [128];
+	char DatabaseName [128];
+	char UserID [128];
+	char Password [128];
+};
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 6 -  Boolean: BOOL
+.head 4 +  Function: PESetSelectionFormula
+.head 5 -  Description: Changes the selection formula to the formula string you supply as a parameter. This function can be used by itself to replace a known record selection formula.
+
+The function can also be used as one of a series of functions (PEGetSelectionFormula, PEGetHandleString, PESetSelectionFormula). The series can be used in a customprint link to identify and then change an existing record selection formula at
+print time in response to a user selection.
+
+When you give the user the ability to change the record selection formula at print time, your link must include code to replace formulaString with a user
+generated value.
+
+BOOL CRPE_API PESetSelectionFormula (
+	short printJob,		//handle to print job
+	char FAR *formulaString	//pointer to new formula string
+	);
+
+
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 4 +  Function: PESetSQLQuery
+.head 5 -  Description: PRO Function
+The PESetSQLQuery function changes the SQL query to the query string you supply as a parameter. Use this function to update the SQL query that will be used to print the report, typically to add optimizations to the WHERE clause.
+
+BOOL CRPE_API PESetSQLQuery (
+	short printJob,		//handle to print job
+	char FAR *queryString	//pointer to new query string
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPSTR
+.head 4 +  Function: PEStartPrintJob
+.head 5 -  Description: Starts the printing of a report. This function is used as a mandatory part of each customprint link to trigger the printing of a report to the printer or to the print window.
+
+BOOL CRPE_API PEStartPrintJob (
+	short printJob, 		//handle to print job
+	BOOL waitUntilDone //return when printing starts? setting
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Boolean: BOOL
+.head 4 +  Function: PESetNthParam
+.head 5 -  Description: PRO Function
+Sets the value of a parameter in a stored procedure. Use this function when working with stored procedures in SQL database tables to set the value of a parameter in a stored procedure.
+
+BOOL CRPE_API PESetNthParam (
+	short printJob,		//handle to print job
+	short paramN,		//parameter number
+	LPCSTR szParamValue	//parameter value
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  String: LPCSTR
+.head 4 +  Function: PETestNthTableConnectivity
+.head 5 -  Description: The PETestNthTableConnectivity function tests whether a database table's settings are valid and ready to be reported on. This function is typically used if you plan to print at a later time but you want to test now to make sure everything is in order
+for logging on.
+
+BOOL CRPE_API PETestNthTableConnectivity (
+	short printJob,	//handle to print job
+	short tableN	//table number
+	);
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEZoomPreviewWindow
+.head 5 -  Description: Changes the magnification of the preview window to a specified level. Use this function when the report has been printed to a preview window and you need to set the magnification of the preview window to a specific level. There are three default magnifications for the preview
+window: Full Page, Fit One Side, and Fit Both Sides. The magnification level can also be set to a specific percentage.
+
+BOOL CRPE_API PEZoomPreviewWindow (
+
+Parameters
+
+printJob	The handle of the print job being displayed in the preview window.
+level	The zoom level you wish to set the preview window at. This value can be a value from 25 to 400, indicating a magnification percentage, or you can use one of the following constants:
+Constant	Value	Meaning
+PE_ZOOM_FULL_SIZE	0	Full Page
+PE_ZOOM_SIZE_FIT_ONE_SIDE	1	Fit One Side
+PE_ZOOM_SIZE_FIT_BOTH
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEShowPrintControls
+.head 5 -  Description: Displays the print controls (the First, Previous, Next, and Last Page buttons, as well as, the buttons for Cancel, Close, Export, and Print to Printer). Use any time you want to provide control over whether print controls are displayed or not.
+
+BOOL CRPE_API PEShowPrintControls (
+
+Parameters
+
+printJob	Specifies the handle to the print job for which you want to display print controls.
+showPrintControls	Indicates whether or not the function is to display print controls. You may use either of the following values:
+Value	Meaning
+TRUE	The function displays the print controls.
+FALSE	The function hides the print controls.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+
+Remarks
+
+Print controls are displayed by default. It is not necessary to use this function simply to display controls but only if you want the user to control whether or not the controls are visible.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Boolean: BOOL
+.head 4 +  Function: PEShowPreviousPage
+.head 5 -  Description: Displays the specified page in the preview window. Use these functions any time you want to display specific pages of a report in the preview window or give the user the ability to move forward and backward through a report in the preview window. The PEShowNthPage function
+has some additional considerations and is presented in a separate topic.
+BOOL CRPE_API PEShowPreviousPage (
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEShowNextPage
+.head 5 -  Description: Displays the specified page in the preview window. Use these functions any time you want to display specific pages of a report in the preview window or give the user the ability to move forward and backward through a report in the preview window. The PEShowNthPage function
+has some additional considerations and is presented in a separate topic.
+BOOL CRPE_API PEShowNextPage (
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEShowLastPage
+.head 5 -  Description: Displays the specified page in the preview window. Use these functions any time you want to display specific pages of a report in the preview window or give the user the ability to move forward and backward through a report in the preview window. The PEShowNthPage function
+has some additional considerations and is presented in a separate topic.
+BOOL CRPE_API PEShowLastPage (
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEShowFirstPage
+.head 5 -  Description: Displays the specified page in the preview window. Use these functions any time you want to display specific pages of a report in the preview window or give the user the ability to move forward and backward through a report in the preview window. The PEShowNthPage function
+has some additional considerations and is presented in a separate topic.
+BOOL CRPE_API PEShowFirstPage (
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEShowNthPage
+.head 5 -  Description: Displays the specified report page.
+
+BOOL CRPE_API PEShowNthPage (
+
+Parameters
+
+printJob	Specifies the handle to the print job from which you want to display a page.
+pageN	Specifies the report page you want to display.
+Return value
+
+TRUE (1) if the call is successful; FALSE(0) if an error occurs.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetWindowOptions
+.head 5 -  Description: Sets display options for the preview window, including which preview window controls are available. This function must be called after PEOutputToWindow.
+
+Syntax
+
+BOOL CRPE_API PESetWindowOptions (
+
+Parameters
+
+printJob	Specifies the handle to the print job for which you wish to set preview window display options.
+options	A pointer to a PEWindowOptions.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 4 +  Function: PESetTrackCursorInfo
+.head 5 -  Description: Sets information for tracking the position of the mouse cursor over the preview window. This functions is only valid if the report was sent to a preview window (see PEOutputToWindow), and if events for the preview window have been enabled (see PEEnableEvent).
+
+BOOL CRPE_API PESetTrackCursorInfo (
+
+Parameters
+
+printJob	Specifies the handle to the print job for which you wish to track events.
+cursorInfo	Specifies a pointer to PETrackCursorInfo.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: LONG
+.head 7 -  Number: LONG
+.head 7 -  Number: LONG
+.head 7 -  Number: LONG
+.head 7 -  Number: LONG
+.head 4 +  Function: PESetSectionFormatFormula
+.head 5 -  Description: Changes the specified section format formula to the formula string you supply as a parameter. This function will only change the text of a formula which already exists in the report; you can not use it to add a formula.
+When you give the user the ability to change the formula at print time, your link must include code to replace formulaString with a user-generated value.
+
+BOOL CRPE_API PESetSectionFormatFormula (
+
+Parameters
+
+printJob			Specifies the handle of the print job for which you want to set a new selection formula string.
+sectionCode		Specifies the code for the report section(s) for which you want to set formatting options. See Working with section codes.
+formulaName		Specifies the name of the formula for which you want to supply a new string. Use one of the following constants:
+Constant					Value	Meaning
+PE_FFN_SECTION_VISIBILITY		58	Specifies that the section be visible. If not visible, no drill down will be available.
+PE_FFN_SHOW_AREA			59	Specifies that the area be visible. If not visible, drill down will be available.
+PE_FFN_NEW_PAGE_BEFORE		60	Specifies that a new page will be printed before the section.
+PE_FFN_NEW_PAGE_AFTER		61	Specifies that a new page will be printed after the section.
+PE_FFN_KEEP_TOGETHER		62	Specifies that the section will be kept together.
+PE_FFN_SUPPRESS_BLANK_SECTION	63	Specifies that if the section is blank, it will not be printed.
+PE_FFN_RESET_PAGE_N_AFTER		64	Specifies that page numbering will reset after the section.
+PE_FFN_PRINT_AT_BOTTOM_OF_PAGE	65	Specifies that the section will be printed at the bottom of the page.
+PE_FFN_UNDERLAY_SECTION		66	Specifies that the section will overlay any sections following.
+PE_FFN_SECTION_BACK_COLOUR		67	Specifies the background color of the section.
+formulaString	Specifies a pointer to the null-terminated string that you want to assign to the format formula.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails or if there is an error in the new formula.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  String: LPCSTR
+.head 4 +  Function: PESetSectionFormat
+.head 5 -  Description: Sets the section format settings for selected sections in the specified report to the values in PESectionOptions. This function can be used to provide specialized formatting for printing invoices, form letters, printing to pre-printed forms, etc. It allows you to hide a section, insert a
+page break either before or after a section begins, reset the page number to 1 after a group value prints, prevent page breaks from spreading data from a single record over two pages, and to print group values only at the bottom of a page.
+
+BOOL CRPE_API PESetSectionFormat (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to set section formatting options.
+sectionCode	Specifies the code for the report section(s) for which you want to set formatting options. See Working with section codes.
+options	Specifies the pointer to PESectionOptions. Use this structure to set your section options.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: LONG
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 4 +  Function: PESetReportTitle
+.head 5 -  Description: This topic is only supported by the Professional Edition of Seagate Crystal Reports. For further information, see Upgrade Information.
+Changes the report title in the report summary information. This function can also be used as one of a series of functions (
+PEGetReportTitle, PEGetHandleString, or REFSetReportTitle). This series can be used in a Custom-Print link to identify and then change an existing report title at print time in response to a user selection.
+
+BOOL CRPE_API PESetReportTitle (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to set the report title.
+title	Specifies a null-terminated string containing the new title you want to assign to the report.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPCSTR
+.head 4 +  Function: PESetReportSummaryInfo
+.head 5 -  Description: The PESetReportSummaryInfo functions is used to set report summary information. Report summary information corresponds to the Summary Info dialog box in Seagate Crystal Reports.
+
+BOOL CRPE_API PESetReportSummaryInfo (
+
+Parameters
+
+printJob	Specifies the print job for which you want to set summary information.
+summaryInfo	Specifies the pointer to PEReportSummaryInfo.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  String: char[255]
+.head 7 -  String: char[255]
+.head 7 -  String: char[2]
+.head 7 -  String: char[128]
+.head 4 +  Function: PESetPrintOptions
+.head 5 -  Description: Sets the print options for the report to the values supplied in PEPrintOptions. Use this function any time you want to set the starting page number, the ending page number, the number of report copies, and/or collation instructions for a print job at runtime in response to user
+specifications.
+
+BOOL CRPE_API PESetPrintOptions (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to set printing options.
+options	Specifies the pointer to PEPrintOptions. If this parameter is set to 0 (null), the function prompts the user for these options. Using this, you can get the behavior of the print-to-printer button in the preview window by calling PESetPrintOptions with a null pointer and then
+calling PEPrintWindow.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Number: USHORT
+.head 7 -  Number: USHORT
+.head 7 -  Number: USHORT
+.head 7 -  Number: USHORT
+.head 7 -  String: char[255]
+.head 7 -  String: char[255]
+.head 7 -  String: char[2]
+.head 4 +  Function: PESetPrintDate
+.head 5 -  Description: ets a print date that may be different than the system calendar date. Use this function any time you want to show a print date (or use a print date in formulas) other than the actual date of printing.
+
+BOOL CRPE_API PESetPrintDate (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to set the print date.
+year	Specifies the year component of the print date. Enter a 4 digit year value (1994, 1993, etc.).
+month	Specifies the month component of the print date. Months are numbered from 1 to 12, where January = 1 and December = 12. To use July as the print month, for example, you would enter the value 7.
+day	Specifies the day component of the print date. Enter the actual day of the month you want to use (7, 18, 28, etc.).
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+
+
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetNthTableSessionInfo
+.head 5 -  Description: Sets the specified session information when opening a Microsoft Access table. Many Microsoft Access database tables require that a session be opened before the table can be used. Use PESetNthTableSessionInfo to open the session.
+
+BOOL CRPE_API PESetNthTableSessionInfo (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to change the MS Access session information.
+tableN	0 based table number specifying which table the session is being opened for.
+sessionInfo	Refer to PESessionInfo for further information.
+propagateAcrossTables	TRUE or FALSE value indicating whether the session information should be used for opening all tables being used in the report.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  String: char[128]
+.head 7 -  String: char[128]
+.head 7 -  Number: DWORD
+.head 6 -  Boolean: BOOL
+.head 4 +  Function: PESetNthGroupSortField
+.head 5 -  Description: Sets one of the group sort fields in the specified report. This function can be used by itself to set a sort field and direction when there is not one already set, or to modify an existing sort field and direction when the sort field number, name, and direction are known.
+The function can also be used as one of a series of functions: PEGetNGroupSortFields (called once), PEGetNthGroupSortField, or PEGetHandleString (called as many times as needed to identify the correct group sort field), and PESetNthGroupSortField (called once, when the
+correct group sort field is identified). The series can be used in a Custom-Print link to identify and then change an existing group sort field and/or sort order at print time in response to a user selection.
+When you give the user the ability to specify group sort field(s) and/or direction at print time, your link must include code to replace name, and/or direction with user-generated values.
+BOOL CRPE_API PESetNthGroupSortField (
+Parameters
+
+printJob	Specifies the handle to the print job for which you want to set a group sort field.
+sortFieldN	Specifies the number of the sort field you want to set. The first sort field is field 0. If the report has N sort fields, the function can be called with sortFieldN between 0 and N-1. If the report has N sort fields, you can call the function with sortFieldN = N to add a new sort field to
+the end of the list of existing sort fields. If N=0, the function will create the first sort field.
+name	Specifies a pointer to the null-terminated string that contains the name of the group sort field.
+direction	Specifies one of the following sort directions:
+Constant			Value	Meaning
+PE_SF_DESCENDING	0	Sorts in Descending order (Z to A, 9 to 1).
+PE_SF_ASCENDING	1	Sorts in Ascending order (A to Z, 1 to 9).
+PE_SF_ORIGINAL		2	Sort in original order (Group condition only)
+PE_SF_SPECIFIED	3	Sorts in a specified order (Group condition only).
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  String: LPCSTR
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetNDetailCopies
+.head 5 -  Description: Prints multiple copies of the Details section of the report. You can use this function to print multiple copies of labels for a customer, multiple copies of a purchase order, or multiple copies of any thing set up in the Details section of your report.
+
+BOOL CRPE_API PESetNDetailCopies (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want set the number of copies to print.
+nDetailCopies	Specifies the number of report copies you want to print.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetMargins
+.head 5 -  Description: Sets the page margins for the specified report to the values you supply as parameters. Use this function any time you want to set the printer margins at runtime in response to user specifications.
+
+BOOL CRPE_API PESetMargins (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to set new margins.
+left	Specifies the left margin.*
+right	Specifies the right margin.*
+top	Specifies the top margin.*
+bottom	Specifies the bottom margin.*
+Value	Meaning
+PM_SM_DEFAULT	You can use PM_SM_DEFAULT for any of the margin parameters. For each margin you specify in this way, the program will use the appropriate default margin for the currently selected printer.
+*Left, right, top, and bottom values are all in twips. A twip is 1/1440 of an inch; there are 20 twips in a point. To set .5" margins, for example, you would enter the value 720.
+
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetGroupCondition
+.head 5 -  Description: Changes the group condition for a group section. Use this function whenever you want to change the grouping at print time, for example, to print one report grouped in several different ways.
+
+BOOL CRPE_API PESetGroupCondition (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to change the group condition for a group section.
+sectionCode	Specifies the code for the report section for which you want to set the group condition. See Working with section codes.
+conditionField	Specifies the pointer to the name of the field that triggers a summary whenever its value changes. This parameter is a result of calling PEGetHandleString with conditionFieldHandle and conditionFieldLength, returned by PESetGroupCondition.
+condition	Specifies the condition ("weekly", "monthly", "change to Yes", "change to No", etc.) that needs to be met for Date and Boolean fields.
+For all field types except Date and Boolean, use PE_GC_ANYCHANGE as the condition parameter.
+
+Constant (Date Fields Only)	Value	Meaning
+PE_GC_DAILY	0	Triggers a grouping every time the date changes.
+PE_GC_WEEKLY	1	Triggers a grouping every time the date changes from one week to the next. (A week runs from Sunday through Saturday.)
+PE_GC_BIWEEKLY	2	Triggers a grouping every time the date changes from one two-week period to the next. (Weeks run from Sunday through Saturday.)
+PE_GC_SEMIMONTHLY	3	Triggers a grouping every time the date changes from one half-month period to the next.
+PE_GC_MONTHLY	4	Triggers a grouping every time the date changes from one month to the next.
+PE_GC_QUARTERLY	5	Triggers a grouping every time the date changes from one calendar quarter to the next.
+PE_GC_SEMIANNUALLY	6	Triggers a grouping every time the date changes from one half-year period to the next.
+PE_GC_ANNUALLY	7	Triggers a grouping every time the date changes from one year to the next.
+Constant (Boolean Fields Only)	Value	Meaning
+PE_GC_TOYES	1	Triggers a grouping every time the sort and group by field value changes from No to Yes.
+PE_GC_TONO	2	Triggers a grouping every time the sort and group by field value changes from Yes to No.
+PE_GC_EVERYYES	3	Triggers a grouping every time the sort and group by field value is Yes.
+PE_GC_EVERYNO	4	Triggers a grouping every time the sort and group by field value is No.
+PE_GC_NEXTISYES	5	Triggers a grouping every time the next value in the sort and group by field is Yes.
+PE_GC_NEXTISNO	6	Triggers a grouping every time the next value in the sort and group by field is No.
+sortDirection	Specifies one of the following sort directions:
+Constant	Value	Meaning
+PE_SF_DESCENDING	0	Sorts data in descending order (Z to A, 9 to 1).
+PE_SF_ASCENDING	1	Sorts data in ascending order (A to Z, 1 to 9).
+PE_SF_ORIGINAL	2	Sorts data in its original order (Group condition only).
+PE_SF_SPECIFIED	3	Sorts data in a specified order (Group condition only).
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  String: LPCSTR
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PESetGraphType
+.head 5 -  Description: Changes the type of chart displayed for the specified chart in the specified section based on one of the available chart types. Use this function to change the type of chart that is displayed in the report. There are many types of charts possible with Seagate Crystal Reports. This
+function allows you to change which type of chart is being displayed.
+
+BOOL CRPE_API PESetGraphType (
+
+Parameters
+
+printJob	Specifies the handle of the print job for the report containing the chart for which you want to change the type.
+sectionCode	Specifies the code for the report section in which the chart appears. See Working with section codes.
+graphN	Specifies which chart within the section for which you want to change the type. This value is 0 indexed. Within a section, charts are numbered from top to bottom, first, then from left to right if they have the same top.
+graphType	Specifies a pointer to the type of chart you want to be displayed. Use one of the following values:
+Constant				Value	Meaning
+PE_SIDE_BY_SIDE_BAR_GRAPH	0	Side By Side bar chart
+PE_STACKED_BAR_GRAPH			2	Stacked bar chart
+PE_PERCENT_BAR_GRAPH			3	Percent bar chart
+PE_FAKED_3D_SIDE_BY_SIDE_BAR_GRAPH	4	3D Side By Side bar chart
+PE_FAKED_3D_STACKED_BAR_GRAPH		5	3D Stacked bar chart
+PE_FAKED_3D_PERCENT_BAR_GRAPH		6	3D Percent bar chart
+PE_PIE_GRAPH					40	Pie chart
+PE_MULTIPLE_PIE_GRAPH			42	Multiple Pie chart
+PE_PROPORTIONAL_MULTI_PIE_GRAPH		43	Weighted Pie chart
+PE_LINE_GRAPH					80	Line chart
+PE_AREA_GRAPH				120	Area chart
+PE_THREED_BAR_GRAPH			160	3D bar chart
+PE_USER_DEFINED_GRAPH			500	User Defined chart type
+PE_UNKNOWN_TYPE_GRAPH	1000	Unknown chart type
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetWindowHandle
+.head 5 -  Description: Returns the handle of the preview window. This function can be used in a Custom-Print link if you want to do something with the preview window (move it, change its size, etc.).
+PEGetWindowHandle can also be used to determine if the user has already closed the preview window.
+
+HWND CRPE_API PEGetWindowHandle (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to retrieve the preview window handle. If two or more preview windows are open, this function applies only to the most recently created preview window.
+Return Value
+
+This function returns the preview window handle if it is successful, 0 if an error occurs or if the preview window has already been closed.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Window Handle: HWND
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetVersion
+.head 5 -  Description: Returns the version number of the DLL or the Crystal Report Engine. The high-order byte is the major version number and the low-order byte is the minor version number. This function can be used whenever you build functionality into a report that may not be available in earlier
+versions of the Crystal Report Engine and you need to verify the version number first. The function can be a handy safeguard for users who have more than one version of the Crystal Report Engine with the older version earlier in the path than the new version.
+
+ Short CRPE_API PEGetVersion (
+
+Parameters
+
+versionRequested	Specifies whether the DLL or Crystal Report Engine version is being requested. Use one of the following values:
+Constant	Value	Meaning
+PE_GV_DLL	100	Returns the version of the DLL (CRPE/CRPE32).
+PE_GV_ENGINE	200	Returns the version of the Crystal Report Engine.
+Return Value The version number of the DLL or the Crystal Report Engine.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetSubreportInfo
+.head 5 -  Description: Retrieves information about the specified subreport.
+
+BOOL CRPE_API PEGetSubreportInfo (
+
+Parameters
+
+printJob	Specifies the handle of the primary report that contains the subreport about which you want to retrieve information.
+subreportHandle	Specifies the handle of the subreport about which you want to retrieve information.
+subreportInfo	Specifies a pointer to PESubreportInfo that will be used for holding the information once it is retrieved.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: DWORD
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  String: char[128]
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 4 +  Function: PEGetSelectedPrinter
+.head 5 -  Description: BOOL CRPE_API PEGetSelectedPrinter (
+FAR *FAR *mode);
+
+Parameters
+
+printJob	Specifies the handle to the print job that you want to query to get information on the non-default printer that has been selected with the report.
+driverHandle	Specifies a pointer to the handle of the printer driver for the printer that is selected with the print job.
+driverLength	Specifies a pointer to the length of the printer driver name.
+printerHandle	Specifies a pointer to the handle of the printer that is selected with the print job.
+printerLength	Specifies a pointer to the length of the printer name.
+portHandle	Specifies a pointer to the handle of the port to which the selected printer is connected.
+portLength	Specifies a pointer to the length of the port name.
+mode	Specifies a pointer to the Windows API structure DEVMODE. (Use DEVMODEA for 32-bit.) If UNICODE is defined in your application, this will be a DEVMODEA structure.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 6 +  structPointer
+.head 7 -  Receive String: byte[32]
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive String: byte[32]
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 4 +  Function: PEGetSectionFormatFormula
+.head 5 -  Description: BOOL CRPE_API PEGetSectionFormatFormula (
+
+Parameters
+
+printJob	Specifies the handle of the print job you want to query to find what section options have been set for the report using Format Section dialog box. For more information, search for Format Section dialog box in Seagate Crystal Reports online Help.
+sectionCode	Specifies the code for the report section(s) for which you want to get section format information. See the table of section constants supplied in Working with section codes.
+formulaName	Specifies the name of the section format formula.
+Constant	Value	Meaning
+PE_FFN_SECTION_VISIBILITY	58	Specifies that the section be visible. If not visible, no drill-down will be available.
+PE_FFN_SHOW_AREA	59	Specifies that the area be visible. If not visible, drill down will be available.
+PE_FFN_NEW_PAGE_BEFORE	60	Specifies that a new page will be printed before the section.
+PE_FFN_NEW_PAGE_AFTER	61	Specifies that a new page will be printed after the section.
+PE_FFN_KEEP_TOGETHER	62	Specifies that the section will be kept together.
+PE_FFN_SUPPRESS_BLANK_SECTION	63	Specifies that if the section is blank, it will not be printed.
+PE_FFN_RESET_PAGE_N_AFT7ER	64	Specifies that page numbering will reset after the section.
+PE_FFN_PRINT_AT_BOTTOM_
+PE_FFN_UNDERLAY_SECTION	66	Specifies that the section will overlay any sections following.
+PE_FN_SECTION_BACK_COLOUR	67	Specifies the background color of the section.
+textHandle	A handle to the memory location of the text of the actual formula.
+textLength	The length of the text string specified by the textHandle parameter. Use this value to allocate a buffer for the text.
+Return Value
+
+n	TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetSectionFormat
+.head 5 -  Description: Retrieves the section format settings for selected sections in the specified report and supplies them as member values for PESectionOptions. Use this function in order to update the section formats and pass them back using PESetSectionFormat.
+
+BOOL CRPE_API PEGetSectionFormat (
+
+Parameters
+
+printJob	Specifies the handle of the print job you want to query to find what section options have been set for the report using the Format Section dialog box.
+sectionCode	Specifies the code for the report section(s) for which you want to get section format information. See Working with section codes.
+options	Specifies the pointer to PESectionOptions.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: LONG
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 4 +  Function: PEGetSectionCode
+.head 5 -  Description: Retrieves the section code for the specified section. A section code indicates the section type (Page Header, Details, and so forth). If there are multiple group sections it also identifies the group number, and if there are multiple sections in an area it identifies the section number.
+
+short CRPE_API PEGetSectionCode (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to identify a section code.
+sectionN	Specifies the number of the section for which you want the section code.
+Return value
+
+Returns the section code for the specified section. See Working with section codes.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetReportTitle
+.head 5 -  Description: Returns the handle of the report title string in the report summary information. If the job is a subreport, it returns the handle of the subreport name. This function is typically used as one of a series of functions (PEGetReportTitle, PEGetHandleString, or PESetReportTitle). The series
+can be used in Custom-Print links to identify and change an existing report title at print time in response to a user selection.
+
+BOOL CRPE_API PEGetReportTitle (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to get the report title.
+titleHandle	Specifies a pointer to the handle of the title string.
+titleLength	Specifies a pointer to the length of the title string (in bytes) including the terminating byte.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetPrintOptions
+.head 5 -  Description: Retrieves the print options specified for the report (the options that are set in the Print common dialog box) and uses them to fill in PEPrintOptions. Use this function to fetch print options from the report in order to update them and pass back using PESetPrintOptions.
+
+BOOL CRPE_API PEGetPrintOptions (
+
+Parameters
+
+printJob	Specifies the handle of the print job you want to query to find out which print options have been set using the Print common dialog box.
+options	Specifies the pointer to PEPrintOptions.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: USHORT
+.head 7 -  Receive Number: USHORT
+.head 7 -  Receive Number: USHORT
+.head 7 -  Receive Number: USHORT
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[2]
+.head 4 +  Function: PEGetPrintDate
+.head 5 -  Description: Determines the print date (if any) that was specified with the report. Use this function to fetch the print date and pass back using PESetPrintDate.
+
+BOOL CRPE_API PEGetPrintDate (
+
+Parameters
+
+printJob	Specifies the handle of the print job you want to query to determine its print date setting.
+year	Specifies a pointer to the year component of the print date.
+month	Specifies a pointer to the month component of the print date.
+day	Specifies a pointer to the day component of the print date.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetNthTableSessionInfo
+.head 5 -  Description: Gets the session information for a Microsoft Access table being used in your report. Many MS Access database tables require that a session be opened before the information in the table can be used. Use PEGetNthTableSessionInfo to obtain the session information (User ID,
+Password, and Session Handle) for a particular table.
+
+BOOL CRPE_API PEGetNthTableSessionInfo (
+
+Parameters
+
+printJob	Identifies the handle of the print job that uses the table for which you need to obtain the session information.
+tableN	0 indexed table number indicating which table in the report you wish to obtain the session information for.
+sessionInfo	Refer to PESessionInfo,for further information.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive Number: DWORD
+.head 4 +  Function: PEGetNthSubreportInSection
+.head 5 -  Description: Retrieves a handle that is required to retrieve the name of the subreport.
+
+DWORD CRPE_API PEGetNthSubreportInSection (
+
+Parameters
+
+printJob	Specifies the handle of the primary report.
+sectionCode	Specifies the code for the report section that contains the subreport. See Working with section codes.
+subreportN	Specifies the number of the subreport in the specified section. subreportN is zero based. The first report in the section will be 0, the second will be 1, etc. If there are no subreports in the section, the function will return 0.
+Remarks
+
+Use PEGetSubreportInfo to retrieve information about the subreport by passing the subreport handle returned by PEGetNthSubreportInSection.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNthParamInfo
+.head 5 -  Description: Retrieves the name and type of a specified stored procedure parameter.
+
+BOOL CRPE_API PEGetNthParamInfo (
+
+Parameters
+
+printJob	Specifies the handle to the print job from which you want to gather information about a stored procedure parameter.
+paramN	Specifies the number of the stored procedure parameter about which you want to gather information.
+paramInfo	Specifies a pointer to PEParameterInfo that will hold the retrieved information.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive Number: WORD
+.head 4 +  Function: PEGetNthParam
+.head 5 -  Description: Gets the Nth parameter of a stored procedure. Use this function whenever you need to find out a particular parameter required by a stored procedure in a SQL database table.
+
+BOOL CRPE_API PEGetNthParam (
+
+Parameters
+
+printJob	Specifies the handle of the print job that contains the stored procedure for which you are interested in obtaining a parameter.
+paramN	0 indexed parameter number, indicates which parameter in the stored procedure you wish to know.
+textHandle	Specifies the pointer to the handle of the string containing the sort procedure parameter.
+textLength	Specifies the pointer to the length of the parameter string (in bytes) including the terminating null byte.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetNthGroupSortField
+.head 5 -  Description: Returns information about one of the group sort fields in the specified report: that is, it returns the name of the field and the direction (ascending or descending) of the sort. The name of the group sort field is returned as a string handle. See Crystal Report Engine API Variable
+Length Strings, for further information.
+
+This function is typically used as one of a series of functions: PEGetNGroupSortFields (called once), PEGetHandleString (called as many times as needed to identify the correct group sort field), and PESetNthGroupSortField (called once when the correct sort field is identified).
+The series can be used in a Custom-Print link to identify and then change an existing group sort field and/or sort order at print time in response to a user selection.
+
+A group sort field is a summary value or a summarized field that determines the sort order of groups.
+BOOL CRPE_API PEGetNthGroupSortField (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to gather group sort field information.
+sortFieldN	Specifies the number of the group sort field you want to retrieve. The first group sort field is field 0. If the report has N sort fields, the function can be called with sortFieldN between 0 and N-1.
+nameHandle	Specifies the pointer to the handle of the string containing the sort field name.
+nameLength	Specifies the pointer to the length of the field name string (in bytes) including the terminating byte.
+direction	Specifies a pointer to the sort direction. See PESetNthGroupSortFieldfor a list of sort direction constants.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetNthFormula
+.head 5 -  Description: Retrieves information about a specific formula in the report. Use this function to obtain the formula name and formula text of a specific formula in the report. This function can be used to get formula text, allow the user to edit the formula, then change the formula text with
+PESetFormula. The first formula is formula 0.
+
+BOOL CRPE_API PEGetNthFormula (
+
+Parameters
+
+printJob	Specifies the handle to the print job from which you want to gather formula information.
+formulaN	Specifies the number of the formula about which you want to gather information.
+nameHandle	Specifies a pointer to the handle of the string containing the formula name.
+nameLength	Specifies a pointer to the length of the formula name string (in bytes) including the terminating byte.
+textHandle	Specifies a pointer to the handle of the string containing the formula text.
+textLength	Specifies a pointer to the length of the formula string (in bytes) including the terminating byte.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetNSubreportsInSection
+.head 5 -  Description: Determines the number of subreports in the specified section.
+
+short CRPE_API PEGetNSubreportsInSection (
+
+Parameters
+
+print job	Specifies the handle of the primary report from which you want to fetch information about the number of subreports in a section.
+sectionCode	Specifies the section code of the section for which you want a subreport count. See Working with section codes.
+Return Value
+
+The number of subreports in the specified section. Returns -1 if an error occurs.
+
+Remarks
+
+sectionCode can be retrieved using PEGetSectionCode.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNSections
+.head 5 -  Description: Retrieves the number of sections in the specified report. By default, each report has five areas, each containing one section (Report Header, Page Header, Details, Report Footer, and Page Footer). Thus, if this function were applied to a default report, the return value would be
+five (5). As you add groups to your report or sections to one or more areas, the number of sections in the report increases.
+
+short CRPE_API PEGetNSections (
+
+Parameters
+
+printJob	Specifies the handle to the print job from which you want to get a section count.
+Return Value
+
+The number of sections in the report. Returns -1 if an error occurs.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNPages
+.head 5 -  Description: Retrieves the number of pages in the report.
+
+short CRPE_API PEGetNPages (
+
+Parameters
+
+printJob	Specifies the handle of the print job for which you want to determine the number of pages.
+Return Value
+
+The number of pages in the report.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNGroupSortFields
+.head 5 -  Description: Returns the number of group sort fields in the specified report. This function is typically used as one of a series of functions: PEGetNGroupSortFields (called once), PEGetNthGroupSortField, PEGetHandleString (called as many times as needed to identify the correct group sort
+field), and PESetNthGroupSortField(called once, when the correct group sort field is identified). The series can be used in a custom-print link to identify and then change an existing group sort field and/or sort order at print time in response to a user selection.
+
+A group sort field is a summary value or a summarized field that determines the sort order of groups.
+short CRPE_API PEGetNGroupSortFields (
+
+Parameters
+
+printJob	Specifies the handle of the print job you want to query to find out how many group sort fields it contains.
+Return Value
+
+If group sort fields have been defined, returns the number of such fields; if there are no group sort fields defined, returns 0; if an error occurs, returns -1.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNGroups
+.head 5 -  Description: Determines the number of groups in the specified report.
+
+short CRPE_API PEGetNGroups (
+
+Parameters
+
+printJob	Specifies the handle of the print job you want to query to determine the number of groups it contains.
+Return Value
+
+Returns the number of groups in the report. Returns -1 if an error occurs.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNFormulas
+.head 5 -  Description: Determines the number of formulas in the specified report. Use this function to fetch the number of formulas in the report. To fetch the formula by number, use PEGetNthFormula.
+
+short CRPE_API PEGetNFormulas (
+
+Parameters
+
+printJob	Specifies the handle to the print job you want to query to find the number of formulas it contains.
+Return Value
+
+The number of formulas in the report. Returns -1 if an error occurs.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEGetNDetailCopies
+.head 5 -  Description: Returns the number of copies of each Details section in the report that are to be printed. Use this function to find out how many times each Details section of the report will be printed. To change the number of times each Details section is printed, use PESetNDetailCopies.
+
+BOOL CRPE_API PEGetNDetailCopies (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to know how many times each Details section is to be printed.
+nDetailCopies	Holds the number of copies of the Details section to be printed.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetMinimumSectionHeight
+.head 5 -  Description: Retrieves the minimum section height information for selected sections in the specified report. The minimum section height is the height that can contain all its objects.
+
+BOOL CRPE_API PEGetMinimumSectionHeight (
+
+Parameters
+
+printJob	Specifies the handle to the print job you want to query to retrieve information on minimum section height.
+sectionCode	Specifies the code for the report section(s) for which you want to retrieve information on minimum section height. See Working with section codes.
+minimumHeight	Specifies a pointer to the minimum height (in twips) you want to set for the selected section(s).
+Return Value
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetMargins
+.head 5 -  Description: Retrieves the page margin settings for the specified report. Use this function to find out what the currently set margins for the report are. Use this function with PESetMargins. Use PEGetMargins to obtain report margins and use PESetMargins, to set the report margins.
+
+BOOL CRPE_API PEGetMargins (
+
+Parameters
+
+printJob	Specifies the handle to the print job you want to query to retrieve margin information.
+left	Specifies a pointer to the value of the left margin.
+right	Specifies a pointer to the value of the right margin.
+top	Specifies a pointer to the value of the top margin.
+bottom	Specifies a pointer to the value of the bottom margin.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetJobStatus
+.head 5 -  Description: Evaluates the status of a print job. You can use this function in a number of programming situations, for example:
+
+	to trigger error messages, i.e., when a print job fails (due to insufficient memory, insufficient disk space, etc.),
+
+	to trigger screen displays (hourglass, series of graphics, etc.) that confirm to the user that work is in progress, or
+
+	to find out whether a job was cancelled by the user after PEStartPrintJob, returns.
+
+short CRPE_API PEGetJobStatus (
+
+Parameters
+
+printJob	Specifies the handle to the print job you want to query about its printing status.
+jobInfo	Specifies the pointer to PEJobInfo that will capture the information this function retrieves.
+Return Value
+
+	"0" if PEOpenEngine , or PEOpenPrintJob, has not been called successfully.
+
+	"1" if the job has not started yet (PE_JOBNOTSTARTED).
+
+	"2" if the job is in progress (PE_JOBINPROGRESS).
+
+	"3" if the job has completed successfully (PE_JOBCOMPLETED).
+
+	"4" if the job has failed (PE_JOBFAILED).
+
+	"5" if the job has been canceled by the user (PE_JOBCANCELLED).
+
+	"6" if the report has been halted (PE_JOBHALTED).
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Number: SHORT
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Boolean: BOOL
+.head 4 +  Function: PEGetGroupCondition
+.head 5 -  Description: Determines the group condition information for a selected group section in the specified report. Use this function to find out the group condition for a group section. Use PESetGroupCondition, to change the group condition once it is known.
+
+BOOL CRPE_API PEGetGroupCondition (
+
+Parameters
+
+printJob	Specifies the handle of the print job you want to query to determine the group conditions for a selected group.
+sectionCode	Specifies the code for the report section for which you want to get the group condition. See the table of section constants supplied with PESetSectionFormat.
+conditionFieldHandle	Specifies a pointer to the handle of the condition field for the selected group section.
+conditionFieldLength	Specifies a pointer to the length of the condition field for the selected group section.
+condition	Specifies a pointer to the condition setting for the selected group section (date and Boolean fields only). See PESetGroupCondition for information on the condition constants.
+sortDirection	Specifies a pointer to the sort direction setting for the selected group section.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetGraphType
+.head 5 -  Description: Identifies one of the available graph/chart types used for the specified graph in the specified section. Use this function to find out what type of graph is being displayed in the report. There are many types of graphs and charts possible with Seagate Crystal Reports. This function
+will return the type of graph or chart being displayed in a report.
+
+BOOL CRPE_API PEGetGraphType (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to find out the type of graph being displayed.
+sectionCode	Specifies the code for the report section in which the graph appears. See the table of section constants supplied with PESetSectionFormat.
+graphN	Specifies which graph within the section you want to know the type of. This value is 0 indexed. Within a section, graphs are numbered from top to bottom, first, then from left to right if they have the same top.
+graphType	Returns a pointer to the type of graph being displayed. See PESetGraphType for the list of possible graph types.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetGraphText
+.head 5 -  Description: Retrieves the identifying text that appears on the specified graph in the specified section. This function allows you to find out what text appears with a graph. A graph can have a title, subtitle, footnote, title for groups, title for series, title for the X axis, title for the Y axis, and title for the
+Z axis (in 3D graphs).
+
+BOOL CRPE_API PEGetGraphText (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to get the text displayed with a graph.
+sectionCode	Specifies the code for the report section in which the graph appears. See the table of section constants supplied with PESetSectionFormat.
+graphN	Specifies which graph within the section you want the text for. This value is 0 indexed. Within a section, graphs are numbered from top to bottom, first, then from left to right if they have the same top.
+graphTextInfo	Specifies the pointer to PEGraphTextInfo.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 7 -  Receive String: char[128]
+.head 4 +  Function: PEGetGraphOptions
+.head 5 -  Description: Identifies the display options that are set for the specified graph in the specified section. Use this function to obtain information about any of several graph options. These options include the minimum and maximum values that can appear on the graph, whether grid lines appear,
+whether risers are labeled, whether bar graphs have horizontal or vertical bars, and whether a legend appears on the graph.
+
+BOOL CRPE_API PEGetGraphOptions (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to get information about a graph.
+sectionCode	Specifies the code for the report section in which the graph appears. See the table of section constants supplied with PESetSectionFormat.
+graphN	Specifies which graph within the section you want information about. This value is 0 indexed. Within a section, graphs are numbered from top to bottom, first, then from left to right if they have the same top.
+graphOptions	Specifies the pointer to PEGraphOptions.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Boolean: BOOL
+.head 7 -  Receive Boolean: BOOL
+.head 7 -  Receive Boolean: BOOL
+.head 7 -  Receive Boolean: BOOL
+.head 7 -  Receive String: char[128]
+.head 4 +  Function: PEGetGraphData
+.head 5 -  Description: Identifies the data on which the specified graph in the specified section is based. Use this function to find out what data in your report is being used by a specified graph when the graph is created. This information includes which groups are used to create the rows and columns of
+the graph and which summary field in the report is used to set the values of the risers in the graph.
+
+BOOL CRPE_API PEGetGraphData (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to get information about a graph.
+sectionCode	Specifies the code for the report section in which the graph appears. See the table of section constants supplied with PESetSectionFormat.
+graphN	Specifies which graph within the section you want data for. This value is 0 indexed. Within a section, graphs are numbered from top to bottom, first, then from left to right if they have the same top.
+graphDataInfo	Specifies the pointer to PEGraphDataInfo.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 4 +  Function: PEGetExportOptions
+.head 5 -  Description: Gets export options from the user before exporting the report. PEGetExportOptions can be used to present a series of dialog boxes that retrieve export options from your users. These options are used by the Crystal Report Engine to fill in the PEExportOptions structure. The
+PEExportTo function can then be used to set the print job destination using the information in PEExportOptions.
+
+BOOL CRPE_API PEGetExportOptions (
+
+Parameters
+
+printJob	Specifies the print job from which you want to get export options.
+options	Specifies the pointer to PEExportOptions .
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive String: char[64]
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: LPVOID
+.head 7 -  Receive String: char[64]
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: LPVOID
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 4 +  Function: PEGetAreaFormatFormula
+.head 5 -  Description: Retrieves the text of a conditional area format formula as a string handle. Use this function in order to update the conditional area format formula and pass the changes back using PESetAreaFormatFormula.
+
+BOOL CRPE_API PEGetAreaFormatFormula (
+
+&&&stevefParameters
+
+printJob	Specifies the handle of the print job from which you want to get the area format formula.
+AreaCode	Specifies the code for the area for which you want to get format information. See Working with section codes for more information.
+FormulaName	Specifies the name of the formatting formula for which you want to supply a new string. Use one of the following constants:
+Constant	Value	Meaning
+PE_FFN_AREASECTION_VISIBILITY	58	Area or section invisible.
+PE_FFN_SHOW_AREA	59	Area is shown or hidden. When hidden, drill down is OK.
+PE_FFN_NEW_PAGE_BEFORE	60	Start a new page before this area.
+PE_FFN_NEW_PAGE_AFTER	61	Start a new page after this area.
+PE_FFN_KEEP_TOGETHER	62	Keep area together.
+PE_FFN_RESET_PAGE_N_AFTER	64	Reset page number after the area.
+PE_FFN_PRINT_AT_BOTTOM_OF_
+textHandle	Specifies the pointer to the handle of the string containing the error text.
+textLength	Specifies the pointer to the length of the error string (in bytes) including the terminating byte.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 -  Receive Number: LPHANDLE
+.head 6 -  Receive Number: LPSHORT
+.head 4 +  Function: PEGetAreaFormat
+.head 5 -  Description: Retrieves the area format settings for selected areas in the specified report and supplies them as member values for PESectionOptions. Use this function to update the area formats and pass them back using PESetAreaFormat.
+
+BOOL CRPE_API PEGetAreaFormat (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to get the area format.
+areaCode	Specifies the code for the area for which you want to get format information. See Working with section codes for more information.
+options	Specifies a pointer to PESectionOptions that will receive format information for the area.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: LONG
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 4 +  Function: PEExportTo
+.head 5 -  Description: Exports a print job using the name, format, and destination specified in the PEExportOptions structure. Use PEExportTo any time you want to print a report to a file or export it for use in other programs.
+
+BOOL CRPE_API PEExportTo (
+
+Parameters
+
+printJob	Specifies the handle of the print job that you want to export.
+Options	Specifies the pointer to PEExportOptions.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  String: char[64]
+.head 7 -  Number: DWORD
+.head 7 -  Number: LPVOID
+.head 7 -  String: char[64]
+.head 7 -  Number: DWORD
+.head 7 -  Number: LPVOID
+.head 7 -  Number: WORD
+.head 7 -  Number: WORD
+.head 4 +  Function: PEExportPrintWindow
+.head 5 -  Description: Exports the report displayed in the preview window to disk file or e-mail. This function can be used in a Custom-Print link to enable the user to preview the report in the preview window, and then, if everything looks satisfactory, to export the report to disk file or e-mail (in response to
+a user event).
+Use PEExportPrintWindow to replace the Export button when PEShowPrintControls disables the Print Control buttons.
+
+BOOL CRPE_API PEExportPrintWindow (
+
+Parameters
+
+printJob	Specifies the handle to the print job you want to print to a window.
+toMail	Indicates whether or not the function is to export to e-mail.
+WaitUntilDone	Indicates whether or not the function is to return as soon as printing starts. Use one of the following values:
+TRUE	The function returns when printing is finished. In version 1.1 and higher of CRPE, "waitUntilDone" must be true.
+FALSE	The function returns as soon as printing starts.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Boolean: BOOL
+.head 6 -  Boolean: BOOL
+.head 4 +  Function: PEEnableProgressDialog
+.head 5 -  Description: Enables/disables the display of the Progress dialog box. The Progress dialog box displays the progress of the report when it is running (records read, records selected, and so forth).
+
+BOOL CRPE_API PEEnableProgressDialog (
+
+Parameters
+
+printJob	Specifies the handle to the print job for which you want to enable/disable the Progress dialog box.
+enable	Specifies whether or not the progress dialog box is enabled. If enable is set to TRUE (1), the progress dialog box is enabled. If it's set to FALSE (0), the dialog box is disabled.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Boolean: BOOL
+.head 4 +  Function: PEDiscardSavedData
+.head 5 -  Description: Discards data that was previously saved with the report. If a report has been saved with data, you can use this function to discard the saved data, forcing the Crystal Report Engine to retrieve new data when the report is printed.
+
+BOOL CRPE_API PEDiscardSavedData (
+
+Parameters
+
+printJob	Specifies the handle to the print job for which you want to discard saved data.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEDeleteNthGroupSortField
+.head 5 -  Description: Removes the specified group sort field from the sort order. This function is used as part of a Custom-Print link whenever you want to delete group sort fields that were established for the report at design time. When you give the user the ability to delete group sort field(s) at print
+time, your link must include code to replace sortFieldN with user-generated values.
+This function can be used by itself to delete an existing group sort field when the sort field number is already known.
+This function can also be used as one of a series of functions: PEGetNSortFields called once), PEGetNthGroupSortField, PEGetHandleString (called together as many times as needed to identify the correct sort field), and PEDeleteNthGroupSortField (called once, when the
+correct sort field is identified). The series can be used in a Custom-Print link to identify and then delete an existing group sort field and/or sort order at print time in response to a user selection.
+
+BOOL CRPE_API PEDeleteNthGroupSortField (
+
+Parameters
+
+printJob	Specifies the handle of the print job from which you want to delete a group sort field.
+sortFieldN	Specifies the number of the sort field you want to delete. The first group sort field is field 0. If N = 0, the function will delete the first group sort field. If the report has N group sort fields, the function can be called with sortFieldN between 0 and N-1.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEConvertVInfoToPFInfo
+.head 5 -  Description: Converts a numeric, currency, date, Boolean, or string value contained in PEValueInfo, into the binary representation expected by PESetNthParameterField .
+
+BOOL CRPE_API PEConvertVInfoToPFInfo(
+
+Parameters
+
+valueInfo	Specifies a pointer to PEValueInfo that contains the value to be converted.
+valueType	Specifies a pointer used to store the type of the value being converted which should be assigned to the ValueType member of PEParameterFieldInfo.
+value	Specifies a pointer used to store the value in converted form for use in PESetNthParameterField.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 +  structPointer
+.head 7 -  Number: WORD
+.head 7 -  Number: DOUBLE
+.head 7 -  Number: DOUBLE
+.head 7 -  Boolean: BOOL
+.head 7 -  String: char[255]
+.head 7 -  String: char[1]
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: SHORT
+.head 7 -  Number: LONG
+.head 7 -  Number: SHORT
+.head 7 -  String: char[1]
+.head 7 -  String: char[1]
+.head 7 -  Number: LONG
+.head 6 -  Receive Number: LPWORD
+.head 6 -  Receive String: LPVOID
+.head 4 +  Function: PEConvertPFInfoToVInfo
+.head 5 -  Description: Converts the value returned in the CurrentValue or DefaultValue member of the PEParameterFieldInfo, structure to the appropriate type and places the result in a PEValueInfo.
+
+BOOL CRPE_API PEConvertPFInfoToVInfo(
+
+Parameters
+
+value	Specifies a pointer to the current or default parameter value (returned from PEGetNthParameterField) to convert.
+valueType	Specifies the type of parameter field that the value came from.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  String: LPVOID
+.head 6 -  Number: SHORT
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Boolean: BOOL
+.head 7 -  Receive String: char[255]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: LONG
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive Number: LONG
+.head 4 +  Function: PECloseSubreport
+.head 5 -  Description: Closes the specified subreport.
+
+BOOL CRPE_API PECloseSubreport
+(short printJob	//handle to subreport);
+
+Parameters
+
+printJob	Specifies the handle to the subreport you want to close.
+Return Value
+
+TRUE (1) if the call is successful; FALSE (0) if the call fails.
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PECancelPrintJob
+.head 5 -  Description: Cancels the printing of a report. This function can be tied to a control that allows the user to cancel a print job in progress.
+Use this command as a replacement for the Cancel button when PEShowPrintControls disables the Print Control buttons.
+
+void CRPE_API PECancelPrintJob
+(short printJob);
+
+Parameters
+
+printJob	Specifies the handle to the print job.
+Return Value
+
+None
+.head 5 -  Export Ordinal: 0
+.head 5 -  Returns
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 4 +  Function: PEAddParameterCurrentValue
+.head 5 -  Description:
+.head 5 -  Export Ordinal: 0
+.head 5 +  Returns
+.head 6 -  Boolean: BOOL
+.head 5 +  Parameters
+.head 6 -  Number: SHORT
+.head 6 -  String: LPCSTR
+.head 6 -  String: LPCSTR
+.head 6 +  structPointer
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: WORD
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Number: DOUBLE
+.head 7 -  Receive Boolean: BOOL
+.head 7 -  Receive String: char[254]
+.head 7 -  Receive String: char[2]
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive Number: DWORD
+.head 7 -  Receive Number: SHORT
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive String: char[1]
+.head 7 -  Receive Number: LONG
 .head 2 +  Constants
 .data CCDATA
 0000: 3000000000000000 0000000000000000 00000000
@@ -529,6 +2926,10 @@ A process should not rely on the return value to determine the number of times i
 .head 4 -  ! ! ! Constantes para el manejo del ClipBoard
 .head 4 -  Number: GMEM_MOVEABLE    	= 0x0002
 .head 4 -  Number: CF_TEXT    = 1
+.head 4 -  ! ! ! Crystal Report
+.head 4 -  Number: CW_USEDEFAULT = -32768
+.head 4 -  Number: WS_MAXIMIZE = 16777216
+.head 4 -  Number: PE_ERR_NOERROR			= 0
 .head 3 +  User
 .head 4 -  Number: MU_BORRAR        = SAM_User+100001
 .head 4 -  Number: MU_GRABAR        = SAM_User+100002
@@ -536,6 +2937,21 @@ A process should not rely on the return value to determine the number of times i
 .head 4 -  Number: MU_REVISAR  = SAM_User+100004
 .head 4 -  Number: MU_SELECCIONAR  = SAM_User+100005
 .head 4 -  Number: DBP_SYBAUTOCOMMIT	= 5108
+.head 4 -  ! ! Crystal Reports
+.head 4 -  Number: PE_SF_DESCENDING = 0
+.head 4 -  Number: PE_SF_ASCENDING = 1
+.head 4 -  Number: PE_PF_NAME_LEN = 255
+.head 4 -  Number: PE_PF_PROMPT_LEN  = 255
+.head 4 -  Number: PE_PF_VALUE_LEN = 255
+.head 4 -  Number: PE_WORD_LEN = 2
+.head 4 -  ! !
+.head 4 -  Number: PE_PF_NUMBER = 0
+.head 4 -  Number: PE_PF_CURRENCY = 1
+.head 4 -  Number: PE_PF_BOOLEAN = 2
+.head 4 -  Number: PE_PF_DATE = 3
+.head 4 -  Number: PE_PF_STRING = 4
+.head 4 -  Number: PAM_PE_Offset = 1000
+.head 4 -  Number: PAM_PEBeforePrint = SAM_User + PAM_PE_Offset
 .head 2 -  Resources
 .head 2 +  Variables
 .head 3 -  ! ! Variables para obtener configuracion
@@ -575,6 +2991,11 @@ A process should not rely on the return value to determine the number of times i
 .head 3 -  String: sTemp
 .head 3 -  Date/Time: dtTemp
 .head 3 -  !
+.head 3 -  ! ! Crystal Reports
+.head 3 -  String: SQLInitialDB
+.head 3 -  String: STRING_ARRAY_Null[*]
+.head 3 -  : PARAM_ARRAY_Null[*]
+.head 4 -  Class: cParam
 .head 2 +  Internal Functions
 .head 3 -  !
 .head 3 -  ! FUNCIONES PARA CHILDTABLEWINDOW
@@ -2088,7 +4509,7 @@ ROW_Hidden, COL_Visible, 0 )
 .head 3 +  Pushbutton Class: pbMas
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -2099,7 +4520,7 @@ ROW_Hidden, COL_Visible, 0 )
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\filenew.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\filenew.bmp
 .head 4 -  Picture Transparent Color: Black
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -2131,7 +4552,7 @@ ROW_Hidden, COL_Visible, 0 )
 .head 3 +  Pushbutton Class: pbLimpia
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -2142,7 +4563,7 @@ ROW_Hidden, COL_Visible, 0 )
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\eraser.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\eraser.bmp
 .head 4 -  Picture Transparent Color: Black
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -2164,7 +4585,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbImprimir
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -2175,7 +4596,7 @@ en pantalla
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\fileprint.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\fileprint.bmp
 .head 4 -  Picture Transparent Color: Black
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -2193,7 +4614,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbBusqueda
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -2204,7 +4625,7 @@ en pantalla
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\search.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\search.bmp
 .head 4 -  Picture Transparent Color: Black
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -2222,7 +4643,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbMenos
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -2233,7 +4654,7 @@ en pantalla
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\editdelete.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\editdelete.bmp
 .head 4 -  Picture Transparent Color: Class Default
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -2272,7 +4693,7 @@ en pantalla
 .head 3 +  Pushbutton Class: pbGrabar
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -2283,7 +4704,7 @@ en pantalla
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\filesave.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\filesave.bmp
 .head 4 -  Picture Transparent Color: White
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -2335,7 +4756,7 @@ validar los datos, estos son:
 .head 3 +  Pushbutton Class: pbSalir
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -2346,7 +4767,7 @@ validar los datos, estos son:
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\Logout.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\Logout.bmp
 .head 4 -  Picture Transparent Color: White
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -2374,7 +4795,7 @@ validar los datos, estos son:
 .winattr
 .head 4 -  Title: &Grabar
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -2385,7 +4806,7 @@ validar los datos, estos son:
 .head 4 -  Font Name: Arial
 .head 4 -  Font Size: 8
 .head 4 -  Font Enhancement: None
-.head 4 -  Picture File Name: C:\CENTURA\BITMAPS\SAVE1.ICO
+.head 4 -  Picture File Name: C:\SGH\icons\SAVE1.ICO
 .head 4 -  Picture Transparent Color: None
 .head 4 -  Image Style: Single
 .head 4 -  Text Color: Default
@@ -2413,7 +4834,7 @@ validar los datos, estos son:
 .head 3 -  ! este es para los combos de los FORM's
 .head 3 +  Combo Box Class: cmbBaseCodigoFiltrado
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -2545,7 +4966,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 6 -  Call SalSendMsg(hWndItem,SAM_Validate,0,0)
 .head 3 +  Combo Box Class: cmbBaseCodigoFiltradoChar
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -2683,7 +5104,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  2.271"
 .head 6 -  Width Editable? Class Default
@@ -2721,7 +5142,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Word Wrap? Class Default
 .head 5 -  Vertical Scroll? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  5.686"
 .head 6 -  Width Editable? Class Default
@@ -2751,7 +5172,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  0.788"
 .head 6 -  Width Editable? Class Default
@@ -2785,7 +5206,7 @@ no solo son NUMERICOS, sino tambien CARACTER,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  0.943"
 .head 6 -  Width Editable? Class Default
@@ -3053,7 +5474,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBaseChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.629"
 .head 5 -  Width Editable? Class Default
@@ -3082,7 +5503,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChAgregarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -3093,7 +5514,7 @@ parte de combo box
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\edit_add15.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\edit_add15.bmp
 .head 4 -  Picture Transparent Color: Black
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -3117,7 +5538,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBorrarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -3128,7 +5549,7 @@ parte de combo box
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\edit_remove15.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\edit_remove15.bmp
 .head 4 -  Picture Transparent Color: Black
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -3160,7 +5581,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbChBuscarChiquito
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -3171,7 +5592,7 @@ parte de combo box
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\CENTURA\BITMAPS\PBITEMS.BMP
+.head 4 -  Picture File Name: C:\SGH\icons\PBITEMS.BMP
 .head 4 -  Picture Transparent Color: Class Default
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -3189,7 +5610,7 @@ parte de combo box
 .head 3 +  Pushbutton Class: pbBase
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Class Default
@@ -3231,7 +5652,7 @@ parte de combo box
 .head 5 -  System Menu? Class Default
 .head 5 -  Resizable? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  6.825"
 .head 6 -  Width Editable? Class Default
@@ -3301,7 +5722,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 4.088"
+.head 8 -  Left:   4.088"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  0.8"
 .head 8 -  Width Editable? Yes
@@ -3338,7 +5759,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 0.188"
+.head 8 -  Left:   0.188"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3370,7 +5791,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 1.388"
+.head 8 -  Left:   1.388"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3398,7 +5819,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 2.588"
+.head 8 -  Left:   2.588"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3432,7 +5853,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 7 -  Class DLL Name:
 .head 7 -  Title:
 .head 7 -  Window Location and Size
-.head 8 -  Left: 6.588"
+.head 8 -  Left:   6.588"
 .head 8 -  Top:    0.073"
 .head 8 -  Width:  Class Default
 .head 8 -  Width Editable? Class Default
@@ -3458,7 +5879,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 6 -  Class DLL Name:
 .head 6 -  Display Settings
 .head 7 -  Window Location and Size
-.head 8 -  Left: 0.488"
+.head 8 -  Left:   0.488"
 .head 8 -  Top:    0.156"
 .head 8 -  Width:  6.9"
 .head 8 -  Width Editable? Class Default
@@ -3620,7 +6041,7 @@ order by NOMBRE",TBL_FillAll)
 .head 6 -  Call SalBringWindowToTop( hWndForm)
 .head 3 +  List Box Class: clsList
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  3.288"
 .head 5 -  Width Editable? Class Default
@@ -3859,7 +6280,7 @@ order by NOMBRE",TBL_FillAll)
 .head 6 -  Call SalWaitCursor(FALSE)
 .head 3 +  Combo Box Class: cmbBaseCodigo
 .head 4 -  Window Location and Size
-.head 5 -  Left:
+.head 5 -  Left:  
 .head 5 -  Top:   
 .head 5 -  Width:  2.071"
 .head 5 -  Width Editable? Class Default
@@ -4096,7 +6517,7 @@ parte de combo box
 .head 6 -  Local variables
 .head 6 +  Actions
 .head 7 -  Call SalFileGetCurrentDirectory( strIniPath )
-.head 7 -  Set strIniPath = strIniPath || "\\SGH_Configuracion.ini"
+.head 7 -  Set strIniPath = strIniPath || "\\SGH.ini"
 .head 7 -  Call SalUseRegistry( FALSE, "" )
 .head 7 +  If SalGetProfileString( "Reportes", "Path", "", strRepPath, strIniPath ) = 0
 .head 8 -  Call SalMessageBox( "Error al cargar las opciones de Reportes en el archivo " || strIniPath, "ERROR", MB_Ok )
@@ -4113,7 +6534,7 @@ parte de combo box
 .head 3 +  Child Table Class: MyChildTable
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:
+.head 6 -  Left:  
 .head 6 -  Top:   
 .head 6 -  Width:  6.388"
 .head 6 -  Width Editable? Class Default
@@ -4159,6 +6580,600 @@ Utiliza el PopopMenu TableMenu
 .head 5 +  On MTM_ColHdrSepLBtnDblClk
 .head 6 -  ! ! Agregado el 14/Aug/2006 by Elvin Deras
 .head 6 -  Call MTblAutoSizeColumn( hWndForm, SalNumberToWindowHandle( wParam ), MTASC_ALLROWS | MTASC_SPLITROWS )
+.head 3 +  General Window Class: cCrystalContainer
+.head 4 -  Description: Abstract Crystal Reports Framework class.
+Derive this class into a window class that can be  instantiated
+
+Already has the fnClose on SAM_Destroy for cleanup purposes
+Trap PAM_PEBeforePrint to manipulate report before it is printed or previewed
+
+.head 4 -  Derived From
+.head 4 -  Class Variables
+.head 4 +  Instance Variables
+.head 5 -  Number: niJobNo
+.head 5 -  ! ! ! Override LOGON info
+.head 5 -  Boolean: biLogonDefaultOverriden
+.head 5 -  String: striServer
+.head 5 -  String: striDBName
+.head 5 -  String: striUser
+.head 5 -  String: striPassword
+.head 5 -  String: striReportFileName
+.head 4 +  Functions
+.head 5 +  Function: fnAddSortField
+.head 6 -  Description: Appends a new sort field to the report.
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  String: parnFieldName
+.head 7 -  Number: nSortOrder
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: nNoOfFields
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  Set nNoOfFields = PEGetNSortFields( niJobNo )
+.head 7 -  Set biOK =  PESetNthSortField( niJobNo, nNoOfFields, parnFieldName, nSortOrder )
+.head 7 -  Return biOK
+.head 5 +  Function: fnClose
+.head 6 -  Description: Closes a report, the preview window (if any) and the engine.
+.head 6 +  Returns
+.head 7 -  Number:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Boolean: bOk
+.head 6 +  Actions
+.head 7 -  ! Only needed if OutputToWindow, but doesn't hurt
+.head 7 -  Call PECloseWindow( niJobNo )
+.head 7 -  Set bOk =  PEClosePrintJob( niJobNo )
+.head 7 +  If bOk AND PECanCloseEngine () ! Pro Edition Function
+.head 8 -  Call PECloseEngine( )
+.head 8 -  Set niJobNo = NUMBER_Null
+.head 7 -  Return bOk
+.head 5 +  Function: fnDeleteAllSortFields
+.head 6 -  Description: Deletes all sort fields.
+.head 6 -  Returns
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: nNoOfFields
+.head 7 -  Number: n
+.head 6 +  Actions
+.head 7 -  Set nNoOfFields = PEGetNSortFields( niJobNo )
+.head 7 -  Set n = 0
+.head 7 +  While ( n < nNoOfFields )
+.head 8 -  Call PEDeleteNthSortField( niJobNo, n )
+.head 8 -  Set n = n + 1
+.head 5 +  Function: fnDisplayError
+.head 6 -  Description: This function displays the error number and text if not biOK. This prevents the need to constantly
+test the boolean and call this function if TRUE
+
+ The default function is very useful during development
+
+The Driver functions make a late bound call to this function so that a dervided class or object w/functions
+can replace this development function
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: nErrorCode
+.head 7 -  Number: nTextHandle
+.head 7 -  Number: nTextLen
+.head 7 -  String: sError
+.head 6 +  Actions
+.head 7 -  Set nErrorCode = PEGetErrorCode ( niJobNo )
+.head 7 +  If nErrorCode != PE_ERR_NOERROR
+.head 8 -  Call PEGetErrorText ( niJobNo, nTextHandle, nTextLen )
+.head 8 -  Call SalStrSetBufferLength ( sError, nTextLen )
+.head 8 -  Call PEGetHandleString ( nTextHandle, sError, nTextLen )
+.head 8 -  Call SalMessageBox ( 'An error has occurred while printing your report.
+
+Error Number: ' || SalNumberToStrX (nErrorCode,0) || ' ' ||  sError, 'Crystal Report Error', MB_Ok | MB_IconExclamation )
+.head 7 -  Return TRUE
+.head 5 +  Function: fnExportPrintWindow
+.head 6 -  Description:
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  Boolean: bToMail
+.head 7 -  Boolean: bWaitUntilDone
+.head 6 -  Static Variables
+.head 6 -  Local variables
+.head 6 +  Actions
+.head 7 -  Return PEExportPrintWindow ( niJobNo, bToMail, bWaitUntilDone )
+.head 5 +  Function: fnGetFilter
+.head 6 -  Description: Retrieves the filter of a report
+.head 6 +  Returns
+.head 7 -  String:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: nTextHandle
+.head 7 -  Number: nTextLen
+.head 7 -  String: strFilter
+.head 6 +  Actions
+.head 7 -  Call PEGetSelectionFormula( niJobNo, nTextHandle, nTextLen )
+.head 7 -  Call SalStrSetBufferLength( strFilter,nTextLen)
+.head 7 -  Call PEGetHandleString( nTextHandle, strFilter, nTextLen )
+.head 7 -  Return strFilter
+.head 5 +  Function: fnGetNthReportParam
+.head 6 -  Description: Set a specific Parameter
+Note: Parameters are zero-based, so first is 0
+.head 6 +  Returns
+.head 7 -  String:
+.head 6 +  Parameters
+.head 7 -  Number: npParamNumber
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  String: strName
+.head 7 -  String: strPrompt
+.head 7 -  String: strDefaultValue
+.head 7 -  String: strCurrentValue
+.head 7 -  Number: nDefaultValueSet
+.head 7 -  Number: nCurrentValueSet
+.head 7 -  Number: nParamType
+.head 7 -  Number: nStructSize
+.head 7 -  String: strDummy
+.head 7 -  Number: biOK
+.head 7 -  String: strReportName
+.head 7 -  String: strEditMask
+.head 7 -  Number: nNeedsCurrentValue
+.head 7 -  Number: nMandatoryPrompt
+.head 7 -  Number: nMinSize
+.head 7 -  Number: nMaxSize
+.head 7 -  Number: nIsHidden
+.head 6 +  Actions
+.head 7 -  Call SalStrSetBufferLength( strName,256)
+.head 7 -  Call SalStrSetBufferLength( strPrompt, 256 )
+.head 7 -  Call SalStrSetBufferLength( strDefaultValue, 256 )
+.head 7 -  Call SalStrSetBufferLength( strCurrentValue, 256 )
+.head 7 -  ! 1032 = struct size 4 Words and 4 Char 256
+.head 7 -  Set nStructSize = 1032
+.head 7 -  Set biOK = PEGetNthParameterField( niJobNo, npParamNumber, nStructSize, nParamType, nDefaultValueSet, nCurrentValueSet
+, strName,strDummy, strPrompt, strDummy, strDefaultValue, strDummy, strCurrentValue, strDummy,
+strReportName, nNeedsCurrentValue, nMandatoryPrompt, nMinSize, nMaxSize, strEditMask, strDummy, nIsHidden )
+.head 7 -  Return strName
+.head 5 +  Function: fnGetNthSortField
+.head 6 -  Description: Retrieved the specified Sort Field
+
+NOTE: Zero-based list! 0 = first sort field
+.head 6 +  Returns
+.head 7 -  String:
+.head 6 +  Parameters
+.head 7 -  Number: npSortNumber
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: nTextHandle
+.head 7 -  Number: nTextLen
+.head 7 -  Number: nSortOrder
+.head 7 -  String: strSortName
+.head 6 +  Actions
+.head 7 -  Call PEGetNthSortField( niJobNo, npSortNumber, nTextHandle, nTextLen, nSortOrder )
+.head 7 -  Call SalStrSetBufferLength( strSortName,nTextLen )
+.head 7 -  Call PEGetHandleString( nTextHandle, strSortName, nTextLen )
+.head 7 -  Return strSortName
+.head 5 +  Function: fnGetReportTitle
+.head 6 -  Description: Returns report preview window caption
+.head 6 +  Returns
+.head 7 -  String:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  String: sTitle
+.head 7 -  Number: hTitle
+.head 7 -  Number: nLen
+.head 6 +  Actions
+.head 7 -  Set sTitle = ''
+.head 7 +  If PEGetReportTitle ( niJobNo, hTitle, nLen )
+.head 8 -  Call SalStrSetBufferLength( sTitle, nLen)
+.head 8 -  Call PEGetHandleString ( hTitle, sTitle, nLen )
+.head 7 -  Return sTitle
+.head 5 +  Function: fnGetSortFieldsCount
+.head 6 -  Description: Returns the number of Fields that the current report is sorting on
+.head 6 +  Returns
+.head 7 -  Number:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 -  Local variables
+.head 6 +  Actions
+.head 7 -  Return PEGetNSortFields( niJobNo )
+.head 5 +  Function: fnGetSQL
+.head 6 -  Description: Returns SQL From Report specified by Job No.
+.head 6 +  Returns
+.head 7 -  String:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: nTextHandle
+.head 7 -  String: strSql
+.head 7 -  Number: nTextLen
+.head 6 +  Actions
+.head 7 -  Call PEGetSQLQuery ( niJobNo, nTextHandle, nTextLen )
+.head 7 -  Call SalStrSetBufferLength ( strSql, nTextLen )
+.head 7 -  Call PEGetHandleString ( nTextHandle, strSql, nTextLen )
+.head 7 -  Return strSql
+.head 5 +  Function: fnGetWindowHandle
+.head 6 -  Description: Returns window handle of preview window
+.head 6 +  Returns
+.head 7 -  Window Handle:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 -  Local variables
+.head 6 +  Actions
+.head 7 -  Return PEGetWindowHandle ( niJobNo )
+.head 5 +  Function: fnInit
+.head 6 -  Description: Inits key class variables
+.head 6 -  Returns
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  ! Init instance variables
+.head 7 -  Set niJobNo = NUMBER_Null
+.head 5 +  Function: fnLogonServer
+.head 6 -  Description: This function NOOPs unless LogonDefault has been overriden
+Otherwise it calls PESetNthTableLogOnInfo to specify logon information
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 7 -  Number: wSize
+.head 6 +  Actions
+.head 7 -  Set wSize = 514
+.head 7 +  If biLogonDefaultOverriden
+.head 8 -  Set biOK = PESetNthTableLogOnInfo( niJobNo, 0, wSize, striServer, striDBName, striUser, striPassword, TRUE )
+.head 7 -  Return biOK
+.head 5 +  Function: fnOpen
+.head 6 -  Description: Opens a report file.
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  Set biOK = PEOpenEngine (  )
+.head 7 +  If biOK
+.head 8 -  Set niJobNo = PEOpenPrintJob( striReportFileName )
+.head 8 +  If niJobNo = 0
+.head 9 -  Set biOK = FALSE
+.head 7 -  Return biOK
+.head 5 +  Function: fnPrintPreview
+.head 6 -  Description: Driver Function
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  String: strpFilePathAndName
+.head 7 -  String: strpTitle
+.head 7 -  Number: parnLeft
+.head 7 -  Number: parnTop
+.head 7 -  Number: parnWidth
+.head 7 -  Number: parnHeigth
+.head 7 -  Number: dwStyle
+.head 7 -  Window Handle: hWnd
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  Call fnInit ( )
+.head 7 -  Call fnSetReportFileName ( strpFilePathAndName )
+.head 7 +  If IsRptOpen ( )
+.head 8 -  ! Prepares to direct printed output to a window
+.head 8 -  Set biOK = PEOutputToWindow ( niJobNo, strpTitle, parnLeft, parnTop, parnWidth, parnHeigth, dwStyle, hWnd )
+.head 8 +  If biOK
+.head 9 -  ! hook to change filters and sort orders, etc...
+.head 9 -  ! Call SalSendMsg ( hWndItem, PAM_PEBeforePrint, 0, 0 )
+.head 9 -  Call SalSendMsg ( hWndItem, SAM_ReportStart, 0, 0 )
+.head 9 -  ! Do it
+.head 9 -  Call ..fnStartPrintJob (  )
+.head 7 -  Return fnDisplayError( )
+.head 5 +  Function: fnRefresh
+.head 6 -  Description: Closes and restarts current print job. Useful when changing sorts/filters etc...
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 -  Local variables
+.head 6 +  Actions
+.head 7 -  Call PECloseWindow ( niJobNo )
+.head 7 -  Return fnStartPrintJob ( )
+.head 5 +  Function: fnSetFilter
+.head 6 -  Description: Sets a filter for a report.
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  String: strpFilter
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  Call PESetSelectionFormula ( niJobNo, strpFilter )
+.head 7 -  Set biOK = PECheckSelectionFormula ( niJobNo )
+.head 7 -  Return biOK
+.head 5 +  Function: fnSetLogonDefaults
+.head 6 -  Description: Call if you need to Set the Reports Logon Parameters
+
+NOTE: strpServer for ODBC is the Data Source Name (DSN) as configured using your ODBC adminstrator
+.head 6 -  Returns
+.head 6 +  Parameters
+.head 7 -  String: strpServer
+.head 7 -  String: strpDBName
+.head 7 -  String: strpUser
+.head 7 -  String: strpPassword
+.head 6 -  Static Variables
+.head 6 -  Local variables
+.head 6 +  Actions
+.head 7 -  Set biLogonDefaultOverriden = TRUE
+.head 7 -  Set striServer = strpServer
+.head 7 -  Set striDBName = strpDBName
+.head 7 -  Set striUser = strpUser
+.head 7 -  Set striPassword = strpPassword
+.head 7 -  ! Prepare strings to be sent to DLL functions
+.head 7 -  Call SalStrSetBufferLength ( striServer, 128 )
+.head 7 -  Call SalStrSetBufferLength ( striDBName, 128 )
+.head 7 -  Call SalStrSetBufferLength ( striUser, 128 )
+.head 7 -  Call SalStrSetBufferLength ( striPassword, 128 )
+.head 5 +  Function: fnSetNthReportParam
+.head 6 -  Description: Set a specific Parameter
+
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  Number: npParamNumber
+.head 7 -  Number: npParamType
+.head 7 -  String: strpParamValue
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  String: strName
+.head 7 -  String: strPrompt
+.head 7 -  String: strDefaultValue
+.head 7 -  String: strEditMask
+.head 7 -  String: strReportName
+.head 7 -  String: strDummy
+.head 7 -  Number: nDefaultValueSet
+.head 7 -  Number: nCurrentValueSet
+.head 7 -  Number: biOK
+.head 7 -  Number: nNeedsCurrentValue
+.head 7 -  Number: nIsLimited
+.head 7 -  Number: nIsHidden
+.head 7 -  Number: nMinSize
+.head 7 -  Number: nMaxSize
+.head 6 +  Actions
+.head 7 -  Call SalStrSetBufferLength( strName,256 )
+.head 7 -  Call SalStrSetBufferLength( strPrompt, 256 )
+.head 7 -  Call SalStrSetBufferLength( strDefaultValue, 256 )
+.head 7 -  Call SalStrSetBufferLength( strpParamValue, 256 )
+.head 7 -  Call SalStrSetBufferLength( strEditMask, 256 )
+.head 7 -  Set nDefaultValueSet = FALSE
+.head 7 -  Set nCurrentValueSet = TRUE
+.head 7 -  ! 1032 = struct size 4 Words and 4 Char 255
+.head 7 -  Set biOK = PESetNthParameterField( niJobNo, npParamNumber, 1430, npParamType, nDefaultValueSet, nCurrentValueSet
+, strName,strDummy, strPrompt, strDummy, strDefaultValue, strDummy,  strpParamValue, strDummy, strReportName, nNeedsCurrentValue, nIsLimited, nMinSize, nMaxSize, strEditMask,  strDummy, nIsHidden )
+.head 7 -  Return biOK
+.head 5 +  Function: fnSetNthSortField
+.head 6 -  Description: Set a specific sort number's sort name and direction.
+For direction, use the PE_SF_ASCENDING, PE_SF_DESCENDING constants
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  Number: npSortNumber
+.head 7 -  String: strpSortName
+.head 7 -  Number: npSortDirection
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  Set biOK = PESetNthSortField ( niJobNo, npSortNumber, strpSortName, npSortDirection )
+.head 7 -  Return biOK
+.head 5 +  Function: fnSetNthStoredProcParam
+.head 6 -  Description: Set a specific Parameter for stored procedures
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  Number: npParamNumber
+.head 7 -  String: strpParamValue
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  Set biOK = PESetNthParam( niJobNo, npParamNumber, strpParamValue )
+.head 7 -  Return biOK
+.head 5 +  Function: fnSetReportFileName
+.head 6 -  Description: Specify the Crystal Reports RPT file.
+Include drive and path
+Don't forget to use double slashes since a single slash is an escape character
+e.g. "C:\\CRW\\TEST.RPT"
+.head 6 -  Returns
+.head 6 +  Parameters
+.head 7 -  String: strpReportFileName
+.head 6 -  Static Variables
+.head 6 -  Local variables
+.head 6 +  Actions
+.head 7 -  Set striReportFileName = strpReportFileName
+.head 5 +  Function: fnSetReportTitle
+.head 6 -  Description: Sets report preview window title if this window has caption
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  String: sTitle
+.head 6 -  Static Variables
+.head 6 -  Local variables
+.head 6 +  Actions
+.head 7 -  Return PESetReportTitle ( niJobNo, sTitle )
+.head 5 +  Function: fnSetSQL
+.head 6 -  Description: Sets a SQL statement for a report.
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  String: strpSQL
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 -  Set biOK = PESetSQLQuery ( niJobNo, strpSQL )
+.head 7 -  Return biOK
+.head 5 +  Function: fnSetWindowOptions
+.head 6 -  Description: Sets options for preview window
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  Number: nTree
+.head 7 -  Number: nCanDrillDown
+.head 7 -  Number: nNavigationButtons
+.head 7 -  Number: nCancelButton
+.head 7 -  Number: nPrintButton
+.head 7 -  Number: nExportButton
+.head 7 -  Number: nZoomControl
+.head 7 -  Number: nCloseButton
+.head 7 -  Number: nProgressControls
+.head 7 -  Number: nSearchButton
+.head 7 -  Number: nPrintSetupButton
+.head 7 -  Number: nRefreshButton
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: wSize
+.head 7 -  Number: biOk
+.head 6 +  Actions
+.head 7 -  Set wSize = 26
+.head 7 -  Set biOk = PESetWindowOptions ( niJobNo, wSize, nTree, nCanDrillDown, nNavigationButtons, nCancelButton,
+nPrintButton, nExportButton, nZoomControl, nCloseButton, nProgressControls, nSearchButton, nPrintSetupButton,
+nRefreshButton )
+.head 7 -  Return biOk
+.head 5 +  Function: fnStartPrintJob
+.head 6 -  Description: If report is open, start print job
+This function is called from driver functions: fnPrint and fnPrintPreview
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 +  If IsRptOpen ( )
+.head 8 +  If fnLogonServer ( )
+.head 9 -  Set biOK = PEStartPrintJob ( niJobNo,TRUE )
+.head 7 -  Return biOK
+.head 5 +  Function: IsRptOpen
+.head 6 -  Description: If JobNo is NULL, attempts to Open the report. If that fails, it returns FALSE
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: biOK
+.head 6 +  Actions
+.head 7 +  If niJobNo = NUMBER_Null
+.head 8 -  Set biOK =  fnOpen ()
+.head 7 +  Else
+.head 8 -  Set biOK =  TRUE
+.head 7 -  Return biOK
+.head 5 +  Function: fnPrint
+.head 6 -  Description:
+.head 6 +  Returns
+.head 7 -  Boolean:
+.head 6 +  Parameters
+.head 7 -  String: strpFilePathAndName
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Boolean: bOk
+.head 6 +  Actions
+.head 7 -  Call fnInit ()
+.head 7 -  Call fnSetReportFileName (strpFilePathAndName)
+.head 7 -  Set bOk = PEOutputToPrinter( niJobNo, 1 ) ! Assumes one copy. Create function to specify if desired
+.head 7 -  ! hook to change filters and sort orders, etc...
+.head 7 -  ! Call SalSendMsg (hWndItem, PAM_PEBeforePrint, 0,0)
+.head 7 -  Call SalSendMsg ( hWndItem, SAM_ReportStart, 0, 0 )
+.head 7 -  ! Do it
+.head 7 -  Call fnStartPrintJob (  )
+.head 7 -  Return ..fnDisplayError ()
+.head 4 +  Message Actions
+.head 5 +  On SAM_Destroy
+.head 6 -  Call fnClose ( )
+.head 3 +  Form Window Class: cCrystalFormWindow
+.head 4 -  Title:
+.head 4 -  Icon File:
+.head 4 -  Accesories Enabled? Class Default
+.head 4 -  Visible? Class Default
+.head 4 -  Display Settings
+.head 5 -  Display Style? Class Default
+.head 5 -  Visible at Design time? Yes
+.head 5 -  Automatically Created at Runtime? Class Default
+.head 5 -  Initial State: Class Default
+.head 5 -  Maximizable? Class Default
+.head 5 -  Minimizable? Class Default
+.head 5 -  System Menu? Class Default
+.head 5 -  Resizable? Class Default
+.head 5 -  Window Location and Size
+.head 6 -  Left:  
+.head 6 -  Top:   
+.head 6 -  Width:  Class Default
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Form Size
+.head 6 -  Width:  Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Number of Pages: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 4 -  Next Class Child Key: 0
+.head 4 -  List in Tool Palette? Yes
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Description:
+.head 4 +  Derived From
+.head 5 -  Class: cCrystalContainer
+.head 4 -  Menu
+.head 4 +  Tool Bar
+.head 5 -  Display Settings
+.head 6 -  Display Style? Class Default
+.head 6 -  Location? Class Default
+.head 6 -  Visible? Class Default
+.head 6 -  Size: Class Default
+.head 6 -  Size Editable? Class Default
+.head 6 -  Font Name: Class Default
+.head 6 -  Font Size: Class Default
+.head 6 -  Font Enhancement: Class Default
+.head 6 -  Text Color: Class Default
+.head 6 -  Background Color: Class Default
+.head 5 -  Contents
+.head 4 -  Contents
+.head 4 -  Class Variables
+.head 4 +  Instance Variables
+.head 5 -  Window Handle: hWndReport
+.head 4 +  Functions
+.head 5 +  Function: OnSize
+.head 6 -  Description:
+.head 6 -  Returns
+.head 6 -  Parameters
+.head 6 -  Static Variables
+.head 6 +  Local variables
+.head 7 -  Number: nXT
+.head 7 -  Number: nYT
+.head 7 -  Number: nXB
+.head 7 -  Number: nYB
+.head 6 +  Actions
+.head 7 +  If hWndReport != hWndNULL and SalGetWindowState ( hWndReport ) != Window_Invalid
+.head 8 -  Call GetClientRect ( hWndForm, nXT, nYT, nXB, nYB )
+.head 8 -  Call SetWindowPos ( hWndReport, hWndNULL, nXT, nYT , nXB, nYB, SWP_NOZORDER | SWP_NOCOPYBITS )
+.head 4 +  Message Actions
+.head 5 +  On WM_SIZE
+.head 6 -  Call OnSize ( )
+.head 3 +  Functional Class: cParam
+.head 4 -  Description:
+.head 4 -  Derived From
+.head 4 -  Class Variables
+.head 4 +  Instance Variables
+.head 5 -  Number: Type
+.head 5 -  String: Value
+.head 4 -  Functions
 .head 2 +  Default Classes
 .head 3 -  MDI Window: cBaseMDI
 .head 3 -  Form Window:
@@ -4168,7 +7183,7 @@ Utiliza el PopopMenu TableMenu
 .head 3 -  Data Field:
 .head 3 -  Spin Field:
 .head 3 -  Multiline Field: cQuickMLField
-.head 3 -  Pushbutton: pbChAgregarChiquito
+.head 3 -  Pushbutton: pbGrabar
 .head 3 -  Radio Button:
 .head 3 -  Option Button:
 .head 3 -  ActiveX:
@@ -4200,7 +7215,7 @@ Utiliza el PopopMenu TableMenu
 .head 3 -  Visible at Design time? No
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left: 1.525"
+.head 4 -  Left:   1.525"
 .head 4 -  Top:    0.917"
 .head 4 -  Width:  4.563"
 .head 4 -  Width Editable? Yes
@@ -4233,7 +7248,7 @@ Utiliza el PopopMenu TableMenu
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.525"
+.head 5 -  Left:   0.525"
 .head 5 -  Top:    1.0"
 .head 5 -  Width:  1.363"
 .head 5 -  Width Editable? Yes
@@ -4258,7 +7273,7 @@ Utiliza el PopopMenu TableMenu
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.975"
+.head 6 -  Left:   1.975"
 .head 6 -  Top:    0.979"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -4282,7 +7297,7 @@ Utiliza el PopopMenu TableMenu
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.5"
+.head 5 -  Left:   0.5"
 .head 5 -  Top:    1.271"
 .head 5 -  Width:  1.388"
 .head 5 -  Width Editable? Yes
@@ -4307,7 +7322,7 @@ Utiliza el PopopMenu TableMenu
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.975"
+.head 6 -  Left:   1.975"
 .head 6 -  Top:    1.25"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -4335,7 +7350,7 @@ Utiliza el PopopMenu TableMenu
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Aceptar
 .head 4 -  Window Location and Size
-.head 5 -  Left: 1.488"
+.head 5 -  Left:   1.488"
 .head 5 -  Top:    1.656"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Class Default
@@ -4346,7 +7361,7 @@ Utiliza el PopopMenu TableMenu
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\22x22\apply.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\apply.bmp
 .head 4 -  Picture Transparent Color: Class Default
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -4390,7 +7405,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Cancelar
 .head 4 -  Window Location and Size
-.head 5 -  Left: 2.388"
+.head 5 -  Left:   2.388"
 .head 5 -  Top:    1.656"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Class Default
@@ -4401,7 +7416,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
 .head 4 -  Font Enhancement: Class Default
-.head 4 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\22x22\cancel.bmp
+.head 4 -  Picture File Name: C:\SGH\icons\cancel.bmp
 .head 4 -  Picture Transparent Color: Class Default
 .head 4 -  Image Style: Class Default
 .head 4 -  Text Color: Class Default
@@ -4415,7 +7430,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.829"
+.head 5 -  Left:   0.829"
 .head 5 -  Top:    0.512"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -4440,7 +7455,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.986"
+.head 6 -  Left:   1.986"
 .head 6 -  Top:    0.488"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Yes
@@ -4466,7 +7481,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.073"
 .head 5 -  Width:  4.3"
 .head 5 -  Width Editable? Yes
@@ -4499,7 +7514,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 1.388"
+.head 5 -  Left:   1.388"
 .head 5 -  Top:    0.24"
 .head 5 -  Width:  2.3"
 .head 5 -  Width Editable? Yes
@@ -4507,7 +7522,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 5 -  Height Editable? Yes
 .head 4 -  Visible? Yes
 .head 4 -  Editable? No
-.head 4 -  File Name: C:\Centura\BITMAPS\LOGO_FINAL_BETESDA_S.bmp
+.head 4 -  File Name: C:\SGH\icons\LOGO_FINAL_BETESDA_S.bmp
 .head 4 -  Storage: External
 .head 4 -  Picture Transparent Color: None
 .head 4 -  Fit: Scale
@@ -4552,7 +7567,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? No
 .head 3 -  Window Location and Size
-.head 4 -  Left: 0.0"
+.head 4 -  Left:   0.0"
 .head 4 -  Top:    0.75"
 .head 4 -  Width:  7.125"
 .head 4 -  Width Editable? Yes
@@ -4689,7 +7704,7 @@ ConectarCursores(hSql5) and ConectarCursores(hSql6)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 7.188"
+.head 6 -  Left:   7.188"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -4918,7 +7933,7 @@ cualquier variable que envio al reporte
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left: Default
+.head 4 -  Left:   Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  8.1"
 .head 4 -  Width Editable? Yes
@@ -4983,7 +7998,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.688"
+.head 6 -  Left:   0.688"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Yes
@@ -4994,7 +8009,7 @@ cualquier variable que envio al reporte
 .head 5 -  Font Name: Arial
 .head 5 -  Font Size: 8
 .head 5 -  Font Enhancement: None
-.head 5 -  Picture File Name: C:\CENTURA\BITMAPS\ICONS\PLUS.ICO
+.head 5 -  Picture File Name: C:\SGH\icons\ICONS\PLUS.ICO
 .head 5 -  Picture Transparent Color: None
 .head 5 -  Image Style: Single
 .head 5 -  Text Color: Default
@@ -5016,7 +8031,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.488"
+.head 6 -  Left:   1.488"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Yes
@@ -5027,7 +8042,7 @@ cualquier variable que envio al reporte
 .head 5 -  Font Name: Arial
 .head 5 -  Font Size: 8
 .head 5 -  Font Enhancement: None
-.head 5 -  Picture File Name: C:\CENTURA\BITMAPS\ICONS\MINUS.ICO
+.head 5 -  Picture File Name: C:\SGH\icons\ICONS\MINUS.ICO
 .head 5 -  Picture Transparent Color: None
 .head 5 -  Image Style: Single
 .head 5 -  Text Color: Default
@@ -5044,7 +8059,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.088"
+.head 6 -  Left:   0.088"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5055,8 +8070,8 @@ cualquier variable que envio al reporte
 .head 5 -  Font Name: Class Default
 .head 5 -  Font Size: Class Default
 .head 5 -  Font Enhancement: Class Default
-.head 5 -  Picture File Name: C:\Centura\BITMAPS\MyIcons\OSIcons\bmp\filesave.bmp
-.head 5 -  Picture Transparent Color: White
+.head 5 -  Picture File Name:
+.head 5 -  Picture Transparent Color: Class Default
 .head 5 -  Image Style: Class Default
 .head 5 -  Text Color: Class Default
 .head 5 -  Background Color: Class Default
@@ -5072,7 +8087,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 6.988"
+.head 6 -  Left:   6.988"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5098,7 +8113,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.688"
+.head 6 -  Left:   0.688"
 .head 6 -  Top:    0.406"
 .head 6 -  Width:  6.8"
 .head 6 -  Width Editable? Yes
@@ -5272,7 +8287,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.396"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -5305,7 +8320,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.729"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -5415,7 +8430,7 @@ cualquier variable que envio al reporte
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left: 0.0"
+.head 4 -  Left:   0.0"
 .head 4 -  Top:    0.031"
 .head 4 -  Width:  7.963"
 .head 4 -  Width Editable? Yes
@@ -5458,7 +8473,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title: &Copiar a Archivo
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.283"
+.head 6 -  Left:   0.283"
 .head 6 -  Top:    0.155"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -5469,7 +8484,7 @@ cualquier variable que envio al reporte
 .head 5 -  Font Name: Default
 .head 5 -  Font Size: Default
 .head 5 -  Font Enhancement: Default
-.head 5 -  Picture File Name: C:\Centura\BITMAPS\ICONS\DEV2000\Save.ico
+.head 5 -  Picture File Name: C:\SGH\icons\Save.ico
 .head 5 -  Picture Transparent Color: None
 .head 5 -  Image Style: Single
 .head 5 -  Text Color: Default
@@ -5492,7 +8507,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Copiar a &Portapapeles
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.983"
+.head 6 -  Left:   1.983"
 .head 6 -  Top:    0.155"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Yes
@@ -5503,7 +8518,7 @@ cualquier variable que envio al reporte
 .head 5 -  Font Name: Default
 .head 5 -  Font Size: Default
 .head 5 -  Font Enhancement: Default
-.head 5 -  Picture File Name: C:\Centura\BITMAPS\Checklis.ico
+.head 5 -  Picture File Name: C:\SGH\icons\Checklis.ico
 .head 5 -  Picture Transparent Color: None
 .head 5 -  Image Style: Single
 .head 5 -  Text Color: Default
@@ -5517,7 +8532,7 @@ cualquier variable que envio al reporte
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 6.488"
+.head 6 -  Left:   6.488"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -5541,7 +8556,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.288"
+.head 5 -  Left:   0.288"
 .head 5 -  Top:    0.345"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -5566,7 +8581,7 @@ cualquier variable que envio al reporte
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.588"
+.head 6 -  Left:   1.588"
 .head 6 -  Top:    0.321"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -5590,7 +8605,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.288"
+.head 5 -  Left:   0.288"
 .head 5 -  Top:    0.762"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -5609,7 +8624,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.088"
+.head 5 -  Left:   0.088"
 .head 5 -  Top:    0.073"
 .head 5 -  Width:  7.8"
 .head 5 -  Width Editable? Yes
@@ -5636,7 +8651,7 @@ cualquier variable que envio al reporte
 .head 5 -  Word Wrap? Yes
 .head 5 -  Vertical Scroll? Yes
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.588"
+.head 6 -  Left:   1.588"
 .head 6 -  Top:    0.823"
 .head 6 -  Width:  6.2"
 .head 6 -  Width Editable? Yes
@@ -5655,7 +8670,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.45"
+.head 5 -  Left:   0.45"
 .head 5 -  Top:    1.952"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -5683,7 +8698,7 @@ cualquier variable que envio al reporte
 .head 5 -  Word Wrap? No
 .head 5 -  Vertical Scroll? Yes
 .head 5 -  Window Location and Size
-.head 6 -  Left: 1.75"
+.head 6 -  Left:   1.75"
 .head 6 -  Top:    1.929"
 .head 6 -  Width:  7.233"
 .head 6 -  Width Editable? Yes
@@ -5702,7 +8717,7 @@ cualquier variable que envio al reporte
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left: 0.188"
+.head 5 -  Left:   0.188"
 .head 5 -  Top:    2.677"
 .head 5 -  Width:  7.7"
 .head 5 -  Width Editable? Yes
@@ -5724,3 +8739,250 @@ cualquier variable que envio al reporte
 .head 3 +  On SAM_CreateComplete
 .head 4 -  Set dfError=nError
 .head 4 -  Set mlDescripcion=sCadena
+.head 1 +  Form Window: frmCrystalReport
+.head 2 -  Class: cCrystalFormWindow
+.head 2 -  Property Template:
+.head 2 -  Class DLL Name:
+.head 2 -  Title: Report preview
+.head 2 -  Icon File:
+.head 2 -  Accesories Enabled? Yes
+.head 2 -  Visible? No
+.head 2 -  Display Settings
+.head 3 -  Display Style? Class Default
+.head 3 -  Visible at Design time? Yes
+.head 3 -  Automatically Created at Runtime? No
+.head 3 -  Initial State: Class Default
+.head 3 -  Maximizable? Class Default
+.head 3 -  Minimizable? Class Default
+.head 3 -  System Menu? Class Default
+.head 3 -  Resizable? Class Default
+.head 3 -  Window Location and Size
+.head 4 -  Left:   1.75"
+.head 4 -  Top:    0.458"
+.head 4 -  Width:  8.95"
+.head 4 -  Width Editable? Class Default
+.head 4 -  Height: 5.594"
+.head 4 -  Height Editable? Class Default
+.head 3 -  Form Size
+.head 4 -  Width:  Class Default
+.head 4 -  Height: Class Default
+.head 4 -  Number of Pages: Class Default
+.head 3 -  Font Name: Arial
+.head 3 -  Font Size: 8
+.head 3 -  Font Enhancement: Class Default
+.head 3 -  Text Color: Class Default
+.head 3 -  Background Color: Class Default
+.head 2 -  Description:
+.head 2 -  Named Menus
+.head 2 -  Menu
+.head 2 +  Tool Bar
+.head 3 -  Display Settings
+.head 4 -  Display Style? Default
+.head 4 -  Location? Top
+.head 4 -  Visible? Yes
+.head 4 -  Size: 0.75"
+.head 4 -  Size Editable? Yes
+.head 4 -  Font Name: Arial
+.head 4 -  Font Size: 8
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Contents
+.head 4 +  Pushbutton: pbExport
+.head 5 -  Class Child Ref Key: 0
+.head 5 -  Class ChildKey: 0
+.head 5 -  Class:
+.head 5 -  Property Template:
+.head 5 -  Class DLL Name:
+.head 5 -  Title: Export
+.head 5 -  Window Location and Size
+.head 6 -  Left:   0.09"
+.head 6 -  Top:    0.075"
+.head 6 -  Width:  0.7"
+.head 6 -  Width Editable? Yes
+.head 6 -  Height: 0.65"
+.head 6 -  Height Editable? Yes
+.head 5 -  Visible? Yes
+.head 5 -  Keyboard Accelerator: (none)
+.head 5 -  Font Name: Default
+.head 5 -  Font Size: Default
+.head 5 -  Font Enhancement: Default
+.head 5 -  Picture File Name: C:\SGH\icons\Document Forward.bmp
+.head 5 -  Picture Transparent Color: None
+.head 5 -  Image Style: Single
+.head 5 -  Text Color: Default
+.head 5 -  Background Color: Default
+.head 5 +  Message Actions
+.head 6 +  On SAM_Click
+.head 7 -  Call frmCrystalReport.fnExportPrintWindow( FALSE, TRUE )
+.head 2 -  Contents
+.head 2 +  Functions
+.head 3 +  Function: SetParameters
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  : RptParams[*]
+.head 6 -  Class: cParam
+.head 5 -  String: StProcParams[*]
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: i
+.head 5 -  Number: nEnd
+.head 4 +  Actions
+.head 5 +  If Not SalArrayIsEmpty( RptParams )
+.head 6 -  Set i = 0
+.head 6 -  Call SalArrayGetUpperBound( RptParams, 1, nEnd )
+.head 6 +  While i <= nEnd
+.head 7 -  Call fnSetNthReportParam ( i, RptParams[i].Type, RptParams[i].Value )
+.head 7 -  Set i = i + 1
+.head 5 +  If Not SalArrayIsEmpty( StProcParams )
+.head 6 -  Set i = 0
+.head 6 -  Call SalArrayGetUpperBound( StProcParams, 1, nEnd )
+.head 6 +  While i <= nEnd
+.head 7 -  Call fnSetNthStoredProcParam ( i, StProcParams[i] )
+.head 7 -  Set i = i + 1
+.head 2 +  Window Parameters
+.head 3 -  String: strRepTitle
+.head 3 -  String: strPathAndFile
+.head 3 -  : RptParams[*]
+.head 4 -  Class: cParam
+.head 3 -  String: StProcParams[*]
+.head 2 +  Window Variables
+.head 3 -  Number: nEnd
+.head 3 -  Number: nXT
+.head 3 -  Number: nYT
+.head 3 -  Number: nXB
+.head 3 -  Number: nYB
+.head 2 +  Message Actions
+.head 3 +  On SAM_CreateComplete
+.head 4 -  !
+.head 4 -  Call GetClientRect ( hWndForm, nXT, nYT, nXB, nYB )
+.head 4 -  Call fnSetLogonDefaults (SQLInitialDB , SqlDatabase, SqlUser, SqlPassword )
+.head 4 -  Call fnPrintPreview ( strPathAndFile, strRepTitle,  nXT, nYT, nXB, nYB, WS_CLIPCHILDREN | WS_CLIPSIBLINGS | WS_BORDER, hWndItem )
+.head 4 -  Call fnSetWindowOptions ( FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE )
+.head 4 -  Call fnRefresh ( )
+.head 4 -  Set hWndReport = fnGetWindowHandle ( )
+.head 4 -  Call frmCrystalReport.fnSetReportTitle( strRepTitle )
+.head 4 -  Call SalSetWindowText ( hWndForm, 'Report preview - [ ' || fnGetReportTitle ( ) || ' ]')
+.head 4 -  Call OnSize ( )
+.head 4 -  !
+.head 4 -  ! Call fnPrint( strPathAndFile)
+.head 3 +  On SAM_ReportStart
+.head 4 -  Call SetParameters( RptParams, StProcParams )
+.head 1 +  Form Window: frmCrystalRptPrint
+.head 2 -  Class: cCrystalFormWindow
+.head 2 -  Property Template:
+.head 2 -  Class DLL Name:
+.head 2 -  Title: Preview
+.head 2 -  Icon File:
+.head 2 -  Accesories Enabled? No
+.head 2 -  Visible? No
+.head 2 -  Display Settings
+.head 3 -  Display Style? Class Default
+.head 3 -  Visible at Design time? Yes
+.head 3 -  Automatically Created at Runtime? No
+.head 3 -  Initial State: Class Default
+.head 3 -  Maximizable? Class Default
+.head 3 -  Minimizable? Class Default
+.head 3 -  System Menu? Yes
+.head 3 -  Resizable? No
+.head 3 -  Window Location and Size
+.head 4 -  Left:   1.75"
+.head 4 -  Top:    0.458"
+.head 4 -  Width:  7.0"
+.head 4 -  Width Editable? Class Default
+.head 4 -  Height: 1.988"
+.head 4 -  Height Editable? Class Default
+.head 3 -  Form Size
+.head 4 -  Width:  Class Default
+.head 4 -  Height: Class Default
+.head 4 -  Number of Pages: Class Default
+.head 3 -  Font Name: Arial
+.head 3 -  Font Size: 8
+.head 3 -  Font Enhancement: Class Default
+.head 3 -  Text Color: Class Default
+.head 3 -  Background Color: Class Default
+.head 2 -  Description:
+.head 2 -  Named Menus
+.head 2 -  Menu
+.head 2 +  Tool Bar
+.head 3 -  Display Settings
+.head 4 -  Display Style? Default
+.head 4 -  Location? Top
+.head 4 -  Visible? Yes
+.head 4 -  Size: 0.438"
+.head 4 -  Size Editable? Yes
+.head 4 -  Font Name: Arial
+.head 4 -  Font Size: 8
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Contents
+.head 2 -  Contents
+.head 2 +  Functions
+.head 3 +  Function: SetParameters
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  : RptParams[*]
+.head 6 -  Class: cParam
+.head 5 -  String: StProcParams[*]
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  Number: i
+.head 5 -  Number: nEnd
+.head 4 +  Actions
+.head 5 +  If Not SalArrayIsEmpty( RptParams )
+.head 6 -  Set i = 0
+.head 6 -  Call SalArrayGetUpperBound( RptParams, 1, nEnd )
+.head 6 +  While i <= nEnd
+.head 7 -  Call fnSetNthReportParam ( i, RptParams[i].Type, RptParams[i].Value )
+.head 7 -  Set i = i + 1
+.head 5 +  If Not SalArrayIsEmpty( StProcParams )
+.head 6 -  Set i = 0
+.head 6 -  Call SalArrayGetUpperBound( StProcParams, 1, nEnd )
+.head 6 +  While i <= nEnd
+.head 7 -  Call fnSetNthStoredProcParam ( i, StProcParams[i] )
+.head 7 -  Set i = i + 1
+.head 2 +  Window Parameters
+.head 3 -  String: strRepTitle
+.head 3 -  String: strPathAndFile
+.head 3 -  : RptParams[*]
+.head 4 -  Class: cParam
+.head 3 -  String: StProcParams[*]
+.head 2 +  Window Variables
+.head 3 -  Number: nEnd
+.head 3 -  Number: nXT
+.head 3 -  Number: nYT
+.head 3 -  Number: nXB
+.head 3 -  Number: nYB
+.head 3 -  String: sDevice
+.head 3 -  String: sDriver
+.head 3 -  String: sPort
+.head 2 +  Message Actions
+.head 3 +  On SAM_CreateComplete
+.head 4 -  !
+.head 4 -  Call GetClientRect ( hWndForm, nXT, nYT, nXB, nYB )
+.head 4 -  Call fnSetLogonDefaults (SQLInitialDB , SqlDatabase, SqlUser, SqlPassword )
+.head 4 -  !
+.head 4 -  Call fnInit ( )
+.head 4 -  Call fnSetReportFileName ( strPathAndFile )
+.head 4 +  If IsRptOpen ( )
+.head 5 -  ! Prepares to direct printed output to a window
+.head 5 -  Call PEOutputToPrinter( niJobNo, 0 )
+.head 5 -  ! hook to change filters and sort orders, etc...
+.head 5 -  ! Call SalSendMsg ( hWndItem, PAM_PEBeforePrint, 0, 0 )
+.head 5 -  Call SalSendMsg ( hWndItem, SAM_ReportStart, 0, 0 )
+.head 5 -  ! Do it
+.head 5 -  Call fnStartPrintJob (  )
+.head 4 -  !
+.head 4 -  Call fnSetWindowOptions ( FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE )
+.head 4 -  Call fnRefresh ( )
+.head 4 -  Set hWndReport = fnGetWindowHandle ( )
+.head 4 -  Call frmCrystalRptPrint.fnSetReportTitle( strRepTitle )
+.head 4 -  Call SalSetWindowText ( hWndForm, 'Printing - [ ' || fnGetReportTitle ( ) || ' ]')
+.head 4 -  Call OnSize ( )
+.head 4 -  !
+.head 3 +  On SAM_ReportStart
+.head 4 -  ! Call SalPrtSetup( sDevice, sDriver, sPort, FALSE )
+.head 4 -  Call SetParameters( RptParams, StProcParams )
