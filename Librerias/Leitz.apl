@@ -8,19 +8,18 @@ en table window,des/ha bilitar pantallas, manejo de errores
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000004000000 FFFF01000D004347 5458566965775374 6174650400020000
-0020: 0000000000D60000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
+0000: 6F00000004000000 FFFF01000D004347 5458566965775374 6174650400010000
+0020: 0000000000080100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
 0040: FFE1FFFFFF160000 0016000000200200 000D010000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F777308646C
-0080: 674572726F720854 6F6F6C204261720F 7062477261626172 4172636869766F00
-00A0: 0001800200FFFFFF FF00000000000000 002C000000000000 0001000000FFFFFF
-00C0: FFFFFFFFFFFCFFFF FFE9FFFFFF2C0000 002C000000360200 0023010000000000
-00E0: 0000000000030000 000F4170706C6963 6174696F6E497465 6D07436C61737365
-0100: 7307636C734C6F6E 6700000000018004 0001000000000000 00680000002C0000
-0120: 0000000000010000 00FFFFFFFFFFFFFF FFFCFFFFFFE9FFFF FF42000000420000
-0140: 004C020000390100 0000000000000000 00040000000F4170 706C69636174696F
-0160: 6E4974656D07436C 617373657307636C 734C6F6E67094675 6E6374696F6E7300
-0180: 000000
+0060: 000F4170706C6963 6174696F6E497465 6D0200000007436C 61737365730D6672
+0080: 6D536F6C6F4E6F6D 6272650000018002 00FFFFFFFF000000 00000000002C0000
+00A0: 0000000000010000 00FFFFFFFFFFFFFF FFFCFFFFFFE9FFFF FF2C0000002C0000
+00C0: 0036020000230100 0000000000000000 00030000000F4170 706C69636174696F
+00E0: 6E4974656D07436C 617373657307636C 734C6F6E67000000 0001800400010000
+0100: 0000000000680000 002C000000000000 0001000000FFFFFF FFFFFFFFFFFCFFFF
+0120: FFE9FFFFFF420000 00420000004C0200 0039010000000000 0000000000040000
+0140: 000F4170706C6963 6174696F6E497465 6D07436C61737365 7307636C734C6F6E
+0160: 670946756E637469 6F6E7300000000
 .enddata
 .head 2 -  Outline Window State: Maximized
 .head 2 +  Outline Window Location and Size
@@ -4349,13 +4348,13 @@ or	nCasoEstatusFila=NUMBER_Null
 .head 5 -  String: sValues[3]
 .head 5 -  Number: nReturnValue
 .head 4 +  Actions
-.head 5 -  Call GetParameteValues( pIdParameter, sValues[0], sValues[1], sValues[2] )
+.head 5 -  Call GetParameterValues( pIdParameter, sValues[0], sValues[1], sValues[2] )
 .head 5 +  If pValueNumber > 3 Or pValueNumber < 1
 .head 6 -  Set pValueNumber = 1
 .head 5 -  Set nReturnValue = SalStrToNumber( sValues[pValueNumber-1] )
 .head 5 -  Return nReturnValue
 .head 5 -  ! !
-.head 3 +  Function: GetParameteValues
+.head 3 +  Function: GetParameterValues
 .head 4 -  Description:
 .head 4 -  Returns
 .head 4 +  Parameters
@@ -4368,6 +4367,32 @@ or	nCasoEstatusFila=NUMBER_Null
 .head 4 +  Actions
 .head 5 -  Call SqlImmediate( "SELECT VALOR1, VALOR2, VALOR3 FROM SYS_PARAMETROS INTO :pReturnValue1, :pReturnValue2, :pReturnValue3 WHERE SID_PARAMETRO = :pIdParameter" )
 .head 5 -  Call SqlClearImmediate(  )
+.head 3 +  Function: SetParameterValues
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  String: pIdParameter
+.head 5 -  String: P_Value1
+.head 5 -  String: P_Value2
+.head 5 -  String: P_Value3
+.head 4 -  Static Variables
+.head 4 -  Local variables
+.head 4 +  Actions
+.head 5 -  Call SqlPrepareAndExecute( hSql1,  "UPDATE  SYS_PARAMETROS SET VALOR1 = :P_Value1, VALOR2 = :P_Value2, VALOR3 = :P_Value3  WHERE SID_PARAMETRO = :pIdParameter" )
+.head 5 -  Call SqlPrepareAndExecute( hSql1,  "COMMIT" )
+.head 3 +  Function: GetPeriodoContable
+.head 4 -  Description:
+.head 4 -  Returns
+.head 4 +  Parameters
+.head 5 -  Receive Date/Time: P_Inicio
+.head 5 -  Receive Date/Time: P_Fin
+.head 4 -  Static Variables
+.head 4 +  Local variables
+.head 5 -  String: sValues[3]
+.head 4 +  Actions
+.head 5 -  Call GetParameterValues( 'CONTABILIDAD_PERIODO_CONTABLE', sValues[0], sValues[1], sValues[2] )
+.head 5 -  Set P_Inicio = SalStrToDate( sValues[0] )
+.head 5 -  Set P_Fin = SalStrToDate( sValues[1] )
 .head 2 +  Named Menus
 .head 3 +  Menu: TableMenu
 .head 4 -  Resource Id: 37730
@@ -5874,7 +5899,7 @@ que solo contenga codigo y nombre, es decir para solo agregar los nombres
 .head 5 +  Child Table: tbl1
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 5
-.head 6 -  Class: cFlatChildTable
+.head 6 -  Class: MyChildTable
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
 .head 6 -  Display Settings
@@ -8108,7 +8133,7 @@ cualquier variable que envio al reporte
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -8116,21 +8141,21 @@ cualquier variable que envio al reporte
 .head 6 -  Left:   0.688"
 .head 6 -  Top:    0.406"
 .head 6 -  Width:  6.8"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.333"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 10000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodUsuario
 .head 6 -  Class Child Ref Key: 0

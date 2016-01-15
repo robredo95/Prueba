@@ -6,7 +6,7 @@
 0020: 0000000000F60000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
 0040: FFE1FFFFFF000000 00000000008C0200 00E0010000010000 0000000000010000
 0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F77730B6672
-0080: 6D506C616E696C6C 61
+0080: 6D506572736F6E61 6C
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000018433A5C 5347485C69636F6E 735C434C4F434B30 332E49434F1B433A
@@ -2907,7 +2907,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -2915,21 +2915,21 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 6 -  Left:   -0.017"
 .head 6 -  Top:    -0.012"
 .head 6 -  Width:  9.9"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.25"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Black
-.head 5 -  Background Color: White
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 300
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodigo
 .head 6 -  Class Child Ref Key: 0
@@ -4914,7 +4914,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .enddata
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -4922,21 +4922,21 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 6 -  Left:   1.683"
 .head 6 -  Top:    0.821"
 .head 6 -  Width:  10.2"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 4.083"
-.head 6 -  Height Editable? Yes
+.head 6 -  Height Editable? Class Default
 .head 5 -  Visible? No
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colIngDed
 .head 6 -  Class Child Ref Key: 0
@@ -5335,7 +5335,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.0"
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Class Default
+.head 5 -  Visible? Yes
 .head 5 -  Font Name: Class Default
 .head 5 -  Font Size: Class Default
 .head 5 -  Font Enhancement: Class Default
@@ -5403,7 +5403,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.25"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Class Default
+.head 4 -  Visible? Yes
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -6432,7 +6432,7 @@ where  A.nombre like '" || dfNombre || "%'  ",TBL_FillAll)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -6440,21 +6440,21 @@ where  A.nombre like '" || dfNombre || "%'  ",TBL_FillAll)
 .head 6 -  Left:   0.383"
 .head 6 -  Top:    1.405"
 .head 6 -  Width:  7.6"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.083"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodigo
 .head 6 -  Class Child Ref Key: 0
@@ -6692,7 +6692,7 @@ insert into ING_DED
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -6700,21 +6700,21 @@ insert into ING_DED
 .head 6 -  Left:   0.183"
 .head 6 -  Top:    2.571"
 .head 6 -  Width:  12.3"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.917"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Arial
-.head 5 -  Font Size: 8
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 32000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: Cod_Empleado
 .head 6 -  Class Child Ref Key: 0
@@ -8128,7 +8128,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   11.983"
+.head 6 -  Left:   12.783"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8151,7 +8151,7 @@ into
 .head 5 -  Class: pbBusqueda
 .head 5 -  Property Template:
 .head 5 -  Class DLL Name:
-.head 5 -  Title: Cerrar
+.head 5 -  Title:
 .head 5 -  Window Location and Size
 .head 6 -  Left:   3.883"
 .head 6 -  Top:    0.071"
@@ -8182,6 +8182,10 @@ into
 .head 8 -  Return FALSE
 .head 7 -  ! ! Debe mandarse a llamar usando las funciones de sybase.
 .head 7 -  ! Call OdrExecuteProc( hSql1, "{call cerrar_planilla(" || SalNumberToStrX( dfCod_Planilla, 0 ) || ")}", "" )
+.head 7 -  ! !
+.head 7 -  ! ! En la version Sybase 12.5 es posible invocar el procedure directamente (solo es necesario establecer el tipo de procedure en anymode)  sp_procxmode SP_GENERAR_PARTIDAS_PP, "anymode";
+.head 7 -  Call SqlPrepareAndExecute( hSql1, "EXECUTE SP_GENERAR_PARTIDAS_PP :dfCod_Planilla" )
+.head 7 -  Call SqlPrepareAndExecute(hSql1,"commit")
 .head 7 -  Call SqlPrepareAndExecute( hSql1, "UPDATE planilla SET estado = 'CERRADA' WHERE cod_planilla = :dfCod_Planilla" )
 .head 7 -  Call SqlPrepareAndExecute(hSql1,"commit")
 .head 7 -  Call SalMessageBox( "La planilla fue cerrada", "Mensaje", MB_Ok )
@@ -8657,7 +8661,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Window Location and Size
 .head 6 -  Left:   11.583"
 .head 6 -  Top:    0.321"
-.head 6 -  Width:  1.3"
+.head 6 -  Width:  2.1"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
@@ -8678,14 +8682,14 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatChildTable
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
 .head 6 -  Left:   0.883"
 .head 6 -  Top:    0.571"
-.head 6 -  Width:  12.2"
+.head 6 -  Width:  12.8"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.333"
 .head 6 -  Height Editable? Class Default
@@ -9434,14 +9438,14 @@ where
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatChildTable
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
 .head 6 -  Left:   0.883"
-.head 6 -  Top:    2.99"
-.head 6 -  Width:  11.1"
+.head 6 -  Top:    3.071"
+.head 6 -  Width:  11.9"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.083"
 .head 6 -  Height Editable? Class Default
@@ -9470,7 +9474,7 @@ where
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  0.567"
+.head 6 -  Width:  0.683"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -9495,13 +9499,13 @@ where
 .head 6 -  Class: clsNumero
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
-.head 6 -  Title: Codigo
+.head 6 -  Title: Cod
 .head 6 -  Visible? Class Default
 .head 6 -  Editable? Class Default
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  Class Default
+.head 6 -  Width:  0.617"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -9545,7 +9549,7 @@ into :colcmbIngDed  " ,bExists)
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  2.75"
+.head 6 -  Width:  2.067"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -9663,7 +9667,7 @@ WHERE TIPO='INGRESO'")
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.367"
+.head 6 -  Width:  1.067"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -9688,13 +9692,13 @@ WHERE TIPO='INGRESO'")
 .head 6 -  Class: clsNumero
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
-.head 6 -  Title: Cantidad
+.head 6 -  Title: Cant.
 .head 6 -  Visible? Class Default
 .head 6 -  Editable? Class Default
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.05"
+.head 6 -  Width:  0.717"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -9727,7 +9731,7 @@ WHERE TIPO='INGRESO'")
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.267"
+.head 6 -  Width:  1.217"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: ###00000
 .head 6 -  Country: Class Default
@@ -9822,7 +9826,7 @@ WHERE TIPO='INGRESO'")
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  3.183"
+.head 6 -  Width:  2.267"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -9885,6 +9889,7 @@ WHERE TIPO='INGRESO'")
 .head 5 +  On SAM_Click
 .head 6 -  Call SalSendClassMessage(SAM_Click,0,0)
 .head 6 -  Set tbl2.colUnico=Identity(600)
+.head 6 -  Set tbl2.fecha = dfFin
 .head 3 +  Pushbutton: pbBIngDed
 .data CLASSPROPSSIZE
 0000: 1700
@@ -9926,14 +9931,14 @@ WHERE TIPO='INGRESO'")
 .head 3 +  Child Table: tbl4
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatChildTable
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.95"
+.head 6 -  Left:   0.883"
 .head 6 -  Top:    4.405"
-.head 6 -  Width:  12.033"
+.head 6 -  Width:  12.733"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.357"
 .head 6 -  Height Editable? Class Default
@@ -9962,7 +9967,7 @@ WHERE TIPO='INGRESO'")
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  0.567"
+.head 6 -  Width:  0.667"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -9987,13 +9992,13 @@ WHERE TIPO='INGRESO'")
 .head 6 -  Class: clsNumero
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
-.head 6 -  Title: Codigo
+.head 6 -  Title: Cod
 .head 6 -  Visible? Class Default
 .head 6 -  Editable? Class Default
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  Class Default
+.head 6 -  Width:  0.567"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -10124,7 +10129,7 @@ into :colcmbIngDed  " ,bExists)
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  2.75"
+.head 6 -  Width:  2.133"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -10257,7 +10262,7 @@ WHERE TIPO='DEDUCCION'")
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.367"
+.head 6 -  Width:  1.2"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -10279,16 +10284,16 @@ WHERE TIPO='DEDUCCION'")
 .head 5 +  Column: colFactura
 .head 6 -  Class Child Ref Key: 0
 .head 6 -  Class ChildKey: 0
-.head 6 -  Class: clsDatos
+.head 6 -  Class: clsNumero
 .head 6 -  Property Template:
 .head 6 -  Class DLL Name:
 .head 6 -  Title: # Factura
 .head 6 -  Visible? Class Default
 .head 6 -  Editable? Class Default
 .head 6 -  Maximum Data Length: Class Default
-.head 6 -  Data Type: Class Default
+.head 6 -  Data Type: Number
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  1.267"
+.head 6 -  Width:  0.933"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -10308,9 +10313,12 @@ WHERE TIPO='DEDUCCION'")
 .head 6 -  List Values
 .head 6 +  Message Actions
 .head 7 +  On SAM_Validate
-.head 8 +  If tbl4.colFactura != ''
-.head 9 -  Set nFactura = SalStrToNumber( tbl4.colFactura )
+.head 8 +  If tbl4.colFactura != NUMBER_Null
+.head 9 -  Set nFactura =  tbl4.colFactura 
 .head 9 -  Call SqlImmediate( "SELECT MONTO_DEBE FROM FACTURAS INTO :tbl4.monto WHERE COD_FACTURA = :nFactura" )
+.head 9 -  Set tbl4.cantidad = NUMBER_Null
+.head 9 -  Set tbl4.subtotal = NUMBER_Null
+.head 9 -  Call SalTblSetFocusCell( tbl4, lParam, tbl4.cantidad, 0,0 )
 .head 9 -  Call SqlClearImmediate(  )
 .head 5 +  Column: cantidad
 .head 6 -  Class Child Ref Key: 0
@@ -10452,7 +10460,7 @@ WHERE TIPO='DEDUCCION'")
 .head 6 -  Maximum Data Length: Class Default
 .head 6 -  Data Type: Class Default
 .head 6 -  Justify: Class Default
-.head 6 -  Width:  3.183"
+.head 6 -  Width:  1.983"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Format: Class Default
 .head 6 -  Country: Class Default
@@ -10515,6 +10523,7 @@ WHERE TIPO='DEDUCCION'")
 .head 5 +  On SAM_Click
 .head 6 -  Call SalSendClassMessage(SAM_Click,0,0)
 .head 6 -  Set tbl4.colUnico=Identity(600)
+.head 6 -  Set tbl4.fecha = dfFin
 .head 3 +  Pushbutton: pbBIngDed2
 .data CLASSPROPSSIZE
 0000: 1700
@@ -10561,9 +10570,9 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title: &Actualizar
 .head 4 -  Window Location and Size
-.head 5 -  Left:   12.183"
+.head 5 -  Left:   12.883"
 .head 5 -  Top:    2.988"
-.head 5 -  Width:  0.9"
+.head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 1.333"
 .head 5 -  Height Editable? Yes
@@ -10580,6 +10589,9 @@ WHERE TIPO='DEDUCCION'")
 .head 4 +  Message Actions
 .head 5 +  On SAM_Click
 .head 6 -  !
+.head 6 +  If dfEstado = 'CERRADA'
+.head 7 -  Call SalMessageBox( 'La planilla no puede ser modificada porque ya esta CERRADA', '.:: Sistema de Gestion Hospitalaria ::.', 0 )
+.head 7 -  Return 0
 .head 6 -  Set nInicio=-1
 .head 6 -  Set bBlanco=FALSE
 .head 6 +  While SalTblFindNextRow( tbl2,nInicio,ROW_New | ROW_Edited,0)
@@ -10606,14 +10618,14 @@ WHERE TIPO='DEDUCCION'")
 .head 3 +  Child Table: tbl3
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatChildTable
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
 .head 6 -  Left:   0.883"
 .head 6 -  Top:    1.99"
-.head 6 -  Width:  12.2"
+.head 6 -  Width:  12.8"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 0.833"
 .head 6 -  Height Editable? Class Default
@@ -11344,8 +11356,8 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   -0.014"
-.head 5 -  Top:    4.179"
+.head 5 -  Left:   0.883"
+.head 5 -  Top:    4.24"
 .head 5 -  Width:  1.3"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
@@ -11363,8 +11375,8 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.057"
-.head 5 -  Top:    3.115"
+.head 5 -  Left:   0.85"
+.head 5 -  Top:    2.869"
 .head 5 -  Width:  0.833"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
@@ -11757,7 +11769,7 @@ where correlativo = :tbl2.colUnico")
 descripcion,subtotal) values
 (:tbl4.colUnico,:tbl4.cod_ingded,:dfCod_Planilla,:tbl1.cod_empleado,:tbl4.cantidad,:tbl4.monto,
 :tbl4.fecha,:tbl4.descripcion,:tbl4.cantidad * :tbl4.monto) ")
-.head 5 -  Call SalTblDoInserts( tbl4, hSql1, TRUE )
+.head 5 -  Call SalTblDoInserts( tbl4, hSql1, FALSE )
 .head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
 .head 5 -  Call SqlPrepare(hSql1,"	update det_planilla_det 
 			set 	cod_ingded = :tbl4.cod_ingded,
@@ -11767,7 +11779,7 @@ descripcion,subtotal) values
 				fecha=:tbl4.fecha,
 			descripcion=:tbl4.descripcion
 			where correlativo = :tbl4.colUnico")
-.head 5 -  Call SalTblDoUpdates( tbl4, hSql1, TRUE )
+.head 5 -  Call SalTblDoUpdates( tbl4, hSql1, FALSE )
 .head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
 .head 5 -  ! !
 .head 5 -  Call SqlPrepare(hSql1,"delete  det_planilla_det 
@@ -11779,11 +11791,14 @@ where correlativo = :tbl4.colUnico")
 .head 5 -  Call SalTblSetContext(tbl4,0)
 .head 5 -  Set i =0
 .head 5 +  If tbl4.cod_ingded = 8
-.head 6 -  Call RegistrarPago( tbl4.colUnico,dfCod_Planilla, tbl1.cod_empleado, tbl1.nombres, SalStrToNumber( tbl4.colFactura ), tbl4.subtotal, dfFin )
+.head 6 +  If SalTblQueryRowFlags( tbl4, i, ROW_New | ROW_Edited )
+.head 7 -  Call RegistrarPago( tbl4.colUnico,tbl4.colFactura , tbl4.subtotal )
 .head 5 +  While SalTblFindNextRow(tbl4,i,0,0)
 .head 6 -  Call SalTblSetContext(tbl4,i)
 .head 6 +  If tbl4.cod_ingded = 8
-.head 7 -  Call RegistrarPago( tbl4.colUnico, dfCod_Planilla, tbl1.cod_empleado, tbl1.nombres, SalStrToNumber( tbl4.colFactura ), tbl4.subtotal, dfFin )
+.head 7 +  If SalTblQueryRowFlags( tbl4, i, ROW_New | ROW_Edited )
+.head 8 -  Call RegistrarPago( tbl4.colUnico, tbl4.colFactura , tbl4.subtotal)
+.head 5 -  Call SalTblSetFlagsAnyRows( tbl4, ROW_New | ROW_Edited , FALSE, 0, 0 )
 .head 5 -  !
 .head 5 -  ! calculamos los datos de la planilla en los totales
 .head 5 -  Call SqlPrepareAndExecute(hSql1,"update det_planilla  set HORAS_EXTRAS=0,
@@ -11969,96 +11984,39 @@ where
 .head 4 -  Returns
 .head 4 +  Parameters
 .head 5 -  Number: P_Correlativo
-.head 5 -  Number: P_Planilla
-.head 5 -  Number: P_Empleado
-.head 5 -  String: P_NombreEmpleado
 .head 5 -  Number: P_Factura
 .head 5 -  Number: P_Monto
-.head 5 -  Date/Time: P_Fecha
 .head 4 -  Static Variables
 .head 4 +  Local variables
-.head 5 -  String: sMonto
-.head 5 -  String: sDescripcion
-.head 5 -  String: sRecibo
-.head 5 -  String: sDocumento
-.head 5 -  String: sCodPartida
-.head 5 -  Number: nNumeroPago
 .head 5 -  Boolean: bExists
 .head 4 +  Actions
-.head 5 -  Set sMonto = "*" || NumToLetras( P_Monto ) || "********"
-.head 5 -  Call SqlExists( "SELECT
-	CORRELATIVO,
+.head 5 -  Call SqlExists( "
+SELECT
 	COD_FACTURA
 FROM
-	DET_PLANILLA_DET_PE WHERE CORRELATIVO = :P_Correlativo ", bExists )
-.head 5 +  If Not bExists AND P_Factura > 0
-.head 6 -  Set nNumeroPago = GetNumeroPago(P_Factura)
-.head 6 -  Set sDescripcion = 'PAGO POR DEDUCCION DE PLANILLA, FECHA: '|| SalFmtFormatDateTime( P_Fecha, 'dd/MM/yyyy' ) || ' Factura ' || SalNumberToStrX( P_Factura, 0 ) || ', Planilla: ' || SalNumberToStrX( P_Planilla, 0 ) || ', Empleado: ' || SalNumberToStrX( 
-P_Empleado, 0 )
-.head 6 -  Set sRecibo = 'F- ' || SalNumberToStrX( P_Factura, 0 )
-.head 6 -  Set sDocumento = SalNumberToStrX( P_Correlativo, 0 )
-.head 6 -  Set sCodPartida = 'PPAGO' || SalNumberToStrX( P_Factura, 0 ) || '-' || SalNumberToStrX( nNumeroPago, 0 )
-.head 6 -  Call SqlPrepareAndExecute(hSql3,"BEGIN TRANSACTION")
-.head 6 +  If SqlPrepareAndExecute(hSql3, "INSERT INTO DET_PLANILLA_DET_PE
-	(CORRELATIVO, COD_FACTURA)
+	DET_PLANILLA_DET_PE WHERE CORRELATIVO = :P_Correlativo", bExists)
+.head 5 -  ! !
+.head 5 +  If not bExists
+.head 6 +  If P_Factura != NUMBER_Null
+.head 7 +  If SqlPrepareAndExecute(hSql3, "INSERT INTO DET_PLANILLA_DET_PE
+	(CORRELATIVO, COD_FACTURA, MONTO)
 VALUES 
-	(:P_Correlativo, :P_Factura)")
-AND
-SqlPrepareAndExecute(hSql3,"
-insert 	PAGOS  ( NUMERO_PAGO,
-	COD_FACTURA,
-	FECHA,
-	DESCRIPCION,
-	MONTO,
-	RECIBO,
-	DOCUMENTO,
-	COD_PAGO,RECIBIDE,COD_PARTIDA )
-values(
-	:nNumeroPago,
-	:P_Factura,
-	:P_Fecha,
-	:sDescripcion,
-	:P_Monto,
-	:sRecibo,
-	:sDocumento,
-	8,:P_NombreEmpleado,
-               :sCodPartida )")
-AND SqlPrepareAndExecute(hSql3,"
-update 	FACTURAS set 
-	MONTO_DEBE= MONTO_DEBE -  :P_Monto, 
-	MONTO_PAGADO= MONTO_PAGADO + :P_Monto 
-where
-	cod_factura=:P_Factura")
-AND 
-GenerarPartida(sCodPartida, sDescripcion, P_Fecha, P_Monto)
-.head 7 -  Call SqlPrepareAndExecute(hSql3,"COMMIT TRANSACTION")
-.head 6 +  Else
-.head 7 -  Call SqlPrepareAndExecute(hSql3,"ROLLBACK TRANSACTION")
-.head 7 -  Call SalMessageBox( 'Hubo un error al registrar el Pago', 'Error', MB_Ok )
-.head 3 +  Function: GetNumeroPago
-.head 4 -  Description:
-.head 4 +  Returns
-.head 5 -  Number:
-.head 4 +  Parameters
-.head 5 -  Number: P_Factura
-.head 4 -  Static Variables
-.head 4 +  Local variables
-.head 5 -  Number: nNumeroPago
-.head 4 +  Actions
-.head 5 -  Call SqlExists("Select
-		max(NUMERO_PAGO)
-	from
-		PAGOS
-	where
-		COD_FACTURA=:P_Factura
-	into
-		:nNumeroPago",bExists)
-.head 5 -  Call SqlClearImmediate( )
-.head 5 +  If bExists
-.head 6 -  Set nNumeroPago = nNumeroPago + 1
+	(:P_Correlativo, :P_Factura, :P_Monto)")
+.head 8 -  Call SqlPrepareAndExecute(hSql3,"COMMIT")
 .head 5 +  Else
-.head 6 -  Set nNumeroPago = 1
-.head 5 -  Return nNumeroPago
+.head 6 -  ! ! Significa que habia una factura luego dejo vacio el valor
+.head 6 +  If P_Factura = NUMBER_Null
+.head 7 +  If SqlPrepareAndExecute(hSql3, "DELETE FROM DET_PLANILLA_DET_PE WHERE CORRELATIVO = :P_Correlativo")
+.head 8 -  Call SqlPrepareAndExecute(hSql3, "COMMIT")
+.head 6 +  Else
+.head 7 +  If SqlPrepareAndExecute(hSql3, "
+UPDATE DET_PLANILLA_DET_PE 
+SET 
+	COD_FACTURA = :P_Factura,
+	MONTO = :P_Monto
+WHERE 
+	CORRELATIVO = :P_Correlativo")
+.head 8 -  Call SqlPrepareAndExecute(hSql3,"COMMIT")
 .head 3 +  Function: GenerarPartida
 .head 4 -  Description:
 .head 4 +  Returns
@@ -12181,7 +12139,7 @@ SqlPrepareAndExecute(hSql3,"
 .head 4 -  Call SalDisableWindow( pbBIngDed2)
 .head 4 -  Call SalTblInsertRow( tbl3, linea )
 .head 4 -  Call SalTblSetLockedColumns( tbl1, 3 )
-.head 4 -  Call GetParameteValues( 'IHSS', sValues[0], sValues[1], sValues[2] )
+.head 4 -  Call GetParameterValues( 'PLANILLA_IHSS', sValues[0], sValues[1], sValues[2] )
 .head 4 -  Set nIHSS_TECHO = SalStrToNumber( sValues[0] )
 .head 4 -  Set nIHSS_PORCENTAJE = SalStrToNumber( sValues[1] ) / 100
 .head 3 +  On MU_GRABAR
@@ -12191,6 +12149,10 @@ where	COD_PLANILLA=:dfCod_Planilla ",bExists)
 .head 4 -  Call SqlClearImmediate(  )
 .head 4 -  Call SalWaitCursor( TRUE )
 .head 4 +  If bExists
+.head 5 +  If dfEstado = 'CERRADA'
+.head 6 -  Call SalMessageBox( 'La planilla no puede ser modificada porque ya esta CERRADA', '.:: Sistema de Gestion Hospitalaria ::.', 0 )
+.head 6 -  Call SalWaitCursor( FALSE)
+.head 6 -  Return 0
 .head 5 -  ! Call Salvar_Detalle(  )
 .head 5 -  ! Call SqlPrepareAndExecute(hSql1,"begin tran")
 .head 5 -  ! Call SqlPrepareAndExecute(hSql1,"select cod_empleado,sueldo_base,fecha_ingreso from empleados where
@@ -12274,13 +12236,16 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 +  Else
 .head 6 -  Set cbQuincena=FALSE
 .head 3 +  On MU_BORRAR
-.head 4 +  If dfEstado !="CERRADA"
-.head 5 -  Call SqlPrepareAndExecute( hSql1, "delete from det_planilla_det where cod_planilla=:dfCod_Planilla" )
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 5 -  Call SqlPrepareAndExecute( hSql1, "delete from det_planilla where cod_planilla=:dfCod_Planilla" )
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
-.head 5 -  Call SqlPrepareAndExecute( hSql1, "delete from planilla where cod_planilla=:dfCod_Planilla" )
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 4 +  If dfEstado = 'CERRADA'
+.head 5 -  Call SalMessageBox( 'La planilla no puede ser modificada porque ya esta CERRADA', '.:: Sistema de Gestion Hospitalaria ::.', 0 )
+.head 5 -  Return 0
+.head 4 -  ! !
+.head 4 -  Call SqlPrepareAndExecute( hSql1, "delete from det_planilla_det where cod_planilla=:dfCod_Planilla" )
+.head 4 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 4 -  Call SqlPrepareAndExecute( hSql1, "delete from det_planilla where cod_planilla=:dfCod_Planilla" )
+.head 4 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 4 -  Call SqlPrepareAndExecute( hSql1, "delete from planilla where cod_planilla=:dfCod_Planilla" )
+.head 4 -  Call SqlPrepareAndExecute(hSql1,"commit")
 .head 1 +  Form Window: frmPlanillaAdi
 .head 2 -  Class:
 .head 2 -  Property Template:
@@ -12866,7 +12831,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -12874,21 +12839,21 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 6 -  Left:   0.783"
 .head 6 -  Top:    1.321"
 .head 6 -  Width:  11.7"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.5"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 1000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: cod_empleado
 .head 6 -  Class Child Ref Key: 0
@@ -13451,7 +13416,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -13459,21 +13424,21 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 6 -  Left:   0.283"
 .head 6 -  Top:    1.405"
 .head 6 -  Width:  12.0"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.917"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Arial
-.head 5 -  Font Size: 8
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 32000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCod_Planilla
 .head 6 -  Class Child Ref Key: 0
@@ -15823,7 +15788,7 @@ sObs,FALSE)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -15831,21 +15796,21 @@ sObs,FALSE)
 .head 6 -  Left:   0.383"
 .head 6 -  Top:    2.012"
 .head 6 -  Width:  10.8"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.476"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: 0
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 10000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodPlani
 .head 6 -  Class Child Ref Key: 0
@@ -16303,7 +16268,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -16311,21 +16276,21 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 6 -  Left:   0.383"
 .head 6 -  Top:    3.988"
 .head 6 -  Width:  9.9"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.25"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: 0
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 5000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodPlani
 .head 6 -  Class Child Ref Key: 0

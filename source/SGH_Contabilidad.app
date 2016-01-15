@@ -2,11 +2,10 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400010000
 0020: 0000000000140100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE1FFFFFFFFFFFF FF000000008B0200 00B6010000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F77730E6672
-0080: 6D53697374656D61 56617273
+0040: FFE1FFFFFFFFFFFF FF000000008B0200 00B6010000010000 0001000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D00000000
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000017433A5C 5347485C69636F6E 735C626F6F6B7332 2E69636F1F433A5C
@@ -989,22 +988,22 @@ where cod_cuenta=:SUBCUENTA_DE " )
 .head 3 -  Dialog Box:
 .head 3 -  Table Window:
 .head 3 -  Quest Window:
-.head 3 -  Data Field: dfBase
+.head 3 -  Data Field: dfNumero
 .head 3 -  Spin Field:
 .head 3 -  Multiline Field:
-.head 3 -  Pushbutton: cFlatPushbutton
+.head 3 -  Pushbutton: pbGrabar
 .head 3 -  Radio Button:
 .head 3 -  Option Button:
 .head 3 -  ActiveX:
 .head 3 -  Check Box:
-.head 3 -  Child Table:
+.head 3 -  Child Table: MyChildTable
 .head 3 -  Quest Child Window: cQuickDatabase
 .head 3 -  List Box:
 .head 3 -  Combo Box: cmbBaseCodigo
 .head 3 -  Picture:
 .head 3 -  Vertical Scroll Bar:
 .head 3 -  Horizontal Scroll Bar:
-.head 3 -  Column: clsFecha
+.head 3 -  Column: clsNumero
 .head 3 -  Background Text:
 .head 3 -  Group Box:
 .head 3 -  Line:
@@ -2766,7 +2765,7 @@ where	COD_PARTIDA =:dfPartida ",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -2774,21 +2773,21 @@ where	COD_PARTIDA =:dfPartida ",bExists)
 .head 6 -  Left:   0.986"
 .head 6 -  Top:    1.321"
 .head 6 -  Width:  12.3"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.667"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? Yes
-.head 5 -  Lines Per Row: 1
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 100000
-.head 5 -  Discardable? No
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCorrel
 .head 6 -  Class Child Ref Key: 0
@@ -3297,13 +3296,15 @@ A.COD_CUENTA  = :tbl1.colCuenta  into :tbl1.colNombre" )
 .head 3 -  Number: nSig
 .head 3 -  String: sSql
 .head 3 -  Number: nCorrelPdaRecibos
+.head 3 -  Date/Time: FI
+.head 3 -  Date/Time: FF
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
 .head 4 -  ! Call DeshabilitarTodo(  )
 .head 4 -  ! Call SalDisableWindow(pbGrabar)
-.head 4 -  Call SqlPrepareAndExecute( hSql1, "Select FechaI_Proc,FechaF_Proc from parametros where codigo=1
-into :dfFechaI,:dfFechaF" )
-.head 4 -  Call SqlFetchNext( hSql1, nSiguiente )
+.head 4 -  Call GetPeriodoContable( FI, FF )
+.head 4 -  Set dfFechaI = FI
+.head 4 -  Set dfFechaF = FF
 .head 4 -  ! Call SalEnableWindow( dfCodPartida )
 .head 3 +  On MU_ACTUALIZAR
 .head 4 -  Call SalClearField( tbl1 )
@@ -3661,7 +3662,7 @@ into
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -3669,21 +3670,21 @@ into
 .head 6 -  Left:   0.283"
 .head 6 -  Top:    1.321"
 .head 6 -  Width:  12.6"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 4.083"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 30000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -4317,7 +4318,7 @@ update cuentas
 .head 3 -  Font Size: Default
 .head 3 -  Font Enhancement: Default
 .head 3 -  Text Color: Default
-.head 3 -  Background Color: Black
+.head 3 -  Background Color: Default
 .head 2 -  Description:
 .head 2 -  Named Menus
 .head 2 -  Menu
@@ -4332,7 +4333,7 @@ update cuentas
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
 .head 4 -  Text Color: Default
-.head 4 -  Background Color: Black
+.head 4 -  Background Color: Default
 .head 3 +  Contents
 .head 4 +  Pushbutton: pb2
 .head 5 -  Class Child Ref Key: 0
@@ -4376,7 +4377,7 @@ update cuentas
 .head 5 -  Font Name: Default
 .head 5 -  Font Size: Default
 .head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: White
+.head 5 -  Text Color: Default
 .head 5 -  Background Color: Default
 .head 4 +  Data Field: dfFechaI
 .head 5 -  Class Child Ref Key: 0
@@ -4615,7 +4616,7 @@ into
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: White
+.head 4 -  Text Color: Default
 .head 4 -  Background Color: Default
 .head 3 -  Background Text: Fecha Final
 .head 4 -  Resource Id: 48174
@@ -4634,7 +4635,7 @@ into
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
-.head 4 -  Text Color: White
+.head 4 -  Text Color: Default
 .head 4 -  Background Color: Default
 .head 3 +  Pushbutton: pbBalanceComp
 .head 4 -  Class Child Ref Key: 0
@@ -4713,10 +4714,9 @@ strRepPath || "\\balance_comprobacion_hist.QRP",
 .head 3 -  Date/Time: FF
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
-.head 4 -  Call SqlPrepareAndExecute( hSql1, "Select FechaI_Proc,FechaF_Proc from parametros where codigo=1
-into :dfFechaI,:dfFechaF" )
-.head 4 -  Call SqlFetchNext( hSql1, nSiguiente )
-.head 4 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 4 -  Call GetPeriodoContable( FI, FF )
+.head 4 -  Set dfFechaI = FI
+.head 4 -  Set dfFechaF = FF
 .head 1 +  Form Window: frmPrincipalBancos
 .head 2 -  Class:
 .head 2 -  Property Template:
@@ -5916,7 +5916,7 @@ where	CORREL =:cmbCuenta.nCodigo into  :CUENTA_CONTABLE",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -5924,21 +5924,21 @@ where	CORREL =:cmbCuenta.nCodigo into  :CUENTA_CONTABLE",bExists)
 .head 6 -  Left:   1.45"
 .head 6 -  Top:    3.345"
 .head 6 -  Width:  10.133"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.726"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 10000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -6944,7 +6944,7 @@ where	A.COD_CHEQUE =:dfCod_Cheque and A.Cod_Cuenta=B.Cod_Cuenta",TBL_FillAll)
 .head 4 -  Background Color: White
 .head 4 +  Message Actions
 .head 5 +  On SAM_Click
-.head 6 -  Call SalCreateWindow( frmFechaProceso, hWndForm )
+.head 6 -  Call SalCreateWindow( frmSistemaVars, hWndForm )
 .head 3 +  Pushbutton: pbEmpresa
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -7469,7 +7469,7 @@ where	A.COD_CHEQUE =:dfCod_Cheque and A.Cod_Cuenta=B.Cod_Cuenta",TBL_FillAll)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -7477,21 +7477,21 @@ where	A.COD_CHEQUE =:dfCod_Cheque and A.Cod_Cuenta=B.Cod_Cuenta",TBL_FillAll)
 .head 6 -  Left:   0.783"
 .head 6 -  Top:    0.488"
 .head 6 -  Width:  9.7"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.083"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 100000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCorrel
 .head 6 -  Class Child Ref Key: 0
@@ -8069,7 +8069,7 @@ set descripcion=:tbl1.colDescripcion where correl=:tbl1.colCorrel ")
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -8077,21 +8077,21 @@ set descripcion=:tbl1.colDescripcion where correl=:tbl1.colCorrel ")
 .head 6 -  Left:   0.25"
 .head 6 -  Top:    2.238"
 .head 6 -  Width:  12.633"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.5"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colFecha
 .head 6 -  Class Child Ref Key: 0
@@ -9342,7 +9342,7 @@ A.COD_BANCO =:cmbBanco.nCodigo "  )
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -9350,21 +9350,21 @@ A.COD_BANCO =:cmbBanco.nCodigo "  )
 .head 6 -  Left:   0.083"
 .head 6 -  Top:    2.821"
 .head 6 -  Width:  12.9"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.333"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 10000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCheque
 .head 6 -  Class Child Ref Key: 0
@@ -11700,7 +11700,7 @@ where	COD_CUENTA=:dfPadre into :dfDes",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -11708,21 +11708,21 @@ where	COD_CUENTA=:dfPadre into :dfDes",bExists)
 .head 6 -  Left:   0.283"
 .head 6 -  Top:    1.321"
 .head 6 -  Width:  9.7"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.167"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 5000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -12492,7 +12492,7 @@ where  A.nombre like '" || dfNombre || "%'   ORDER BY A.NOMBRE ",TBL_FillAll)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -12500,21 +12500,21 @@ where  A.nombre like '" || dfNombre || "%'   ORDER BY A.NOMBRE ",TBL_FillAll)
 .head 6 -  Left:   8.283"
 .head 6 -  Top:    0.655"
 .head 6 -  Width:  4.5"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.75"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 1000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -12783,7 +12783,7 @@ where	COD_CUENTA=:tbl1.colCuenta and COD_GRUPO<>:dfCodigo",bExists)
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -12791,21 +12791,21 @@ where	COD_CUENTA=:tbl1.colCuenta and COD_GRUPO<>:dfCodigo",bExists)
 .head 6 -  Left:   0.183"
 .head 6 -  Top:    3.071"
 .head 6 -  Width:  7.7"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.417"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 1000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodigo
 .head 6 -  Class Child Ref Key: 0
@@ -13189,7 +13189,7 @@ into
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -13197,21 +13197,21 @@ into
 .head 6 -  Left:   0.283"
 .head 6 -  Top:    0.988"
 .head 6 -  Width:  12.4"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.5"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodigo
 .head 6 -  Class Child Ref Key: 0
@@ -14031,7 +14031,7 @@ where  A.nombre like '" || dfNombre || "%'   ORDER BY A.NOMBRE ",TBL_FillAll)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -14039,21 +14039,21 @@ where  A.nombre like '" || dfNombre || "%'   ORDER BY A.NOMBRE ",TBL_FillAll)
 .head 6 -  Left:   8.283"
 .head 6 -  Top:    0.655"
 .head 6 -  Width:  4.5"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 3.75"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 1000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -14322,7 +14322,7 @@ where	COD_CUENTA=:tbl1.colCuenta and COD_EMPRESA<>:dfCodigo",bExists)
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -14330,21 +14330,21 @@ where	COD_CUENTA=:tbl1.colCuenta and COD_EMPRESA<>:dfCodigo",bExists)
 .head 6 -  Left:   0.183"
 .head 6 -  Top:    3.071"
 .head 6 -  Width:  7.7"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.417"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 1000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodigo
 .head 6 -  Class Child Ref Key: 0
@@ -15001,7 +15001,7 @@ where  A.nombre like '" || dfNombre || "%'   ORDER BY A.NOMBRE ",TBL_FillAll)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -15009,21 +15009,21 @@ where  A.nombre like '" || dfNombre || "%'   ORDER BY A.NOMBRE ",TBL_FillAll)
 .head 6 -  Left:   8.183"
 .head 6 -  Top:    0.405"
 .head 6 -  Width:  4.8"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.667"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 1000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -15381,7 +15381,7 @@ where	CUENTA_GASTO=:tbl1.colCuenta and COD_DEPTO<>:dfCodigo",bExists)
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -15389,21 +15389,21 @@ where	CUENTA_GASTO=:tbl1.colCuenta and COD_DEPTO<>:dfCodigo",bExists)
 .head 6 -  Left:   0.283"
 .head 6 -  Top:    3.655"
 .head 6 -  Width:  9.6"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.25"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 1000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCodigo
 .head 6 -  Class Child Ref Key: 0
@@ -16557,7 +16557,7 @@ into
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -16565,21 +16565,21 @@ into
 .head 6 -  Left:   0.383"
 .head 6 -  Top:    1.155"
 .head 6 -  Width:  12.3"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 4.25"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 0
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -16950,10 +16950,13 @@ into
 .head 2 -  Window Parameters
 .head 2 +  Window Variables
 .head 3 -  String: sConsulta
+.head 3 -  Date/Time: FI
+.head 3 -  Date/Time: FF
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
-.head 4 -  Call SqlPrepareAndExecute( hSql1, "Select FechaI_Proc,FechaF_Proc from parametros where codigo=1
-into :dfFechaI,:dfFechaF" )
+.head 4 -  Call GetPeriodoContable( FI, FF )
+.head 4 -  Set dfFechaI = FI
+.head 4 -  Set dfFechaF = FF
 .head 4 -  Call SqlFetchNext( hSql1, nSiguiente )
 .head 4 -  Call SalListAdd( cmbPertenece, 'ACTIVO' )
 .head 4 -  Call SalListAdd( cmbPertenece, 'PASIVO' )
@@ -18413,7 +18416,7 @@ into
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -18421,21 +18424,21 @@ into
 .head 6 -  Left:   0.083"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  8.9"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.417"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Black
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 0
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colSeleccionado
 .head 6 -  Class Child Ref Key: 0
@@ -19302,7 +19305,7 @@ into
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -19310,21 +19313,21 @@ into
 .head 6 -  Left:   0.083"
 .head 6 -  Top:    2.738"
 .head 6 -  Width:  8.9"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.583"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Black
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 0
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colSeleccionado
 .head 6 -  Class Child Ref Key: 0
@@ -20137,12 +20140,13 @@ update PARAMETROS set FECHAI_PROC=:dfFechaI ,
 .head 2 -  Window Parameters
 .head 2 +  Window Variables
 .head 3 -  Number: bOk
+.head 3 -  Date/Time: FI
+.head 3 -  Date/Time: FF
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
-.head 4 -  Call SqlPrepareAndExecute( hSql1, "Select FechaI_Proc,FechaF_Proc from parametros where codigo=1
-into :dfFechaI,:dfFechaF" )
-.head 4 -  Call SqlFetchNext( hSql1, nSiguiente )
-.head 4 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 4 -  Call GetPeriodoContable( FI, FF )
+.head 4 -  Set dfFechaI = FI
+.head 4 -  Set dfFechaF = FF
 .head 4 -  Set dfFechaIACT= dfFechaI
 .head 4 -  Set dfFechaFACT= dfFechaF
 .head 4 -  Set dfFechaI = DATETIME_Null
@@ -20331,10 +20335,11 @@ into :dfFechaI,:dfFechaF" )
 .head 6 -  ! Call Mayorizar_Cuentas(  )
 .head 6 -  ! Call Calcular_Saldos_Contables(  )
 .head 6 -  ! Call Calcular_Utilidad_del_Periodo(  )
-.head 6 -  Call SqlPrepareAndExecute( hSql6,"SET CHAINED OFF")
-.head 6 +  If SybExecuteProc( hSql6, "exec Mayorizar_cuentas" , STRING_Null)
+.head 6 -  ! Call SqlPrepareAndExecute( hSql6,"SET CHAINED OFF")
+.head 6 +  If SqlPrepareAndExecute( hSql6, "EXECUTE Mayorizar_Cuentas")
+.head 7 -  Call SqlPrepareAndExecute( hSql6,"COMMIT TRANSACTION")
 .head 7 -  Call SalMessageBox("El cierre ha sido terminado","BETESDA",0 )
-.head 6 -  Call SqlPrepareAndExecute( hSql6,"SET CHAINED ON")
+.head 6 -  ! Call SqlPrepareAndExecute( hSql6,"SET CHAINED ON")
 .head 6 -  Call SalWaitCursor( FALSE )
 .head 3 +  Pushbutton: pbEstadoRes
 .head 4 -  Class Child Ref Key: 0
@@ -20593,10 +20598,9 @@ strRepPath || "\\balance_comprobacion_hist.QRP",
 .head 3 -  Number: SALDO_ANUAL
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
-.head 4 -  Call SqlPrepareAndExecute( hSql1, "Select FechaI_Proc,FechaF_Proc from parametros where codigo=1
-into :dfFechaI,:dfFechaF" )
-.head 4 -  Call SqlFetchNext( hSql1, nSiguiente )
-.head 4 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 4 -  Call GetPeriodoContable( FI, FF )
+.head 4 -  Set dfFechaI = FI
+.head 4 -  Set dfFechaF = FF
 .head 1 +  Form Window: frmCP_CC
 .head 2 -  Class:
 .head 2 -  Property Template:
@@ -21897,7 +21901,7 @@ into
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -21905,21 +21909,21 @@ into
 .head 6 -  Left:   0.05"
 .head 6 -  Top:    2.488"
 .head 6 -  Width:  5.833"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.583"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? Yes
-.head 5 -  Lines Per Row: 2
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 100000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colPartida
 .head 6 -  Class Child Ref Key: 0
@@ -22461,7 +22465,7 @@ where A.COD_PARTIDA=:tbl1.colPartida ", TBL_FillAll)
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -22469,21 +22473,21 @@ where A.COD_PARTIDA=:tbl1.colPartida ", TBL_FillAll)
 .head 6 -  Left:   6.083"
 .head 6 -  Top:    2.488"
 .head 6 -  Width:  7.1"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.583"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Bold
-.head 5 -  Text Color: Black
-.head 5 -  Background Color: Light Gray
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 500
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCuenta
 .head 6 -  Class Child Ref Key: 0
@@ -24925,7 +24929,7 @@ where	COD_ENTRADA=:dfCodigo",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -24933,21 +24937,21 @@ where	COD_ENTRADA=:dfCodigo",bExists)
 .head 6 -  Left:   0.086"
 .head 6 -  Top:    1.906"
 .head 6 -  Width:  12.2"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.667"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colUnico
 .head 6 -  Class Child Ref Key: 0
@@ -25229,7 +25233,7 @@ COD_MEDICAMENTO=:tbl1.colCodigo  into :colMedicamento " ,bExists)
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -25237,21 +25241,21 @@ COD_MEDICAMENTO=:tbl1.colCodigo  into :colMedicamento " ,bExists)
 .head 6 -  Left:   0.071"
 .head 6 -  Top:    3.948"
 .head 6 -  Width:  12.214"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.875"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? Yes
-.head 5 -  Lines Per Row: 1
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 100000
-.head 5 -  Discardable? No
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colCorrel
 .head 6 -  Class Child Ref Key: 0
@@ -26160,7 +26164,7 @@ where	COD_MEDICAMENTO=:dfCodigo ",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -26168,21 +26172,21 @@ where	COD_MEDICAMENTO=:dfCodigo ",bExists)
 .head 6 -  Left:   0.186"
 .head 6 -  Top:    0.823"
 .head 6 -  Width:  6.5"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.833"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 32000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: col1
 .head 6 -  Class Child Ref Key: 0
@@ -27546,7 +27550,7 @@ where	COD_FACTURA =:dfFactura",bExists)
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -27554,21 +27558,21 @@ where	COD_FACTURA =:dfFactura",bExists)
 .head 6 -  Left:   0.486"
 .head 6 -  Top:    3.24"
 .head 6 -  Width:  12.1"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.083"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colPago
 .head 6 -  Class Child Ref Key: 0
@@ -27824,7 +27828,7 @@ where	COD_FACTURA =:dfFactura",bExists)
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -27832,21 +27836,21 @@ where	COD_FACTURA =:dfFactura",bExists)
 .head 6 -  Left:   0.471"
 .head 6 -  Top:    1.781"
 .head 6 -  Width:  12.1"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 0.875"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colPago
 .head 6 -  Class Child Ref Key: 0
@@ -28882,7 +28886,7 @@ values(:dtHoy,:dfCodigo, :strDesc ,:nValor ,:nAcum,:strPart)" )
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class: cFlatChildTable
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -30244,7 +30248,7 @@ strNombre, strQuery || strQuery2 ||  " order by recibo,fecha into "|| strVariabl
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -30252,21 +30256,21 @@ strNombre, strQuery || strQuery2 ||  " order by recibo,fecha into "|| strVariabl
 .head 6 -  Left:   0.086"
 .head 6 -  Top:    1.823"
 .head 6 -  Width:  11.0"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.042"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Arial
-.head 5 -  Font Size: 8
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 32000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 -  Contents
 .head 4 -  Functions
 .head 4 +  Window Variables
@@ -30635,7 +30639,7 @@ where	A.COD_ENTRADA=:tbl1.colEntrada	and
 .head 3 +  Child Table: tblf
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -30643,21 +30647,21 @@ where	A.COD_ENTRADA=:tbl1.colEntrada	and
 .head 6 -  Left:   0.171"
 .head 6 -  Top:    1.698"
 .head 6 -  Width:  10.214"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.042"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Arial
-.head 5 -  Font Size: 8
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 32000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: col1
 .head 6 -  Class Child Ref Key: 0
@@ -30878,7 +30882,7 @@ where	A.COD_ENTRADA=:tblf.col1 AND A.COD_MEDICAMENTO = B.COD_MEDICAMENTO ",TBL_F
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -30886,21 +30890,21 @@ where	A.COD_ENTRADA=:tblf.col1 AND A.COD_MEDICAMENTO = B.COD_MEDICAMENTO ",TBL_F
 .head 6 -  Left:   0.186"
 .head 6 -  Top:    4.073"
 .head 6 -  Width:  10.2"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.333"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: col1
 .head 6 -  Class Child Ref Key: 0
@@ -31485,7 +31489,7 @@ into
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -31493,21 +31497,21 @@ into
 .head 6 -  Left:   0.183"
 .head 6 -  Top:    1.738"
 .head 6 -  Width:  14.3"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.917"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Arial
-.head 5 -  Font Size: 8
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 32000
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: Cod_Factura
 .head 6 -  Class Child Ref Key: 0
@@ -33799,7 +33803,7 @@ values(
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -33807,21 +33811,21 @@ values(
 .head 6 -  Left:   0.567"
 .head 6 -  Top:    1.071"
 .head 6 -  Width:  12.614"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.167"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 300
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colFactura
 .head 6 -  Class Child Ref Key: 0
@@ -34234,7 +34238,7 @@ values(
 .head 3 +  Child Table: tbl2
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -34242,21 +34246,21 @@ values(
 .head 6 -  Left:   0.567"
 .head 6 -  Top:    4.286"
 .head 6 -  Width:  12.614"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.202"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: 300
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colFactura
 .head 6 -  Class Child Ref Key: 0
@@ -35315,7 +35319,7 @@ order by
 .head 3 +  Child Table: tbl1
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class:
+.head 4 -  Class: MyChildTable
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
@@ -35323,21 +35327,21 @@ order by
 .head 6 -  Left:   0.983"
 .head 6 -  Top:    0.905"
 .head 6 -  Width:  10.4"
-.head 6 -  Width Editable? Yes
+.head 6 -  Width Editable? Class Default
 .head 6 -  Height: 2.583"
-.head 6 -  Height Editable? Yes
-.head 5 -  Visible? Yes
-.head 5 -  Font Name: Default
-.head 5 -  Font Size: Default
-.head 5 -  Font Enhancement: Default
-.head 5 -  Text Color: Default
-.head 5 -  Background Color: Default
-.head 5 -  View: Table
-.head 5 -  Allow Row Sizing? No
-.head 5 -  Lines Per Row: Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
 .head 4 -  Memory Settings
-.head 5 -  Maximum Rows in Memory: Default
-.head 5 -  Discardable? Yes
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
 .head 4 +  Contents
 .head 5 +  Column: colEntrada
 .head 6 -  Class Child Ref Key: 0
@@ -36017,18 +36021,18 @@ INTO
 .head 2 -  Display Settings
 .head 3 -  Display Style? Class Default
 .head 3 -  Visible at Design time? Yes
-.head 3 -  Automatically Created at Runtime? Class Default
+.head 3 -  Automatically Created at Runtime? No
 .head 3 -  Initial State: Class Default
 .head 3 -  Maximizable? Class Default
 .head 3 -  Minimizable? Class Default
 .head 3 -  System Menu? Class Default
 .head 3 -  Resizable? Class Default
 .head 3 -  Window Location and Size
-.head 4 -  Left:   Class Default
-.head 4 -  Top:    Class Default
-.head 4 -  Width:  9.767"
+.head 4 -  Left:   3.838"
+.head 4 -  Top:    1.719"
+.head 4 -  Width:  7.233"
 .head 4 -  Width Editable? Class Default
-.head 4 -  Height: 5.012"
+.head 4 -  Height: 4.655"
 .head 4 -  Height Editable? Class Default
 .head 3 -  Form Size
 .head 4 -  Width:  Class Default
@@ -36047,30 +36051,80 @@ INTO
 .head 4 -  Display Style? Class Default
 .head 4 -  Location? Class Default
 .head 4 -  Visible? Class Default
-.head 4 -  Size: 0.583"
+.head 4 -  Size: 0.619"
 .head 4 -  Size Editable? Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
 .head 4 -  Font Enhancement: Class Default
 .head 4 -  Text Color: Class Default
 .head 4 -  Background Color: Class Default
-.head 3 -  Contents
+.head 3 +  Contents
+.head 4 +  Pushbutton: pbSalir
+.head 5 -  Class Child Ref Key: 0
+.head 5 -  Class ChildKey: 0
+.head 5 -  Class: pbSalir
+.head 5 -  Property Template:
+.head 5 -  Class DLL Name:
+.head 5 -  Title:
+.head 5 -  Window Location and Size
+.head 6 -  Left:   5.983"
+.head 6 -  Top:    0.071"
+.head 6 -  Width:  Class Default
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Keyboard Accelerator: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Picture File Name:
+.head 5 -  Picture Transparent Color: Class Default
+.head 5 -  Image Style: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Message Actions
+.head 4 +  Pushbutton: pbSalvar
+.head 5 -  Class Child Ref Key: 0
+.head 5 -  Class ChildKey: 0
+.head 5 -  Class: pbGrabar
+.head 5 -  Property Template:
+.head 5 -  Class DLL Name:
+.head 5 -  Title:
+.head 5 -  Window Location and Size
+.head 6 -  Left:   0.083"
+.head 6 -  Top:    0.071"
+.head 6 -  Width:  Class Default
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Keyboard Accelerator: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Picture File Name:
+.head 5 -  Picture Transparent Color: Class Default
+.head 5 -  Image Style: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Message Actions
 .head 2 +  Contents
 .head 3 +  Picture: picTabs
 .data CLASSPROPS
-0000: 5461624C6566744D 617267696E000200 3000005461624375 7272656E74000C00
-0020: 746162506C616E69 6C6C610000546162 426F74746F6D4D61 7267696E00020030
-0040: 0000546162506167 65436F756E740002 003100005461624C 6162656C73002D00
-0060: 436F6E746162696C 6964616409496E76 656E746172696F09 4661637475726163
-0080: 69F36E09506C616E 696C6C6100005461 624E616D65730039 00746162436F6E74
-00A0: 6162696C69646164 09746162496E7665 6E746172696F0974 6162466163747572
-00C0: 6163696F6E097461 62506C616E696C6C 6100005461625269 6768744D61726769
-00E0: 6E00020030000054 6162447261775374 796C65000B005769 6E39355374796C65
-0100: 0000546162466F72 6D50616765730004 0009090900005461 62546F704D617267
-0120: 696E000200300000 0000000000000000 0000000000000000 00000000
+0000: 546162546F704D61 7267696E00020030 0000546162466F72 6D50616765730003
+0020: 0009090000546162 447261775374796C 65000B0057696E39 355374796C650000
+0040: 5461625269676874 4D617267696E0002 003000005461624E 616D6573002B0074
+0060: 6162436F6E746162 696C696461640974 6162466163747572 6163696F6E097461
+0080: 62506C616E696C6C 6100005461624C61 62656C7300220043 6F6E746162696C69
+00A0: 6461640946616374 7572616369F36E09 506C616E696C6C61 0000546162506167
+00C0: 65436F756E740002 0031000054616242 6F74746F6D4D6172 67696E0002003000
+00E0: 0054616243757272 656E740010007461 62436F6E74616269 6C69646164000054
+0100: 61624C6566744D61 7267696E00020030 0000000000000000 0000000000000000
+0120: 000000000000
 .enddata
 .data CLASSPROPSSIZE
-0000: 3C01
+0000: 2601
 .enddata
 .data INHERITPROPS
 0000: 0100
@@ -36124,7 +36178,7 @@ INTO
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -36152,7 +36206,7 @@ INTO
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -36180,7 +36234,7 @@ INTO
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.917"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
@@ -36207,13 +36261,13 @@ INTO
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.893"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
 .head 4 -  Text Color: Default
 .head 4 -  Background Color: Default
-.head 3 +  Data Field: dfTecho
+.head 3 +  Data Field: dfPTecho
 .data CLASSPROPSSIZE
 0000: 1D00
 .enddata
@@ -36225,12 +36279,12 @@ INTO
 .enddata
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfNumero
+.head 4 -  Class: dfBase
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Data
 .head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
+.head 5 -  Data Type: String
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
@@ -36240,7 +36294,7 @@ INTO
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -36252,7 +36306,7 @@ INTO
 .head 5 -  Background Color: Class Default
 .head 5 -  Input Mask: Class Default
 .head 4 -  Message Actions
-.head 3 +  Data Field: df2
+.head 3 +  Data Field: dfPPorcentaje
 .data CLASSPROPSSIZE
 0000: 1D00
 .enddata
@@ -36264,12 +36318,12 @@ INTO
 .enddata
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
-.head 4 -  Class: dfNumero
+.head 4 -  Class: dfBase
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Data
 .head 5 -  Maximum Data Length: Class Default
-.head 5 -  Data Type: Class Default
+.head 5 -  Data Type: String
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
@@ -36279,7 +36333,7 @@ INTO
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -36312,7 +36366,7 @@ INTO
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
@@ -36340,14 +36394,14 @@ INTO
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
 .head 4 -  Text Color: Default
 .head 4 -  Background Color: Default
-.head 3 +  Data Field: df3
+.head 3 +  Data Field: dfPCuentaDebe
 .data CLASSPROPSSIZE
 0000: 1D00
 .enddata
@@ -36374,7 +36428,7 @@ INTO
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -36386,7 +36440,7 @@ INTO
 .head 5 -  Background Color: Class Default
 .head 5 -  Input Mask: Class Default
 .head 4 -  Message Actions
-.head 3 +  Pushbutton: pb1
+.head 3 +  Pushbutton: pbDebe
 .data CLASSPROPSSIZE
 0000: 1D00
 .enddata
@@ -36409,7 +36463,7 @@ INTO
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.24"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -36441,14 +36495,14 @@ INTO
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 0.167"
 .head 5 -  Height Editable? Yes
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Justify: Left
 .head 4 -  Font Name: Default
 .head 4 -  Font Size: Default
 .head 4 -  Font Enhancement: Default
 .head 4 -  Text Color: Default
 .head 4 -  Background Color: Default
-.head 3 +  Data Field: df3
+.head 3 +  Data Field: dfPCuentaHaber
 .data CLASSPROPSSIZE
 0000: 1F00
 .enddata
@@ -36475,7 +36529,7 @@ INTO
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: Class Default
 .head 6 -  Height Editable? Class Default
-.head 5 -  Visible? Yes
+.head 5 -  Visible? No
 .head 5 -  Border? Class Default
 .head 5 -  Justify: Class Default
 .head 5 -  Format: Class Default
@@ -36487,7 +36541,7 @@ INTO
 .head 5 -  Background Color: Class Default
 .head 5 -  Input Mask: Class Default
 .head 4 -  Message Actions
-.head 3 +  Pushbutton: pb1
+.head 3 +  Pushbutton: pbHaber
 .data CLASSPROPSSIZE
 0000: 1F00
 .enddata
@@ -36510,7 +36564,7 @@ INTO
 .head 5 -  Width Editable? Class Default
 .head 5 -  Height: 0.24"
 .head 5 -  Height Editable? Class Default
-.head 4 -  Visible? Yes
+.head 4 -  Visible? No
 .head 4 -  Keyboard Accelerator: Class Default
 .head 4 -  Font Name: Class Default
 .head 4 -  Font Size: Class Default
@@ -36521,7 +36575,477 @@ INTO
 .head 4 -  Text Color: Class Default
 .head 4 -  Background Color: Class Default
 .head 4 -  Message Actions
+.head 3 -  Group Box: Periodo contable actual
+.data CLASSPROPSSIZE
+0000: 2100
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573001000 746162436F6E7461 62696C6964616400
+0020: 00
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Resource Id: 9200
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left:   0.483"
+.head 5 -  Top:    0.571"
+.head 5 -  Width:  5.6"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.667"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Group Box: Correlativo cheques
+.data CLASSPROPSSIZE
+0000: 2300
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573001000 746162436F6E7461 62696C6964616400
+0020: 000000
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Resource Id: 9205
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left:   0.45"
+.head 5 -  Top:    1.345"
+.head 5 -  Width:  5.633"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 1.643"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Background Text: Inicio: 
+.data CLASSPROPSSIZE
+0000: 2100
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573001000 746162436F6E7461 62696C6964616400
+0020: 00
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Resource Id: 9204
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left:   0.683"
+.head 5 -  Top:    0.845"
+.head 5 -  Width:  0.8"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.167"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Data Field: dfCInicio
+.data CLASSPROPSSIZE
+0000: 2100
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573001000 746162436F6E7461 62696C6964616400
+0020: 00
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: dfFecha
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Data
+.head 5 -  Maximum Data Length: Class Default
+.head 5 -  Data Type: Class Default
+.head 5 -  Editable? Class Default
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left:   1.283"
+.head 6 -  Top:    0.821"
+.head 6 -  Width:  1.7"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Yes
+.head 5 -  Border? Class Default
+.head 5 -  Justify: Class Default
+.head 5 -  Format: dd/MM/yyyy
+.head 5 -  Country: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Input Mask: Class Default
+.head 4 -  Message Actions
+.head 3 -  Background Text: Fin:
+.data CLASSPROPSSIZE
+0000: 2100
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573001000 746162436F6E7461 62696C6964616400
+0020: 00
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Resource Id: 9203
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left:   3.283"
+.head 5 -  Top:    0.845"
+.head 5 -  Width:  0.4"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.167"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Data Field: dfCFin
+.data CLASSPROPSSIZE
+0000: 2100
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573001000 746162436F6E7461 62696C6964616400
+0020: 00
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: dfFecha
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Data
+.head 5 -  Maximum Data Length: Class Default
+.head 5 -  Data Type: Class Default
+.head 5 -  Editable? Class Default
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left:   3.683"
+.head 6 -  Top:    0.821"
+.head 6 -  Width:  2.0"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Yes
+.head 5 -  Border? Class Default
+.head 5 -  Justify: Class Default
+.head 5 -  Format: dd/MM/yyyy
+.head 5 -  Country: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Input Mask: Class Default
+.head 4 -  Message Actions
+.head 3 -  Background Text: ISV Compras:
+.data CLASSPROPSSIZE
+0000: 2200
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573000F00 7461624661637475 726163696F6E0000
+0020: 0000
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Resource Id: 9202
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left:   0.383"
+.head 5 -  Top:    0.595"
+.head 5 -  Width:  1.1"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.167"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? No
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Data Field: dfFISV
+.data CLASSPROPSSIZE
+0000: 2200
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573000F00 7461624661637475 726163696F6E0000
+0020: 0000
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: dfBase
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Data
+.head 5 -  Maximum Data Length: Class Default
+.head 5 -  Data Type: String
+.head 5 -  Editable? Class Default
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left:   1.483"
+.head 6 -  Top:    0.571"
+.head 6 -  Width:  1.0"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? No
+.head 5 -  Border? Class Default
+.head 5 -  Justify: Class Default
+.head 5 -  Format: Class Default
+.head 5 -  Country: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Input Mask: Class Default
+.head 4 -  Message Actions
+.head 3 -  Background Text: %
+.data CLASSPROPSSIZE
+0000: 2200
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573000F00 7461624661637475 726163696F6E0000
+0020: 0000
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Resource Id: 9201
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left:   2.55"
+.head 5 -  Top:    0.619"
+.head 5 -  Width:  0.267"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.167"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? No
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Child Table: tblCCheques
+.data CLASSPROPSSIZE
+0000: 2100
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573001000 746162436F6E7461 62696C6964616400
+0020: 00
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: MyChildTable
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left:   0.583"
+.head 6 -  Top:    1.571"
+.head 6 -  Width:  5.3"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: 1.25"
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Yes
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
+.head 4 -  Memory Settings
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
+.head 4 +  Contents
+.head 5 +  Column: colCodigo
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Código
+.head 6 -  Visible? No
+.head 6 -  Editable? Class Default
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.283"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colCuenta
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsDatos
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Cuenta
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  3.2"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colCorrelativo
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Correl. Cheque
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? Class Default
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.283"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 4 -  Functions
+.head 4 -  Window Variables
+.head 4 -  Message Actions
 .head 2 -  Functions
 .head 2 -  Window Parameters
-.head 2 -  Window Variables
-.head 2 -  Message Actions
+.head 2 +  Window Variables
+.head 3 -  String: sValues[3]
+.head 2 +  Message Actions
+.head 3 +  On SAM_CreateComplete
+.head 4 -  ! ! Planilla
+.head 4 -  Call SalCenterWindow( frmSistemaVars )
+.head 4 -  Call GetParameterValues( 'PLANILLA_IHSS', sValues[0], sValues[1], sValues[2] )
+.head 4 -  Set dfPTecho = sValues[0]
+.head 4 -  Set dfPPorcentaje = sValues[1]
+.head 4 -  ! !
+.head 4 -  Call GetParameterValues( 'PLANILLA_PP_CUENTAS', sValues[0], sValues[1], sValues[2] )
+.head 4 -  Set dfPCuentaDebe = sValues[0]
+.head 4 -  Set dfPCuentaHaber = sValues[1]
+.head 4 -  ! ! Contabilidad
+.head 4 -  Call GetParameterValues( 'CONTABILIDAD_PERIODO_CONTABLE', sValues[0], sValues[1], sValues[2] )
+.head 4 -  Set dfCInicio = SalStrToDate( sValues[0] )
+.head 4 -  Set dfCFin = SalStrToDate( sValues[1] )
+.head 4 -  !
+.head 4 -  Call SalTblPopulate(tblCCheques, hSql1, "
+select
+    p.CODIGO, 
+    cb.CUENTA_BANCO + ' (' + b.NOMBRE + ')',
+    p.NUM_CHEQUE 
+from 
+    CUENTAS_BANCO cb
+      inner join BANCOS b on cb.COD_BANCO = b.COD_BANCO
+      inner join PARAMETROS p on  cb.CORREL = p.CODIGO", TBL_FillAll)
+.head 4 -  ! ! Facturacion
+.head 4 -  Call GetParameterValues( 'FACTURACION_ISV', sValues[0], sValues[1], sValues[2] )
+.head 4 -  Set dfFISV = sValues[0]
+.head 3 +  On MU_GRABAR
+.head 4 -  ! ! Planilla
+.head 4 -  Call SetParameterValues( 'PLANILLA_IHSS', dfPTecho, dfPPorcentaje, '' )
+.head 4 -  ! !
+.head 4 -  Call SetParameterValues( 'PLANILLA_PP_CUENTAS', dfPCuentaDebe, dfPCuentaHaber, '' )
+.head 4 -  ! ! Contabilidad
+.head 4 -  Set sValues[0] = SalFmtFormatDateTime( dfCInicio, 'dd/MM/yyyy' )
+.head 4 -  Set sValues[1] = SalFmtFormatDateTime( dfCFin, 'dd/MM/yyyy' )
+.head 4 -  Call SetParameterValues( 'CONTABILIDAD_PERIODO_CONTABLE', sValues[0], sValues[1], '')
+.head 4 -  !
+.head 4 -  Call SqlPrepare( hSql1, "UPDATE PARAMETROS SET NUM_CHEQUE = :tblCCheques.colCorrelativo WHERE CODIGO = :tblCCheques.colCodigo"   )
+.head 4 -  Call SalTblDoUpdates(tblCCheques, hSql1, TRUE)
+.head 4 -  ! ! Facturacion
+.head 4 -  Call SetParameterValues( 'FACTURACION_ISV', dfFISV, '','' )
+.head 4 -  ! !
+.head 4 -  ! !
+.head 4 -  Call SalMessageBox( 'Datos salvados con éxito', '.:: Sistema de Gestión Hospitalaria ::.', 0 )
