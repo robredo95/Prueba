@@ -2,32 +2,33 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400010000
 0020: 0000000000F60000 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE1FFFFFF000000 00000000008C0200 00E0010000010000 0000000000010000
+0040: FFE2FFFFFF000000 00000000008C0200 00E0010000010000 0001000000010000
 0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F77730B6672
-0080: 6D506572736F6E61 6C
+0080: 6D506C616E696C6C 61
 .enddata
 .data DT_MAKERUNDLG
-0000: 0000000018433A5C 5347485C69636F6E 735C434C4F434B30 332E49434F1B433A
-0020: 5C5347485C62696E 5C5347485F506C61 6E696C6C612E6578 651D433A5C534748
-0040: 5C62696E5C636F6E 74726F6C5F6D6564 69636F2E646C6C1D 433A5C5347485C62
-0060: 696E5C636F6E7472 6F6C5F6D65646963 6F2E617063000101 010131433A5C4365
-0080: 6E747572615C696E 63656873615F6D65 6469636F5C617070 735C636F6E74726F
-00A0: 6C5F6D656469636F 2E72756E31433A5C 43656E747572615C 696E63656873615F
-00C0: 6D656469636F5C61 7070735C636F6E74 726F6C5F6D656469 636F2E646C6C3143
-00E0: 3A5C43656E747572 615C696E63656873 615F6D656469636F 5C617070735C636F
-0100: 6E74726F6C5F6D65 6469636F2E617063 000001010131433A 5C43656E74757261
-0120: 5C696E6365687361 5F6D656469636F5C 617070735C636F6E 74726F6C5F6D6564
-0140: 69636F2E61706431 433A5C43656E7475 72615C696E636568 73615F6D65646963
-0160: 6F5C617070735C63 6F6E74726F6C5F6D 656469636F2E646C 6C31433A5C43656E
-0180: 747572615C696E63 656873615F6D6564 69636F5C61707073 5C636F6E74726F6C
-01A0: 5F6D656469636F2E 6170630000010101 31433A5C43656E74 7572615C696E6365
-01C0: 6873615F6D656469 636F5C617070735C 636F6E74726F6C5F 6D656469636F2E61
-01E0: 706C31433A5C4365 6E747572615C696E 63656873615F6D65 6469636F5C617070
-0200: 735C636F6E74726F 6C5F6D656469636F 2E646C6C31433A5C 43656E747572615C
-0220: 696E63656873615F 6D656469636F5C61 7070735C636F6E74 726F6C5F6D656469
-0240: 636F2E6170630000 010101
+0000: 0000000018433A5C 5347485C69636F6E 735C434C4F434B30 332E49434F25433A
+0020: 5C50726F79656374 6F735C5347485C62 696E5C5347485F50 6C616E696C6C612E
+0040: 65786527433A5C50 726F796563746F73 5C5347485C62696E 5C636F6E74726F6C
+0060: 5F6D656469636F2E 646C6C27433A5C50 726F796563746F73 5C5347485C62696E
+0080: 5C636F6E74726F6C 5F6D656469636F2E 6170630001010101 31433A5C43656E74
+00A0: 7572615C696E6365 6873615F6D656469 636F5C617070735C 636F6E74726F6C5F
+00C0: 6D656469636F2E72 756E31433A5C4365 6E747572615C696E 63656873615F6D65
+00E0: 6469636F5C617070 735C636F6E74726F 6C5F6D656469636F 2E646C6C31433A5C
+0100: 43656E747572615C 696E63656873615F 6D656469636F5C61 7070735C636F6E74
+0120: 726F6C5F6D656469 636F2E6170630000 01010131433A5C43 656E747572615C69
+0140: 6E63656873615F6D 656469636F5C6170 70735C636F6E7472 6F6C5F6D65646963
+0160: 6F2E61706431433A 5C43656E74757261 5C696E6365687361 5F6D656469636F5C
+0180: 617070735C636F6E 74726F6C5F6D6564 69636F2E646C6C31 433A5C43656E7475
+01A0: 72615C696E636568 73615F6D65646963 6F5C617070735C63 6F6E74726F6C5F6D
+01C0: 656469636F2E6170 6300000101013143 3A5C43656E747572 615C696E63656873
+01E0: 615F6D656469636F 5C617070735C636F 6E74726F6C5F6D65 6469636F2E61706C
+0200: 31433A5C43656E74 7572615C696E6365 6873615F6D656469 636F5C617070735C
+0220: 636F6E74726F6C5F 6D656469636F2E64 6C6C31433A5C4365 6E747572615C696E
+0240: 63656873615F6D65 6469636F5C617070 735C636F6E74726F 6C5F6D656469636F
+0260: 2E61706300000101 01
 .enddata
 .head 2 -  Outline Window State: Normal
 .head 2 +  Outline Window Location and Size
@@ -43,7 +44,7 @@
 .data VIEWSIZE
 0000: D000
 .enddata
-.head 3 -  Left:   -0.013"
+.head 3 -  Left: -0.013"
 .head 3 -  Top:    0.0"
 .head 3 -  Width:  8.013"
 .head 3 -  Height: 4.969"
@@ -55,19 +56,19 @@
 0000: 0800
 .enddata
 .head 3 -  Visible? Yes
-.head 3 -  Left:   4.15"
+.head 3 -  Left: 4.15"
 .head 3 -  Top:    1.885"
 .head 3 -  Width:  3.8"
 .head 3 -  Height: 2.073"
 .head 2 +  Class Editor Location
 .head 3 -  Visible? No
-.head 3 -  Left:   0.575"
+.head 3 -  Left: 0.575"
 .head 3 -  Top:    0.094"
 .head 3 -  Width:  5.063"
 .head 3 -  Height: 2.719"
 .head 2 +  Tool Palette Location
 .head 3 -  Visible? No
-.head 3 -  Left:   6.388"
+.head 3 -  Left: 6.388"
 .head 3 -  Top:    0.729"
 .head 2 -  Fully Qualified External References? Yes
 .head 2 -  Reject Multiple Window Instances? No
@@ -516,7 +517,7 @@
 .enddata
 .head 3 +  Combo Box Class: cmbConcatenado
 .head 4 -  Window Location and Size
-.head 5 -  Left:  
+.head 5 -  Left:
 .head 5 -  Top:   
 .head 5 -  Width:  4.917"
 .head 5 -  Width Editable? Class Default
@@ -671,7 +672,7 @@ sCodigo2||" from "||sTabla)
 .head 3 -  System Menu? Class Default
 .head 3 -  Resizable? Class Default
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.225"
+.head 4 -  Left: 0.225"
 .head 4 -  Top:    0.292"
 .head 4 -  Width:  10.0"
 .head 4 -  Width Editable? Class Default
@@ -710,7 +711,7 @@ sCodigo2||" from "||sTabla)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   Class Default
+.head 6 -  Left: Class Default
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -735,7 +736,7 @@ sCodigo2||" from "||sTabla)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.783"
+.head 6 -  Left: 0.783"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -760,7 +761,7 @@ sCodigo2||" from "||sTabla)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.383"
+.head 6 -  Left: 1.383"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -785,7 +786,7 @@ sCodigo2||" from "||sTabla)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   8.583"
+.head 6 -  Left: 8.583"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -811,7 +812,7 @@ sCodigo2||" from "||sTabla)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   -0.017"
+.head 6 -  Left: -0.017"
 .head 6 -  Top:    -0.012"
 .head 6 -  Width:  9.5"
 .head 6 -  Width Editable? Class Default
@@ -1021,7 +1022,7 @@ order by A.NOMBRE",TBL_FillAll)
 .head 3 -  System Menu? Class Default
 .head 3 -  Resizable? Class Default
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.85"
+.head 4 -  Left: 1.85"
 .head 4 -  Top:    0.49"
 .head 4 -  Width:  8.783"
 .head 4 -  Width Editable? Class Default
@@ -1060,7 +1061,7 @@ order by A.NOMBRE",TBL_FillAll)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.283"
+.head 6 -  Left: 0.283"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -1085,7 +1086,7 @@ order by A.NOMBRE",TBL_FillAll)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -1110,7 +1111,7 @@ order by A.NOMBRE",TBL_FillAll)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.483"
+.head 6 -  Left: 1.483"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -1135,7 +1136,7 @@ order by A.NOMBRE",TBL_FillAll)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.383"
+.head 6 -  Left: 7.383"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -1161,7 +1162,7 @@ order by A.NOMBRE",TBL_FillAll)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   -0.017"
+.head 6 -  Left: -0.017"
 .head 6 -  Top:    -0.012"
 .head 6 -  Width:  8.1"
 .head 6 -  Width Editable? Class Default
@@ -1284,7 +1285,7 @@ order by A.NOMBRE",TBL_FillAll)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.825"
+.head 4 -  Left: 0.825"
 .head 4 -  Top:    0.688"
 .head 4 -  Width:  8.0"
 .head 4 -  Width Editable? Yes
@@ -1652,7 +1653,7 @@ not	SalTblDoDeletes(tbl1,hSql1,ROW_MarkDeleted)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   Default
+.head 4 -  Left: Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  10.867"
 .head 4 -  Width Editable? Yes
@@ -1804,7 +1805,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   10.483"
+.head 6 -  Left: 10.483"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -1849,7 +1850,7 @@ into
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.1"
+.head 4 -  Left: 1.1"
 .head 4 -  Top:    0.917"
 .head 4 -  Width:  6.6"
 .head 4 -  Width Editable? Yes
@@ -1977,7 +1978,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? No
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.55"
+.head 4 -  Left: 0.55"
 .head 4 -  Top:    0.458"
 .head 4 -  Width:  12.217"
 .head 4 -  Width Editable? Yes
@@ -2384,7 +2385,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Personal
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.083"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    0.148"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Class Default
@@ -2411,7 +2412,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Puestos
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.083"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    1.071"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -2438,7 +2439,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Ocupaciones
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.083"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    1.988"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -2465,7 +2466,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Ing. / Ded.
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.083"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    2.905"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -2492,7 +2493,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Planilla
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.083"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    3.821"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -2519,7 +2520,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Planilla Adicional
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.083"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    4.738"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Yes
@@ -2546,7 +2547,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Salir
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.083"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    6.155"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Class Default
@@ -2571,7 +2572,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.017"
+.head 5 -  Left: 2.017"
 .head 5 -  Top:    1.25"
 .head 5 -  Width:  12.0"
 .head 5 -  Width Editable? Yes
@@ -2605,7 +2606,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.817"
+.head 6 -  Left: 7.817"
 .head 6 -  Top:    0.786"
 .head 6 -  Width:  4.2"
 .head 6 -  Width Editable? Yes
@@ -2635,7 +2636,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.017"
+.head 6 -  Left: 2.017"
 .head 6 -  Top:    6.226"
 .head 6 -  Width:  10.0"
 .head 6 -  Width Editable? Yes
@@ -2659,7 +2660,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.017"
+.head 5 -  Left: 2.017"
 .head 5 -  Top:    0.452"
 .head 5 -  Width:  10.0"
 .head 5 -  Width Editable? Yes
@@ -2735,7 +2736,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.2"
+.head 4 -  Left: 1.2"
 .head 4 -  Top:    0.344"
 .head 4 -  Width:  10.45"
 .head 4 -  Width Editable? Yes
@@ -2799,7 +2800,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.383"
+.head 6 -  Left: 9.383"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -2824,7 +2825,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.583"
+.head 6 -  Left: 1.583"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -2852,7 +2853,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.183"
+.head 6 -  Left: 0.183"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -2879,7 +2880,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -2912,7 +2913,7 @@ SalTblDoDeletes( hWndTabla,hSql1,ROW_MarkDeleted)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   -0.017"
+.head 6 -  Left: -0.017"
 .head 6 -  Top:    -0.012"
 .head 6 -  Width:  9.9"
 .head 6 -  Width Editable? Class Default
@@ -3110,7 +3111,7 @@ order by NOMBRE",TBL_FillAll)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? No
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.0"
+.head 4 -  Left: 0.0"
 .head 4 -  Top:    0.75"
 .head 4 -  Width:  7.125"
 .head 4 -  Width Editable? Yes
@@ -3247,7 +3248,7 @@ order by NOMBRE",TBL_FillAll)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.188"
+.head 6 -  Left: 7.188"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -3272,7 +3273,7 @@ order by NOMBRE",TBL_FillAll)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.283"
+.head 5 -  Left: 2.283"
 .head 5 -  Top:    0.905"
 .head 5 -  Width:  6.5"
 .head 5 -  Width Editable? Yes
@@ -3490,7 +3491,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 3 -  System Menu? Class Default
 .head 3 -  Resizable? Class Default
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.825"
+.head 4 -  Left: 0.825"
 .head 4 -  Top:    0.688"
 .head 4 -  Width:  13.533"
 .head 4 -  Width Editable? Class Default
@@ -3554,7 +3555,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   11.283"
+.head 6 -  Left: 11.283"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  1.0"
 .head 6 -  Width Editable? Class Default
@@ -3592,7 +3593,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.183"
+.head 6 -  Left: 0.183"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -3633,7 +3634,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -3661,7 +3662,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.583"
+.head 6 -  Left: 1.583"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -3690,7 +3691,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.283"
+.head 6 -  Left: 2.283"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -3729,7 +3730,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.183"
+.head 5 -  Left: 1.183"
 .head 5 -  Top:    0.679"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -3763,7 +3764,7 @@ handle, el "handle" de este reporte, para luego utilizar al:
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.083"
+.head 6 -  Left: 2.083"
 .head 6 -  Top:    0.655"
 .head 6 -  Width:  1.1"
 .head 6 -  Width Editable? Class Default
@@ -3803,7 +3804,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.583"
+.head 5 -  Left: 3.583"
 .head 5 -  Top:    0.679"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -3837,7 +3838,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.983"
+.head 6 -  Left: 4.983"
 .head 6 -  Top:    0.679"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -3870,7 +3871,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   6.783"
+.head 5 -  Left: 6.783"
 .head 5 -  Top:    0.679"
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -3904,7 +3905,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.683"
+.head 6 -  Left: 7.683"
 .head 6 -  Top:    0.679"
 .head 6 -  Width:  2.4"
 .head 6 -  Width Editable? Class Default
@@ -3945,7 +3946,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   8.45"
+.head 6 -  Left: 8.45"
 .head 6 -  Top:    1.865"
 .head 6 -  Width:  2.4"
 .head 6 -  Width Editable? Class Default
@@ -3980,7 +3981,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.65"
+.head 5 -  Left: 0.65"
 .head 5 -  Top:    1.036"
 .head 5 -  Width:  1.429"
 .head 5 -  Width Editable? Yes
@@ -4014,7 +4015,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.083"
+.head 6 -  Left: 2.083"
 .head 6 -  Top:    1.012"
 .head 6 -  Width:  2.7"
 .head 6 -  Width Editable? Class Default
@@ -4047,7 +4048,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   5.857"
+.head 5 -  Left: 5.857"
 .head 5 -  Top:    1.036"
 .head 5 -  Width:  1.729"
 .head 5 -  Width Editable? Yes
@@ -4081,7 +4082,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.683"
+.head 6 -  Left: 7.683"
 .head 6 -  Top:    1.012"
 .head 6 -  Width:  2.4"
 .head 6 -  Width Editable? Class Default
@@ -4116,7 +4117,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.683"
+.head 5 -  Left: 0.683"
 .head 5 -  Top:    1.345"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -4150,7 +4151,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.083"
+.head 6 -  Left: 2.083"
 .head 6 -  Top:    1.345"
 .head 6 -  Width:  2.7"
 .head 6 -  Width Editable? Class Default
@@ -4183,7 +4184,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   5.857"
+.head 5 -  Left: 5.857"
 .head 5 -  Top:    1.369"
 .head 5 -  Width:  1.729"
 .head 5 -  Width Editable? Yes
@@ -4217,7 +4218,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.683"
+.head 6 -  Left: 7.683"
 .head 6 -  Top:    1.345"
 .head 6 -  Width:  2.4"
 .head 6 -  Width Editable? Class Default
@@ -4252,7 +4253,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.55"
+.head 5 -  Left: 0.55"
 .head 5 -  Top:    1.677"
 .head 5 -  Width:  4.1"
 .head 5 -  Width Editable? Yes
@@ -4281,7 +4282,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Masculino
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.95"
+.head 5 -  Left: 0.95"
 .head 5 -  Top:    1.844"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -4311,7 +4312,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Femenino
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.55"
+.head 5 -  Left: 2.55"
 .head 5 -  Top:    1.844"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -4339,7 +4340,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.95"
+.head 5 -  Left: 4.95"
 .head 5 -  Top:    1.865"
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -4373,7 +4374,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   5.85"
+.head 6 -  Left: 5.85"
 .head 6 -  Top:    1.844"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -4408,7 +4409,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.55"
+.head 5 -  Left: 0.55"
 .head 5 -  Top:    2.281"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -4445,7 +4446,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Word Wrap? Yes
 .head 5 -  Vertical Scroll? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.55"
+.head 6 -  Left: 0.55"
 .head 6 -  Top:    2.427"
 .head 6 -  Width:  6.733"
 .head 6 -  Width Editable? Class Default
@@ -4475,7 +4476,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.65"
+.head 5 -  Left: 0.65"
 .head 5 -  Top:    4.531"
 .head 5 -  Width:  1.133"
 .head 5 -  Width Editable? Yes
@@ -4504,7 +4505,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.15"
+.head 5 -  Left: 2.15"
 .head 5 -  Top:    4.51"
 .head 5 -  Width:  3.7"
 .head 5 -  Width Editable? Class Default
@@ -4553,7 +4554,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.183"
+.head 5 -  Left: 0.183"
 .head 5 -  Top:    0.131"
 .head 5 -  Width:  12.5"
 .head 5 -  Width Editable? Class Default
@@ -4590,7 +4591,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.643"
+.head 5 -  Left: 0.643"
 .head 5 -  Top:    3.24"
 .head 5 -  Width:  2.243"
 .head 5 -  Width Editable? Yes
@@ -4618,7 +4619,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.383"
+.head 5 -  Left: 7.383"
 .head 5 -  Top:    2.655"
 .head 5 -  Width:  5.0"
 .head 5 -  Width Editable? Yes
@@ -4645,7 +4646,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.883"
+.head 5 -  Left: 7.883"
 .head 5 -  Top:    3.012"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -4679,7 +4680,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.583"
+.head 6 -  Left: 9.583"
 .head 6 -  Top:    2.988"
 .head 6 -  Width:  1.8"
 .head 6 -  Width Editable? Class Default
@@ -4712,7 +4713,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.983"
+.head 5 -  Left: 7.983"
 .head 5 -  Top:    3.345"
 .head 5 -  Width:  1.5"
 .head 5 -  Width Editable? Yes
@@ -4741,7 +4742,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   9.583"
+.head 5 -  Left: 9.583"
 .head 5 -  Top:    3.321"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -4777,7 +4778,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.683"
+.head 5 -  Left: 7.683"
 .head 5 -  Top:    3.929"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -4806,7 +4807,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.383"
+.head 5 -  Left: 8.383"
 .head 5 -  Top:    3.905"
 .head 5 -  Width:  3.7"
 .head 5 -  Width Editable? Class Default
@@ -4848,7 +4849,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.383"
+.head 5 -  Left: 8.383"
 .head 5 -  Top:    4.321"
 .head 5 -  Width:  3.7"
 .head 5 -  Width Editable? Class Default
@@ -4889,7 +4890,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.583"
+.head 5 -  Left: 7.583"
 .head 5 -  Top:    4.345"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -4919,7 +4920,7 @@ where	COD_EMPLEADO=:dfCodEmpleado",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.683"
+.head 6 -  Left: 1.683"
 .head 6 -  Top:    0.821"
 .head 6 -  Width:  10.2"
 .head 6 -  Width Editable? Class Default
@@ -5133,7 +5134,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.083"
+.head 5 -  Left: 1.083"
 .head 5 -  Top:    0.821"
 .head 5 -  Width:  0.6"
 .head 5 -  Width Editable? Class Default
@@ -5170,7 +5171,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.083"
+.head 5 -  Left: 1.083"
 .head 5 -  Top:    1.155"
 .head 5 -  Width:  0.6"
 .head 5 -  Width Editable? Class Default
@@ -5205,7 +5206,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.583"
+.head 5 -  Left: 0.583"
 .head 5 -  Top:    4.823"
 .head 5 -  Width:  5.3"
 .head 5 -  Width Editable? Yes
@@ -5234,7 +5235,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Activo
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.883"
+.head 5 -  Left: 1.883"
 .head 5 -  Top:    5.073"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -5264,7 +5265,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Inactivo
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.783"
+.head 5 -  Left: 3.783"
 .head 5 -  Top:    5.073"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -5292,7 +5293,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.383"
+.head 5 -  Left: 7.383"
 .head 5 -  Top:    1.844"
 .head 5 -  Width:  1.0"
 .head 5 -  Width Editable? Yes
@@ -5329,7 +5330,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 5 -  Word Wrap? Class Default
 .head 5 -  Vertical Scroll? Class Default
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.586"
+.head 6 -  Left: 0.586"
 .head 6 -  Top:    3.406"
 .head 6 -  Width:  6.7"
 .head 6 -  Width Editable? Class Default
@@ -5358,7 +5359,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   10.786"
+.head 5 -  Left: 10.786"
 .head 5 -  Top:    0.49"
 .head 5 -  Width:  1.7"
 .head 5 -  Width Editable? Yes
@@ -5397,7 +5398,7 @@ A.COD_INGDED = :tbl1.colIngDed  into :tbl1.colTipo " )
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Obtener
 .head 4 -  Window Location and Size
-.head 5 -  Left:   11.686"
+.head 5 -  Left: 11.686"
 .head 5 -  Top:    1.49"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -5562,7 +5563,7 @@ values(:dfCodEmpleado,
 .head 3 -  System Menu? Class Default
 .head 3 -  Resizable? Class Default
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.85"
+.head 4 -  Left: 1.85"
 .head 4 -  Top:    0.49"
 .head 4 -  Width:  7.333"
 .head 4 -  Width Editable? Class Default
@@ -5601,7 +5602,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.283"
+.head 6 -  Left: 0.283"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5626,7 +5627,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5651,7 +5652,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.483"
+.head 6 -  Left: 1.483"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5676,7 +5677,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   5.683"
+.head 6 -  Left: 5.683"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -5702,7 +5703,7 @@ values(:dfCodEmpleado,
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   -0.017"
+.head 6 -  Left: -0.017"
 .head 6 -  Top:    -0.012"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -5824,7 +5825,7 @@ values(:dfCodEmpleado,
 .head 3 -  System Menu? Class Default
 .head 3 -  Resizable? Class Default
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.85"
+.head 4 -  Left: 1.85"
 .head 4 -  Top:    0.49"
 .head 4 -  Width:  8.633"
 .head 4 -  Width Editable? Class Default
@@ -5863,7 +5864,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.283"
+.head 6 -  Left: 0.283"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5888,7 +5889,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5913,7 +5914,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.483"
+.head 6 -  Left: 1.483"
 .head 6 -  Top:    Class Default
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -5938,7 +5939,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.383"
+.head 6 -  Left: 7.383"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -5964,7 +5965,7 @@ values(:dfCodEmpleado,
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   -0.017"
+.head 6 -  Left: -0.017"
 .head 6 -  Top:    -0.012"
 .head 6 -  Width:  7.9"
 .head 6 -  Width Editable? Class Default
@@ -6086,7 +6087,7 @@ values(:dfCodEmpleado,
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.513"
+.head 4 -  Left: 1.513"
 .head 4 -  Top:    0.292"
 .head 4 -  Width:  8.733"
 .head 4 -  Width Editable? Yes
@@ -6125,7 +6126,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.383"
+.head 6 -  Left: 7.383"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -6150,7 +6151,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.35"
+.head 6 -  Left: 0.35"
 .head 6 -  Top:    0.095"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -6189,7 +6190,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.05"
+.head 6 -  Left: 1.05"
 .head 6 -  Top:    0.095"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -6217,7 +6218,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.75"
+.head 6 -  Left: 1.75"
 .head 6 -  Top:    0.095"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -6245,7 +6246,7 @@ values(:dfCodEmpleado,
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.45"
+.head 6 -  Left: 2.45"
 .head 6 -  Top:    0.095"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -6275,7 +6276,7 @@ values(:dfCodEmpleado,
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.583"
+.head 5 -  Left: 0.583"
 .head 5 -  Top:    0.262"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -6300,7 +6301,7 @@ values(:dfCodEmpleado,
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.483"
+.head 6 -  Left: 1.483"
 .head 6 -  Top:    0.238"
 .head 6 -  Width:  1.3"
 .head 6 -  Width Editable? Class Default
@@ -6334,7 +6335,7 @@ where	COD_INGDED=:dfCodIngDed",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    0.595"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Yes
@@ -6359,7 +6360,7 @@ where	COD_INGDED=:dfCodIngDed",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.483"
+.head 6 -  Left: 1.483"
 .head 6 -  Top:    0.571"
 .head 6 -  Width:  6.3"
 .head 6 -  Width Editable? Class Default
@@ -6388,7 +6389,7 @@ where  A.nombre like '" || dfNombre || "%'  ",TBL_FillAll)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.583"
+.head 5 -  Left: 0.583"
 .head 5 -  Top:    1.012"
 .head 5 -  Width:  0.6"
 .head 5 -  Width Editable? Yes
@@ -6408,7 +6409,7 @@ where  A.nombre like '" || dfNombre || "%'  ",TBL_FillAll)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.483"
+.head 5 -  Left: 1.483"
 .head 5 -  Top:    0.988"
 .head 5 -  Width:  2.1"
 .head 5 -  Width Editable? Yes
@@ -6437,7 +6438,7 @@ where  A.nombre like '" || dfNombre || "%'  ",TBL_FillAll)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.383"
+.head 6 -  Left: 0.383"
 .head 6 -  Top:    1.405"
 .head 6 -  Width:  7.6"
 .head 6 -  Width Editable? Class Default
@@ -6558,7 +6559,7 @@ where  A.nombre like '" || dfNombre || "%'  ",TBL_FillAll)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.983"
+.head 5 -  Left: 3.983"
 .head 5 -  Top:    1.012"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Yes
@@ -6583,7 +6584,7 @@ where  A.nombre like '" || dfNombre || "%'  ",TBL_FillAll)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.983"
+.head 6 -  Left: 4.983"
 .head 6 -  Top:    0.988"
 .head 6 -  Width:  1.3"
 .head 6 -  Width Editable? Class Default
@@ -6662,7 +6663,7 @@ insert into ING_DED
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.125"
+.head 4 -  Left: 0.125"
 .head 4 -  Top:    -0.01"
 .head 4 -  Width:  12.933"
 .head 4 -  Width Editable? Yes
@@ -6697,7 +6698,7 @@ insert into ING_DED
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.183"
+.head 6 -  Left: 0.183"
 .head 6 -  Top:    2.571"
 .head 6 -  Width:  12.3"
 .head 6 -  Width Editable? Class Default
@@ -7010,7 +7011,7 @@ insert into ING_DED
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    0.071"
 .head 5 -  Width:  12.0"
 .head 5 -  Width Editable? Yes
@@ -7030,7 +7031,7 @@ insert into ING_DED
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   11.083"
+.head 5 -  Left: 11.083"
 .head 5 -  Top:    1.738"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -7055,7 +7056,7 @@ insert into ING_DED
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   10.286"
+.head 5 -  Left: 10.286"
 .head 5 -  Top:    1.738"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -7090,7 +7091,7 @@ insert into ING_DED
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.083"
+.head 6 -  Left: 1.083"
 .head 6 -  Top:    4.905"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -7114,7 +7115,7 @@ insert into ING_DED
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.583"
+.head 5 -  Left: 1.583"
 .head 5 -  Top:    5.595"
 .head 5 -  Width:  8.2"
 .head 5 -  Width Editable? Yes
@@ -7133,7 +7134,7 @@ insert into ING_DED
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   10.483"
+.head 5 -  Left: 10.483"
 .head 5 -  Top:    5.595"
 .head 5 -  Width:  0.6"
 .head 5 -  Width Editable? Yes
@@ -7158,7 +7159,7 @@ insert into ING_DED
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   11.183"
+.head 6 -  Left: 11.183"
 .head 6 -  Top:    5.571"
 .head 6 -  Width:  1.0"
 .head 6 -  Width Editable? Class Default
@@ -7184,7 +7185,7 @@ insert into ING_DED
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   9.486"
+.head 5 -  Left: 9.486"
 .head 5 -  Top:    1.738"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -7209,7 +7210,7 @@ insert into ING_DED
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.686"
+.head 5 -  Left: 8.686"
 .head 5 -  Top:    1.738"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -7250,7 +7251,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    0.429"
 .head 5 -  Width:  1.5"
 .head 5 -  Width Editable? Yes
@@ -7275,7 +7276,7 @@ into
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.283"
+.head 6 -  Left: 2.283"
 .head 6 -  Top:    0.405"
 .head 6 -  Width:  2.8"
 .head 6 -  Width Editable? Class Default
@@ -7299,7 +7300,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   5.483"
+.head 5 -  Left: 5.483"
 .head 5 -  Top:    0.262"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -7324,7 +7325,7 @@ into
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   5.583"
+.head 6 -  Left: 5.583"
 .head 6 -  Top:    0.405"
 .head 6 -  Width:  3.0"
 .head 6 -  Width Editable? Class Default
@@ -7348,7 +7349,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.45"
+.head 5 -  Left: 0.45"
 .head 5 -  Top:    0.845"
 .head 5 -  Width:  5.3"
 .head 5 -  Width Editable? Yes
@@ -7366,7 +7367,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.75"
+.head 5 -  Left: 0.75"
 .head 5 -  Top:    1.119"
 .head 5 -  Width:  0.5"
 .head 5 -  Width Editable? Yes
@@ -7391,7 +7392,7 @@ into
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.35"
+.head 6 -  Left: 1.35"
 .head 6 -  Top:    1.095"
 .head 6 -  Width:  1.3"
 .head 6 -  Width Editable? Class Default
@@ -7415,7 +7416,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.017"
+.head 5 -  Left: 3.017"
 .head 5 -  Top:    1.143"
 .head 5 -  Width:  0.5"
 .head 5 -  Width Editable? Yes
@@ -7440,7 +7441,7 @@ into
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.617"
+.head 6 -  Left: 3.617"
 .head 6 -  Top:    1.119"
 .head 6 -  Width:  1.3"
 .head 6 -  Width Editable? Class Default
@@ -7473,7 +7474,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.517"
+.head 5 -  Left: 0.517"
 .head 5 -  Top:    1.643"
 .head 5 -  Width:  1.133"
 .head 5 -  Width Editable? Yes
@@ -7502,7 +7503,7 @@ into
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.117"
+.head 5 -  Left: 2.117"
 .head 5 -  Top:    1.619"
 .head 5 -  Width:  3.7"
 .head 5 -  Width Editable? Class Default
@@ -7543,7 +7544,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.95"
+.head 5 -  Left: 8.95"
 .head 5 -  Top:    0.202"
 .head 5 -  Width:  1.3"
 .head 5 -  Width Editable? Yes
@@ -7572,7 +7573,7 @@ into
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.95"
+.head 5 -  Left: 8.95"
 .head 5 -  Top:    0.429"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -7608,7 +7609,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   6.55"
+.head 5 -  Left: 6.55"
 .head 5 -  Top:    0.869"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -7637,7 +7638,7 @@ into
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.45"
+.head 5 -  Left: 7.45"
 .head 5 -  Top:    0.845"
 .head 5 -  Width:  3.7"
 .head 5 -  Width Editable? Class Default
@@ -7679,7 +7680,7 @@ into
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.45"
+.head 5 -  Left: 7.45"
 .head 5 -  Top:    1.179"
 .head 5 -  Width:  3.7"
 .head 5 -  Width Editable? Class Default
@@ -7720,7 +7721,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   6.45"
+.head 5 -  Left: 6.45"
 .head 5 -  Top:    1.202"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -7739,7 +7740,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.583"
+.head 5 -  Left: 0.583"
 .head 5 -  Top:    1.905"
 .head 5 -  Width:  3.8"
 .head 5 -  Width Editable? Yes
@@ -7759,7 +7760,7 @@ into
 .head 4 -  Class DLL Name:
 .head 4 -  Title: &Activo
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.683"
+.head 5 -  Left: 0.683"
 .head 5 -  Top:    2.071"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -7780,7 +7781,7 @@ into
 .head 4 -  Class DLL Name:
 .head 4 -  Title: &Inactivo
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.883"
+.head 5 -  Left: 1.883"
 .head 5 -  Top:    2.071"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -7801,7 +7802,7 @@ into
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Am&bos
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.183"
+.head 5 -  Left: 3.183"
 .head 5 -  Top:    2.071"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -7820,7 +7821,7 @@ into
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.486"
+.head 5 -  Left: 4.486"
 .head 5 -  Top:    1.906"
 .head 5 -  Width:  2.8"
 .head 5 -  Width Editable? Yes
@@ -7840,7 +7841,7 @@ into
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Sueldo
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.686"
+.head 5 -  Left: 4.686"
 .head 5 -  Top:    2.073"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -7937,7 +7938,7 @@ into
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.825"
+.head 4 -  Left: 0.825"
 .head 4 -  Top:    0.688"
 .head 4 -  Width:  15.9"
 .head 4 -  Width Editable? Yes
@@ -8001,7 +8002,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.283"
+.head 6 -  Left: 0.283"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8045,7 +8046,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.183"
+.head 6 -  Left: 1.183"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8073,7 +8074,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.083"
+.head 6 -  Left: 2.083"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8098,7 +8099,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.983"
+.head 6 -  Left: 2.983"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8128,7 +8129,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   12.783"
+.head 6 -  Left: 12.783"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8153,7 +8154,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.883"
+.head 6 -  Left: 3.883"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.833"
 .head 6 -  Width Editable? Class Default
@@ -8197,7 +8198,7 @@ into
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.783"
+.head 6 -  Left: 4.783"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8251,7 +8252,7 @@ sObs)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Recibos
 .head 5 -  Window Location and Size
-.head 6 -  Left:   5.683"
+.head 6 -  Left: 5.683"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -8280,38 +8281,33 @@ strRepPath || "\\PLANILLA_RECIBOS.QRP",
 "D.tipo,FORMULANUEVA,c.cod_ingded,c.monto,c.cantidad,c.fecha,c.descripcion,
 A.cod_empleado,B.Primer_Nom,B.Primer_Ape,A.sueldo_mensual,A.sueldo_pagado,D.nombre,TOTALINGRESOS,TOTALEGRESOS",
 
-"select D.Tipo,1 corr,c.cod_ingded,c.monto,c.cantidad,c.fecha,c.descripcion,
-A.cod_empleado,B.Primer_Nom,B.Primer_Ape,A.sueldo_mensual,A.sueldo_pagado,D.nombre,
-A.sueldo_pagado + A.horas_extras + A.bonificaciones + A.otros_ingresos+
-A.turnos,A.rap+A.ihss+A.isr+A.cooperativa+A.alimentacion+A.prestamo+A.ausencias+A.otros_egresos+A.laboratorio+A.medicamentos
-
-
-from det_planilla A , empleados B, det_planilla_det C , ING_DED D
-
-
-where A.cod_planilla =:frmPlanilla.dfCod_Planilla
-and A.cod_empleado*=B.cod_empleado and A.cod_planilla*=C.cod_planilla and
-A.cod_empleado*=C.cod_empleado and C.cod_ingded*=D.cod_ingded
-
-
-
+"	
+select 
+	D.Tipo,1 corr,c.cod_ingded,c.monto,c.cantidad,c.fecha,c.descripcion,
+	A.cod_empleado,B.Primer_Nom,B.Primer_Ape,A.sueldo_mensual,A.sueldo_pagado,D.nombre,
+	A.sueldo_pagado + A.horas_extras + A.bonificaciones + A.otros_ingresos+A.turnos AS TOT_ING,
+	A.rap+A.ihss+A.isr+A.cooperativa+A.alimentacion+A.prestamo+A.ausencias+A.otros_egresos+A.laboratorio+A.medicamentos AS TOT_DED
+from 
+	det_planilla A , empleados B, det_planilla_det C , ING_DED D
+where 
+	A.cod_planilla =:frmPlanilla.dfCod_Planilla
+	and A.cod_empleado*=B.cod_empleado and A.cod_planilla*=C.cod_planilla and
+	A.cod_empleado*=C.cod_empleado and C.cod_ingded*=D.cod_ingded
 union
-
-select D.tipo ,2 corr,c.cod_ingded,c.monto,c.cantidad,c.fecha,c.descripcion,
-A.cod_empleado,B.Primer_Nom,B.Primer_Ape,A.sueldo_mensual,A.sueldo_pagado,D.nombre,
-A.sueldo_pagado + A.horas_extras + A.bonificaciones + A.otros_ingresos+
-A.turnos,A.rap+A.ihss+A.isr+A.cooperativa+A.alimentacion+A.prestamo+A.ausencias+A.otros_egresos+A.laboratorio+A.medicamentos
-
-from det_planilla A , empleados B, det_planilla_det C , ING_DED D
-
-
-where A.cod_planilla =:frmPlanilla.dfCod_Planilla
-and A.cod_empleado*=B.cod_empleado and A.cod_planilla*=C.cod_planilla and
-A.cod_empleado*=C.cod_empleado and C.cod_ingded*=D.cod_ingded
-
-
-
-into        :s1,:n1,:n2,:n3,:n4,:dt1,:s2,:n5,:s3,:s4,:n6,:n7,:s5,:n8,:n9",
+select 
+	D.tipo ,2 corr,c.cod_ingded,c.monto,c.cantidad,c.fecha,c.descripcion,
+	A.cod_empleado,B.Primer_Nom,B.Primer_Ape,A.sueldo_mensual,A.sueldo_pagado,D.nombre,
+	A.sueldo_pagado + A.horas_extras + A.bonificaciones + A.otros_ingresos+A.turnos AS TOT_ING,
+	A.rap+A.ihss+A.isr+A.cooperativa+A.alimentacion+A.prestamo+A.ausencias+A.otros_egresos+A.laboratorio+A.medicamentos AS TOT_DED
+from 
+	det_planilla A , empleados B, det_planilla_det C , ING_DED D
+where 
+	A.cod_planilla =:frmPlanilla.dfCod_Planilla
+	and A.cod_empleado*=B.cod_empleado and A.cod_planilla*=C.cod_planilla and
+	A.cod_empleado*=C.cod_empleado and C.cod_ingded*=D.cod_ingded
+ORDER BY A.cod_empleado, corr
+into        :s1,:n1,:n2,:n3,:n4,:dt1,:s2,:n5,:s3,:s4,:n6,:n7,:s5,:n8,:n9
+",
 
 sObs,FALSE)
 .head 4 +  Pushbutton: pbArchivo
@@ -8322,7 +8318,7 @@ sObs,FALSE)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Archivo
 .head 5 -  Window Location and Size
-.head 6 -  Left:   6.583"
+.head 6 -  Left: 6.583"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Yes
@@ -8349,7 +8345,7 @@ sObs,FALSE)
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Asistencia
 .head 5 -  Window Location and Size
-.head 6 -  Left:   7.483"
+.head 6 -  Left: 7.483"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Yes
@@ -8375,7 +8371,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    0.012"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -8400,7 +8396,7 @@ sObs,FALSE)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.583"
+.head 6 -  Left: 1.583"
 .head 6 -  Top:    -0.012"
 .head 6 -  Width:  1.0"
 .head 6 -  Width Editable? Class Default
@@ -8441,7 +8437,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.35"
+.head 5 -  Left: 3.35"
 .head 5 -  Top:    0.012"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -8468,7 +8464,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.783"
+.head 5 -  Left: 2.783"
 .head 5 -  Top:    0.012"
 .head 5 -  Width:  0.5"
 .head 5 -  Width Editable? Yes
@@ -8487,7 +8483,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   5.417"
+.head 5 -  Left: 5.417"
 .head 5 -  Top:    0.06"
 .head 5 -  Width:  1.067"
 .head 5 -  Width Editable? Yes
@@ -8512,7 +8508,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   6.517"
+.head 6 -  Left: 6.517"
 .head 6 -  Top:    0.036"
 .head 6 -  Width:  1.467"
 .head 6 -  Width Editable? Class Default
@@ -8536,7 +8532,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.183"
+.head 5 -  Left: 8.183"
 .head 5 -  Top:    0.083"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Yes
@@ -8561,7 +8557,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.083"
+.head 6 -  Left: 9.083"
 .head 6 -  Top:    0.06"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -8585,7 +8581,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    0.345"
 .head 5 -  Width:  1.0"
 .head 5 -  Width Editable? Yes
@@ -8610,7 +8606,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.583"
+.head 6 -  Left: 1.583"
 .head 6 -  Top:    0.321"
 .head 6 -  Width:  9.2"
 .head 6 -  Width Editable? Class Default
@@ -8634,7 +8630,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   10.883"
+.head 5 -  Left: 10.883"
 .head 5 -  Top:    0.345"
 .head 5 -  Width:  0.7"
 .head 5 -  Width Editable? Yes
@@ -8659,7 +8655,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   11.583"
+.head 6 -  Left: 11.583"
 .head 6 -  Top:    0.321"
 .head 6 -  Width:  2.1"
 .head 6 -  Width Editable? Class Default
@@ -8687,7 +8683,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    0.571"
 .head 6 -  Width:  12.8"
 .head 6 -  Width Editable? Class Default
@@ -9443,7 +9439,7 @@ where
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    3.071"
 .head 6 -  Width:  11.9"
 .head 6 -  Width Editable? Class Default
@@ -9866,7 +9862,7 @@ WHERE TIPO='INGRESO'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.186"
+.head 5 -  Left: 0.186"
 .head 5 -  Top:    3.344"
 .head 5 -  Width:  0.567"
 .head 5 -  Width Editable? Class Default
@@ -9907,7 +9903,7 @@ WHERE TIPO='INGRESO'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.186"
+.head 5 -  Left: 0.186"
 .head 5 -  Top:    3.74"
 .head 5 -  Width:  0.567"
 .head 5 -  Width Editable? Class Default
@@ -9936,7 +9932,7 @@ WHERE TIPO='INGRESO'")
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    4.405"
 .head 6 -  Width:  12.733"
 .head 6 -  Width Editable? Class Default
@@ -10500,7 +10496,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.257"
+.head 5 -  Left: 0.257"
 .head 5 -  Top:    4.865"
 .head 5 -  Width:  0.567"
 .head 5 -  Width Editable? Class Default
@@ -10541,7 +10537,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.257"
+.head 5 -  Left: 0.257"
 .head 5 -  Top:    5.26"
 .head 5 -  Width:  0.567"
 .head 5 -  Width Editable? Class Default
@@ -10570,7 +10566,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title: &Actualizar
 .head 4 -  Window Location and Size
-.head 5 -  Left:   12.883"
+.head 5 -  Left: 12.883"
 .head 5 -  Top:    2.988"
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -10623,7 +10619,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.883"
+.head 6 -  Left: 0.883"
 .head 6 -  Top:    1.99"
 .head 6 -  Width:  12.8"
 .head 6 -  Width Editable? Class Default
@@ -11240,7 +11236,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.083"
+.head 5 -  Left: 0.083"
 .head 5 -  Top:    1.845"
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -11261,7 +11257,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Seg. Quincena
 .head 4 -  Window Location and Size
-.head 5 -  Left:   10.983"
+.head 5 -  Left: 10.983"
 .head 5 -  Top:    -0.012"
 .head 5 -  Width:  1.6"
 .head 5 -  Width Editable? Yes
@@ -11291,7 +11287,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.25"
+.head 5 -  Left: 0.25"
 .head 5 -  Top:    0.619"
 .head 5 -  Width:  0.567"
 .head 5 -  Width Editable? Class Default
@@ -11330,7 +11326,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.25"
+.head 5 -  Left: 0.25"
 .head 5 -  Top:    1.012"
 .head 5 -  Width:  0.567"
 .head 5 -  Width Editable? Class Default
@@ -11356,7 +11352,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.883"
+.head 5 -  Left: 0.883"
 .head 5 -  Top:    4.24"
 .head 5 -  Width:  1.3"
 .head 5 -  Width Editable? Yes
@@ -11375,7 +11371,7 @@ WHERE TIPO='DEDUCCION'")
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.85"
+.head 5 -  Left: 0.85"
 .head 5 -  Top:    2.869"
 .head 5 -  Width:  0.833"
 .head 5 -  Width Editable? Yes
@@ -12264,7 +12260,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.825"
+.head 4 -  Left: 0.825"
 .head 4 -  Top:    0.688"
 .head 4 -  Width:  13.533"
 .head 4 -  Width Editable? Yes
@@ -12303,7 +12299,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.283"
+.head 6 -  Left: 0.283"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -12341,7 +12337,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.183"
+.head 6 -  Left: 1.183"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -12369,7 +12365,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.083"
+.head 6 -  Left: 2.083"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -12394,7 +12390,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.983"
+.head 6 -  Left: 2.983"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -12424,7 +12420,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   11.983"
+.head 6 -  Left: 11.983"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -12449,7 +12445,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Cerrar
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.883"
+.head 6 -  Left: 3.883"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.833"
 .head 6 -  Width Editable? Class Default
@@ -12475,7 +12471,7 @@ A.COD_PLANILLA = :dfCod_Planilla order by B.Primer_Nom
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.783"
+.head 6 -  Left: 4.783"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.9"
 .head 6 -  Width Editable? Class Default
@@ -12524,7 +12520,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    0.179"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -12549,7 +12545,7 @@ sObs,FALSE)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.583"
+.head 6 -  Left: 1.583"
 .head 6 -  Top:    0.155"
 .head 6 -  Width:  1.0"
 .head 6 -  Width Editable? Class Default
@@ -12590,7 +12586,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.35"
+.head 5 -  Left: 3.35"
 .head 5 -  Top:    0.179"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -12617,7 +12613,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.783"
+.head 5 -  Left: 2.783"
 .head 5 -  Top:    0.179"
 .head 5 -  Width:  0.5"
 .head 5 -  Width Editable? Yes
@@ -12636,7 +12632,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   5.517"
+.head 5 -  Left: 5.517"
 .head 5 -  Top:    0.226"
 .head 5 -  Width:  1.067"
 .head 5 -  Width Editable? Yes
@@ -12661,7 +12657,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   6.717"
+.head 6 -  Left: 6.717"
 .head 6 -  Top:    0.202"
 .head 6 -  Width:  1.467"
 .head 6 -  Width Editable? Class Default
@@ -12685,7 +12681,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.383"
+.head 5 -  Left: 8.383"
 .head 5 -  Top:    0.25"
 .head 5 -  Width:  0.9"
 .head 5 -  Width Editable? Yes
@@ -12710,7 +12706,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.383"
+.head 6 -  Left: 9.383"
 .head 6 -  Top:    0.226"
 .head 6 -  Width:  1.4"
 .head 6 -  Width Editable? Class Default
@@ -12734,7 +12730,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    0.512"
 .head 5 -  Width:  1.0"
 .head 5 -  Width Editable? Yes
@@ -12759,7 +12755,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.583"
+.head 6 -  Left: 1.583"
 .head 6 -  Top:    0.488"
 .head 6 -  Width:  9.2"
 .head 6 -  Width Editable? Class Default
@@ -12783,7 +12779,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   11.383"
+.head 5 -  Left: 11.383"
 .head 5 -  Top:    0.262"
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -12808,7 +12804,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   10.983"
+.head 6 -  Left: 10.983"
 .head 6 -  Top:    0.488"
 .head 6 -  Width:  1.6"
 .head 6 -  Width Editable? Class Default
@@ -12836,7 +12832,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.783"
+.head 6 -  Left: 0.783"
 .head 6 -  Top:    1.321"
 .head 6 -  Width:  11.7"
 .head 6 -  Width Editable? Class Default
@@ -13067,7 +13063,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.617"
+.head 5 -  Left: 1.617"
 .head 5 -  Top:    0.869"
 .head 5 -  Width:  3.567"
 .head 5 -  Width Editable? Yes
@@ -13094,7 +13090,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.683"
+.head 5 -  Left: 0.683"
 .head 5 -  Top:    0.869"
 .head 5 -  Width:  0.867"
 .head 5 -  Width Editable? Yes
@@ -13119,7 +13115,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   5.783"
+.head 6 -  Left: 5.783"
 .head 6 -  Top:    4.988"
 .head 6 -  Width:  1.8"
 .head 6 -  Width Editable? Class Default
@@ -13151,7 +13147,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   8.983"
+.head 6 -  Left: 8.983"
 .head 6 -  Top:    4.988"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Class Default
@@ -13179,7 +13175,7 @@ where	COD_PLANILLA=:dfCod_Planilla into :TIPO ",bExists)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: &Actualizar Detalle
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.383"
+.head 5 -  Left: 8.383"
 .head 5 -  Top:    0.988"
 .head 5 -  Width:  3.9"
 .head 5 -  Width Editable? Yes
@@ -13386,7 +13382,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.1"
+.head 4 -  Left: 0.1"
 .head 4 -  Top:    0.583"
 .head 4 -  Width:  12.933"
 .head 4 -  Width Editable? Yes
@@ -13421,7 +13417,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.283"
+.head 6 -  Left: 0.283"
 .head 6 -  Top:    1.405"
 .head 6 -  Width:  12.0"
 .head 6 -  Width Editable? Class Default
@@ -13672,7 +13668,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    0.071"
 .head 5 -  Width:  12.0"
 .head 5 -  Width Editable? Yes
@@ -13692,7 +13688,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   10.983"
+.head 5 -  Left: 10.983"
 .head 5 -  Top:    0.321"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -13717,7 +13713,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   9.783"
+.head 5 -  Left: 9.783"
 .head 5 -  Top:    0.321"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -13752,7 +13748,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.083"
+.head 6 -  Left: 1.083"
 .head 6 -  Top:    4.905"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -13776,7 +13772,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.583"
+.head 5 -  Left: 1.583"
 .head 5 -  Top:    5.595"
 .head 5 -  Width:  8.2"
 .head 5 -  Width Editable? Yes
@@ -13795,7 +13791,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   10.483"
+.head 5 -  Left: 10.483"
 .head 5 -  Top:    4.429"
 .head 5 -  Width:  0.6"
 .head 5 -  Width Editable? Yes
@@ -13820,7 +13816,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   11.183"
+.head 6 -  Left: 11.183"
 .head 6 -  Top:    4.405"
 .head 6 -  Width:  1.0"
 .head 6 -  Width Editable? Class Default
@@ -13846,7 +13842,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class DLL Name:
 .head 4 -  Title:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   8.583"
+.head 5 -  Left: 8.583"
 .head 5 -  Top:    0.321"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -13869,7 +13865,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.55"
+.head 5 -  Left: 0.55"
 .head 5 -  Top:    0.452"
 .head 5 -  Width:  0.5"
 .head 5 -  Width Editable? Yes
@@ -13888,7 +13884,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.617"
+.head 5 -  Left: 2.617"
 .head 5 -  Top:    0.476"
 .head 5 -  Width:  0.5"
 .head 5 -  Width Editable? Yes
@@ -13913,7 +13909,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.017"
+.head 6 -  Left: 3.017"
 .head 6 -  Top:    0.452"
 .head 6 -  Width:  1.3"
 .head 6 -  Width Editable? Class Default
@@ -13946,7 +13942,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.55"
+.head 5 -  Left: 4.55"
 .head 5 -  Top:    0.452"
 .head 5 -  Width:  1.3"
 .head 5 -  Width Editable? Yes
@@ -13975,7 +13971,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   5.95"
+.head 5 -  Left: 5.95"
 .head 5 -  Top:    0.429"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -14008,7 +14004,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.117"
+.head 6 -  Left: 1.117"
 .head 6 -  Top:    0.452"
 .head 6 -  Width:  1.3"
 .head 6 -  Width Editable? Class Default
@@ -14042,7 +14038,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.083"
+.head 5 -  Left: 3.083"
 .head 5 -  Top:    0.81"
 .head 5 -  Width:  2.8"
 .head 5 -  Width Editable? Yes
@@ -14069,7 +14065,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.15"
+.head 5 -  Left: 2.15"
 .head 5 -  Top:    0.81"
 .head 5 -  Width:  0.833"
 .head 5 -  Width Editable? Yes
@@ -14137,7 +14133,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left:   1.975"
+.head 4 -  Left: 1.975"
 .head 4 -  Top:    1.188"
 .head 4 -  Width:  6.386"
 .head 4 -  Width Editable? Yes
@@ -14170,7 +14166,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    0.262"
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -14195,7 +14191,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.183"
+.head 6 -  Left: 1.183"
 .head 6 -  Top:    0.238"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Class Default
@@ -14221,7 +14217,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.783"
+.head 5 -  Left: 2.783"
 .head 5 -  Top:    0.262"
 .head 5 -  Width:  0.8"
 .head 5 -  Width Editable? Yes
@@ -14246,7 +14242,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.683"
+.head 6 -  Left: 3.683"
 .head 6 -  Top:    0.238"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Class Default
@@ -14270,7 +14266,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.483"
+.head 5 -  Left: 2.483"
 .head 5 -  Top:    0.619"
 .head 5 -  Width:  1.0"
 .head 5 -  Width Editable? Yes
@@ -14295,7 +14291,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.683"
+.head 6 -  Left: 3.683"
 .head 6 -  Top:    0.571"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Class Default
@@ -14321,7 +14317,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.55"
+.head 5 -  Left: 2.55"
 .head 5 -  Top:    0.976"
 .head 5 -  Width:  1.0"
 .head 5 -  Width Editable? Yes
@@ -14346,7 +14342,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.683"
+.head 6 -  Left: 3.683"
 .head 6 -  Top:    0.905"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Class Default
@@ -14370,7 +14366,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.586"
+.head 5 -  Left: 0.586"
 .head 5 -  Top:    1.762"
 .head 5 -  Width:  1.3"
 .head 5 -  Width Editable? Yes
@@ -14389,7 +14385,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.286"
+.head 5 -  Left: 2.286"
 .head 5 -  Top:    1.762"
 .head 5 -  Width:  1.3"
 .head 5 -  Width Editable? Yes
@@ -14414,7 +14410,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.486"
+.head 6 -  Left: 0.486"
 .head 6 -  Top:    1.405"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Class Default
@@ -14444,7 +14440,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.186"
+.head 6 -  Left: 2.186"
 .head 6 -  Top:    1.405"
 .head 6 -  Width:  1.6"
 .head 6 -  Width Editable? Class Default
@@ -14474,7 +14470,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.486"
+.head 6 -  Left: 0.486"
 .head 6 -  Top:    2.071"
 .head 6 -  Width:  1.5"
 .head 6 -  Width Editable? Class Default
@@ -14504,7 +14500,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   2.186"
+.head 6 -  Left: 2.186"
 .head 6 -  Top:    2.071"
 .head 6 -  Width:  1.6"
 .head 6 -  Width Editable? Class Default
@@ -14528,7 +14524,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.914"
+.head 5 -  Left: 3.914"
 .head 5 -  Top:    2.143"
 .head 5 -  Width:  0.171"
 .head 5 -  Width Editable? Yes
@@ -14547,7 +14543,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.043"
+.head 5 -  Left: 2.043"
 .head 5 -  Top:    2.083"
 .head 5 -  Width:  0.171"
 .head 5 -  Width Editable? Yes
@@ -14572,7 +14568,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.086"
+.head 6 -  Left: 4.086"
 .head 6 -  Top:    2.071"
 .head 6 -  Width:  1.8"
 .head 6 -  Width Editable? Class Default
@@ -14598,7 +14594,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Aceptar
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.086"
+.head 5 -  Left: 4.086"
 .head 5 -  Top:    3.155"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -14630,7 +14626,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   5.186"
+.head 6 -  Left: 5.186"
 .head 6 -  Top:    2.405"
 .head 6 -  Width:  0.7"
 .head 6 -  Width Editable? Class Default
@@ -14654,7 +14650,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.843"
+.head 5 -  Left: 4.843"
 .head 5 -  Top:    2.5"
 .head 5 -  Width:  0.243"
 .head 5 -  Width Editable? Yes
@@ -14679,7 +14675,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Editable? No
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.086"
+.head 6 -  Left: 4.086"
 .head 6 -  Top:    2.738"
 .head 6 -  Width:  1.8"
 .head 6 -  Width Editable? Class Default
@@ -14739,7 +14735,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left:   Default
+.head 4 -  Left: Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  5.133"
 .head 4 -  Width Editable? Yes
@@ -14773,7 +14769,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.983"
+.head 6 -  Left: 3.983"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.8"
 .head 6 -  Width Editable? Class Default
@@ -14798,7 +14794,7 @@ A.COD_PLANILLA = :dfCod_Planilla
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.183"
+.head 6 -  Left: 0.183"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.8"
 .head 6 -  Width Editable? Class Default
@@ -14856,7 +14852,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.183"
+.head 5 -  Left: 0.183"
 .head 5 -  Top:    0.155"
 .head 5 -  Width:  4.6"
 .head 5 -  Width Editable? Yes
@@ -14876,7 +14872,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Detallado
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    0.405"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -14897,7 +14893,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Para el banco
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.083"
+.head 5 -  Left: 3.083"
 .head 5 -  Top:    0.405"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -14931,7 +14927,7 @@ sObs,FALSE)
 .head 3 -  Visible at Design time? Yes
 .head 3 -  Type of Dialog: Modal
 .head 3 -  Window Location and Size
-.head 4 -  Left:   Default
+.head 4 -  Left: Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  7.033"
 .head 4 -  Width Editable? Yes
@@ -14970,7 +14966,7 @@ sObs,FALSE)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.283"
+.head 6 -  Left: 1.283"
 .head 6 -  Top:    0.238"
 .head 6 -  Width:  1.9"
 .head 6 -  Width Editable? Class Default
@@ -15000,7 +14996,7 @@ sObs,FALSE)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.35"
+.head 6 -  Left: 4.35"
 .head 6 -  Top:    0.262"
 .head 6 -  Width:  2.333"
 .head 6 -  Width Editable? Class Default
@@ -15024,7 +15020,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.183"
+.head 5 -  Left: 0.183"
 .head 5 -  Top:    0.262"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -15043,7 +15039,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.35"
+.head 5 -  Left: 3.35"
 .head 5 -  Top:    0.286"
 .head 5 -  Width:  0.933"
 .head 5 -  Width Editable? Yes
@@ -15064,7 +15060,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Generar
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.883"
+.head 5 -  Left: 0.883"
 .head 5 -  Top:    0.905"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -15124,7 +15120,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Salir
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.583"
+.head 5 -  Left: 2.583"
 .head 5 -  Top:    0.905"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -15178,7 +15174,7 @@ sObs,FALSE)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   Default
+.head 4 -  Left: Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  12.783"
 .head 4 -  Width Editable? Yes
@@ -15217,7 +15213,7 @@ sObs,FALSE)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   10.683"
+.head 6 -  Left: 10.683"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  0.6"
 .head 6 -  Width Editable? Class Default
@@ -15247,7 +15243,7 @@ sObs,FALSE)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.85"
+.head 6 -  Left: 1.85"
 .head 6 -  Top:    0.429"
 .head 6 -  Width:  1.6"
 .head 6 -  Width Editable? Yes
@@ -15277,7 +15273,7 @@ sObs,FALSE)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.85"
+.head 6 -  Left: 1.85"
 .head 6 -  Top:    0.738"
 .head 6 -  Width:  1.6"
 .head 6 -  Width Editable? Yes
@@ -15307,7 +15303,7 @@ sObs,FALSE)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.683"
+.head 6 -  Left: 4.683"
 .head 6 -  Top:    0.738"
 .head 6 -  Width:  2.0"
 .head 6 -  Width Editable? Yes
@@ -15337,7 +15333,7 @@ sObs,FALSE)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.883"
+.head 6 -  Left: 1.883"
 .head 6 -  Top:    1.405"
 .head 6 -  Width:  1.6"
 .head 6 -  Width Editable? Yes
@@ -15367,7 +15363,7 @@ sObs,FALSE)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.283"
+.head 6 -  Left: 9.283"
 .head 6 -  Top:    0.571"
 .head 6 -  Width:  2.0"
 .head 6 -  Width Editable? Yes
@@ -15393,7 +15389,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Calcular Horas T
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.283"
+.head 5 -  Left: 7.283"
 .head 5 -  Top:    0.488"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -15571,7 +15567,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Consultar Planilla
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.783"
+.head 5 -  Left: 3.783"
 .head 5 -  Top:    1.405"
 .head 5 -  Width:  1.5"
 .head 5 -  Width Editable? Yes
@@ -15629,7 +15625,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.683"
+.head 5 -  Left: 0.683"
 .head 5 -  Top:    0.762"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -15650,7 +15646,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Obtener Datos Reloj
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.283"
+.head 5 -  Left: 7.283"
 .head 5 -  Top:    0.155"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -15715,7 +15711,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.383"
+.head 5 -  Left: 0.383"
 .head 5 -  Top:    1.452"
 .head 5 -  Width:  1.467"
 .head 5 -  Width Editable? Yes
@@ -15734,7 +15730,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.45"
+.head 5 -  Left: 0.45"
 .head 5 -  Top:    0.476"
 .head 5 -  Width:  1.267"
 .head 5 -  Width Editable? Yes
@@ -15753,7 +15749,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.25"
+.head 5 -  Left: 4.25"
 .head 5 -  Top:    0.476"
 .head 5 -  Width:  0.433"
 .head 5 -  Width Editable? Yes
@@ -15772,7 +15768,7 @@ sObs,FALSE)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.85"
+.head 5 -  Left: 3.85"
 .head 5 -  Top:    0.786"
 .head 5 -  Width:  0.833"
 .head 5 -  Width Editable? Yes
@@ -15793,7 +15789,7 @@ sObs,FALSE)
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.383"
+.head 6 -  Left: 0.383"
 .head 6 -  Top:    2.012"
 .head 6 -  Width:  10.8"
 .head 6 -  Width Editable? Class Default
@@ -16105,7 +16101,7 @@ TBL_FillAllBackground)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.383"
+.head 5 -  Left: 0.383"
 .head 5 -  Top:    3.679"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -16130,7 +16126,7 @@ TBL_FillAllBackground)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.583"
+.head 6 -  Left: 1.583"
 .head 6 -  Top:    3.655"
 .head 6 -  Width:  1.1"
 .head 6 -  Width Editable? Yes
@@ -16160,7 +16156,7 @@ TBL_FillAllBackground)
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   4.25"
+.head 6 -  Left: 4.25"
 .head 6 -  Top:    3.655"
 .head 6 -  Width:  1.233"
 .head 6 -  Width Editable? Yes
@@ -16184,7 +16180,7 @@ TBL_FillAllBackground)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.983"
+.head 5 -  Left: 2.983"
 .head 5 -  Top:    3.679"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -16205,7 +16201,7 @@ TBL_FillAllBackground)
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Imprimir
 .head 4 -  Window Location and Size
-.head 5 -  Left:   7.283"
+.head 5 -  Left: 7.283"
 .head 5 -  Top:    0.821"
 .head 5 -  Width:  1.8"
 .head 5 -  Width Editable? Yes
@@ -16273,7 +16269,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.383"
+.head 6 -  Left: 0.383"
 .head 6 -  Top:    3.988"
 .head 6 -  Width:  9.9"
 .head 6 -  Width Editable? Class Default
@@ -16493,7 +16489,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.283"
+.head 6 -  Left: 9.283"
 .head 6 -  Top:    0.238"
 .head 6 -  Width:  2.0"
 .head 6 -  Width Editable? Yes
@@ -16523,7 +16519,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 5 -  Editable? Yes
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.283"
+.head 6 -  Left: 9.283"
 .head 6 -  Top:    0.821"
 .head 6 -  Width:  2.0"
 .head 6 -  Width Editable? Yes
@@ -16549,7 +16545,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Calcular Faltas
 .head 4 -  Window Location and Size
-.head 5 -  Left:   5.283"
+.head 5 -  Left: 5.283"
 .head 5 -  Top:    1.405"
 .head 5 -  Width:  1.6"
 .head 5 -  Width Editable? Yes
@@ -16622,7 +16618,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   4.683"
+.head 5 -  Left: 4.683"
 .head 5 -  Top:    0.452"
 .head 5 -  Width:  2.033"
 .head 5 -  Width Editable? Yes
@@ -16649,7 +16645,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    1.905"
 .head 5 -  Width:  11.0"
 .head 5 -  Width Editable? Yes
@@ -16667,7 +16663,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.25"
+.head 5 -  Left: 0.25"
 .head 5 -  Top:    3.905"
 .head 5 -  Width:  10.133"
 .head 5 -  Width Editable? Yes
@@ -16685,7 +16681,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    0.155"
 .head 5 -  Width:  6.8"
 .head 5 -  Width Editable? Yes
@@ -16703,7 +16699,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.283"
+.head 5 -  Left: 0.283"
 .head 5 -  Top:    1.155"
 .head 5 -  Width:  6.8"
 .head 5 -  Width Editable? Yes
@@ -17001,7 +16997,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   Default
+.head 4 -  Left: Default
 .head 4 -  Top:    Default
 .head 4 -  Width:  8.0"
 .head 4 -  Width Editable? Yes
@@ -17040,7 +17036,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   1.083"
+.head 6 -  Left: 1.083"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -17065,7 +17061,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 5 -  Class DLL Name:
 .head 5 -  Title: Salir
 .head 5 -  Window Location and Size
-.head 6 -  Left:   9.183"
+.head 6 -  Left: 9.183"
 .head 6 -  Top:    0.071"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -17089,7 +17085,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   2.583"
+.head 5 -  Left: 2.583"
 .head 5 -  Top:    0.262"
 .head 5 -  Width:  0.833"
 .head 5 -  Width Editable? Yes
@@ -17109,7 +17105,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.483"
+.head 5 -  Left: 3.483"
 .head 5 -  Top:    0.238"
 .head 5 -  Width:  2.8"
 .head 5 -  Width Editable? Class Default
@@ -17158,7 +17154,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Mensual / Quincenal
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    0.905"
 .head 5 -  Width:  2.0"
 .head 5 -  Width Editable? Yes
@@ -17179,7 +17175,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Adicionales
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    1.155"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -17200,7 +17196,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Personal
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    1.405"
 .head 5 -  Width:  1.1"
 .head 5 -  Width Editable? Yes
@@ -17221,7 +17217,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Puestos
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    1.655"
 .head 5 -  Width:  1.2"
 .head 5 -  Width Editable? Yes
@@ -17242,7 +17238,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Ocupaciones
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    1.929"
 .head 5 -  Width:  1.7"
 .head 5 -  Width Editable? Yes
@@ -17263,7 +17259,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Ingresos / Deducciones
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.483"
+.head 5 -  Left: 0.483"
 .head 5 -  Top:    2.202"
 .head 5 -  Width:  2.3"
 .head 5 -  Width Editable? Yes
@@ -17282,7 +17278,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.183"
+.head 5 -  Left: 0.183"
 .head 5 -  Top:    0.571"
 .head 5 -  Width:  9.9"
 .head 5 -  Width Editable? Yes
@@ -17300,7 +17296,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   0.383"
+.head 5 -  Left: 0.383"
 .head 5 -  Top:    0.738"
 .head 5 -  Width:  2.7"
 .head 5 -  Width Editable? Yes
@@ -17318,7 +17314,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.283"
+.head 5 -  Left: 3.283"
 .head 5 -  Top:    0.738"
 .head 5 -  Width:  3.5"
 .head 5 -  Width Editable? Yes
@@ -17338,7 +17334,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Derechos
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.65"
+.head 5 -  Left: 3.65"
 .head 5 -  Top:    1.893"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -17359,7 +17355,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Consultas
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.65"
+.head 5 -  Left: 3.65"
 .head 5 -  Top:    0.929"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -17380,7 +17376,7 @@ into	:n1,:n2,:dt1,:n3,:n4,:n5,:n6
 .head 4 -  Class DLL Name:
 .head 4 -  Title: Usuarios
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.65"
+.head 5 -  Left: 3.65"
 .head 5 -  Top:    2.202"
 .head 5 -  Width:  1.4"
 .head 5 -  Width Editable? Yes
@@ -17485,7 +17481,7 @@ QUE SE REFLEJEN LOS CAMBIOS RESPECTIVOS","OJO",MB_Ok)
 .head 3 -  System Menu? Yes
 .head 3 -  Resizable? Yes
 .head 3 -  Window Location and Size
-.head 4 -  Left:   0.87"
+.head 4 -  Left: 0.87"
 .head 4 -  Top:    0.725"
 .head 4 -  Width:  8.571"
 .head 4 -  Width Editable? Yes
@@ -17524,7 +17520,7 @@ QUE SE REFLEJEN LOS CAMBIOS RESPECTIVOS","OJO",MB_Ok)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   6.886"
+.head 6 -  Left: 6.886"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -17549,7 +17545,7 @@ QUE SE REFLEJEN LOS CAMBIOS RESPECTIVOS","OJO",MB_Ok)
 .head 5 -  Class DLL Name:
 .head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left:   0.286"
+.head 6 -  Left: 0.286"
 .head 6 -  Top:    0.073"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -17575,7 +17571,7 @@ QUE SE REFLEJEN LOS CAMBIOS RESPECTIVOS","OJO",MB_Ok)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.371"
+.head 5 -  Left: 1.371"
 .head 5 -  Top:    0.219"
 .head 5 -  Width:  0.833"
 .head 5 -  Width Editable? Yes
@@ -17595,7 +17591,7 @@ QUE SE REFLEJEN LOS CAMBIOS RESPECTIVOS","OJO",MB_Ok)
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   3.771"
+.head 5 -  Left: 3.771"
 .head 5 -  Top:    0.198"
 .head 5 -  Width:  Class Default
 .head 5 -  Width Editable? Class Default
@@ -17627,7 +17623,7 @@ QUE SE REFLEJEN LOS CAMBIOS RESPECTIVOS","OJO",MB_Ok)
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.386"
+.head 5 -  Left: 1.386"
 .head 5 -  Top:    0.677"
 .head 5 -  Width:  1.7"
 .head 5 -  Width Editable? Yes
@@ -17652,7 +17648,7 @@ QUE SE REFLEJEN LOS CAMBIOS RESPECTIVOS","OJO",MB_Ok)
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.686"
+.head 6 -  Left: 3.686"
 .head 6 -  Top:    0.656"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -17687,7 +17683,7 @@ into	:sActual")
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.371"
+.head 5 -  Left: 1.371"
 .head 5 -  Top:    1.135"
 .head 5 -  Width:  1.7"
 .head 5 -  Width Editable? Yes
@@ -17712,7 +17708,7 @@ into	:sActual")
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.671"
+.head 6 -  Left: 3.671"
 .head 6 -  Top:    1.115"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default
@@ -17742,7 +17738,7 @@ into	:sActual")
 .head 4 -  Class ChildKey: 0
 .head 4 -  Class:
 .head 4 -  Window Location and Size
-.head 5 -  Left:   1.357"
+.head 5 -  Left: 1.357"
 .head 5 -  Top:    1.677"
 .head 5 -  Width:  2.029"
 .head 5 -  Width Editable? Yes
@@ -17767,7 +17763,7 @@ into	:sActual")
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left:   3.657"
+.head 6 -  Left: 3.657"
 .head 6 -  Top:    1.656"
 .head 6 -  Width:  Class Default
 .head 6 -  Width Editable? Class Default

@@ -2,10 +2,10 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 [Setup]
-#define BinFolder "C:\SGH\bin"
-#define LibFolder "C:\SGH\lib"
-#define RptFolder "C:\SGH\reportes"
-#define IconsFolder "C:\SGH\icons"
+#define BinFolder "C:\Proyectos\SGH\bin"
+#define LibFolder "C:\Proyectos\SGH\Librerias"
+#define RptFolder "C:\Proyectos\SGH\Reportes"
+#define IconsFolder "C:\Proyectos\SGH\iconos"
 AppName=Sistema de Gestión Hospitalaria (SGH)
 AppVerName=Version 2.0
 CreateAppDir=yes
@@ -25,13 +25,13 @@ ChangesEnvironment=yes
 
 [Files]
 Source: "{#BinFolder}\*.*"; DestDir: "{app}\bin"; Flags: ignoreversion; Languages: es
-Source: "{#LibFolder}\*.*"; DestDir: "{app}\lib"; Flags: ignoreversion
+Source: "{#LibFolder}\*.dll"; DestDir: "{app}\lib"; Flags: ignoreversion
 Source: "{#RptFolder}\*.*"; DestDir: "{app}\reportes"
 Source: "{#IconsFolder}\*.*"; DestDir: "{app}\icons"
 
 [UninstallDelete]
+
 [Run]
-Filename: "{app}\bin\SGH_Facturacion.exe"; WorkingDir: "{app}\bin"; Flags: nowait postinstall unchecked skipifsilent; Description: "Iniciar SGH ahora"; StatusMsg: "Iniciar SGH ahora"
 
 [UninstallRun]
 
@@ -60,7 +60,6 @@ Name: "{app}\reportes"
 
 
 [Code]
-
 function NeedsAddPath(Param: string): boolean;
 var
   OrigPath: string;
