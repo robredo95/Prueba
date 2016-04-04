@@ -4,9 +4,9 @@
 .data VIEWINFO
 0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
 0020: 00000000002E0100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773186672
-0080: 6D5472616E736665 72656E6369617352 65706F727465
+0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0000000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773156672
+0080: 6D52656369626F73 43616E6346616374 757261
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000019433A5C 5347485C69636F6E 735C486F73706974 616C2E69636F2843
@@ -22322,6 +22322,31 @@ into
 .head 6 +  On SAM_Click
 .head 7 -  Call SalModalDialog(dlgFixRecibosFact,hWndForm, dfRecibo)
 .head 7 -  Call SalSendMsg( hWndForm, MU_ACTUALIZAR, 0, 0 )
+.head 4 +  Pushbutton: pb1
+.head 5 -  Class Child Ref Key: 0
+.head 5 -  Class ChildKey: 0
+.head 5 -  Class: pbSalir
+.head 5 -  Property Template:
+.head 5 -  Class DLL Name:
+.head 5 -  Title:
+.head 5 -  Window Location and Size
+.head 6 -  Left: 12.383"
+.head 6 -  Top:    0.071"
+.head 6 -  Width:  Class Default
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: Class Default
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Keyboard Accelerator: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Picture File Name:
+.head 5 -  Picture Transparent Color: Class Default
+.head 5 -  Image Style: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Message Actions
 .head 2 +  Contents
 .head 3 +  Data Field: dfRecibo
 .head 4 -  Class Child Ref Key: 0
