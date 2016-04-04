@@ -5,8 +5,8 @@
 0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
 0020: 0000000000300100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
 0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773156672
-0080: 6D52656369626F73 43616E6346616374 757261
+0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F777311646C
+0080: 6746697852656369 626F7346616374
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000019433A5C 5347485C69636F6E 735C486F73706974 616C2E69636F2843
@@ -3878,7 +3878,7 @@ values(
 .head 3 -  Dialog Box:
 .head 3 -  Table Window:
 .head 3 -  Quest Window:
-.head 3 -  Data Field: dfNumero
+.head 3 -  Data Field: cFlatDataField
 .head 3 -  Spin Field:
 .head 3 -  Multiline Field: cFlatMultilineField
 .head 3 -  Pushbutton: cFlatPushbutton
@@ -22106,6 +22106,8 @@ into	:s1,:dt1,:s2,:n1,:n2,:s3,:s4,:s5,:n3,:n4,:s6,:s7",'')
 .head 7 -  Call SalModalDialog(dlgConsultaRecibosNuevos,hWndForm,sRecibo)
 .head 7 +  If sRecibo!=''
 .head 8 -  Set dfRecibo =sRecibo
+.head 8 -  Call SalTblReset( tbl1 )
+.head 8 -  Call SalTblReset( tbl2 )
 .head 8 -  Call SalSendMsg(hWndForm,MU_ACTUALIZAR,0,0)
 .head 4 +  Pushbutton: pbAgregar
 .head 5 -  Class Child Ref Key: 0
@@ -22292,7 +22294,7 @@ into
 .head 5 +  Message Actions
 .head 6 +  On SAM_Click
 .head 7 -  Call SalModalDialog(dlgConsultaRecibosAnteriores,hWndForm)
-.head 4 +  Pushbutton: pb10
+.head 4 +  Pushbutton: pbFixRecibos
 .head 5 -  Class Child Ref Key: 0
 .head 5 -  Class ChildKey: 0
 .head 5 -  Class: cFlatPushbutton
@@ -22318,7 +22320,8 @@ into
 .head 5 -  Background Color: Class Default
 .head 5 +  Message Actions
 .head 6 +  On SAM_Click
-.head 7 -  Call SalModalDialog(dlgConsultaRecibosAnteriores,hWndForm)
+.head 7 -  Call SalModalDialog(dlgFixRecibosFact,hWndForm, dfRecibo)
+.head 7 -  Call SalSendMsg( hWndForm, MU_ACTUALIZAR, 0, 0 )
 .head 2 +  Contents
 .head 3 +  Data Field: dfRecibo
 .head 4 -  Class Child Ref Key: 0
@@ -24753,7 +24756,7 @@ values(
 .head 5 -  ! ! Elvin Deras 02/Abr/2016 
 .head 5 -  ! ! Se agrega el tipo 'ABIERTO' para aquellos recibos que se grabaron en la base de datos pero no tienen ningun Pago asociado.
 .head 5 +  If sEstado != 'ABIERTO'
-.head 6 -  Call SalMessageBox("El recibo no puede ser modificado, su estado es ' || sEstado || '..., Consulte al Administrador del Sistema","Advertencia",MB_Ok)
+.head 6 -  Call SalMessageBox("El recibo no puede ser modificado, su estado es " || sEstado || ", favor proceder a Re-Abrir el recibo","Advertencia",MB_Ok)
 .head 6 -  Return 0
 .head 4 -  ! !
 .head 4 -  ! ! Inserta los  PAGOS si el recibo no existe o su estado es ABIERTO
@@ -124769,3 +124772,621 @@ where
 .head 4 -  Call SalListAdd( cmbTipo, 'Clinica' )
 .head 4 -  Call SalListAdd( cmbTipo, 'Honorarios' )
 .head 4 -  Call SalListSetSelect( cmbTipo, 0 )
+.head 1 +  Dialog Box: dlgFixRecibosFact
+.head 2 -  Class:
+.head 2 -  Property Template:
+.head 2 -  Class DLL Name:
+.head 2 -  Title: Reabrir Recibos / Corregir Factudas
+.head 2 -  Accesories Enabled? No
+.head 2 -  Visible? Yes
+.head 2 -  Display Settings
+.head 3 -  Display Style? Default
+.head 3 -  Visible at Design time? Yes
+.head 3 -  Type of Dialog: Modal
+.head 3 -  Window Location and Size
+.head 4 -  Left: 4.825"
+.head 4 -  Top:    1.667"
+.head 4 -  Width:  7.75"
+.head 4 -  Width Editable? Yes
+.head 4 -  Height: 3.619"
+.head 4 -  Height Editable? Yes
+.head 3 -  Absolute Screen Location? Yes
+.head 3 -  Font Name: Default
+.head 3 -  Font Size: Default
+.head 3 -  Font Enhancement: Default
+.head 3 -  Text Color: Default
+.head 3 -  Background Color: Default
+.head 2 -  Description:
+.head 2 +  Tool Bar
+.head 3 -  Display Settings
+.head 4 -  Display Style? Default
+.head 4 -  Location? Top
+.head 4 -  Visible? Yes
+.head 4 -  Size: Default
+.head 4 -  Size Editable? Yes
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Contents
+.head 2 +  Contents
+.head 3 -  Background Text: Para reabrir un recibo siga los siguientes pasos:
+.head 4 -  Resource Id: 39739
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 0.183"
+.head 5 -  Top:    0.179"
+.head 5 -  Width:  4.7"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.226"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Bold
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Background Text: Paso 1:
+.head 4 -  Resource Id: 39740
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 0.183"
+.head 5 -  Top:    0.512"
+.head 5 -  Width:  0.833"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.226"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Bold
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Background Text: Ingrese el número de recibo y presione reabrir
+.head 4 -  Resource Id: 39741
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 1.083"
+.head 5 -  Top:    0.512"
+.head 5 -  Width:  3.8"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.167"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Background Text: Recibo:
+.head 4 -  Resource Id: 39742
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 0.183"
+.head 5 -  Top:    0.762"
+.head 5 -  Width:  0.7"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.167"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Data Field: dfRecibo
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: cFlatDataField
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Data
+.head 5 -  Maximum Data Length: Class Default
+.head 5 -  Data Type: String
+.head 5 -  Editable? Class Default
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left: 0.983"
+.head 6 -  Top:    0.738"
+.head 6 -  Width:  1.7"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: 0.25"
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Border? Class Default
+.head 5 -  Justify: Class Default
+.head 5 -  Format: Class Default
+.head 5 -  Country: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  Input Mask: Class Default
+.head 4 -  Message Actions
+.head 3 +  Pushbutton: pb1
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: cFlatPushbutton
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Title: Reabrir
+.head 4 -  Window Location and Size
+.head 5 -  Left: 2.883"
+.head 5 -  Top:    0.738"
+.head 5 -  Width:  1.8"
+.head 5 -  Width Editable? Class Default
+.head 5 -  Height: Class Default
+.head 5 -  Height Editable? Class Default
+.head 4 -  Visible? Class Default
+.head 4 -  Keyboard Accelerator: Class Default
+.head 4 -  Font Name: Class Default
+.head 4 -  Font Size: Class Default
+.head 4 -  Font Enhancement: Bold
+.head 4 -  Picture File Name:
+.head 4 -  Picture Transparent Color: Class Default
+.head 4 -  Image Style: Class Default
+.head 4 -  Text Color: Class Default
+.head 4 -  Background Color: Light Green
+.head 4 +  Message Actions
+.head 5 +  On SAM_Click
+.head 6 -  Call SqlPrepareAndExecute(hSql1,"UPDATE RECIBOS SET ESTADO = 'ABIERTO' WHERE COD_RECIBO = :dfRecibo")
+.head 6 -  Call SqlPrepareAndExecute(hSql1,"COMMIT")
+.head 6 -  Call SalMessageBox('El Recibo ha sido Re-Abierto satisfactoriamente ...','Sistema de Gestion Hospitalaria (SGH)',MB_Ok)
+.head 3 -  Background Text: Paso 2:
+.head 4 -  Resource Id: 39743
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 0.15"
+.head 5 -  Top:    1.202"
+.head 5 -  Width:  0.833"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.226"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Bold
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Background Text: Ingresar las facturas que seran afectadas  por el recibo 
+.head 4 -  Resource Id: 39744
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 1.15"
+.head 5 -  Top:    1.202"
+.head 5 -  Width:  4.433"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.202"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 -  Background Text: y dar click al boton "Corregir"
+.head 4 -  Resource Id: 39745
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 1.217"
+.head 5 -  Top:    1.393"
+.head 5 -  Width:  3.267"
+.head 5 -  Width Editable? Yes
+.head 5 -  Height: 0.202"
+.head 5 -  Height Editable? Yes
+.head 4 -  Visible? Yes
+.head 4 -  Justify: Left
+.head 4 -  Font Name: Default
+.head 4 -  Font Size: Default
+.head 4 -  Font Enhancement: Default
+.head 4 -  Text Color: Default
+.head 4 -  Background Color: Default
+.head 3 +  Child Table: tbl1
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: MyChildTable
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Display Settings
+.head 5 -  Window Location and Size
+.head 6 -  Left: 0.083"
+.head 6 -  Top:    1.738"
+.head 6 -  Width:  7.333"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: 1.143"
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 -  View: Class Default
+.head 5 -  Allow Row Sizing? Class Default
+.head 5 -  Lines Per Row: Class Default
+.head 4 -  Memory Settings
+.head 5 -  Maximum Rows in Memory: Class Default
+.head 5 -  Discardable? Class Default
+.head 4 +  Contents
+.head 5 +  Column: colFactura
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: # Fact
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? Class Default
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.05"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: Class Default
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 +  Message Actions
+.head 7 +  On SAM_Validate
+.head 8 -  !
+.head 8 -  Call SqlPrepareAndExecute(hSql1,"
+select
+	 A.TOTAL+A.MONTO_HONORARIOS,
+	A.MONTO_DEBE,
+	A.MONTO_HONORARIOS,
+	A.TOTAL,
+	A.DEBE_HONORARIOS
+               
+from	FACTURAS A
+where	
+	A.COD_FACTURA=:tbl1.colFactura
+into	
+	:tbl1.colTotal,
+	:tbl1.colMontoDebe,
+	:tbl1.colHonorarios,
+	:tbl1.colMontoFact,
+	:tbl1.colDebeHon")
+.head 8 -  Call SqlFetchNext(hSql1,nSiguiente)
+.head 5 +  Column: colMontoFact
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Mont Fac.
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.05"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: #####000
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colHonorarios
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Mont Hon
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.083"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: #####000
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colTotal
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Gran Total
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.133"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: ###000
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colMontoDebe
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Debe Fac
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.05"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: ###000
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 5 +  Column: colDebeHon
+.head 6 -  Class Child Ref Key: 0
+.head 6 -  Class ChildKey: 0
+.head 6 -  Class: clsNumero
+.head 6 -  Property Template:
+.head 6 -  Class DLL Name:
+.head 6 -  Title: Debe Hon.
+.head 6 -  Visible? Class Default
+.head 6 -  Editable? No
+.head 6 -  Maximum Data Length: Class Default
+.head 6 -  Data Type: Class Default
+.head 6 -  Justify: Class Default
+.head 6 -  Width:  1.083"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Format: ########000
+.head 6 -  Country: Class Default
+.head 6 -  Input Mask: Class Default
+.head 6 -  Cell Options
+.head 7 -  Cell Type? Class Default
+.head 7 -  Multiline Cell? Class Default
+.head 7 -  Cell DropDownList
+.head 8 -  Sorted? Class Default
+.head 8 -  Vertical Scroll? Class Default
+.head 8 -  Auto Drop Down? Class Default
+.head 8 -  Allow Text Editing? Class Default
+.head 7 -  Cell CheckBox
+.head 8 -  Check Value:
+.head 8 -  Uncheck Value:
+.head 8 -  Ignore Case? Class Default
+.head 6 -  List Values
+.head 6 -  Message Actions
+.head 4 -  Functions
+.head 4 +  Window Variables
+.head 5 -  Number: nFilita
+.head 4 -  Message Actions
+.head 3 +  Pushbutton: pbCorregir
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: cFlatPushbutton
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Title: Corregir
+.head 4 -  Window Location and Size
+.head 5 -  Left: 5.65"
+.head 5 -  Top:    1.429"
+.head 5 -  Width:  1.8"
+.head 5 -  Width Editable? Class Default
+.head 5 -  Height: Class Default
+.head 5 -  Height Editable? Class Default
+.head 4 -  Visible? Class Default
+.head 4 -  Keyboard Accelerator: Class Default
+.head 4 -  Font Name: Class Default
+.head 4 -  Font Size: Class Default
+.head 4 -  Font Enhancement: Bold
+.head 4 -  Picture File Name:
+.head 4 -  Picture Transparent Color: Class Default
+.head 4 -  Image Style: Class Default
+.head 4 -  Text Color: Class Default
+.head 4 -  Background Color: Light Green
+.head 4 +  Message Actions
+.head 5 +  On SAM_Click
+.head 6 -  ! ! 
+.head 6 -  Call SalTblSetContext(tbl1,0)
+.head 6 -  Set i =0
+.head 6 -  Call SqlPrepareAndExecute( hSql1, "EXECUTE SP_FACTURA_FIX_MONTOS :tbl1.colFactura" )
+.head 6 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 6 -  Call SalSendMsg( tbl1.colFactura, SAM_Validate, 0, 0 )
+.head 6 -  ! ! 
+.head 6 +  While SalTblFindNextRow(tbl1,i,0,0)
+.head 7 -  Call SalTblSetContext(tbl1,i)
+.head 7 -  Call SqlPrepareAndExecute( hSql1, "EXECUTE SP_FACTURA_FIX_MONTOS :tbl1.colFactura" )
+.head 7 -  Call SqlPrepareAndExecute(hSql1,"commit")
+.head 7 -  Call SalSendMsg( tbl1.colFactura, SAM_Validate, 0, 0 )
+.head 6 -  Call SalMessageBox('Facturas corregidas con éxito','Sistema de Gestion Hospitalaria (SGH)',0)
+.head 3 +  Pushbutton: pb3
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: cFlatPushbutton
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Title: Cancelar
+.head 4 -  Window Location and Size
+.head 5 -  Left: 5.683"
+.head 5 -  Top:    2.905"
+.head 5 -  Width:  1.8"
+.head 5 -  Width Editable? Class Default
+.head 5 -  Height: Class Default
+.head 5 -  Height Editable? Class Default
+.head 4 -  Visible? Class Default
+.head 4 -  Keyboard Accelerator: Class Default
+.head 4 -  Font Name: Class Default
+.head 4 -  Font Size: Class Default
+.head 4 -  Font Enhancement: Class Default
+.head 4 -  Picture File Name:
+.head 4 -  Picture Transparent Color: Class Default
+.head 4 -  Image Style: Class Default
+.head 4 -  Text Color: Class Default
+.head 4 -  Background Color: Class Default
+.head 4 +  Message Actions
+.head 5 +  On SAM_Click
+.head 6 -  Call SalDestroyWindow( dlgFixRecibosFact )
+.head 3 +  Pushbutton: pbAgregarFactura
+.data CLASSPROPSSIZE
+0000: 1E00
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573000D00 7461625365727669 63696F730000
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: pbChAgregarChiquito
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Title:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 0.083"
+.head 5 -  Top:    1.405"
+.head 5 -  Width:  0.5"
+.head 5 -  Width Editable? Class Default
+.head 5 -  Height: 0.333"
+.head 5 -  Height Editable? Class Default
+.head 4 -  Visible? Yes
+.head 4 -  Keyboard Accelerator: Class Default
+.head 4 -  Font Name: Class Default
+.head 4 -  Font Size: Class Default
+.head 4 -  Font Enhancement: Class Default
+.head 4 -  Picture File Name: C:\SGH\icons\edit_add15.bmp
+.head 4 -  Picture Transparent Color: Black
+.head 4 -  Image Style: Class Default
+.head 4 -  Text Color: Class Default
+.head 4 -  Background Color: Class Default
+.head 4 +  Message Actions
+.head 5 +  On SAM_Create
+.head 6 -  ! Inicializar las variables de instancia del boton
+.head 6 -  Set pbAgregarFactura.hWndFila = tbl1.colFactura
+.head 6 -  Set pbAgregarFactura.hWndTabla = tbl1
+.head 3 +  Pushbutton: pbBorrarFactura
+.data CLASSPROPSSIZE
+0000: 1E00
+.enddata
+.data CLASSPROPS
+0000: 5461624368696C64 4E616D6573000D00 7461625365727669 63696F730000
+.enddata
+.data INHERITPROPS
+0000: 0100
+.enddata
+.head 4 -  Class Child Ref Key: 0
+.head 4 -  Class ChildKey: 0
+.head 4 -  Class: pbChBorrarChiquito
+.head 4 -  Property Template:
+.head 4 -  Class DLL Name:
+.head 4 -  Title:
+.head 4 -  Window Location and Size
+.head 5 -  Left: 0.583"
+.head 5 -  Top:    1.405"
+.head 5 -  Width:  0.5"
+.head 5 -  Width Editable? Class Default
+.head 5 -  Height: 0.333"
+.head 5 -  Height Editable? Class Default
+.head 4 -  Visible? Yes
+.head 4 -  Keyboard Accelerator: Class Default
+.head 4 -  Font Name: Class Default
+.head 4 -  Font Size: Class Default
+.head 4 -  Font Enhancement: Class Default
+.head 4 -  Picture File Name: C:\SGH\icons\edit_remove15.bmp
+.head 4 -  Picture Transparent Color: Black
+.head 4 -  Image Style: Class Default
+.head 4 -  Text Color: Class Default
+.head 4 -  Background Color: Class Default
+.head 4 +  Message Actions
+.head 5 +  On SAM_Create
+.head 6 -  Set pbBorrarFactura.hWndFila = tbl1.colFactura
+.head 6 -  Set pbBorrarFactura.hWndTabla = tbl1
+.head 2 -  Functions
+.head 2 +  Window Parameters
+.head 3 -  String: sRecibo
+.head 2 +  Window Variables
+.head 3 -  Number: i
+.head 2 +  Message Actions
+.head 3 +  On SAM_CreateComplete
+.head 4 -  Set dfRecibo = sRecibo
+.head 4 -  Call SalBringWindowToTop( hWndForm )
