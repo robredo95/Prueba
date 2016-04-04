@@ -2,11 +2,11 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
 0020: 0000000000300100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F7773076672
-0080: 6D46616374094675 6E6374696F6E730E 47656E6572617250 617274696461
+0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773156672
+0080: 6D52656369626F73 43616E6346616374 757261
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000019433A5C 5347485C69636F6E 735C486F73706974 616C2E69636F2843
@@ -22001,9 +22001,9 @@ and b.fecha between :dtFechaI  and :dtFechaF  and b.cama = :nCodigo ", TBL_FillA
 .head 3 -  Window Location and Size
 .head 4 -  Left: Default
 .head 4 -  Top:    Default
-.head 4 -  Width:  13.457"
+.head 4 -  Width:  14.517"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 8.036"
+.head 4 -  Height: 9.214"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -22243,9 +22243,9 @@ into
 .head 5 -  Class: cFlatPushbutton
 .head 5 -  Property Template:
 .head 5 -  Class DLL Name:
-.head 5 -  Title: Facturas
+.head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 4.283"
+.head 6 -  Left: 4.883"
 .head 6 -  Top:    0.119"
 .head 6 -  Width:  0.8"
 .head 6 -  Width Editable? Class Default
@@ -22256,8 +22256,8 @@ into
 .head 5 -  Font Name: Class Default
 .head 5 -  Font Size: Class Default
 .head 5 -  Font Enhancement: Class Default
-.head 5 -  Picture File Name:
-.head 5 -  Picture Transparent Color: Class Default
+.head 5 -  Picture File Name: C:\SGH\icons\Insurance32.bmp
+.head 5 -  Picture Transparent Color: White
 .head 5 -  Image Style: Class Default
 .head 5 -  Text Color: Class Default
 .head 5 -  Background Color: Class Default
@@ -22271,11 +22271,11 @@ into
 .head 5 -  Class: cFlatPushbutton
 .head 5 -  Property Template:
 .head 5 -  Class DLL Name:
-.head 5 -  Title: Recibos A
+.head 5 -  Title:
 .head 5 -  Window Location and Size
-.head 6 -  Left: 5.083"
+.head 6 -  Left: 5.683"
 .head 6 -  Top:    0.119"
-.head 6 -  Width:  0.9"
+.head 6 -  Width:  0.8"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 0.5"
 .head 6 -  Height Editable? Class Default
@@ -22284,7 +22284,34 @@ into
 .head 5 -  Font Name: Class Default
 .head 5 -  Font Size: Class Default
 .head 5 -  Font Enhancement: Class Default
-.head 5 -  Picture File Name:
+.head 5 -  Picture File Name: C:\SGH\icons\RecibosA32.bmp
+.head 5 -  Picture Transparent Color: Class Default
+.head 5 -  Image Style: Class Default
+.head 5 -  Text Color: Class Default
+.head 5 -  Background Color: Class Default
+.head 5 +  Message Actions
+.head 6 +  On SAM_Click
+.head 7 -  Call SalModalDialog(dlgConsultaRecibosAnteriores,hWndForm)
+.head 4 +  Pushbutton: pb10
+.head 5 -  Class Child Ref Key: 0
+.head 5 -  Class ChildKey: 0
+.head 5 -  Class: cFlatPushbutton
+.head 5 -  Property Template:
+.head 5 -  Class DLL Name:
+.head 5 -  Title:
+.head 5 -  Window Location and Size
+.head 6 -  Left: 6.483"
+.head 6 -  Top:    0.119"
+.head 6 -  Width:  0.8"
+.head 6 -  Width Editable? Class Default
+.head 6 -  Height: 0.5"
+.head 6 -  Height Editable? Class Default
+.head 5 -  Visible? Class Default
+.head 5 -  Keyboard Accelerator: Class Default
+.head 5 -  Font Name: Class Default
+.head 5 -  Font Size: Class Default
+.head 5 -  Font Enhancement: Class Default
+.head 5 -  Picture File Name: C:\SGH\icons\RecibosFIX32.bmp
 .head 5 -  Picture Transparent Color: Class Default
 .head 5 -  Image Style: Class Default
 .head 5 -  Text Color: Class Default
@@ -23037,9 +23064,9 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.171"
+.head 6 -  Left: 0.083"
 .head 6 -  Top:    2.571"
-.head 6 -  Width:  12.614"
+.head 6 -  Width:  13.417"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.708"
 .head 6 -  Height Editable? Class Default
@@ -23618,9 +23645,9 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 4 -  Class DLL Name:
 .head 4 -  Display Settings
 .head 5 -  Window Location and Size
-.head 6 -  Left: 0.167"
-.head 6 -  Top:    4.786"
-.head 6 -  Width:  12.614"
+.head 6 -  Left: 0.183"
+.head 6 -  Top:    4.738"
+.head 6 -  Width:  13.317"
 .head 6 -  Width Editable? Class Default
 .head 6 -  Height: 1.619"
 .head 6 -  Height Editable? Class Default
@@ -23922,7 +23949,7 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 4 -  Window Location and Size
 .head 5 -  Left: 0.05"
 .head 5 -  Top:    2.512"
-.head 5 -  Width:  12.833"
+.head 5 -  Width:  13.533"
 .head 5 -  Width Editable? Yes
 .head 5 -  Height: 1.81"
 .head 5 -  Height Editable? Yes
@@ -23940,9 +23967,9 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 4 -  Window Location and Size
 .head 5 -  Left: 0.117"
 .head 5 -  Top:    4.702"
-.head 5 -  Width:  12.767"
+.head 5 -  Width:  13.467"
 .head 5 -  Width Editable? Yes
-.head 5 -  Height: 1.786"
+.head 5 -  Height: 1.702"
 .head 5 -  Height Editable? Yes
 .head 4 -  Visible? Yes
 .head 4 -  Corners: Square
@@ -24660,25 +24687,10 @@ where	COD_FACTURA=:tbl1.colFactura into :xno_pago",bExists)
 .head 3 +  On MU_GRABAR
 .head 4 -  Call SalDateToStr( dfFechaPago, FECHA_PAGO )
 .head 4 -  Call SalStrLeft (FECHA_PAGO, 10, FECHA_PAGO )
-.head 4 -  Call SqlExists("Select COD_RECIBO from RECIBOS where COD_RECIBO=:dfRecibo ",bExists)
+.head 4 -  Call SqlExists("Select ISNULL(ESTADO,'') from RECIBOS where COD_RECIBO=:dfRecibo INTO :sEstado ",bExists)
 .head 4 -  Call SqlClearImmediate( )
-.head 4 +  If bExists=TRUE
-.head 5 -  Call SalMessageBox("El recibo no puede ser modificado. Consulte al Administrador del Sistema","Advertencia",MB_Ok)
-.head 4 +  Else
-.head 5 -  !
-.head 5 -  ! Revisar que toda la informacione esta correcta
-.head 5 +  If not DataOk()
-.head 6 -  !
-.head 6 -  Return FALSE
-.head 5 -  !
-.head 5 -  Call SqlPrepareAndExecute(hSql1,"Begin Tran")
-.head 5 -  !
-.head 5 +  If SalIsButtonChecked(cbDeposito)
-.head 6 -  Set xpor_asignar = dfMonto
-.head 5 +  Else
-.head 6 -  Set xpor_asignar = 0
-.head 5 -  !
-.head 5 -  ! Registrar el recibo en la tabla Recibos
+.head 4 -  ! !
+.head 4 +  If NOT bExists
 .head 5 +  If SqlPrepareAndExecute(hSql1,"
 insert 	RECIBOS ( 
 	
@@ -24710,6 +24722,19 @@ values(
 	:dfSobrante,
                'PREC" ||dfRecibo || "'
                )") 
+.head 6 -  ! ! Revisar que toda la informacione esta correcta
+.head 6 +  If not DataOk()
+.head 7 -  !
+.head 7 -  Return FALSE
+.head 6 -  !
+.head 6 -  Call SqlPrepareAndExecute(hSql1,"Begin Tran")
+.head 6 -  !
+.head 6 +  If SalIsButtonChecked(cbDeposito)
+.head 7 -  Set xpor_asignar = dfMonto
+.head 6 +  Else
+.head 7 -  Set xpor_asignar = 0
+.head 6 -  !
+.head 6 -  ! Registrar el recibo en la tabla Recibos
 .head 6 -  ! Debido a que aqui SYSADM puede poner el numero que desee se verifica el maximo
 .head 6 -  Set nMaximo = SalStrToNumber( dfRecibo )
 .head 6 -  Call SqlPrepareAndExecute(hSql1,"select max(maximo) from identitys where cod_tabla = 700 into :max_en_tabla")
@@ -24720,13 +24745,27 @@ values(
 .head 6 -  !
 .head 6 -  ! Crear el en cabezado de partida y el detalle del debe en la misma
 .head 6 -  Call GenerarDebe()
-.head 6 -  ! ! Registramos cada uno de los pagos a facturas
-.head 6 -  Call RegistrarPagos()
-.head 6 -  !
-.head 6 +  If dfSobrante > 0
-.head 7 -  !
-.head 7 -  Call GenerarHaberSobrante()
-.head 6 -  Call SalMessageBox('Recibo Guardado','Atencion',MB_Ok)
+.head 5 +  Else
+.head 6 -  Call SqlPrepareAndExecute(hSql1,"ROLLBACK") 
+.head 6 -  Call SalMessageBox("ERROR al intentar salvar el Recbo... Consulte al Administrador del Sistema","Advertencia",MB_Ok)
+.head 6 -  Return 0
+.head 4 +  If bExists
+.head 5 -  ! ! Elvin Deras 02/Abr/2016 
+.head 5 -  ! ! Se agrega el tipo 'ABIERTO' para aquellos recibos que se grabaron en la base de datos pero no tienen ningun Pago asociado.
+.head 5 +  If sEstado != 'ABIERTO'
+.head 6 -  Call SalMessageBox("El recibo no puede ser modificado, su estado es ' || sEstado || '..., Consulte al Administrador del Sistema","Advertencia",MB_Ok)
+.head 6 -  Return 0
+.head 4 -  ! !
+.head 4 -  ! ! Inserta los  PAGOS si el recibo no existe o su estado es ABIERTO
+.head 4 -  ! ! Registramos cada uno de los pagos a facturas
+.head 4 -  Call RegistrarPagos()
+.head 4 -  !
+.head 4 +  If dfSobrante > 0
+.head 5 -  !
+.head 5 -  Call GenerarHaberSobrante()
+.head 4 -  Call SqlPrepareAndExecute(hSql1,"UPDATE RECIBOS SET ESTADO = 'GRABADO' WHERE COD_RECIBO = :dfRecibo")
+.head 4 -  Call SqlPrepareAndExecute(hSql1,"COMMIT")
+.head 4 -  Call SalMessageBox('Recibo Guardado','Atencion',MB_Ok)
 .head 3 +  On MU_ACTUALIZAR
 .head 4 -  !
 .head 4 -  Call SqlImmediate("select 
