@@ -2,12 +2,11 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
 0020: 00000000002E0100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0000000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F7773156672
-0080: 6D52656369626F73 43616E6346616374 75726108546F6F6C 204261720A706245
-00A0: 6C696D696E6172
+0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773156672
+0080: 6D52656369626F73 43616E6346616374 757261
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000019433A5C 5347485C69636F6E 735C486F73706974 616C2E69636F2843
@@ -22004,7 +22003,7 @@ and b.fecha between :dtFechaI  and :dtFechaF  and b.cama = :nCodigo ", TBL_FillA
 .head 4 -  Top:    Default
 .head 4 -  Width:  14.517"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 9.214"
+.head 4 -  Height: 8.321"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -22106,7 +22105,7 @@ into	:s1,:dt1,:s2,:n1,:n2,:s3,:s4,:s5,:n3,:n4,:s6,:s7",'')
 .head 7 -  Set sRecibo=''
 .head 7 -  Call SalModalDialog(dlgConsultaRecibosNuevos,hWndForm,sRecibo)
 .head 7 +  If sRecibo!=''
-.head 8 -  Set dfRecibo =sRecibo
+.head 8 -  Set dfRecibo = sRecibo
 .head 8 -  Call SalTblReset( tbl1 )
 .head 8 -  Call SalTblReset( tbl2 )
 .head 8 -  Call SalSendMsg(hWndForm,MU_ACTUALIZAR,0,0)
@@ -22379,15 +22378,9 @@ into
 .head 5 -  Background Color: Class Default
 .head 5 -  Input Mask: Class Default
 .head 4 +  Message Actions
-.head 5 +  ! On SAM_Validate
-.head 6 -  Call SqlPrepareAndExecute(hSql1,"select A.NUMERO_PAGO,A.MONTO,A.FECHA,A.DOCUMENTO,A.RECIBO,A.DESCRIPCION,A.COD_PAGO,A.RECIBIDE,A.STRMONTO,A.SALDOANT,A.SALDOACT,A.BANCO
-               
-from	 RECIBOS  A
-where	A.COD_FACTURA=-999 AND A.COD_RECIBO=:dfRecibo
-into	:dfPago,:dfMonto,:dfFechaPago,:dfDocumento,:dfRecibo,:dfDescrip,:cmbPago.nCodigo,:dfRecibide,:dfstrMonto,:dfSaldoAnt,:dfSaldoAct,:dfBanco")
+.head 5 +  On SAM_Validate
+.head 6 -  Call SalSendMsg( hWndForm, MU_ACTUALIZAR, 0, 0 )
 .head 6 -  !
-.head 6 -  Call SqlFetchNext(hSql1,nSiguiente)
-.head 6 -  Call cmbPago.Actualizar()
 .head 3 +  Data Field: dfFechaPago
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -22482,10 +22475,10 @@ into	:dfPago,:dfMonto,:dfFechaPago,:dfDocumento,:dfRecibo,:dfDescrip,:cmbPago.nC
 .head 4 -  List Initialization
 .head 4 +  Message Actions
 .head 5 +  On SAM_Create
-.head 6 -  Set cmbPago.nCaso=1
-.head 6 -  Set cmbPago.sTabla='TIPOS_PAGO'
-.head 6 -  Set cmbPago.sNombre='NOMBRE'
-.head 6 -  Set cmbPago.sCodigo='COD_PAGO'
+.head 6 -  Set cmbPago.nCaso = 1
+.head 6 -  Set cmbPago.sTabla = 'TIPOS_PAGO'
+.head 6 -  Set cmbPago.sNombre = 'NOMBRE'
+.head 6 -  Set cmbPago.sCodigo = 'COD_PAGO'
 .head 5 +  On SAM_Validate
 .head 6 +  If cmbPago.nCodigo=0
 .head 7 -  Set dfDocumento='EFECTIVO'
@@ -22658,7 +22651,7 @@ into	:dfPago,:dfMonto,:dfFechaPago,:dfDocumento,:dfRecibo,:dfDescrip,:cmbPago.nC
 .head 4 -  Property Template:
 .head 4 -  Class DLL Name:
 .head 4 -  Data
-.head 5 -  Maximum Data Length: Class Default
+.head 5 -  Maximum Data Length: 200
 .head 5 -  Data Type: Class Default
 .head 5 -  Editable? Class Default
 .head 4 -  Display Settings
@@ -24697,11 +24690,6 @@ where	COD_FACTURA=:tbl1.colFactura into :xno_pago",bExists)
 .head 4 -  Class: lcNotaCredito
 .head 2 +  Message Actions
 .head 3 +  On SAM_CreateComplete
-.head 4 -  ! Set dfFactura=-999
-.head 4 -  ! Set dfFechaRegistro=pFechaRegistro
-.head 4 -  ! Set dfFechaCierre=pFechaCierre
-.head 4 -  ! Set dfTotal=pTotal
-.head 4 -  ! Set dfDebe=pDebe
 .head 4 -  Call SalCenterWindow( hWndForm )
 .head 4 -  Set dfTotalAbonos = 0.00
 .head 4 -  !
@@ -24720,6 +24708,7 @@ where	COD_FACTURA=:tbl1.colFactura into :xno_pago",bExists)
 .head 4 -  Call SqlClearImmediate( )
 .head 4 -  ! !
 .head 4 +  If NOT bExists
+.head 5 -  Call SqlPrepareAndExecute(hSql1,"BEGIN TRAN")
 .head 5 +  If SqlPrepareAndExecute(hSql1,"
 insert 	RECIBOS ( 
 	
@@ -24756,7 +24745,6 @@ values(
 .head 7 -  !
 .head 7 -  Return FALSE
 .head 6 -  !
-.head 6 -  Call SqlPrepareAndExecute(hSql1,"Begin Tran")
 .head 6 -  !
 .head 6 +  If SalIsButtonChecked(cbDeposito)
 .head 7 -  Set xpor_asignar = dfMonto
@@ -24797,7 +24785,8 @@ values(
 .head 4 -  Call SalMessageBox('Recibo Guardado','Atencion',MB_Ok)
 .head 3 +  On MU_ACTUALIZAR
 .head 4 -  !
-.head 4 -  Call SqlImmediate("select 
+.head 4 -  Set sRecibo = dfRecibo
+.head 4 -  Call SqlExists( "select 
 				A.MONTO,
 				A.SALDOANT,
 				A.SALDOACT,
@@ -24828,9 +24817,21 @@ into
 				:dfDescrip2,
 				:dfFacturasAfectadas,
 				:dfSobrante,
-				:dfEstado")
+				:dfEstado", bExists)
 .head 4 -  !
-.head 4 -  Call SqlClearImmediate()
+.head 4 +  If NOT bExists
+.head 5 -  Set dfMonto=NUMBER_Null
+.head 5 -  Set dfFechaPago=DATETIME_Null
+.head 5 -  Set cmbPago=''
+.head 5 -  Set dfDocumento=''
+.head 5 -  Set dfDescrip=''
+.head 5 -  Set dfRecibide=''
+.head 5 -  Set dfstrMonto=''
+.head 5 -  Set dfSaldoAnt=NUMBER_Null
+.head 5 -  Set dfSaldoAct=NUMBER_Null
+.head 5 -  Set cmbPago = STRING_Null
+.head 5 -  Call SalTblReset( tbl1 )
+.head 5 -  Call SalTblReset( tbl2 )
 .head 4 -  !
 .head 4 -  Call cmbPago.Actualizar()
 .head 1 +  Dialog Box: dlgConsultaRecibosNuevos
