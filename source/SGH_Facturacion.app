@@ -2,11 +2,12 @@
 .head 1 -  Outline Version - 4.0.27
 .head 1 +  Design-time Settings
 .data VIEWINFO
-0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400800000
-0020: 00000000002E0100 002C000000020000 0003000000FFFFFF FFFFFFFFFFF8FFFF
-0040: FFE2FFFFFF000000 00000000002C0300 0051020000010000 0001000000010000
-0060: 000F4170706C6963 6174696F6E497465 6D02000000075769 6E646F7773156672
-0080: 6D52656369626F73 43616E6346616374 757261
+0000: 6F00000001000000 FFFF01000D004347 5458566965775374 6174650400020000
+0020: 00000000002E0100 002C000000020000 0003000000FFFFFF FFFFFFFFFFFCFFFF
+0040: FFE9FFFFFF000000 00000000002C0300 0051020000010000 0000000000010000
+0060: 000F4170706C6963 6174696F6E497465 6D04000000075769 6E646F7773156672
+0080: 6D52656369626F73 43616E6346616374 7572610D4368696C 642057696E646F77
+00A0: 730A646653616C64 6F416E74
 .enddata
 .data DT_MAKERUNDLG
 0000: 0000000019433A5C 5347485C69636F6E 735C486F73706974 616C2E69636F2843
@@ -22003,7 +22004,7 @@ and b.fecha between :dtFechaI  and :dtFechaF  and b.cama = :nCodigo ", TBL_FillA
 .head 4 -  Top:    Default
 .head 4 -  Width:  14.517"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 8.321"
+.head 4 -  Height: 8.036"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -22517,6 +22518,7 @@ into
 .head 5 -  Input Mask: Class Default
 .head 4 +  Message Actions
 .head 5 +  On SAM_Validate
+.head 6 -  If (dfMonto>0)
 .head 6 -  Set dfstrMonto="*" || NumToLetras( dfMonto ) || "********"
 .head 3 +  Data Field: dfSaldoAct
 .head 4 -  Class Child Ref Key: 0
@@ -22549,7 +22551,8 @@ into
 .head 5 -  Input Mask: Class Default
 .head 4 +  Message Actions
 .head 5 +  On SAM_Validate
-.head 6 -  Set dfstrMonto="*" || NumToLetras( dfMonto ) || "********"
+.head 6 +  If (dfMonto>0)
+.head 7 -  Set dfstrMonto="*" || NumToLetras( dfMonto ) || "********"
 .head 3 +  Data Field: dfDocumento
 .head 4 -  Class Child Ref Key: 0
 .head 4 -  Class ChildKey: 0
@@ -30584,7 +30587,7 @@ y automaticamente le genera un correlativo con la funcion Identity
 .head 4 -  Top:    Default
 .head 4 -  Width:  14.017"
 .head 4 -  Width Editable? Class Default
-.head 4 -  Height: 8.798"
+.head 4 -  Height: 8.036"
 .head 4 -  Height Editable? Class Default
 .head 3 -  Form Size
 .head 4 -  Width:  Class Default
@@ -36844,7 +36847,7 @@ ademas sugiere la fecha del sistema en la que se llevo a cabo el servicio
 .head 4 -  Top:    1.146"
 .head 4 -  Width:  13.817"
 .head 4 -  Width Editable? Class Default
-.head 4 -  Height: 8.345"
+.head 4 -  Height: 8.036"
 .head 4 -  Height Editable? Class Default
 .head 3 -  Form Size
 .head 4 -  Width:  Class Default
@@ -56440,7 +56443,7 @@ into
 .head 4 -  Top:    0.271"
 .head 4 -  Width:  15.917"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 8.726"
+.head 4 -  Height: 8.036"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -83527,7 +83530,7 @@ into
 .head 4 -  Top:    0.104"
 .head 4 -  Width:  14.617"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 9.036"
+.head 4 -  Height: 8.036"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -86263,7 +86266,7 @@ INSERT INTO
 .head 4 -  Top:    Default
 .head 4 -  Width:  9.967"
 .head 4 -  Width Editable? Yes
-.head 4 -  Height: 8.167"
+.head 4 -  Height: 8.036"
 .head 4 -  Height Editable? Yes
 .head 3 -  Form Size
 .head 4 -  Width:  Default
@@ -101467,7 +101470,7 @@ verifica que exista el codigo de servicio.
 .head 4 -  Top:    0.896"
 .head 4 -  Width:  16.1"
 .head 4 -  Width Editable? Class Default
-.head 4 -  Height: 8.238"
+.head 4 -  Height: 8.036"
 .head 4 -  Height Editable? Class Default
 .head 3 -  Form Size
 .head 4 -  Width:  Class Default
@@ -101668,7 +101671,7 @@ ademas obtener el ultimo numero de factura para que se sugiera el siguiente
 .head 8 -  Call SqlExists (sSQL, bExistsFact)
 .head 8 -  Call SqlClearImmediate()
 .head 8 +  If SalMessageBox("Ha seleccionado crear una nueva factura. Desea guardar los cambios antes de continuar?","Atencion",MB_YesNo)=IDYES
-.head 9 -  !
+.head 9 -  ! Validamos si esta correcto todos los campos para guardar
 .head 9 -  Call SalSendMsg (pbGrabar, SAM_Click, 0, 0)
 .head 8 +  Else
 .head 9 -  !
@@ -107488,6 +107491,7 @@ GROUP BY C.COD_CUENTA,D.DESCRIPCION"
 .head 4 -  !
 .head 4 -  Call SalMessageBox( "Esta opcion ha sido deshabilitada.", "Advertencia", MB_Ok )
 .head 3 +  On MU_GRABAR
+.head 4 -  ! If RevisarFormaLlena()
 .head 4 -  Call Actualizar_Montos()
 .head 4 -  !
 .head 4 -  Set nOrigen = Origen_Paciente( )
